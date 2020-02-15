@@ -4,10 +4,9 @@ import (
 	"github.com/kataras/iris"
 )
 
-func DownLink_Hub(party iris.Party) {
-	home := party.Party("/downlink")
-
-	home.Get("/", DownLinkGet)
+func CCTC_Hub(party iris.Party) {
+	home := party.Party("/cctc")
+	home.Get("/downlink", DownLinkGet)
 }
 func DownLinkGet(ctx iris.Context) {
 	downlinkBeginTime := ctx.URLParam("downlinkBeginTime")

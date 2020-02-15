@@ -14,7 +14,7 @@ func Hub(app *iris.Application) {
 	preSettring(app)
 	var main = corsSetting(app)
 	HomeHub(main)
-	DownLink_Hub(main)
+	CCTC_Hub(main)
 }
 
 func corsSetting(app *iris.Application) (main iris.Party) {
