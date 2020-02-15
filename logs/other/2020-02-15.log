@@ -1,0 +1,56 @@
+Now listening on: http://localhost:
+Application started. Press CTRL+C to shut down.
+Now listening on: http://localhost:
+Application started. Press CTRL+C to shut down.
+Now listening on: http://localhost:
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/15 11:41 @@@ Init app conf[INFO] 2020/02/15 11:41 @@@ Init app conf
+
+[DBUG] 2020/02/15 11:41 [./src\routes\home_route.go:10] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 4 more[DBUG] 2020/02/15 11:41 [./src\routes\home_route.go:10] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 4 more
+
+[DBUG] 2020/02/15 11:41 [./src\routes\home_route.go:10] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 4 more[DBUG] 2020/02/15 11:41 [./src\routes\home_route.go:10] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 4 more
+
+[DBUG] 2020/02/15 11:41 [./src\routes\webserver_route.go:10] OPTIONS: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 4 more[DBUG] 2020/02/15 11:41 [./src\routes\webserver_route.go:10] OPTIONS: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 4 more
+
+[DBUG] 2020/02/15 11:41 [./src\routes\webserver_route.go:10] GET: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 4 more[DBUG] 2020/02/15 11:41 [./src\routes\webserver_route.go:10] GET: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 4 more
+
+[DBUG] 2020/02/15 11:41 Application: running using 1 host(s)[DBUG] 2020/02/15 11:41 Application: running using 1 host(s)
+
+[DBUG] 2020/02/15 11:41 Host: addr is :8080[DBUG] 2020/02/15 11:41 Host: addr is :8080
+
+[DBUG] 2020/02/15 11:41 Host: virtual host is localhost:8080[DBUG] 2020/02/15 11:41 Host: virtual host is localhost:8080
+
+[DBUG] 2020/02/15 11:41 Host: register startup notifier[DBUG] 2020/02/15 11:41 Host: register startup notifier
+
+[DBUG] 2020/02/15 11:41 Host: register server shutdown on interrupt(CTRL+C/CMD+C)[DBUG] 2020/02/15 11:41 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/15 11:41 用户[GUEST], 登录生成token [eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6LTEsInVzZXJuYW1lIjoiR1VFU1QiLCJyb2xlIjoiR1VFU1QiLCJlbmFibGUiOnRydWUsImV4cCI6MTU4MTczODExNiwiaXNzIjoiaXJpcy1jYXNiaW5zLWp3dCJ9.NIby-J4PTIgDokHlw0aign0xJwXd5VweNq18gepL5qk][INFO] 2020/02/15 11:41 用户[GUEST], 登录生成token [eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6LTEsInVzZXJuYW1lIjoiR1VFU1QiLCJyb2xlIjoiR1VFU1QiLCJlbmFibGUiOnRydWUsImV4cCI6MTU4MTczODExNiwiaXNzIjoiaXJpcy1jYXNiaW5zLWp3dCJ9.NIby-J4PTIgDokHlw0aign0xJwXd5VweNq18gepL5qk]
+
+[INFO] 2020/02/15 11:56 @@@ Init app conf[INFO] 2020/02/15 11:56 @@@ Init app conf
+
+[DBUG] 2020/02/15 11:56 [./src\routes\home_route.go:10] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 4 more[DBUG] 2020/02/15 11:56 [./src\routes\home_route.go:10] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 4 more
+
+[DBUG] 2020/02/15 11:56 [./src\routes\home_route.go:10] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 4 more[DBUG] 2020/02/15 11:56 [./src\routes\home_route.go:10] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 4 more
+
+[DBUG] 2020/02/15 11:56 [./src\routes\webserver_route.go:10] OPTIONS: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 4 more[DBUG] 2020/02/15 11:56 [./src\routes\webserver_route.go:10] OPTIONS: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 4 more
+
+[DBUG] 2020/02/15 11:56 [./src\routes\webserver_route.go:10] GET: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 4 more[DBUG] 2020/02/15 11:56 [./src\routes\webserver_route.go:10] GET: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 4 more
+
+[DBUG] 2020/02/15 11:56 Application: running using 1 host(s)[DBUG] 2020/02/15 11:56 Application: running using 1 host(s)
+
+[DBUG] 2020/02/15 11:56 Host: addr is :8080[DBUG] 2020/02/15 11:56 Host: addr is :8080
+
+[DBUG] 2020/02/15 11:56 Host: virtual host is localhost:8080[DBUG] 2020/02/15 11:56 Host: virtual host is localhost:8080
+
+[DBUG] 2020/02/15 11:56 Host: register startup notifier[DBUG] 2020/02/15 11:56 Host: register startup notifier
+
+[DBUG] 2020/02/15 11:56 Host: register server shutdown on interrupt(CTRL+C/CMD+C)[DBUG] 2020/02/15 11:56 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
