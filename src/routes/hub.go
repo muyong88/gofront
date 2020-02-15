@@ -7,7 +7,6 @@ import (
 	"github.com/kataras/iris/middleware/recover"
 	"github.com/yanzhen74/gofront/src/inits/parse"
 	"github.com/yanzhen74/gofront/src/supports"
-	"github.com/yanzhen74/goview/src/middleware"
 )
 
 //所有路由
@@ -15,7 +14,7 @@ func Hub(app *iris.Application) {
 	preSettring(app)
 	var main = corsSetting(app)
 	HomeHub(main)
-	WebServerHub(main)
+	DownLink_Hub(main)
 }
 
 func corsSetting(app *iris.Application) (main iris.Party) {
@@ -33,7 +32,7 @@ func corsSetting(app *iris.Application) (main iris.Party) {
 
 	/* 定义路由 */
 	main = app.Party("/", crs).AllowMethods(iris.MethodOptions)
-	main.Use(middleware.ServeHTTP)
+	//main.Use(middleware.ServeHTTP)
 	//main := app.Party("/")
 	//main.Use(middleware.ServeHTTP)
 

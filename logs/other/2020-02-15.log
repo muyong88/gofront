@@ -54,3 +54,27 @@ Now listening on: http://localhost:8080
 Application started. Press CTRL+C to shut down.
 Now listening on: http://localhost:8080
 Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/15 13:40 @@@ Init app conf
+[DBUG] 2020/02/15 13:40 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/15 13:40 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/15 13:40 [./src\routes\webserver_route.go:10] OPTIONS: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 3 more
+[DBUG] 2020/02/15 13:40 [./src\routes\webserver_route.go:10] GET: /post -> github.com/yanzhen74/gofront/src/routes.WebServerHub.func1() and 3 more
+[DBUG] 2020/02/15 13:40 Application: running using 1 host(s)
+[DBUG] 2020/02/15 13:40 Host: addr is :8080
+[DBUG] 2020/02/15 13:40 Host: virtual host is localhost:8080
+[DBUG] 2020/02/15 13:40 Host: register startup notifier
+[DBUG] 2020/02/15 13:40 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/15 15:49 @@@ Init app conf
+[DBUG] 2020/02/15 15:49 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/15 15:49 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/15 15:49 [./src\routes\downlink_route.go:10] OPTIONS: /downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Hub.func1() and 3 more
+[DBUG] 2020/02/15 15:49 [./src\routes\downlink_route.go:10] GET: /downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Hub.func1() and 3 more
+[DBUG] 2020/02/15 15:49 Application: running using 1 host(s)
+[DBUG] 2020/02/15 15:49 Host: addr is :8080
+[DBUG] 2020/02/15 15:49 Host: virtual host is localhost:8080
+[DBUG] 2020/02/15 15:49 Host: register startup notifier
+[DBUG] 2020/02/15 15:49 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
