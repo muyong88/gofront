@@ -1,0 +1,432 @@
+[INFO] 2020/02/19 10:15 @@@ Init app conf
+[INFO] 2020/02/19 10:15 @@@ Init db conf
+[DBUG] 2020/02/19 10:15 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 10:15 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 10:15 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 10:15 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 10:15 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 10:15 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 10:15 Application: running using 1 host(s)
+[DBUG] 2020/02/19 10:15 Host: addr is :8080
+[DBUG] 2020/02/19 10:15 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 10:15 Host: register startup notifier
+[DBUG] 2020/02/19 10:15 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/19 16:25 @@@ Init app conf
+[INFO] 2020/02/19 16:25 @@@ Init db conf
+[DBUG] 2020/02/19 16:25 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 16:25 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 16:25 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 16:25 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 16:25 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 16:25 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 16:25 Application: running using 1 host(s)
+[DBUG] 2020/02/19 16:25 Host: addr is :8080
+[DBUG] 2020/02/19 16:25 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 16:25 Host: register startup notifier
+[DBUG] 2020/02/19 16:25 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[WARN] 2020/02/19 16:28 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 16:41 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[INFO] 2020/02/19 17:33 @@@ Init app conf
+[INFO] 2020/02/19 17:33 @@@ Init db conf
+[DBUG] 2020/02/19 17:33 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 17:33 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 17:33 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 17:33 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 17:33 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 17:33 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 17:33 Application: running using 1 host(s)
+[DBUG] 2020/02/19 17:33 Host: addr is :8080
+[DBUG] 2020/02/19 17:33 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 17:33 Host: register startup notifier
+[DBUG] 2020/02/19 17:33 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/19 19:09 @@@ Init app conf
+[INFO] 2020/02/19 19:09 @@@ Init db conf
+[DBUG] 2020/02/19 19:09 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 19:09 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 19:09 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 19:09 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 19:09 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 19:09 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 19:09 Application: running using 1 host(s)
+[DBUG] 2020/02/19 19:09 Host: addr is :8080
+[DBUG] 2020/02/19 19:09 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 19:09 Host: register startup notifier
+[DBUG] 2020/02/19 19:09 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[WARN] 2020/02/19 19:11 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 19:23 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 19:24 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 19:31 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 19:32 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 19:33 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 19:33 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 19:34 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[WARN] 2020/02/19 19:35 Recovered from a route's Handler('github.com/yanzhen74/gofront/src/routes.Process_state_Post')
+At Request: 200 /cctc/process_state POST ::1
+Trace: runtime error: invalid memory address or nil pointer dereference
+
+C:/Go/src/runtime/panic.go:679
+C:/Go/src/runtime/panic.go:199
+C:/Go/src/runtime/signal_windows.go:233
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/model/process_state.go:43
+C:/Users/Administrator/go/src/github.com/yanzhen74/gofront/src/routes/cctc_route.go:37
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/iris-contrib/middleware/cors/cors.go:185
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/logger/logger.go:50
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1336
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1345
+C:/Users/Administrator/go/src/github.com/kataras/iris/middleware/recover/recover.go:55
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1023
+C:/Users/Administrator/go/src/github.com/kataras/iris/context/context.go:1210
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/handler.go:250
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:135
+C:/Users/Administrator/go/src/github.com/kataras/iris/core/router/router.go:227
+C:/Go/src/net/http/server.go:2802
+C:/Go/src/net/http/server.go:1890
+C:/Go/src/runtime/asm_amd64.s:1357
+
+[INFO] 2020/02/19 19:37 @@@ Init app conf
+[INFO] 2020/02/19 19:37 @@@ Init db conf
+[DBUG] 2020/02/19 19:37 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 19:37 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 19:37 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 19:37 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 19:37 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 19:37 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 19:37 Application: running using 1 host(s)
+[DBUG] 2020/02/19 19:37 Host: addr is :8080
+[DBUG] 2020/02/19 19:37 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 19:37 Host: register startup notifier
+[DBUG] 2020/02/19 19:37 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/19 19:43 @@@ Init app conf
+[INFO] 2020/02/19 19:43 @@@ Init db conf
+[DBUG] 2020/02/19 19:43 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 19:43 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 19:43 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 19:43 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 19:43 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 19:43 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 19:43 Application: running using 1 host(s)
+[DBUG] 2020/02/19 19:43 Host: addr is :8080
+[DBUG] 2020/02/19 19:43 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 19:43 Host: register startup notifier
+[DBUG] 2020/02/19 19:43 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/19 19:48 @@@ Init app conf
+[INFO] 2020/02/19 19:48 @@@ Init db conf
+[DBUG] 2020/02/19 19:48 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 19:48 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 19:48 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 19:48 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 19:48 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 19:48 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 19:48 Application: running using 1 host(s)
+[DBUG] 2020/02/19 19:48 Host: addr is :8080
+[DBUG] 2020/02/19 19:48 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 19:48 Host: register startup notifier
+[DBUG] 2020/02/19 19:48 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/19 20:21 @@@ Init app conf
+[INFO] 2020/02/19 20:21 @@@ Init db conf
+[DBUG] 2020/02/19 20:21 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 20:21 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 20:21 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 20:21 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 20:21 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 20:21 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 20:21 Application: running using 1 host(s)
+[DBUG] 2020/02/19 20:21 Host: addr is :8080
+[DBUG] 2020/02/19 20:21 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 20:21 Host: register startup notifier
+[DBUG] 2020/02/19 20:21 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/19 20:23 @@@ Init app conf
+[INFO] 2020/02/19 20:23 @@@ Init db conf
+[DBUG] 2020/02/19 20:23 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 20:23 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/19 20:23 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 20:23 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/19 20:23 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 20:23 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/19 20:23 Application: running using 1 host(s)
+[DBUG] 2020/02/19 20:23 Host: addr is :8080
+[DBUG] 2020/02/19 20:23 Host: virtual host is localhost:8080
+[DBUG] 2020/02/19 20:23 Host: register startup notifier
+[DBUG] 2020/02/19 20:23 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.

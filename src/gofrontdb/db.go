@@ -19,7 +19,7 @@ var (
 	lock         sync.Mutex
 )
 var (
-	engineGroup *xorm.EngineGroup
+	engineGroup *xorm.EngineGroup //主库写，从库读
 	lockGroup   sync.Mutex
 )
 
@@ -30,7 +30,8 @@ func EngineGroup() *xorm.EngineGroup {
 	}
 	lockGroup.Lock()
 	defer lockGroup.Unlock()
-	engineGroup, _ = xorm.NewEngineGroup(MasterEngine(), SlaveEngine())
+	engineGroup, _ = xorm.NewEngineGroup(MasterEngine(), []*xorm.Engine{SlaveEngine()})
+
 	return engineGroup
 EXIST:
 	err := engineGroup.Ping()

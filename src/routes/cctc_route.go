@@ -1,14 +1,21 @@
 package routes
 
 import (
+	"fmt"
+
 	"github.com/kataras/iris"
+	"github.com/yanzhen74/gofront/src/model"
 )
 
+//CTCC前端主控进程与网站间接口
 func CCTC_Hub(party iris.Party) {
 	home := party.Party("/cctc")
 	home.Get("/downlink", DownLink_Get)
 	home.Post("/process_state", Process_state_Post)
 }
+
+//下行计划查询接口
+//根据路径中参数，获取下行计划
 func DownLink_Get(ctx iris.Context) {
 	downlinkBeginTime := ctx.URLParam("downlinkBeginTime")
 	downlinkEndTime := ctx.URLParam("downlinkBeginTime")
@@ -17,6 +24,16 @@ func DownLink_Get(ctx iris.Context) {
 	ctx.WriteString(downlinkBeginTime + " " + downlinkEndTime + " " + pageSize + " " + pageNo)
 	//stub（等待接口）: 根据参数查询响应下行计划信息，返回JSON
 }
-func Process_state_Post(ctx iris.Context) {
 
+//前端进程状态更新接口
+//获取JSON内容，存库，显示
+func Process_state_Post(ctx iris.Context) {
+	var process_state model.Process_State
+	if err := ctx.ReadJSON(&process_state); err != nil {
+		fmt.Println(err)
+		return
+	}
+	//入库
+	model.CreateProcessState(&process_state)
+	//stub：展示
 }

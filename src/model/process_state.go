@@ -1,8 +1,6 @@
 package model
 
 import (
-	"encoding/json"
-
 	"github.com/yanzhen74/gofront/src/gofrontdb"
 )
 
@@ -28,24 +26,33 @@ type Process_State struct {
 	SaveWriteShmLoop     string  `xorm:"notnull" json:"saveWriteShmLoop"`
 	SaveReadShmLoop      string  `xorm:"notnull" json:"saveReadShmLoop"`
 	SaveWriteShmSpeed    float64 `xorm:"notnull" json:"saveWriteShmSpeed"`
-	SaveReadShmSpeed     float64 `xorm:"notnull" json:"saveReadShmLoop"`
+	SaveReadShmSpeed     float64 `xorm:"notnull" json:"SaveReadShmSpeed"`
 	RecvBeats            int8    `xorm:"notnull" json:"recvBeats"`
 	ResendBeats          int8    `xorm:"notnull" json:"resendBeats"`
 	SaveBeats            int8    `xorm:"notnull" json:"saveBeats"`
-	RecvBytes            string  `xorm:"notnull" json:""recvBytes`
+	RecvBytes            string  `xorm:"notnull" json:"recvBytes"`
 	Send32KFrames        string  `xorm:"notnull" json:"send32KFrames"`
 	SendIPinIPFrames     string  `xorm:"notnull" json:"sendIPinIPFrames"`
 	SendSmallCraftFrames string  `xorm:"notnull" json:"sendSmallCraftFrames"`
 	TimeStamp            string  `xorm:"notnull" json:"timeStamp"`
 }
 
+//入库
 func CreateProcessState(process ...*Process_State) (int64, error) {
 	e := gofrontdb.EngineGroup()
 	return e.Insert(process)
 	//stub:展示
 }
-func GetUserFromJson(data []byte) (*Process_State, error) {
-	var process_state Process_State
-	err := json.Unmarshal(data, &process_state)
-	return &process_state, err
+
+//查询库
+func GetProcessState(process *Process_State) (bool, error) {
+	e := gofrontdb.EngineGroup()
+	return e.Get(process)
 }
+
+// //字符数组转换成Process_State结构体
+// func GetUserFromJson(data []byte) (*Process_State, error) {
+// 	var process_state Process_State
+// 	err := json.Unmarshal(data, &process_state)
+// 	return &process_state, err
+// }
