@@ -10,13 +10,13 @@ import (
 //CTCC前端主控进程与网站间接口
 func CCTC_Hub(party iris.Party) {
 	home := party.Party("/cctc")
-	home.Get("/downlink", DownLink_Get)
-	home.Post("/process_state", Process_state_Post)
+	home.Get("/downlink", CCTC_DownLink_Get)
+	home.Post("/process_state", CCTC_Process_state_Post)
 }
 
 //下行计划查询接口
 //根据路径中参数，获取下行计划
-func DownLink_Get(ctx iris.Context) {
+func CCTC_DownLink_Get(ctx iris.Context) {
 	downlinkBeginTime := ctx.URLParam("downlinkBeginTime")
 	downlinkEndTime := ctx.URLParam("downlinkBeginTime")
 	pageSize := ctx.URLParam("pageSize")
@@ -27,13 +27,13 @@ func DownLink_Get(ctx iris.Context) {
 
 //前端进程状态更新接口
 //获取JSON内容，存库，显示
-func Process_state_Post(ctx iris.Context) {
-	var process_state model.Process_State
+func CCTC_Process_state_Post(ctx iris.Context) {
+	var process_state model.CCTC_Process_State
 	if err := ctx.ReadJSON(&process_state); err != nil {
 		fmt.Println(err)
 		return
 	}
 	//入库
-	model.CreateProcessState(&process_state)
+	model.CreateCCTCProcessState(&process_state)
 	//stub：展示
 }

@@ -1,0 +1,177 @@
+[INFO] 2020/02/20 14:45 @@@ Init app conf
+[INFO] 2020/02/20 14:45 @@@ Init db conf
+[DBUG] 2020/02/20 14:45 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 14:45 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 14:45 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 14:45 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 14:45 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 14:45 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 14:45 Application: running using 1 host(s)
+[DBUG] 2020/02/20 14:45 Host: addr is :8080
+[DBUG] 2020/02/20 14:45 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 14:45 Host: register startup notifier
+[DBUG] 2020/02/20 14:45 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 18:39 @@@ Init app conf
+[INFO] 2020/02/20 18:39 @@@ Init db conf
+[DBUG] 2020/02/20 18:39 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 18:39 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 18:39 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 18:39 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 18:39 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 18:39 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 18:39 Application: running using 1 host(s)
+[DBUG] 2020/02/20 18:39 Host: addr is :8080
+[DBUG] 2020/02/20 18:39 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 18:39 Host: register startup notifier
+[DBUG] 2020/02/20 18:39 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 19:31 @@@ Init app conf
+[INFO] 2020/02/20 19:31 @@@ Init db conf
+[DBUG] 2020/02/20 19:31 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 19:31 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 19:31 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 19:31 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 19:31 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 19:31 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 19:31 Application: running using 1 host(s)
+[DBUG] 2020/02/20 19:31 Host: addr is :8080
+[DBUG] 2020/02/20 19:31 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 19:31 Host: register startup notifier
+[DBUG] 2020/02/20 19:31 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 19:48 @@@ Init app conf
+[INFO] 2020/02/20 19:48 @@@ Init db conf
+[DBUG] 2020/02/20 19:48 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 19:48 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 19:48 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 19:48 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 19:48 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 19:48 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 19:48 Application: running using 1 host(s)
+[DBUG] 2020/02/20 19:48 Host: addr is :8080
+[DBUG] 2020/02/20 19:48 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 19:48 Host: register startup notifier
+[DBUG] 2020/02/20 19:48 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 19:53 @@@ Init app conf
+[INFO] 2020/02/20 19:53 @@@ Init db conf
+[DBUG] 2020/02/20 19:53 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 19:53 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 19:53 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 19:53 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.DownLink_Get() and 3 more
+[DBUG] 2020/02/20 19:53 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 19:53 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.Process_state_Post() and 3 more
+[DBUG] 2020/02/20 19:53 Application: running using 1 host(s)
+[DBUG] 2020/02/20 19:53 Host: addr is :8080
+[DBUG] 2020/02/20 19:53 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 19:53 Host: register startup notifier
+[DBUG] 2020/02/20 19:53 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 20:41 @@@ Init app conf
+[INFO] 2020/02/20 20:41 @@@ Init db conf
+[DBUG] 2020/02/20 20:41 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 20:41 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 20:41 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 20:41 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 20:41 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 20:41 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 20:41 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 20:41 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 20:41 Application: running using 1 host(s)
+[DBUG] 2020/02/20 20:41 Host: addr is :8080
+[DBUG] 2020/02/20 20:41 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 20:41 Host: register startup notifier
+[DBUG] 2020/02/20 20:41 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 21:03 @@@ Init app conf
+[INFO] 2020/02/20 21:03 @@@ Init db conf
+[DBUG] 2020/02/20 21:03 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:03 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:03 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:03 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:03 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:03 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:03 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:03 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:03 Application: running using 1 host(s)
+[DBUG] 2020/02/20 21:03 Host: addr is :8080
+[DBUG] 2020/02/20 21:03 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 21:03 Host: register startup notifier
+[DBUG] 2020/02/20 21:03 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 21:18 @@@ Init app conf
+[INFO] 2020/02/20 21:18 @@@ Init db conf
+[DBUG] 2020/02/20 21:18 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:18 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:18 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:18 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:18 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:18 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:18 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:18 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:18 Application: running using 1 host(s)
+[DBUG] 2020/02/20 21:18 Host: addr is :8080
+[DBUG] 2020/02/20 21:18 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 21:18 Host: register startup notifier
+[DBUG] 2020/02/20 21:18 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 21:27 @@@ Init app conf
+[INFO] 2020/02/20 21:27 @@@ Init db conf
+[DBUG] 2020/02/20 21:27 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:27 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:27 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:27 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:27 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:27 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:27 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:27 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:27 Application: running using 1 host(s)
+[DBUG] 2020/02/20 21:27 Host: addr is :8080
+[DBUG] 2020/02/20 21:27 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 21:27 Host: register startup notifier
+[DBUG] 2020/02/20 21:27 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 21:37 @@@ Init app conf
+[INFO] 2020/02/20 21:37 @@@ Init db conf
+[DBUG] 2020/02/20 21:37 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:37 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:37 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:37 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:37 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:37 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:37 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:37 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:37 Application: running using 1 host(s)
+[DBUG] 2020/02/20 21:37 Host: addr is :8080
+[DBUG] 2020/02/20 21:37 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 21:37 Host: register startup notifier
+[DBUG] 2020/02/20 21:37 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
+[INFO] 2020/02/20 21:48 @@@ Init app conf
+[INFO] 2020/02/20 21:48 @@@ Init db conf
+[DBUG] 2020/02/20 21:48 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:48 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:48 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:48 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/20 21:48 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:48 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:48 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/20 21:48 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/20 21:48 Application: running using 1 host(s)
+[DBUG] 2020/02/20 21:48 Host: addr is :8080
+[DBUG] 2020/02/20 21:48 Host: virtual host is localhost:8080
+[DBUG] 2020/02/20 21:48 Host: register startup notifier
+[DBUG] 2020/02/20 21:48 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.

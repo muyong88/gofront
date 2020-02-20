@@ -13,7 +13,9 @@ func main() {
 	parse.AppConfigParse()
 	parse.DBSettingParse()
 	routes.Hub(app)
-	gofrontdb.MasterEngine().Sync2(new(model.Process_State))
-	gofrontdb.SlaveEngine().Sync2(new(model.Process_State))
+	gofrontdb.MasterEngine().Sync2(new(model.CCTC_Process_State))
+	gofrontdb.SlaveEngine().Sync2(new(model.CCTC_Process_State))
+	gofrontdb.MasterEngine().Sync2(new(model.Protocal_Process_State))
+	gofrontdb.SlaveEngine().Sync2(new(model.Protocal_Process_State))
 	app.Run(iris.Addr(":"+parse.AppConfig.Port), iris.WithConfiguration(iris.YAML("config/iris.yaml")))
 }

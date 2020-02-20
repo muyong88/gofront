@@ -16,7 +16,7 @@ func Test_DownLink_Get(t *testing.T) {
 	fmt.Println(string(body))
 }
 
-func TestProcess_state_Post(t *testing.T) {
+func Test_CCTC_Process_state_Post(t *testing.T) {
 	mapStr := map[string]interface{}{
 		"msgType":              "CTCCFRONTEND_STATE_REPORT",
 		"processId":            123,
