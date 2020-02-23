@@ -1,0 +1,87 @@
+[INFO] 2020/02/23 19:47 @@@ Init app conf
+[INFO] 2020/02/23 19:47 @@@ Init db conf
+[INFO] 2020/02/23 19:59 @@@ Init app conf
+[INFO] 2020/02/23 19:59 @@@ Init db conf
+[INFO] 2020/02/23 20:02 @@@ Init app conf
+[INFO] 2020/02/23 20:02 @@@ Init db conf
+[INFO] 2020/02/23 20:05 @@@ Init app conf
+[INFO] 2020/02/23 20:05 @@@ Init db conf
+[INFO] 2020/02/23 20:06 @@@ Init app conf
+[INFO] 2020/02/23 20:06 @@@ Init db conf
+[INFO] 2020/02/23 20:10 @@@ Init app conf
+[INFO] 2020/02/23 20:10 @@@ Init db conf
+[INFO] 2020/02/23 20:13 @@@ Init app conf
+[INFO] 2020/02/23 20:13 @@@ Init db conf
+[INFO] 2020/02/23 20:17 @@@ Init app conf
+[INFO] 2020/02/23 20:17 @@@ Init db conf
+[INFO] 2020/02/23 20:20 @@@ Init app conf
+[INFO] 2020/02/23 20:20 @@@ Init db conf
+[INFO] 2020/02/23 20:21 @@@ Init app conf
+[INFO] 2020/02/23 20:21 @@@ Init db conf
+[DBUG] 2020/02/23 20:22 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:22 [./main.go:21] GET: /config/{file:path} -> HandleDir(directory: "./config") and 2 more
+[DBUG] 2020/02/23 20:22 [./main.go:21] HEAD: /config/{file:path} -> HandleDir(directory: "./config") and 2 more
+[DBUG] 2020/02/23 20:22 [./main.go:22] GET: /data/{file:path} -> HandleDir(directory: "./data") and 2 more
+[DBUG] 2020/02/23 20:22 [./main.go:22] HEAD: /data/{file:path} -> HandleDir(directory: "./data") and 2 more
+[DBUG] 2020/02/23 20:22 Application: 1 registered view engine(s)
+[ERRO] 2020/02/23 20:22 CreateFile C:\Users\Administrator\go\src\github.com\yanzhen74\gofront\views: The system cannot find the file specified.
+[INFO] 2020/02/23 20:22 @@@ Init app conf
+[INFO] 2020/02/23 20:22 @@@ Init db conf
+[DBUG] 2020/02/23 20:22 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/23 20:22 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:22 [./main.go:21] GET: /config/{file:path} -> HandleDir(directory: "./config") and 2 more
+[DBUG] 2020/02/23 20:22 [./main.go:21] HEAD: /config/{file:path} -> HandleDir(directory: "./config") and 2 more
+[DBUG] 2020/02/23 20:22 [./main.go:22] GET: /data/{file:path} -> HandleDir(directory: "./data") and 2 more
+[DBUG] 2020/02/23 20:22 [./main.go:22] HEAD: /data/{file:path} -> HandleDir(directory: "./data") and 2 more
+[DBUG] 2020/02/23 20:22 Application: 1 registered view engine(s)
+[ERRO] 2020/02/23 20:22 CreateFile C:\Users\Administrator\go\src\github.com\yanzhen74\gofront\views: The system cannot find the file specified.
+[INFO] 2020/02/23 20:24 @@@ Init app conf
+[INFO] 2020/02/23 20:24 @@@ Init db conf
+[DBUG] 2020/02/23 20:24 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:24 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/23 20:24 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/23 20:24 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/23 20:24 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:24 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:24 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/23 20:24 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:24 [./main.go:21] GET: /config/{file:path} -> HandleDir(directory: "./config") and 2 more
+[DBUG] 2020/02/23 20:24 [./main.go:21] HEAD: /config/{file:path} -> HandleDir(directory: "./config") and 2 more
+[DBUG] 2020/02/23 20:24 [./main.go:22] GET: /data/{file:path} -> HandleDir(directory: "./data") and 2 more
+[DBUG] 2020/02/23 20:24 [./main.go:22] HEAD: /data/{file:path} -> HandleDir(directory: "./data") and 2 more
+[DBUG] 2020/02/23 20:24 Application: 1 registered view engine(s)
+[ERRO] 2020/02/23 20:24 CreateFile C:\Users\Administrator\go\src\github.com\yanzhen74\gofront\views: The system cannot find the file specified.
+[INFO] 2020/02/23 20:25 @@@ Init app conf
+[INFO] 2020/02/23 20:25 @@@ Init db conf
+[DBUG] 2020/02/23 20:25 [./src\routes\protocal_route.go:13] OPTIONS: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:25 [./src\routes\home_route.go:11] GET: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/23 20:25 [./src\routes\cctc_route.go:13] OPTIONS: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/23 20:25 [./src\routes\cctc_route.go:13] GET: /cctc/downlink -> github.com/yanzhen74/gofront/src/routes.CCTC_DownLink_Get() and 3 more
+[DBUG] 2020/02/23 20:25 [./src\routes\cctc_route.go:14] OPTIONS: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:25 [./src\routes\cctc_route.go:14] POST: /cctc/process_state -> github.com/yanzhen74/gofront/src/routes.CCTC_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:25 [./src\routes\home_route.go:11] OPTIONS: / -> github.com/yanzhen74/gofront/src/routes.HomeHub.func1() and 3 more
+[DBUG] 2020/02/23 20:25 [./src\routes\protocal_route.go:13] POST: /protocal/process_state -> github.com/yanzhen74/gofront/src/routes.Protocal_Process_state_Post() and 3 more
+[DBUG] 2020/02/23 20:25 [./main.go:21] GET: /config/{file:path} -> HandleDir(directory: "./config") and 2 more
+[DBUG] 2020/02/23 20:25 [./main.go:21] HEAD: /config/{file:path} -> HandleDir(directory: "./config") and 2 more
+[DBUG] 2020/02/23 20:25 [./main.go:22] GET: /data/{file:path} -> HandleDir(directory: "./data") and 2 more
+[DBUG] 2020/02/23 20:25 [./main.go:22] HEAD: /data/{file:path} -> HandleDir(directory: "./data") and 2 more
+[DBUG] 2020/02/23 20:25 Application: running using 1 host(s)
+[DBUG] 2020/02/23 20:25 Host: addr is :8080
+[DBUG] 2020/02/23 20:25 Host: virtual host is localhost:8080
+[DBUG] 2020/02/23 20:25 Host: register startup notifier
+[DBUG] 2020/02/23 20:25 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+Now listening on: http://localhost:8080
+Application started. Press CTRL+C to shut down.
