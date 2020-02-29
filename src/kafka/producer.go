@@ -12,7 +12,7 @@ import (
 
 type Producer struct {
 	producer sarama.SyncProducer
-	topic    string
+	Topic    string
 }
 
 func (this *Producer) Init(config *model.NetWork) (int, error) {
@@ -26,14 +26,14 @@ func (this *Producer) Init(config *model.NetWork) (int, error) {
 		return -1, err
 	}
 	this.producer = p
-	this.topic = config.NetWorkTopic
+	this.Topic = config.NetWorkTopic
 	return 1, nil
 }
 
 //produce data
 func (this *Producer) Send(data string) error {
 	msg := &sarama.ProducerMessage{
-		Topic: this.topic,
+		Topic: this.Topic,
 		Value: sarama.ByteEncoder(data),
 	}
 	part, offset, err := this.producer.SendMessage(msg)

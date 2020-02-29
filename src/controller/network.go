@@ -36,9 +36,20 @@ func Init_network(conf string) bool {
 	}
 	return true
 }
+
+//receive data
 func Run_network() bool {
 	for _, c := range *Consumers {
 		c.Receive()
 	}
 	return true
+}
+
+//send data to topic
+func SendDataToTopic(topic string, data string) {
+	for _, p := range *Producers {
+		if p.Topic == topic {
+			p.Send(data)
+		}
+	}
 }
