@@ -18,12 +18,13 @@ func main() {
 
 	routes.Hub(app) //路由配置
 
+	app.HandleDir("/public", "./public")
 	app.HandleDir("/config", "./config")
 	app.HandleDir("/data", "./data")
 
-	// tmpl := iris.HTML("./views", ".html") // 模板引擎采用html/template
-	// tmpl.Reload(true)                     // 在每个请求上 重新加载模板（开发模式）
-	// app.RegisterView(tmpl)
+	tmpl := iris.HTML("./views", ".html") // 模板引擎采用html/template
+	tmpl.Reload(true)                     // 在每个请求上 重新加载模板（开发模式）
+	app.RegisterView(tmpl)
 
 	gofrontdb.MasterEngine().Sync2(new(model.CCTC_Process_State))     //库结构同步
 	gofrontdb.SlaveEngine().Sync2(new(model.CCTC_Process_State))      //库结构同步

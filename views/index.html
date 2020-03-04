@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>just for test!</title>
+    <link rel="stylesheet" href="/public/assets/css/bootstrap.css"> 
+    <script src="/public/assets/js/jquery-1.11.0.min.js"></script>
+</head>
+<script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        let param={'msgType': "CTCCFRONTEND_CONTROL", 'Operation': "Open",
+                "SysId": 1, "Pattern": 1, 
+                "Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""};    
+        $.ajax({
+                type: 'POST',  
+                data: JSON.stringify(param),
+                dataType:"JSON",
+                contentType:"application/json",
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                url : "/cctc/send_command",
+                success: function(data) {
+                    alert("send success!")
+                },
+                complete: function( xhr,data ){
+                }
+            });
+      });
+    });
+    </script>
+<body >
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+<br> 
+<br> 
+<br> 
+<button class="btn btn-success">发送kafka消息到kafkatest主题</button>
+<br> 
+<br> 
+<br> 
+<br> 
+
+<h1>收到消息：</h1>
+</body>
+</html>

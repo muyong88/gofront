@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/kataras/iris"
+	"github.com/yanzhen74/gofront/src/controller"
 	"github.com/yanzhen74/gofront/src/model"
 )
 
@@ -12,6 +13,7 @@ func CCTC_Hub(party iris.Party) {
 	home := party.Party("/cctc")
 	home.Get("/downlink", CCTC_DownLink_Get)
 	home.Post("/process_state", CCTC_Process_state_Post)
+	home.Post("/send_command", CCTC_Send_Command)
 }
 
 //下行计划查询接口
@@ -36,4 +38,16 @@ func CCTC_Process_state_Post(ctx iris.Context) {
 	//入库
 	model.CreateCCTCProcessState(&process_state)
 	//stub：展示
+}
+
+//发送控制命令接口
+//接口类型：Kafka
+//消息方向：网站→主控
+func CCTC_Send_Command(ctx iris.Context) {
+	var cctc_command model.CCTC_Command
+	if err := ctx.ReadJSON(&cctc_command); err != nil {
+		fmt.Println(err)
+		return
+	}
+	controller.SendDataToTopic("kafkaTest", cctc_command.GetJsonCommand())
 }

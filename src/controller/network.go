@@ -22,13 +22,13 @@ func Init_network(conf string) bool {
 		case "Producer":
 			var producer *kafka.Producer = new(kafka.Producer)
 			_, err := producer.Init(&network)
-			if err != nil {
+			if err == nil {
 				*Producers = append(*Producers, producer)
 			}
 		case "Consumer":
 			var consumer *kafka.Consumer = new(kafka.Consumer)
 			_, err := consumer.Init(&network)
-			if err != nil {
+			if err == nil {
 				*Consumers = append(*Consumers, consumer)
 			}
 		default:
