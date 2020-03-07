@@ -16,6 +16,7 @@ func Hub(app *iris.Application) {
 	HomeHub(main)
 	CCTC_Hub(main)
 	Protocal_Hub(main)
+	WebsocketHub(main)
 }
 
 func corsSetting(app *iris.Application) (main iris.Party) {

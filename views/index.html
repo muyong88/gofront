@@ -5,7 +5,8 @@
     <title>just for test!</title>
     <link rel="stylesheet" href="/public/assets/css/bootstrap.css"> 
     <script src="/public/assets/js/jquery-1.11.0.min.js"></script>
-</head>
+    <script src="/public/assets/js/neffos.js"></script>
+
 <script>
     $(document).ready(function(){
       $("button").click(function(){
@@ -31,6 +32,31 @@
       });
     });
     </script>
+   
+    <script>
+        (function () {
+            var events = {
+              default: {
+                _OnNamespaceConnected: function (ns, msg) {                 
+                  //stub:
+                  document.getElementById("mesSend").innerHTML = "connected!";
+                },
+                _OnNamespaceDisconnect: function (ns, msg) {
+                  //stub:
+                  
+                },
+                communicate: function (ns, msg) {
+                  document.getElementById("mesSend").innerHTML = msg.Body;
+                }
+              }
+            };
+          
+            neffos.dial("ws://localhost:8080/echo", events).then(function (client) {
+              client.connect("default");
+            });
+          })();
+    </script>
+     </head>
 <body >
     <br> 
     <br> 
@@ -46,6 +72,9 @@
 <br> 
 <br> 
 
-<h1>收到消息：</h1>
+<div class="container">
+    <span id="mesSend">收到消息：</span>
+</div>
 </body>
 </html>
+

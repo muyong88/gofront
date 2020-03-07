@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/Shopify/sarama"
+	"github.com/yanzhen74/gofront/src/controller/websocket_controller"
 	"github.com/yanzhen74/gofront/src/model"
 )
 
@@ -69,7 +70,7 @@ func process(partition_consumer sarama.PartitionConsumer) {
 			msg := (value.Interface()).(*sarama.ConsumerMessage)
 			fmt.Printf("msg offset: %d, partition: %d, timestamp: %s, value: %s\n",
 				msg.Offset, msg.Partition, msg.Timestamp.String(), string(msg.Value))
-
+			websocket_controller.SendWebsocketMsg(msg.Value)
 		case 1: // chan_err
 			err := (value.Interface()).(*sarama.ConsumerError)
 			fmt.Printf("err :%s\n", err.Error())
