@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/Shopify/sarama"
-	"github.com/yanzhen74/gofront/src/controller/websocket_controller"
 	"github.com/yanzhen74/gofront/src/model"
 )
 
@@ -53,11 +52,11 @@ func (this *Consumer) Init(config *model.NetWork) (int, error) {
 func (this *Consumer) Receive() {
 
 	for _, partition_consumer := range *(this.partition_consumers) {
-		go process(*partition_consumer)
+		go process(this.topic, *partition_consumer)
 	}
 
 }
-func process(partition_consumer sarama.PartitionConsumer) {
+func process(topic string, partition_consumer sarama.PartitionConsumer) {
 	ticker := time.NewTicker(time.Millisecond * time.Duration(100))
 	cases := init_cases(partition_consumer.Messages(),
 		partition_consumer.Errors(),
@@ -70,15 +69,22 @@ func process(partition_consumer sarama.PartitionConsumer) {
 			msg := (value.Interface()).(*sarama.ConsumerMessage)
 			fmt.Printf("msg offset: %d, partition: %d, timestamp: %s, value: %s\n",
 				msg.Offset, msg.Partition, msg.Timestamp.String(), string(msg.Value))
-			websocket_controller.SendWebsocketMsg(msg.Value)
+			msgM := model.Message{Content: msg.Value, Topic: topic}
+			model.MsgChan <- msgM
 		case 1: // chan_err
 			err := (value.Interface()).(*sarama.ConsumerError)
 			fmt.Printf("err :%s\n", err.Error())
 		case 2: // timer
+
 			// to be deleted , just for test now
 			//for _, c := range *this.subscribers {
 			// c.NetChanFrame <- "hello world"
 			// }
+		default: // send ok
+			fmt.Println("customer default send ok ")
+			fmt.Println(chose)
+			cases = append(cases[:chose], cases[chose+1:]...)
+
 		}
 	}
 }

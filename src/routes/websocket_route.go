@@ -41,9 +41,6 @@ var serverEvents = websocket.Namespaces{
 		websocket.OnNamespaceDisconnect: func(nsConn *websocket.NSConn, msg websocket.Message) error {
 			log.Printf("[%s] disconnected from namespace [%s]", nsConn, msg.Namespace)
 			//regist_info(nsConn, 0)
-			if websocket_controller.WebSocketConn.Count == 1 {
-				websocket_controller.WebSocketConn.ConnServer = nil
-			}
 			websocket_controller.WebSocketConn.Count = websocket_controller.WebSocketConn.Count - 1
 			return nil
 		},

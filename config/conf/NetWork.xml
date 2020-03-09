@@ -2,4 +2,5 @@
 <ROOT>
     <NetWork NetWorkSeqNum="1" NetWorkName="Producer" NetWorkIP="localhost:9092" NetWorkTopic="kafkaTest"  NetWorkProtocal="kafka" />
     <NetWork NetWorkSeqNum="2" NetWorkName="Consumer" NetWorkIP="localhost:9092" NetWorkTopic="kafkaTest" NetWorkProtocal="kafka" />
+    <NetWork NetWorkSeqNum="3" NetWorkName="Consumer" NetWorkIP="localhost:9092" NetWorkTopic="MCSMES" NetWorkProtocal="kafka" />
 </ROOT>

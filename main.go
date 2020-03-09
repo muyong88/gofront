@@ -29,8 +29,10 @@ func main() {
 	gofrontdb.EngineGroup().Sync2(new(model.CCTC_Process_State))     //库结构同步
 	gofrontdb.EngineGroup().Sync2(new(model.Protocal_Process_State)) //库结构同步
 
+	model.MsgChan = make(chan model.Message)
 	controller.Init_network("config/conf/NetWork.xml") // init net
 	controller.Run_network()                           // Receive network data
+	go controller.RunProcessor()
 
 	app.Run(iris.Addr(":"+parse.AppConfig.Port), iris.WithConfiguration(iris.YAML("config/iris.yaml")))
 }
