@@ -3,12 +3,14 @@ package controller
 import (
 	"fmt"
 
+	"github.com/kataras/iris/websocket"
 	"github.com/yanzhen74/gofront/src/kafka"
 	"github.com/yanzhen74/gofront/src/model"
 )
 
 var Consumers *[]*kafka.Consumer = new([]*kafka.Consumer)
 var Producers *[]*kafka.Producer = new([]*kafka.Producer)
+var WebSocketConn *model.WebsocketConnStruct
 
 func Init_network(conf string) bool {
 	// init net config
@@ -51,5 +53,16 @@ func SendDataToTopic(topic string, data string) {
 		if p.Topic == topic {
 			p.Send(data)
 		}
+	}
+}
+
+func SendWebsocketMsg(msg []byte) {
+	if WebSocketConn != nil && WebSocketConn.Count > 0 {
+		WebSocketConn.ConnServer.Broadcast(nil, websocket.Message{
+			Namespace: WebSocketConn.Namespace,
+			Room:      WebSocketConn.Room,
+			Event:     "communicate", // fire the "onNewVisit" client event.
+			Body:      msg,
+		})
 	}
 }

@@ -12,7 +12,6 @@
     +-- /log 日志目录
     +-- /src go代码的存放目录
     | +-- /src/controller 处理器代码
-    ||+-- /src/controller/websocket_controller  websocket处理器代码
     | +-- /src/controller 处理器代码
     | +-- /src/inits 初始化代码
     | +-- /src/model 数据模型

@@ -4,14 +4,13 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/yanzhen74/gofront/src/controller/websocket_controller"
 	"github.com/yanzhen74/gofront/src/model"
 )
 
 func RunProcessor() {
 	for {
 		str := <-model.MsgChan
-		websocket_controller.SendWebsocketMsg(str.Content) //for test
+		SendWebsocketMsg(str.Content) //for test
 	}
 }
 func init_cases(msgChan chan []byte,
