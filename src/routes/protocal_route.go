@@ -20,7 +20,7 @@ func Protocal_Process_state_Post(ctx iris.Context) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(process_state)
+	// fmt.Println(process_state)
 	_, err := model.CreateProtocal_Process_State(&process_state)
 	if err != nil {
 		fmt.Println(err)

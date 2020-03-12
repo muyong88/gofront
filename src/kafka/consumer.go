@@ -24,7 +24,7 @@ func (this *Consumer) Init(config *model.NetWork) (int, error) {
 	conf.Consumer.MaxWaitTime = time.Duration(30) * time.Millisecond
 	this.partition_consumers = new([]*sarama.PartitionConsumer)
 	ips := strings.Split(config.NetWorkIP, ";")
-
+	this.topic = config.NetWorkTopic
 	// consumer
 	consumer, err := sarama.NewConsumer(ips, conf)
 	if err != nil {
