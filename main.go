@@ -30,8 +30,8 @@ func main() {
 	gofrontdb.SlaveEngine().Sync2(new(model.CCTC_Process_State))      //库结构同步
 	gofrontdb.MasterEngine().Sync2(new(model.Protocal_Process_State)) //库结构同步
 	gofrontdb.SlaveEngine().Sync2(new(model.Protocal_Process_State))  //库结构同步
-	gofrontdb.MasterEngine().Sync2(new(model.Non_Real_File_state))    // 库结构同步
-	gofrontdb.SlaveEngine().Sync2(new(model.Non_Real_File_state))     // 库结构同步
+	gofrontdb.MasterEngine().Sync2(new(model.Non_Real_File_State))    // 库结构同步
+	gofrontdb.SlaveEngine().Sync2(new(model.Non_Real_File_State))     // 库结构同步
 
 	model.MsgChan = make(chan model.Message)
 	controller.Init_network("config/conf/NetWork.xml") // init net

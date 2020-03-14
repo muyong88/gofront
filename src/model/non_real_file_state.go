@@ -4,7 +4,7 @@ import (
 	"github.com/yanzhen74/gofront/src/gofrontdb"
 )
 
-type Non_Real_File_state struct {
+type Non_Real_File_State struct {
 	Identify      int64  `xorm:"pk autoincr  notnull"` //自增id
 	MsgTag        string `xorm:"notnull"`
 	MsgType       string `xorm:"notnull"`
@@ -22,8 +22,14 @@ type Non_Real_File_state struct {
 }
 
 //入库
-func CreateNon_Real_File_state(state ...*Non_Real_File_state) (int64, error) {
+func CreateNon_Real_File_State(state ...*Non_Real_File_State) (int64, error) {
 	e := gofrontdb.EngineGroup()
 	return e.Insert(state)
 	//stub:展示
+}
+
+//查询
+func GetNon_Real_File_State(state *Non_Real_File_State) (bool, error) {
+	e := gofrontdb.EngineGroup()
+	return e.Get(state)
 }

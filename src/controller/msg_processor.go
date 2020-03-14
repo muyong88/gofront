@@ -13,13 +13,13 @@ func RunProcessor() {
 	for {
 		msgRe := <-model.MsgChan
 		if msgRe.Topic == "MCSMES" {
-			var file_state model.Non_Real_File_state
+			var file_state model.Non_Real_File_State
 			err1 := json.Unmarshal(msgRe.Content, &file_state)
 			if err1 != nil {
 				fmt.Println(err1)
 				continue
 			}
-			_, err2 := model.CreateNon_Real_File_state(&file_state)
+			_, err2 := model.CreateNon_Real_File_State(&file_state)
 			if err2 != nil {
 				fmt.Println(err2)
 			}

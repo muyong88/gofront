@@ -16,6 +16,7 @@ func Hub(app *iris.Application) {
 	HomeHub(main)
 	CCTC_Hub(main)
 	Protocal_Hub(main)
+	Non_Real_Hub(main)
 	WebsocketHub(main)
 }
 
