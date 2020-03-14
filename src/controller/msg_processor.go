@@ -12,7 +12,7 @@ import (
 func RunProcessor() {
 	for {
 		msgRe := <-model.MsgChan
-		if msgRe.Topic == "MCSMES" {
+		if msgRe.Topic == NetConfig.GetNetWorkByNetWorkSeqNum("6").NetWorkTopic {
 			var file_state model.Non_Real_File_State
 			err1 := json.Unmarshal(msgRe.Content, &file_state)
 			if err1 != nil {

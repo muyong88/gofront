@@ -1,6 +1,7 @@
 package main
 
 import (
+
 	"github.com/kataras/iris"
 	"github.com/yanzhen74/gofront/src/controller"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
@@ -35,7 +36,8 @@ func main() {
 
 	model.MsgChan = make(chan model.Message)
 	controller.Init_network("config/conf/NetWork.xml") // init net
-	controller.Run_network()                           // Receive network data
+
+	controller.Run_network() // Receive network data
 	go controller.RunProcessor()
 
 	app.Run(iris.Addr(":"+parse.AppConfig.Port), iris.WithConfiguration(iris.YAML("config/iris.yaml")))

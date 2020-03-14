@@ -46,3 +46,12 @@ func Read_network_config(filename string) (*NetWorks, error) {
 
 	return &v, err
 }
+
+func (this *NetWorks) GetNetWorkByNetWorkSeqNum(seq string) *NetWork {
+	for _, network := range this.NetWorkList {
+		if network.NetWorkSeqNum == seq {
+			return &network
+		}
+	}
+	return nil
+}

@@ -11,10 +11,12 @@ import (
 var Consumers *[]*kafka.Consumer = new([]*kafka.Consumer)
 var Producers *[]*kafka.Producer = new([]*kafka.Producer)
 var WebSocketConn *model.WebsocketConnStruct
+var NetConfig *model.NetWorks = new(model.NetWorks)
 
 func Init_network(conf string) bool {
 	// init net config
 	netConfig, err := model.Read_network_config(conf)
+	NetConfig = netConfig
 	if err != nil {
 		fmt.Printf("error is %v", err)
 		return false

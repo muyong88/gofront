@@ -49,5 +49,5 @@ func CCTC_Send_Command(ctx iris.Context) {
 		fmt.Println(err)
 		return
 	}
-	controller.SendDataToTopic("kafkaTest", cctc_command.GetJsonCommand())
+	controller.SendDataToTopic(controller.NetConfig.GetNetWorkByNetWorkSeqNum("3").NetWorkTopic, cctc_command.GetJsonCommand())
 }

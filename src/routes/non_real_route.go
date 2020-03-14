@@ -5,6 +5,7 @@ import (
 
 	"github.com/kataras/golog"
 	"github.com/kataras/iris"
+	"github.com/yanzhen74/gofront/src/controller"
 	"github.com/yanzhen74/gofront/src/model"
 )
 
@@ -12,6 +13,7 @@ import (
 func Non_Real_Hub(party iris.Party) {
 	home := party.Party("/non_real")
 	home.Get("/filestate", File_state_Get)
+	home.Post("/send_command", Non_Real_Send_Command)
 }
 
 //查询发送文件状态接口
@@ -24,4 +26,16 @@ func File_state_Get(ctx iris.Context) {
 	} else {
 		golog.Error(err)
 	}
+}
+
+//发送文件命令接口
+//1.接口类型：Kafka
+//消息方向：网站→主控
+func Non_Real_Send_Command(ctx iris.Context) {
+	var nonreal_command model.Non_Real_File_Command
+	if err := ctx.ReadJSON(&nonreal_command); err != nil {
+		fmt.Println(err)
+		return
+	}
+	controller.SendDataToTopic(controller.NetConfig.GetNetWorkByNetWorkSeqNum("4").NetWorkTopic, nonreal_command.GetJsonCommand())
 }
