@@ -3,6 +3,7 @@ package routes
 import (
 	"fmt"
 
+	"github.com/kataras/golog"
 	"github.com/kataras/iris"
 	"github.com/yanzhen74/gofront/src/controller"
 	"github.com/yanzhen74/gofront/src/model"
@@ -33,6 +34,7 @@ func CCTC_Process_state_Post(ctx iris.Context) {
 	var process_state model.CCTC_Process_State
 	if err := ctx.ReadJSON(&process_state); err != nil {
 		fmt.Println(err)
+		golog.Error(err)
 		return
 	}
 	//入库
@@ -47,7 +49,12 @@ func CCTC_Send_Command(ctx iris.Context) {
 	var cctc_command model.CCTC_Command
 	if err := ctx.ReadJSON(&cctc_command); err != nil {
 		fmt.Println(err)
+		golog.Error(err)
 		return
 	}
-	controller.SendDataToTopic(controller.NetConfig.GetNetWorkByNetWorkSeqNum("3").NetWorkTopic, cctc_command.GetJsonCommand())
+	network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("3")
+	if err == nil {
+		controller.SendDataToTopic(network.NetWorkTopic, cctc_command.GetJsonCommand())
+	}
+
 }

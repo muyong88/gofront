@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/pkg/errors"
 )
 
 type NetWorks struct {
@@ -47,11 +49,11 @@ func Read_network_config(filename string) (*NetWorks, error) {
 	return &v, err
 }
 
-func (this *NetWorks) GetNetWorkByNetWorkSeqNum(seq string) *NetWork {
+func (this *NetWorks) GetNetWorkByNetWorkSeqNum(seq string) (*NetWork, error) {
 	for _, network := range this.NetWorkList {
 		if network.NetWorkSeqNum == seq {
-			return &network
+			return &network, nil
 		}
 	}
-	return nil
+	return nil, errors.New("not exist network seq")
 }

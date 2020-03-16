@@ -35,7 +35,11 @@ func Non_Real_Send_Command(ctx iris.Context) {
 	var nonreal_command model.Non_Real_File_Command
 	if err := ctx.ReadJSON(&nonreal_command); err != nil {
 		fmt.Println(err)
+		golog.Error(err)
 		return
 	}
-	controller.SendDataToTopic(controller.NetConfig.GetNetWorkByNetWorkSeqNum("4").NetWorkTopic, nonreal_command.GetJsonCommand())
+	network,err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("4")
+	if err == nil {
+		controller.SendDataToTopic(network.NetWorkTopic, nonreal_command.GetJsonCommand())
+	}
 }

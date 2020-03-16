@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"log"
+	"github.com/kataras/golog"
 
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/websocket"
@@ -33,21 +33,21 @@ var serverEvents = websocket.Namespaces{
 			}
 			controller.WebSocketConn.Count = controller.WebSocketConn.Count + 1
 			ctx := websocket.GetContext(nsConn.Conn)
-			log.Printf("[%s] connected to namespace [%s] with IP [%s]",
+			golog.Errorf("[%s] connected to namespace [%s] with IP [%s]",
 				nsConn, msg.Namespace,
 				ctx.RemoteAddr())
 			return nil
 		},
 		websocket.OnNamespaceDisconnect: func(nsConn *websocket.NSConn, msg websocket.Message) error {
-			log.Printf("[%s] disconnected from namespace [%s]", nsConn, msg.Namespace)
+			golog.Errorf("[%s] disconnected from namespace [%s]", nsConn, msg.Namespace)
 			//regist_info(nsConn, 0)
 			controller.WebSocketConn.Count = controller.WebSocketConn.Count - 1
 			return nil
 		},
 		"communicate": func(nsConn *websocket.NSConn, msg websocket.Message) error {
 			// room.String() returns -> NSConn.String() returns -> Conn.String() returns -> Conn.ID()
-			log.Printf("[%s] sent: %s", nsConn, string(msg.Body))
-			log.Printf("Server got: %s from [%s]", msg.Body, nsConn.Conn.ID())
+			golog.Errorf("[%s] sent: %s", nsConn, string(msg.Body))
+			golog.Errorf("Server got: %s from [%s]", msg.Body, nsConn.Conn.ID())
 
 			return nil
 		},

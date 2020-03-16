@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/Shopify/sarama"
+	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/model"
 )
 
@@ -29,18 +30,21 @@ func (this *Consumer) Init(config *model.NetWork) (int, error) {
 	consumer, err := sarama.NewConsumer(ips, conf)
 	if err != nil {
 		fmt.Printf("consumer kafka create error %s\n", err.Error())
+		golog.Errorf("consumer kafka create error %s\n", err.Error())
 		return -1, err
 	}
 	this.consumer = &consumer
 	partitionList, err := consumer.Partitions(config.NetWorkTopic)
 	if err != nil {
 		fmt.Println("Failed to get the list of partitions: ", err)
+		golog.Errorf("Failed to get the list of partitions: ", err)
 		return -1, err
 	}
 	for partition := range partitionList {
 		partition_consumer, err := consumer.ConsumePartition(config.NetWorkTopic, int32(partition), sarama.OffsetNewest)
 		if err != nil {
 			fmt.Printf("try create partition_consumer error %s\n", err.Error())
+			golog.Errorf("try create partition_consumer error %s\n", err.Error())
 			return -1, err
 		}
 		*(this.partition_consumers) = append(*(this.partition_consumers), &partition_consumer)
@@ -74,11 +78,10 @@ func process(topic string, partition_consumer sarama.PartitionConsumer) {
 		case 1: // chan_err
 			err := (value.Interface()).(*sarama.ConsumerError)
 			fmt.Printf("err :%s\n", err.Error())
+			golog.Errorf("err :%s\n", err.Error())
 		case 2: // timer
 
 			// to be deleted , just for test now
-			//for _, c := range *this.subscribers {
-			// c.NetChanFrame <- "hello world"
 			// }
 		default: // send ok
 			fmt.Println("customer default send ok ")

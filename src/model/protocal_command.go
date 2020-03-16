@@ -2,7 +2,7 @@ package model
 
 import (
 	"encoding/json"
-	"log"
+	"github.com/kataras/golog"
 )
 
 type Protocal_Command struct {
@@ -24,7 +24,7 @@ type ParaInfo struct {
 func (this *Protocal_Command) GetJsonCommand() string {
 	data, err := json.Marshal(this)
 	if err != nil {
-		log.Fatalf("Json marshaling failed：%s", err)
+		golog.Errorf("Json marshaling failed：%s", err)
 	}
 	return string(data)
 }

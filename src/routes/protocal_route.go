@@ -3,6 +3,7 @@ package routes
 import (
 	"fmt"
 
+	"github.com/kataras/golog"
 	"github.com/kataras/iris"
 	"github.com/yanzhen74/gofront/src/controller"
 	"github.com/yanzhen74/gofront/src/model"
@@ -38,7 +39,11 @@ func Protocal_Process_Send_Command(ctx iris.Context) {
 	var propro_command model.Protocal_Command
 	if err := ctx.ReadJSON(&propro_command); err != nil {
 		fmt.Println(err)
+		golog.Error(err)
 		return
 	}
-	controller.SendDataToTopic(controller.NetConfig.GetNetWorkByNetWorkSeqNum("5").NetWorkTopic, propro_command.GetJsonCommand())
+	network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("5")
+	if err == nil {
+		controller.SendDataToTopic(network.NetWorkTopic, propro_command.GetJsonCommand())
+	}
 }

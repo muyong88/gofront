@@ -3,8 +3,6 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
-	"time"
 
 	"github.com/yanzhen74/gofront/src/model"
 )
@@ -12,7 +10,11 @@ import (
 func RunProcessor() {
 	for {
 		msgRe := <-model.MsgChan
-		if msgRe.Topic == NetConfig.GetNetWorkByNetWorkSeqNum("6").NetWorkTopic {
+		network,err := NetConfig.GetNetWorkByNetWorkSeqNum("6")
+		if err != nil {
+			continue
+		}
+		if msgRe.Topic == network.NetWorkTopic {
 			var file_state model.Non_Real_File_State
 			err1 := json.Unmarshal(msgRe.Content, &file_state)
 			if err1 != nil {
@@ -26,21 +28,4 @@ func RunProcessor() {
 		}
 		SendWebsocketMsg(msgRe.Content) //for test
 	}
-}
-func init_cases(msgChan chan []byte,
-	ticker *time.Ticker) (cases []reflect.SelectCase) {
-	// chan view register
-	selectcase := reflect.SelectCase{
-		Dir:  reflect.SelectRecv,
-		Chan: reflect.ValueOf(msgChan),
-	}
-	cases = append(cases, selectcase)
-
-	// 定时器
-	selectcase = reflect.SelectCase{
-		Dir:  reflect.SelectRecv,
-		Chan: reflect.ValueOf(ticker.C),
-	}
-	cases = append(cases, selectcase)
-	return
 }

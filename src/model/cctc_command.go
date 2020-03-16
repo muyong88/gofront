@@ -2,7 +2,7 @@ package model
 
 import (
 	"encoding/json"
-	"log"
+	"github.com/kataras/golog"
 )
 
 type CCTC_Command struct {
@@ -20,7 +20,7 @@ type CCTC_Command struct {
 func (this *CCTC_Command) GetJsonCommand() string {
 	data, err := json.Marshal(this)
 	if err != nil {
-		log.Fatalf("Json marshaling failed：%s", err)
+		golog.Errorf("Json marshaling failed：%s", err)
 	}
 	return string(data)
 }

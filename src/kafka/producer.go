@@ -2,9 +2,10 @@ package kafka
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"time"
+
+	"github.com/kataras/golog"
 
 	"github.com/Shopify/sarama"
 	"github.com/yanzhen74/gofront/src/model"
@@ -22,7 +23,7 @@ func (this *Producer) Init(config *model.NetWork) (int, error) {
 	conf.Producer.Timeout = 5 * time.Second
 	p, err := sarama.NewSyncProducer([]string{config.NetWorkIP}, conf)
 	if err != nil {
-		log.Printf("sarama.NewSyncProducer err, message=%s \n", err)
+		golog.Errorf("sarama.NewSyncProducer err, message=%s \n", err)
 		return -1, err
 	}
 	this.producer = p
@@ -38,7 +39,7 @@ func (this *Producer) Send(data string) error {
 	}
 	part, offset, err := this.producer.SendMessage(msg)
 	if err != nil {
-		log.Printf("send message(%s) err=%s \n", data, err)
+		golog.Errorf("send message(%s) err=%s \n", data, err)
 		return err
 	} else {
 		fmt.Fprintf(os.Stdout, data+"发送成功，partition=%d, offset=%d \n", part, offset)
