@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>just for test!</title>
+    <link rel="stylesheet" href="/public/assets/css/bootstrap.css"> 
+    <script src="/public/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="/public/assets/js/neffos.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        let param={"msgType": "CTCCFRONTEND_CONTROL", "Operation": "Open",
+                "SysId": 1, "Pattern": 1, 
+                "Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""};    
+        $.ajax({
+                type: 'POST',  
+                data: JSON.stringify(param),
+                dataType:"JSON",
+                contentType:"application/json",
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                url : "/cctc/send_command",
+                success: function(data) {
+                    alert("send success!")
+                },
+                complete: function( xhr,data ){
+                }
+            });
+      });
+    });
+    </script>
+   
+    <script>
+        (function () {
+            var events = {
+              default: {
+                _OnNamespaceConnected: function (ns, msg) {                 
+                  //stub:
+                  document.getElementById("mesSend").innerHTML = "connected!";
+                },
+                _OnNamespaceDisconnect: function (ns, msg) {
+                  //stub:
+                  
+                },
+                communicate: function (ns, msg) {
+                  document.getElementById("mesSend").innerHTML = msg.Body;
+                }
+              }
+            };
+          
+            neffos.dial("ws://localhost:8080/echo", events).then(function (client) {
+              client.connect("default");
+            });
+          })();
+    </script>
+     </head>
+<body >
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+<br> 
+<br> 
+<br> 
+<button class="btn btn-success">发送kafka消息到kafkatest主题</button>
+<br> 
+<br> 
+<br> 
+<br> 
+
+<div class="container">
+    <span id="mesSend">收到消息：</span>
+</div>
+</body>
+</html>
+
