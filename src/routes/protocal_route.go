@@ -29,7 +29,7 @@ func Protocal_Process_state_Post(ctx iris.Context) {
 		fmt.Println(err)
 	}
 	//Stub:展示
-
+	controller.SendWebsocketMsg([]byte(process_state.GetJsonString()))
 }
 
 //发送控制命令接口

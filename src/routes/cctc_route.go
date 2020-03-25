@@ -40,6 +40,7 @@ func CCTC_Process_state_Post(ctx iris.Context) {
 	//入库
 	model.CreateCCTCProcessState(&process_state)
 	//stub：展示
+	controller.SendWebsocketMsg([]byte(process_state.GetJsonString()))
 }
 
 //发送控制命令接口

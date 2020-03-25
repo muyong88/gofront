@@ -10,7 +10,16 @@
 
 	<title>Gofront | Dashboard</title>
 
-	<link rel="stylesheet" href="/public/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+
+	<script src="/public/assets/js/jquery-1.11.0.min.js"></script>
+	<script src="/public/assets/js/neffos.js"></script>
+	<script src="/public/assets/js/main-gsap.js"></script>
+	<script src="/public/assets/js/resizeable.js"></script>
+	<script src="/public/assets/js/neon-api.js"></script>
+	<script src="/public/assets/js/neon-custom.js"></script>
+	<script>$.noConflict();</script>
+
+	<link rel="stylesheet" href="/public/assets/css/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="/public/assets/css/font-icons/entypo/css/entypo.css">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
 	<link rel="stylesheet" href="/public/assets/css/bootstrap.css">
@@ -18,20 +27,125 @@
 	<link rel="stylesheet" href="/public/assets/css/neon-theme.css">
 	<link rel="stylesheet" href="/public/assets/css/neon-forms.css">
 	<link rel="stylesheet" href="/public/assets/css/custom.css">
-
-	<script src="/public/assets/js/jquery-1.11.0.min.js"></script>
-	<script>$.noConflict();</script>
-
-	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
-
+	
 </head>
+
+<script>
+	(function () {
+		var events = {
+		  default: {
+			_OnNamespaceConnected: function (ns, msg) {                 
+			  //stub:
+			 // alert("connected")
+			},
+			_OnNamespaceDisconnect: function (ns, msg) {
+			  //stub:
+			  
+			},
+			communicate: function (ns, msg) {
+				updateTable(msg.Body);
+			}
+		  }
+		};
+	  
+		neffos.dial("ws://localhost:8080/echo", events).then(function (client) {
+		  client.connect("default");
+		});
+	  })();
+	  function updateTable(msg){
+		var obj = eval("("+msg+")");
+		switch(obj.MsgSign) {
+     		case "Non_Real_File_State":
+			 updateNonRealTable(obj);
+       		 	break;
+			 case "CCTC_Process_State":   
+			 updateCCTCTable(obj);
+       			 break;
+			case "Protocal_Process_State":      
+			 updateProtocalTable(obj);
+       			 break;
+     		default:        
+} 
+	  }
+	  function updateProtocalTable(obj){
+            var trStr = '';//动态拼接table
+            trStr += '<tr>';//拼接处规范的表格形式
+            trStr += '<td>'+ obj.MsgType+'</td>';
+            trStr += '<td>'+ obj.ID+'</td>';
+            trStr += '<td>'+ obj.MID+'</td>';
+            trStr += '<td>'+ obj.BID+'</td>';
+			trStr += '<td>'+ obj.PID+'</td>';
+			trStr += '<td>'+ obj.MainOrBackup+'</td>';
+            trStr += '<td>'+ obj.ProcessName+'</td>';
+            trStr += '<td>'+ obj.Report.Report_type+'</td>';
+            trStr += '<td>'+ obj.Report.Command_type+'</td>';
+            trStr += '<td>'+ obj.Report.Command_result+'</td>';
+            trStr += '<td>'+ obj.Report.Recv_status_revert+'</td>';
+            trStr += '<td>'+ obj.Report.Recv_status+'</td>';
+            trStr += '<td>'+ obj.Report.First+'</td>';
+			trStr += '<td>'+ obj.Report.Last+'</td>';
+            trStr += '<td>'+ obj.Report.Recv_count+'</td>';
+            trStr += '<td>'+ obj.Report.Send_no+'</td>';
+			trStr+='</tr>';
+			jQuery('#protocal_tb').append(trStr);
+	  }
+	  function updateCCTCTable(obj){
+            var trStr = '';//动态拼接table
+            trStr += '<tr>';//拼接处规范的表格形式
+            trStr += '<td>'+ obj.msgType+'</td>';
+            trStr += '<td>'+ obj.processId+'</td>';
+            trStr += '<td>'+ obj.sysId+'</td>';
+            trStr += '<td>'+ obj.pattern+'</td>';
+            trStr += '<td>'+ obj.channel+'</td>';
+            trStr += '<td>'+ obj.isSend32KB+'</td>';
+            trStr += '<td>'+ obj.isSendIPinIP+'</td>';
+            trStr += '<td>'+ obj.isSaveFile+'</td>';
+            trStr += '<td>'+ obj.isArchive+'</td>';
+            trStr += '<td>'+ obj.resendShmHead+'</td>';
+            trStr += '<td>'+ obj.resendShmTear+'</td>';
+            trStr += '<td>'+ obj.resendWriteShmLoop+'</td>';
+            trStr += '<td>'+ obj.resendReadShmLoop+'</td>';
+			trStr += '<td>'+ obj.resendWriteShmSpeed+'</td>';
+            trStr += '<td>'+ obj.resendReadShmSpeed+'</td>';
+            trStr += '<td>'+ obj.saveShmHead+'</td>';
+            trStr += '<td>'+ obj.saveShmTear+'</td>';
+            trStr += '<td>'+ obj.saveWriteShmLoop+'</td>';
+            trStr += '<td>'+ obj.saveReadShmLoop+'</td>';
+			trStr += '<td>'+ obj.saveWriteShmSpeed+'</td>';
+            trStr += '<td>'+ obj.saveReadShmSpeed+'</td>';
+            trStr += '<td>'+ obj.recvBeats+'</td>';
+            trStr += '<td>'+ obj.resendBeats+'</td>';
+			trStr += '<td>'+ obj.saveBeats+'</td>';
+            trStr += '<td>'+ obj.recvBytes+'</td>';
+            trStr += '<td>'+ obj.send32KFrames+'</td>';
+            trStr += '<td>'+ obj.sendIPinIPFrames+'</td>';
+            trStr += '<td>'+ obj.sendSmallCraftFrames+'</td>';
+            trStr += '<td>'+ obj.timeStamp+'</td> ';
+			trStr+='</tr>';
+			jQuery('#cctc_tb').append(trStr);
+	  }
+	  function updateNonRealTable(obj){
+            var trStr = '';//动态拼接table
+            trStr += '<tr>';//拼接处规范的表格形式
+            trStr += '<td>'+ obj.MsgTag+'</td>';
+            trStr += '<td>'+ obj.MsgType+'</td>';
+            trStr += '<td>'+ obj.MissionID+'</td>';
+            trStr += '<td>'+ obj.Subtype+'</td>';
+            trStr += '<td>'+ obj.MSGID+'</td>';
+            trStr += '<td>'+ obj.Sender+'</td>';
+            trStr += '<td>'+ obj.Timestamp+'</td>';
+            trStr += '<td>'+ obj.Type+'</td>';
+            trStr += '<td>'+ obj.SendSessionID+'</td>';
+            trStr += '<td>'+ obj.FileName+'</td>';
+            trStr += '<td>'+ obj.FilePath+'</td>';
+            trStr += '<td>'+ obj.Status+'</td>';
+            trStr += '<td>'+ obj.Station+'</td>';
+			trStr+='</tr>';
+			jQuery('#nonreal_tb').append(trStr);
+	  }
+</script>
+
+
 <body class="page-body  page-fade" >
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -148,7 +262,6 @@
 					<table class="table table-bordered table-responsive">
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>Time</th>
 								<th>Message Summary</th>
 							</tr>
@@ -156,19 +269,16 @@
 		
 						<tbody>
 							<tr>
-								<td>1</td>
 								<td>2020-3-31 16:52:15</td>
 								<td class="text-danger">17.195.96.38 heartbeat stopped!</td>
 							</tr>
 		
 							<tr>
-								<td>2</td>
 								<td>2020-3-31 17:52:15</td>
 								<td class="text-danger">17.195.96.38 heartbeat stopped!</td>
 							</tr>
 		
 							<tr>
-								<td>3</td>
 								<td>2020-3-31 18:52:15</td>
 								<td class="text-danger">17.195.96.38 heartbeat stopped!</td>
 							</tr>
@@ -191,10 +301,9 @@
 					<div class="panel-heading">
 						<div class="panel-title">CCTC Process State</div>
 					</div>
-					<table class="table table-bordered table-responsive" >
+					<table id="cctc_tb" class="table table-bordered table-responsive" >
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>MsgType</th>
 								<th>ProcessId</th>
 								<th>SysId</th>
@@ -229,7 +338,6 @@
 		
 						<tbody>
 							<tr>
-								<td>1</td>
 								<td>CTCCFRONTEND_STATE_REPORT</td>
 								<td>123</td>
 								<td>1</td>
@@ -261,7 +369,6 @@
 								<td>2018-11-29_14:02:43.423.5</td>
 							</tr>
 							<tr>
-								<td>2</td>
 								<td>CTCCFRONTEND_STATE_REPORT</td>
 								<td>123</td>
 								<td>1</td>
@@ -293,7 +400,6 @@
 								<td>2018-11-29_14:02:43.423.5</td>
 							</tr>
 							<tr>
-								<td>3</td>
 								<td>CTCCFRONTEND_STATE_REPORT</td>
 								<td>123</td>
 								<td>1</td>
@@ -341,17 +447,16 @@
 					<div class="panel-heading">
 						<div class="panel-title">Protocal Process State</div>
 					</div>
-					<table class="table table-bordered table-responsive " >
+					<table id="protocal_tb" class="table table-bordered table-responsive " >
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>MsgType</th>
 								<th>ID</th>
 								<th>MID</th>
 								<th>BID</th>
 								<th>PID</th>
-								<th>ProcessName</th>
 								<th>MainOrBackup</th>
+								<th>ProcessName</th>
 								<th>Report_type</th>
 								<th>Command_type</th>
 								<th>Command_result</th>
@@ -366,7 +471,6 @@
 		
 						<tbody>
 							<tr>
-								<td>1</td>
 								<td>ProtocalReport</td>
 								<td>1234</td>
 								<td>HXC</td>
@@ -386,7 +490,6 @@
 							</tr>
 		
 							<tr>
-								<td>2</td>
 								<td>ProtocalReport</td>
 								<td>1234</td>
 								<td>HXC</td>
@@ -406,7 +509,6 @@
 							</tr>
 		
 							<tr>
-								<td>3</td>
 								<td>ProtocalReport</td>
 								<td>1234</td>
 								<td>HXC</td>
@@ -442,10 +544,9 @@
 					<div class="panel-heading">
 						<div class="panel-title">File Send State</div>
 					</div>
-					<table class="table table-bordered table-responsive" style="word-break:break-all; word-wrap:break-all;">
+					<table id="nonreal_tb" class="table table-bordered table-responsive" style="word-break:break-all; word-wrap:break-all;">
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>MsgTag</th>
 								<th>MsgType</th>
 								<th>MissionID</th>
@@ -464,7 +565,6 @@
 		
 						<tbody>
 							<tr>
-								<td>1</td>
 								<td>MCSMES</td>
 								<td>SJTZ</td>
 								<td>a</td>
@@ -481,7 +581,6 @@
 							</tr>
 		
 							<tr>
-								<td>2</td>
 								<td>MCSMES</td>
 								<td>SJTZ</td>
 								<td>a</td>
@@ -498,7 +597,6 @@
 							</tr>
 		
 							<tr>
-								<td>3</td>
 								<td>MCSMES</td>
 								<td>SJTZ</td>
 								<td>a</td>
@@ -523,43 +621,6 @@
         </div>
 
 	</div>
-
-		
-	
-
-
-
-	<!-- Imported styles on this page -->
-	<!-- <link rel="stylesheet" href="assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
-	<link rel="stylesheet" href="assets/js/rickshaw/rickshaw.min.css"> -->
-
-	<!-- Bottom scripts (common) -->
-	<script src="/public/assets/js/main-gsap.js"></script>
-	<!-- <script src="assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script> -->
-	<!-- <script src="assets/js/bootstrap.js"></script> -->
-	<!-- <script src="assets/js/joinable.js"></script> -->
-	<script src="/public/assets/js/resizeable.js"></script>
-	<script src="/public/assets/js/neon-api.js"></script>
-	<!-- <script src="assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script> -->
-
-
-	<!-- Imported scripts on this page -->
-	<!-- <script src="assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
-	<script src="assets/js/jquery.sparkline.min.js"></script>
-	<script src="assets/js/rickshaw/vendor/d3.v3.js"></script>
-	<script src="assets/js/rickshaw/rickshaw.min.js"></script>
-	<script src="assets/js/raphael-min.js"></script>
-	<script src="assets/js/morris.min.js"></script>
-	<script src="assets/js/toastr.js"></script>
-	<script src="assets/js/neon-chat.js"></script> -->
-
-
-	<!-- JavaScripts initializations and stuff -->
-	<script src="/public/assets/js/neon-custom.js"></script>
-
-
-	<!-- Demo Settings -->
-	<!-- <script src="assets/js/neon-demo.js"></script> -->
 
 </body>
 </html>

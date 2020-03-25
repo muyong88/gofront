@@ -1,11 +1,15 @@
 package model
 
 import (
+	"encoding/json"
+
+	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
 )
 
 type CCTC_Process_State struct {
-	Identify             int64   `xorm:"pk autoincr  notnull"`                //自增id
+	Identify             int64   `xorm:"pk autoincr  notnull"` //自增id
+	MsgSign              string  `xorm:"notnull"`
 	MsgType              string  `xorm:"notnull" json:"msgType"`              //消息类型
 	ProcessId            int8    `xorm:"notnull" json:"processId"`            //进程标识
 	SysId                int8    `xorm:"notnull" json:"sysId"`                //软件标识
@@ -38,8 +42,9 @@ type CCTC_Process_State struct {
 }
 
 //入库
-func CreateCCTCProcessState(process ...*CCTC_Process_State) (int64, error) {
+func CreateCCTCProcessState(process *CCTC_Process_State) (int64, error) {
 	e := gofrontdb.EngineGroup()
+	process.MsgSign = "CCTC_Process_State"
 	return e.Insert(process)
 	//stub:展示
 }
@@ -48,6 +53,14 @@ func CreateCCTCProcessState(process ...*CCTC_Process_State) (int64, error) {
 func GetCCTCProcessState(process *CCTC_Process_State) (bool, error) {
 	e := gofrontdb.EngineGroup()
 	return e.Get(process)
+}
+
+func (this *CCTC_Process_State) GetJsonString() string {
+	data, err := json.Marshal(this)
+	if err != nil {
+		golog.Errorf("Json marshaling failed：%s", err)
+	}
+	return string(data)
 }
 
 // //字符数组转换成CCTC_Process_State结构体

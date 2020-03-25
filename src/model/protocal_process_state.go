@@ -1,17 +1,23 @@
 package model
 
-import "github.com/yanzhen74/gofront/src/gofrontdb"
+import (
+	"encoding/json"
+
+	"github.com/kataras/golog"
+	"github.com/yanzhen74/gofront/src/gofrontdb"
+)
 
 type Protocal_Process_State struct {
 	Identify     int64           `xorm:"pk autoincr  notnull"` //自增id
-	MsgType      string          `xorm:"notnull"`              //消息类型
-	ID           int8            `xorm:"notnull"`              //软件标识
-	MID          string          `xorm:"notnull"`              //任务号
-	BID          string          `xorm:"notnull"`              //数据类型
-	PID          int             `xorm:"notnull"`              //进程标识
-	ProcessName  string          `xorm:"notnull"`              //协议进程名称
-	MainOrBackup int8            `xorm:"notnull"`              //协议进程名称
-	Report       Protocal_Report `xorm:"notnull json"`         //报告内容
+	MsgSign      string          `xorm:"notnull"`
+	MsgType      string          `xorm:"notnull"`      //消息类型
+	ID           int8            `xorm:"notnull"`      //软件标识
+	MID          string          `xorm:"notnull"`      //任务号
+	BID          string          `xorm:"notnull"`      //数据类型
+	PID          int             `xorm:"notnull"`      //进程标识
+	ProcessName  string          `xorm:"notnull"`      //协议进程名称
+	MainOrBackup int8            `xorm:"notnull"`      //协议进程名称
+	Report       Protocal_Report `xorm:"notnull json"` //报告内容
 }
 
 type Protocal_Report struct {
@@ -28,8 +34,16 @@ type Protocal_Report struct {
 }
 
 //入库
-func CreateProtocal_Process_State(process ...*Protocal_Process_State) (int64, error) {
+func CreateProtocal_Process_State(process *Protocal_Process_State) (int64, error) {
+	process.MsgSign = "Protocal_Process_State"
 	e := gofrontdb.EngineGroup()
 	return e.Insert(process)
-	//stub:展示
+}
+
+func (this *Protocal_Process_State) GetJsonString() string {
+	data, err := json.Marshal(this)
+	if err != nil {
+		golog.Errorf("Json marshaling failed：%s", err)
+	}
+	return string(data)
 }

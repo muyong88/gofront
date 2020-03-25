@@ -10,7 +10,7 @@ import (
 func RunProcessor() {
 	for {
 		msgRe := <-model.MsgChan
-		network,err := NetConfig.GetNetWorkByNetWorkSeqNum("6")
+		network, err := NetConfig.GetNetWorkByNetWorkSeqNum("6")
 		if err != nil {
 			continue
 		}
@@ -25,7 +25,8 @@ func RunProcessor() {
 			if err2 != nil {
 				fmt.Println(err2)
 			}
+			SendWebsocketMsg([]byte(file_state.GetJsonString()))
 		}
-		SendWebsocketMsg(msgRe.Content) //for test
+
 	}
 }
