@@ -12,7 +12,11 @@ import (
 //CTCC前端主控进程与网站间接口
 func CCTC_Hub(party iris.Party) {
 	home := party.Party("/cctc")
+	home.Get("/query", func(ctx iris.Context) {
+		ctx.View("cctc_query.html")
+	})
 	home.Get("/downlink", CCTC_DownLink_Get)
+	home.Post("/query_db", CCTC_Query_Db)
 	home.Post("/process_state", CCTC_Process_state_Post)
 	home.Post("/send_command", CCTC_Send_Command)
 }
@@ -58,4 +62,12 @@ func CCTC_Send_Command(ctx iris.Context) {
 		controller.SendDataToTopic(network.NetWorkTopic, cctc_command.GetJsonCommand())
 	}
 
+}
+
+func CCTC_Query_Db(ctx iris.Context) {
+	var process model.CCTC_Process_State
+	process.MsgSign = "CCTC_Process_State"
+	model.GetCCTCProcessState(&process)
+	fmt.Println(process)
+	ctx.JSON(process.GetJsonString())
 }
