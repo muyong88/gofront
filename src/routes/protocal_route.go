@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/kataras/golog"
@@ -12,8 +13,12 @@ import (
 //协议主控进程与网站间接口
 func Protocal_Hub(party iris.Party) {
 	home := party.Party("/protocal")
+	home.Get("/query", func(ctx iris.Context) {
+		ctx.View("protocal _query.html")
+	})
 	home.Post("/process_state", Protocal_Process_state_Post)
 	home.Post("/send_command", Protocal_Process_Send_Command)
+	home.Post("/query_db", Protocal_Query_Db)
 }
 
 //协议进程状态更新接口
@@ -46,4 +51,11 @@ func Protocal_Process_Send_Command(ctx iris.Context) {
 	if err == nil {
 		controller.SendDataToTopic(network.NetWorkTopic, propro_command.GetJsonCommand())
 	}
+}
+
+//查询Db
+func Protocal_Query_Db(ctx iris.Context) {
+	results, _ := model.GetAllProctocalProcessDbState()
+	bjson, _ := json.Marshal(results)
+	ctx.JSON(string(bjson))
 }

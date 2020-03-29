@@ -22,18 +22,16 @@
 							<select class="form-control">
 								<option>ALL</option>
 							</select>
-						
-						
 						</div>
-						<label class="col-sm-1 control-label">进程标识</label>			
+						<label class="col-sm-1 control-label">飞行器</label>			
 						<div class="col-sm-3">
 							<select class="form-control">
 								<option>ALL</option>
 							</select>									
-						</div>
+						</div>	
 						<div class="col-sm-2">
 							<button type="button" class="btn btn-default" id="queryBtn">查询</button>
-						</div>
+						</div>								
 					</div>
 				</form>
 				<br/>
@@ -41,38 +39,22 @@
 			<table class="table table-bordered datatable"  >
 				<thead>
 					<tr>
+						<th>MsgTag</th>
 						<th>MsgType</th>
-						<th>ProcessId</th>
-						<th>SysId</th>
-						<th>Pattern</th>
-						<th>Channel</th>
-						<th>IsSend32KB</th>
-						<th>IsSendIPinIP</th>
-						<th>IsSaveFile</th>
-						<th>IsArchive</th>
-						<th>ResendShmHead</th>
-						<th>ResendShmTear</th>
-						<th>ResendWriteShmLoop</th>
-						<th>ResendReadShmLoop</th>
-						<th>ResendWriteShmSpeed</th>
-						<th>ResendReadShmSpeed</th>
-						<th>SaveShmHead</th>
-						<th>SaveShmTear</th>
-						<th>SaveWriteShmLoop</th>
-						<th>SaveReadShmLoop</th>
-						<th>SaveWriteShmSpeed</th>
-						<th>SaveReadShmSpeed</th>
-						<th>RecvBeats</th>
-						<th>ResendBeats</th>
-						<th>SaveBeats</th>
-						<th>RecvBytes</th>
-						<th>Send32KFrames</th>
-						<th>SendIPinIPFrames</th>
-						<th>SendSmallCraftFrames</th>
-						<th>TimeStamp</th>
+						<th>MissionID</th>
+						<th>Subtype</th>
+						<th>MSGID</th>
+						<th>Sender</th>
+						<th>Timestamp</th>
+						<th>Type</th>
+						<th>SendSessionID</th>
+						<th>FileName</th>
+						<th>FilePath</th>
+						<th>Status</th>
+						<th>Station</th>							
 					</tr>
 				</thead>
-				<tbody id="cctc_tb">
+				<tbody id="nonreal_tb">
 			
 				</tbody>
 			</table>			
@@ -80,7 +62,7 @@
 
 	</div>
 </div>
-<script src="/public/assets/js/history_query_cctc.js"></script>
+<script src="/public/assets/js/history_query_nonreal.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>

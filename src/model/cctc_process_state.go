@@ -49,10 +49,15 @@ func CreateCCTCProcessState(process *CCTC_Process_State) (int64, error) {
 	//stub:展示
 }
 
-//查询库
-func GetCCTCProcessState(process *CCTC_Process_State) (bool, error) {
+//查询一个
+func GetOneCCTCProcessState(process *CCTC_Process_State) (bool, error) {
 	e := gofrontdb.EngineGroup()
 	return e.Get(process)
+}
+
+//查询所有
+func GetAllCCTCProcessState() ([]map[string]string, error) {
+	return gofrontdb.EngineGroup().QueryString("select * from CCTC_Process_State")
 }
 
 func (this *CCTC_Process_State) GetJsonString() string {

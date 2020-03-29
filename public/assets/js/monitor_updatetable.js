@@ -42,8 +42,8 @@
             trStr += '<td>'+ obj.ID+'</td>';
             trStr += '<td>'+ obj.MID+'</td>';
             trStr += '<td>'+ obj.BID+'</td>';
-			trStr += '<td>'+ obj.PID+'</td>';
-			trStr += '<td>'+ obj.MainOrBackup+'</td>';
+		      	trStr += '<td>'+ obj.PID+'</td>';
+			      trStr += '<td>'+ obj.MainOrBackup+'</td>';
             trStr += '<td>'+ obj.ProcessName+'</td>';
             trStr += '<td>'+ obj.Report.Report_type+'</td>';
             trStr += '<td>'+ obj.Report.Command_type+'</td>';
@@ -51,10 +51,10 @@
             trStr += '<td>'+ obj.Report.Recv_status_revert+'</td>';
             trStr += '<td>'+ obj.Report.Recv_status+'</td>';
             trStr += '<td>'+ obj.Report.First+'</td>';
-			trStr += '<td>'+ obj.Report.Last+'</td>';
+			      trStr += '<td>'+ obj.Report.Last+'</td>';
             trStr += '<td>'+ obj.Report.Recv_count+'</td>';
             trStr += '<td>'+ obj.Report.Send_no+'</td>';
-			trStr+='</tr>';
+			      trStr+='</tr>';
 			jQuery('#protocal_tb').append(trStr);
 	  }
 	  function updateCCTCTable(obj){
@@ -108,7 +108,7 @@
             trStr += '<td>'+ obj.FilePath+'</td>';
             trStr += '<td>'+ obj.Status+'</td>';
             trStr += '<td>'+ obj.Station+'</td>';
-			trStr+='</tr>';
-			jQuery('#nonreal_tb').append(trStr);
+			      trStr+='</tr>';
+			      jQuery('#nonreal_tb').append(trStr);
 	  }
 

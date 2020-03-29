@@ -17,23 +17,27 @@
 				<br/>
 				<form role="form" class="form-horizontal form-groups-bordered">
 					<div class="form-group">
-						<label class="col-sm-1 control-label">消息类型</label>			
-						<div class="col-sm-3">
+						<label class="col-sm-1 control-label">来源站</label>			
+						<div class="col-sm-2">
 							<select class="form-control">
 								<option>ALL</option>
 							</select>
-						
-						
 						</div>
-						<label class="col-sm-1 control-label">进程标识</label>			
-						<div class="col-sm-3">
+						<label class="col-sm-1 control-label">飞行器</label>			
+						<div class="col-sm-2">
 							<select class="form-control">
 								<option>ALL</option>
 							</select>									
 						</div>
+						<label class="col-sm-1 control-label">协议</label>			
+						<div class="col-sm-2">
+						<select class="form-control">
+							<option>ALL</option>
+						</select>	
+					    </div>		
 						<div class="col-sm-2">
 							<button type="button" class="btn btn-default" id="queryBtn">查询</button>
-						</div>
+						</div>								
 					</div>
 				</form>
 				<br/>
@@ -42,37 +46,24 @@
 				<thead>
 					<tr>
 						<th>MsgType</th>
-						<th>ProcessId</th>
-						<th>SysId</th>
-						<th>Pattern</th>
-						<th>Channel</th>
-						<th>IsSend32KB</th>
-						<th>IsSendIPinIP</th>
-						<th>IsSaveFile</th>
-						<th>IsArchive</th>
-						<th>ResendShmHead</th>
-						<th>ResendShmTear</th>
-						<th>ResendWriteShmLoop</th>
-						<th>ResendReadShmLoop</th>
-						<th>ResendWriteShmSpeed</th>
-						<th>ResendReadShmSpeed</th>
-						<th>SaveShmHead</th>
-						<th>SaveShmTear</th>
-						<th>SaveWriteShmLoop</th>
-						<th>SaveReadShmLoop</th>
-						<th>SaveWriteShmSpeed</th>
-						<th>SaveReadShmSpeed</th>
-						<th>RecvBeats</th>
-						<th>ResendBeats</th>
-						<th>SaveBeats</th>
-						<th>RecvBytes</th>
-						<th>Send32KFrames</th>
-						<th>SendIPinIPFrames</th>
-						<th>SendSmallCraftFrames</th>
-						<th>TimeStamp</th>
+						<th>ID</th>
+						<th>MID</th>
+						<th>BID</th>
+						<th>PID</th>
+						<th>MainOrBackup</th>
+						<th>ProcessName</th>
+						<th>Report_type</th>
+						<th>Command_type</th>
+						<th>Command_result</th>
+						<th>Recv_status_revert</th>
+						<th>Recv_status</th>
+						<th>First</th>
+						<th>Last</th>
+						<th>Recv_count</th>
+						<th>Send_no</th>								
 					</tr>
 				</thead>
-				<tbody id="cctc_tb">
+				<tbody id="protocal_tb">
 			
 				</tbody>
 			</table>			
@@ -80,7 +71,7 @@
 
 	</div>
 </div>
-<script src="/public/assets/js/history_query_cctc.js"></script>
+<script src="/public/assets/js/history_query_protocal.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>

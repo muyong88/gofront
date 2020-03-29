@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/kataras/golog"
@@ -61,13 +62,10 @@ func CCTC_Send_Command(ctx iris.Context) {
 	if err == nil {
 		controller.SendDataToTopic(network.NetWorkTopic, cctc_command.GetJsonCommand())
 	}
-
 }
 
 func CCTC_Query_Db(ctx iris.Context) {
-	var process model.CCTC_Process_State
-	process.MsgSign = "CCTC_Process_State"
-	model.GetCCTCProcessState(&process)
-	fmt.Println(process)
-	ctx.JSON(process.GetJsonString())
+	results, _ := model.GetAllCCTCProcessState()
+	bjson, _ := json.Marshal(results)
+	ctx.JSON(string(bjson))
 }

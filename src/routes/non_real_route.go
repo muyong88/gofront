@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/kataras/golog"
@@ -12,8 +13,12 @@ import (
 //非实时前端主控与网站间接口
 func Non_Real_Hub(party iris.Party) {
 	home := party.Party("/non_real")
+	home.Get("/query", func(ctx iris.Context) {
+		ctx.View("nonreal_query.html")
+	})
 	home.Get("/filestate", File_state_Get)
 	home.Post("/send_command", Non_Real_Send_Command)
+	home.Post("/query_db", Non_Real_Query_Db)
 }
 
 //查询发送文件状态接口
@@ -38,8 +43,15 @@ func Non_Real_Send_Command(ctx iris.Context) {
 		golog.Error(err)
 		return
 	}
-	network,err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("4")
+	network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("4")
 	if err == nil {
 		controller.SendDataToTopic(network.NetWorkTopic, nonreal_command.GetJsonCommand())
 	}
+}
+
+//查询Db
+func Non_Real_Query_Db(ctx iris.Context) {
+	results, _ := model.GetAllNonRealProcessState()
+	bjson, _ := json.Marshal(results)
+	ctx.JSON(string(bjson))
 }

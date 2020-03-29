@@ -32,11 +32,17 @@ func CreateNon_Real_File_State(state *Non_Real_File_State) (int64, error) {
 	return e.Insert(state)
 }
 
-//查询
+//查询一条
 func GetNon_Real_File_State(state *Non_Real_File_State) (bool, error) {
 	e := gofrontdb.EngineGroup()
 	return e.Get(state)
 }
+
+//查询所有
+func GetAllNonRealProcessState() ([]map[string]string, error) {
+	return gofrontdb.EngineGroup().QueryString("select * from Non_Real_File_State")
+}
+
 func (this *Non_Real_File_State) GetJsonString() string {
 	data, err := json.Marshal(this)
 	if err != nil {
