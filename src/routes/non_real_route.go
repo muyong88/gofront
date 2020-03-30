@@ -16,6 +16,9 @@ func Non_Real_Hub(party iris.Party) {
 	home.Get("/query", func(ctx iris.Context) {
 		ctx.View("nonreal_query.html")
 	})
+	home.Get("/commandpage", func(ctx iris.Context) {
+		ctx.View("nonreal_command.html")
+	})
 	home.Get("/filestate", File_state_Get)
 	home.Post("/send_command", Non_Real_Send_Command)
 	home.Post("/query_db", Non_Real_Query_Db)

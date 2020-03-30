@@ -16,6 +16,9 @@ func CCTC_Hub(party iris.Party) {
 	home.Get("/query", func(ctx iris.Context) {
 		ctx.View("cctc_query.html")
 	})
+	home.Get("/commandpage", func(ctx iris.Context) {
+		ctx.View("cctc_command.html")
+	})
 	home.Get("/downlink", CCTC_DownLink_Get)
 	home.Post("/query_db", CCTC_Query_Db)
 	home.Post("/process_state", CCTC_Process_state_Post)

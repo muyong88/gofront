@@ -91,7 +91,7 @@
                             jQuery("#nonreal_query").addClass('active');
                         }
                     });
-                </script>
+                 </script>
                 </ul>
             </li>
             <li id="comand_all">
@@ -101,20 +101,44 @@
                 </a>
                 <ul>
                     <li id="comand_cctc">
-                        <a href="index.html" target="_blank" >
+                        <a href="/cctc/commandpage">
                             <span class="title">CCTC前端</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="index.html" target="_blank">
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/cctc/commandpage')>0){
+                            jQuery("#comand_all").addClass('opened active');
+                            jQuery("#comand_cctc").addClass('active');
+                        }
+                    });
+                    </script>
+                    <li id="comand_protocal">
+                        <a href="/protocal/commandpage">
                             <span class="title">协议进程</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="index.html" target="_blank">
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/protocal/commandpage')>0){
+                            jQuery("#comand_all").addClass('opened active');
+                            jQuery("#comand_protocal").addClass('active');
+                        }
+                    });
+                    </script>
+                    <li id="comand_nonreal"> 
+                        <a href="/non_real/commandpage" >
                             <span class="title">非实时前端</span>
                         </a>
                     </li>
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/non_real/commandpage')>0){
+                            jQuery("#comand_all").addClass('opened active');
+                            jQuery("#comand_nonreal").addClass('active');
+                        }
+                    });
+                    </script>
                 </ul>
             </li>
         </ul>
