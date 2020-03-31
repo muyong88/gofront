@@ -24,13 +24,13 @@
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息标识</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>MCSMES</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">任务标识</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>undetermined</option>
 					</select>									
 				</div>
 			</div>
@@ -41,13 +41,13 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>SJTZ</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">子消息类型</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>WJFS</option>
 					</select>									
 				</div>
 			</div>
@@ -58,13 +58,13 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">会话标识</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>undetermined</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">消息发送者</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>OIM</option>
 					</select>									
 				</div>
 			</div>
@@ -73,15 +73,16 @@
 		<form role="form" class="form-horizontal form-groups-bordered">
 			<div  class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">时间</label>			
-				<div class="col-sm-3">
-					<select class="form-control">
-						<option>ALL</option>
-					</select>
+				<div class='input-group date col-sm-3' id='datetimepicker1'>
+					<input type='text' class="form-control" />
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 				</div>
-				<label style="text-align:left"  class="col-sm-2 control-label">sendSessionID</label>			
+				<label style="text-align:left"  class="col-sm-2 control-label">发送会话标识</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>undetermined</option>
 					</select>									
 				</div>
 			</div>
@@ -89,16 +90,16 @@
 		<br/>
 		<form role="form" class="form-horizontal form-groups-bordered">
 			<div class="form-group">
-				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">filename</label>			
+				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">文件名</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>abc.txt</option>
 					</select>
 				</div>
-				<label style="text-align:left"  class="col-sm-2 control-label">status</label>			
+				<label style="text-align:left"  class="col-sm-2 control-label">文件路径</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>/home/oliver/</option>
 					</select>
 				</div>
 			</div>
@@ -106,10 +107,10 @@
 		<br/>
 				<form role="form" class="form-horizontal form-groups-bordered">
 			<div class="form-group">
-				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">destination</label>			
+				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">目的地</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>CTCC/BACC</option>
 					</select>
 				</div>
 			</div>
@@ -123,6 +124,11 @@
 		</form>
 	</div>
 </div>
+<script>
+		jQuery('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:ss',
+	});
+	</script>
 	{{ template "bottom"}}
 </body>
 </html>

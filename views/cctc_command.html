@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	{{ template "header"}}
-
 </head>
 
 
@@ -24,13 +23,18 @@
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>CTCCFRONTEND_CONTROL</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">命令名称</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>OPEN</option>
+						<option>CLOSE</option>
+						<option>KILL</option>
+						<option>START</option>
+						<option>STOP</option>
+						<option>CLEAR</option>
 					</select>									
 				</div>
 			</div>
@@ -41,13 +45,15 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">软件标识</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>1</option>
+						<option>2</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">软件模式</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>1</option>
+						<option>2</option>
 					</select>									
 				</div>
 			</div>
@@ -58,14 +64,16 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">下行通道</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>1</option>
+						<option>2</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">下行开始时间</label>			
-				<div class="col-sm-3">
-					<select class="form-control">
-						<option>ALL</option>
-					</select>									
+				<div class='input-group date col-sm-3' id='datetimepicker1'>
+					<input type='text' class="form-control" />
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 				</div>
 			</div>
 			</form>
@@ -73,15 +81,16 @@
 			<form role="form" class="form-horizontal form-groups-bordered">
 			<div  class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">下行结束时间</label>			
-				<div class="col-sm-3">
-					<select class="form-control">
-						<option>ALL</option>
-					</select>
+				<div class='input-group date col-sm-3' id='datetimepicker2'>
+					<input type='text' class="form-control" />
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">主份软件主机名称</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>undetermined</option>
 					</select>									
 				</div>
 			</div>
@@ -92,7 +101,7 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">备份软件主机名称</label>			
 				<div class="col-sm-3">
 					<select class="form-control">
-						<option>ALL</option>
+						<option>undetermined</option>
 					</select>
 				</div>
 			</div>
@@ -102,11 +111,42 @@
 		<br/>
 		<form role="form" class="form-horizontal form-groups-bordered">
 			<div class="col-sm-4 ">
-				<button type="button" class="btn btn-default btn-lg" id="queryBtn">发送CCTC命令</button>
+				<button type="button" class="btn btn-default btn-lg" id="sendCCTCBtn">发送CCTC命令</button>
 			</div>
 			</form>
 	</div>
 </div>
 	{{ template "bottom"}}
+	<script>
+		jQuery(document).ready(function(){
+			jQuery("#sendCCTCBtn").click(function(){
+			let param={'msgType': "CTCCFRONTEND_CONTROL", 'Operation': "Open",
+					"SysId": 1, "Pattern": 1, 
+					"Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""};    
+			jQuery.ajax({
+					type: 'POST',  
+					data: JSON.stringify(param),
+					dataType:"JSON",
+					contentType:"application/json",
+					crossDomain: true,
+					xhrFields: {
+						withCredentials: true
+					},
+					url : "/cctc/send_command",
+					success: function(data) {
+						alert("send success!")
+					},
+					complete: function( xhr,data ){
+					}
+				});
+		  });
+		});
+		jQuery('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:ss',
+    });
+		jQuery('#datetimepicker2').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:ss',
+    });
+		</script>
 </body>
 </html>
