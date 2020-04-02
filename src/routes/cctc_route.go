@@ -65,6 +65,7 @@ func CCTC_Send_Command(ctx iris.Context) {
 	if err == nil {
 		controller.SendDataToTopic(network.NetWorkTopic, cctc_command.GetJsonCommand())
 	}
+	ctx.Text("send success!")
 }
 
 func CCTC_Query_Db(ctx iris.Context) {

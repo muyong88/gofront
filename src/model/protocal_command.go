@@ -2,23 +2,24 @@ package model
 
 import (
 	"encoding/json"
+
 	"github.com/kataras/golog"
 )
 
 type Protocal_Command struct {
-	MsgType     string
-	ID          int
-	MID         string
-	BID         string
-	ProcessName string
-	OrderSeq    int
-	OrderName   string
-	ParaInfo    ParaInfo
-	Protocal    string
+	MsgType     string   `json:"msgType"`
+	ID          int      `json:"ID"`
+	MID         string   `json:"MID"`
+	BID         string   `json:"BID"`
+	ProcessName string   `json:"ProcessName"`
+	OrderSeq    int      `json:"OrderSeq"`
+	OrderName   string   `json:"OrderName"`
+	ParaInfo    ParaInfo `json:"ParaInfo"`
+	Protocal    string   `json:"Protocal"`
 }
 
 type ParaInfo struct {
-	MODE string
+	MODE string `json:"MODE"`
 }
 
 func (this *Protocal_Command) GetJsonCommand() string {

@@ -22,13 +22,13 @@
 			<div class="form-group">
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="msgTypeControl">
 						<option>CTCCFRONTEND_CONTROL</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">命令名称</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="operationControl">
 						<option>OPEN</option>
 						<option>CLOSE</option>
 						<option>KILL</option>
@@ -44,14 +44,14 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">软件标识</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="sysIdControl">
 						<option>1</option>
 						<option>2</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">软件模式</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="patternControl">
 						<option>1</option>
 						<option>2</option>
 					</select>									
@@ -63,13 +63,13 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">下行通道</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="channelControl">
 						<option>1</option>
 						<option>2</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">下行开始时间</label>			
-				<div class='input-group date col-sm-3' id='datetimepicker1'>
+				<div class='input-group date col-sm-3' id='datetimepicker1' >
 					<input type='text' class="form-control" />
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
@@ -81,7 +81,7 @@
 			<form role="form" class="form-horizontal form-groups-bordered">
 			<div  class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">下行结束时间</label>			
-				<div class='input-group date col-sm-3' id='datetimepicker2'>
+				<div class='input-group date col-sm-3' id='datetimepicker2' >
 					<input type='text' class="form-control" />
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
@@ -89,7 +89,7 @@
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">主份软件主机名称</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="mainHostNameControl">
 						<option>undetermined</option>
 					</select>									
 				</div>
@@ -100,7 +100,7 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">备份软件主机名称</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="backupHostNameControl">
 						<option>undetermined</option>
 					</select>
 				</div>
@@ -120,13 +120,15 @@
 	<script>
 		jQuery(document).ready(function(){
 			jQuery("#sendCCTCBtn").click(function(){
-			let param={'msgType': "CTCCFRONTEND_CONTROL", 'Operation': "Open",
-					"SysId": 1, "Pattern": 1, 
-					"Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""};    
+			let param={'msgType':jQuery("#msgTypeControl").val(), 'Operation': jQuery("#operationControl").val(),
+					"SysId": Number(jQuery("#sysIdControl").val()), "Pattern": Number(jQuery("#patternControl").val()), 
+					"Channel": Number(jQuery("#channelControl").val()),"BeginTime":jQuery("#datetimepicker1").find("input").val(),
+					"EndTime":jQuery("#datetimepicker2").find("input").val(),"MainHostName":jQuery("#mainHostNameControl").val(),
+					"BackupHostName":jQuery("#backupHostNameControl").val()};    
 			jQuery.ajax({
 					type: 'POST',  
 					data: JSON.stringify(param),
-					dataType:"JSON",
+					dataType:"text",
 					contentType:"application/json",
 					crossDomain: true,
 					xhrFields: {
@@ -134,9 +136,13 @@
 					},
 					url : "/cctc/send_command",
 					success: function(data) {
-						alert("send success!")
+						alert("send success!");
 					},
 					complete: function( xhr,data ){
+						
+					},
+					error:function(XMLHttpRequest, textStatus){  
+						alert(textStatus);
 					}
 				});
 		  });

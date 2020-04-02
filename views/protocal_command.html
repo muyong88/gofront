@@ -23,13 +23,13 @@
 			<div class="form-group">
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="msgTypeControl">
 						<option>ProtocalReport</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">软件标识</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="IDControl">
 						<option>1</option>
 						<option>2</option>
 					</select>									
@@ -41,15 +41,13 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">任务号</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="MIDControl">
 						<option>HXC</option>
 					</select>
 				</div>
-				<label style="text-align:left"  class="col-sm-2 control-label">数据类型</label>			
+				<label style="text-align:left"  class="col-sm-2 control-label" >数据类型</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
-						<option>00112233</option>
-					</select>									
+					<input type="text" class="form-control"  placeholder="00112233" id="BIDControl">
 				</div>
 			</div>
 		</form>
@@ -58,20 +56,13 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">协议进程名称</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="ProcessNameControl">
 						<option>LINK_CTCC-TL1A1_POAC</option>
 					</select>
 				</div>
-				<label style="text-align:left"  class="col-sm-2 control-label">命令序号</label>			
+				<label  style="text-align:left"  class="col-sm-2 control-label">命令序号</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-					</select>									
+					<input type="text" class="form-control"  placeholder="1" id="OrderSeqControl">
 				</div>
 			</div>
 		</form>
@@ -80,7 +71,7 @@
 			<div  class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">命令名称</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="OrderNameControl">
 						<option>START</option>
 						<option>STOP</option>
 						<option>MODE</option>
@@ -94,9 +85,7 @@
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">命令参数(MODE)</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
-						<option>MAIN/BACKUP</option>
-					</select>									
+					<input type="text" id="MODEControl" class="form-control"  placeholder="MAIN/BACKUP" disabled>
 				</div>
 			</div>
 		</form>
@@ -105,7 +94,7 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">协议名称</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="ProtocalControl">
 						<option>LINK</option>
 					</select>
 				</div>
@@ -116,11 +105,45 @@
 		<br/>
 		<form role="form" class="form-horizontal form-groups-bordered">
 			<div class="col-sm-4 ">
-				<button type="button" class="btn btn-default btn-lg" id="queryBtn">发送协议命令</button>
+				<button type="button" class="btn btn-default btn-lg" id="sendProtocalBtn">发送协议命令</button>
 			</div>
 		</form>
 	</div>
 </div>
+<script>
+	jQuery(document).ready(function(){
+			jQuery("#sendProtocalBtn").click(function(){
+			let param={'msgType':jQuery("#msgTypeControl").val(), 'ID': Number(jQuery("#IDControl").val()),
+					"MID": jQuery("#MIDControl").val(), "BID": jQuery("#BIDControl").val(), 
+					"ProcessName": jQuery("#ProcessNameControl").val(),"OrderSeq":Number(jQuery("#OrderSeqControl").val()),
+					"OrderName":jQuery("#OrderNameControl").val(),"ParaInfo":{"MODE":jQuery("#MODEControl").val()
+					},"Protocal":jQuery("#ProtocalControl").val()};    
+			jQuery.ajax({
+					type: 'POST',  
+					data: JSON.stringify(param),
+					dataType:"text",
+					contentType:"application/json",
+					crossDomain: true,
+					xhrFields: {
+						withCredentials: true
+					},
+					url : "/protocal/send_command",
+					success: function(data) {
+						alert("send success!");
+					},
+					complete: function( xhr,data ){
+						
+					},
+					error:function(XMLHttpRequest, textStatus){  
+						alert(textStatus);
+					}
+				});
+		  });
+		});
+		jQuery('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:ss',
+	});
+	</script>
 	{{ template "bottom"}}
 </body>
 </html>

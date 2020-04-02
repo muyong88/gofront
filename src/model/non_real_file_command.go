@@ -2,18 +2,19 @@ package model
 
 import (
 	"encoding/json"
+
 	"github.com/kataras/golog"
 )
 
 type Non_Real_File_Command struct {
-	MsgTag    string `json:"msgTag"`
-	MissionID string `json:"missionID"`
-	MsgType   string `json:"msgType"`
-	Subtype   string `json:"subtype"`
-	MSGID     string `json:"MSGID"`
-	Sender    string `json:"sender"`
-	Timestamp string `json:"timestamp"`
-	Content   Content_File
+	MsgTag    string       `json:"msgTag"`
+	MissionID string       `json:"missionID"`
+	MsgType   string       `json:"msgType"`
+	Subtype   string       `json:"subtype"`
+	MSGID     string       `json:"MSGID"`
+	Sender    string       `json:"sender"`
+	Timestamp string       `json:"timestamp"`
+	Content   Content_File `json:"content"`
 }
 type Content_File struct {
 	SendSessionID string `json:"sendSessionID"`

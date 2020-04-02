@@ -23,13 +23,13 @@
 			<div class="form-group">
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息标识</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="msgTagControl">
 						<option>MCSMES</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">任务标识</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="missionIDControl">
 						<option>undetermined</option>
 					</select>									
 				</div>
@@ -40,13 +40,13 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="msgTypeControl">
 						<option>SJTZ</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">子消息类型</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="subtypeControl">
 						<option>WJFS</option>
 					</select>									
 				</div>
@@ -57,13 +57,11 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">会话标识</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
-						<option>undetermined</option>
-					</select>
+					<input type="text" id="MSGIDControl" class="form-control"  placeholder="undetermined" >
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">消息发送者</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
+					<select class="form-control" id="senderControl">
 						<option>OIM</option>
 					</select>									
 				</div>
@@ -81,9 +79,7 @@
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">发送会话标识</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
-						<option>undetermined</option>
-					</select>									
+					<input type="text"  id="sendSessionIDControl" class="form-control"  placeholder="undetermined" >
 				</div>
 			</div>
 		</form>
@@ -92,15 +88,11 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">文件名</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
-						<option>abc.txt</option>
-					</select>
+					<input type="text" id="filenameControl" class="form-control"  placeholder="abc.txt" >
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">文件路径</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
-						<option>/home/oliver/</option>
-					</select>
+					<input type="text" id="filePathControl" class="form-control"  placeholder="/home/oliver/" >
 				</div>
 			</div>
 		</form>
@@ -109,9 +101,7 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">目的地</label>			
 				<div class="col-sm-3">
-					<select class="form-control">
-						<option>CTCC/BACC</option>
-					</select>
+					<input type="text" class="form-control" id="destinationControl" placeholder="CTCC/BACC" >
 				</div>
 			</div>
 		</form>
@@ -119,12 +109,42 @@
 		</div>
 		<form role="form" class="form-horizontal form-groups-bordered">
 			<div class="col-sm-4 ">
-				<button type="button" class="btn btn-default btn-lg" id="queryBtn">发送非实时命令</button>
+				<button type="button" class="btn btn-default btn-lg" id="sendNonRealBtn">发送非实时命令</button>
 			</div>
 		</form>
 	</div>
 </div>
 <script>
+	jQuery(document).ready(function(){
+			jQuery("#sendNonRealBtn").click(function(){
+			let param={'msgTag':jQuery("#msgTagControl").val(), 'missionID': jQuery("#missionIDControl").val(),
+					"msgType": jQuery("#msgTypeControl").val(), "subtype": jQuery("#subtypeControl").val(), 
+					"MSGID": jQuery("#MSGIDControl").val(),"sender":jQuery("#senderControl").val(),
+					"timestamp":jQuery("#datetimepicker1").find("input").val(),"content":{"sendSessionID":jQuery("#sendSessionIDControl").val(),
+					"filename":jQuery("#filenameControl").val(),"filePath":jQuery("#filePathControl").val(),
+						"destination":jQuery("#destinationControl").val()}};    
+			jQuery.ajax({
+					type: 'POST',  
+					data: JSON.stringify(param),
+					dataType:"text",
+					contentType:"application/json",
+					crossDomain: true,
+					xhrFields: {
+						withCredentials: true
+					},
+					url : "/non_real/send_command",
+					success: function(data) {
+						alert("send success!");
+					},
+					complete: function( xhr,data ){
+						
+					},
+					error:function(XMLHttpRequest, textStatus){  
+						alert(textStatus);
+					}
+				});
+		  });
+		});
 		jQuery('#datetimepicker1').datetimepicker({
         format: 'YYYY-MM-DD HH:mm:ss',
 	});
