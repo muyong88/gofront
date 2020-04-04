@@ -19,7 +19,7 @@
 				<div  class="panel-title ">协议命令</div>
 			</div>
 		<br/>
-		<form role="form" class="form-horizontal form-groups-bordered">
+		<form role="form"  id="proctocalForm"  class="form-horizontal ">
 			<div class="form-group">
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
@@ -35,24 +35,19 @@
 					</select>									
 				</div>
 			</div>
-		</form>
-		<br/>
-		<form role="form" class="form-horizontal form-groups-bordered">
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">任务号</label>			
 				<div class="col-sm-3">
-					<select class="form-control" id="MIDControl">
+					<select class="form-control" id="MIDControl" >
 						<option>HXC</option>
 					</select>
 				</div>
-				<label style="text-align:left"  class="col-sm-2 control-label" >数据类型</label>			
+
+				<label style="text-align:left"  class="col-sm-2 control-label " >数据类型</label>			
 				<div class="col-sm-3">
-					<input type="text" class="form-control"  placeholder="00112233" id="BIDControl">
+					<input type="text" class="form-control" name="BID"  placeholder="00112233" id="BIDControl" >
 				</div>
 			</div>
-		</form>
-		<br/>
-		<form role="form" class="form-horizontal form-groups-bordered">
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">协议进程名称</label>			
 				<div class="col-sm-3">
@@ -60,14 +55,12 @@
 						<option>LINK_CTCC-TL1A1_POAC</option>
 					</select>
 				</div>
+
 				<label  style="text-align:left"  class="col-sm-2 control-label">命令序号</label>			
 				<div class="col-sm-3">
-					<input type="text" class="form-control"  placeholder="1" id="OrderSeqControl">
+					<input type="text" class="form-control" name="OrderSeq"  placeholder="1" id="OrderSeqControl">
 				</div>
 			</div>
-		</form>
-		<br/>
-		<form role="form" class="form-horizontal form-groups-bordered">
 			<div  class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">命令名称</label>			
 				<div class="col-sm-3">
@@ -88,9 +81,6 @@
 					<input type="text" id="MODEControl" class="form-control"  placeholder="MAIN/BACKUP" disabled>
 				</div>
 			</div>
-		</form>
-		<br/>
-		<form role="form" class="form-horizontal form-groups-bordered">
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">协议名称</label>			
 				<div class="col-sm-3">
@@ -110,15 +100,58 @@
 		</form>
 	</div>
 </div>
-<script>
+<script  type="text/javascript">
 	jQuery(document).ready(function(){
-			jQuery("#sendProtocalBtn").click(function(){
-			let param={'msgType':jQuery("#msgTypeControl").val(), 'ID': Number(jQuery("#IDControl").val()),
+		jQuery('#proctocalForm').bootstrapValidator({
+		message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {               
+            BID: {
+				group: '.col-sm-3',
+                validators: {
+                    notEmpty: {
+                        message: '数据类型不能为空'
+					},
+					regexp: {
+                        regexp: /^[a-fA-F0-9]+$/,
+                        message: '必须8位十六进制字符串组合'
+                    },
+                    stringLength: {
+                        min: 8,
+                        max: 8,
+                        message: '必须8位十六进制字符串组合'
+                    }
+				},
+
+			},
+			OrderSeq: {
+				group: '.col-sm-3',
+                validators: {
+                    notEmpty: {
+                        message: '命令序号不能为空'
+                    },
+					regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: '必须0开始递增整数'
+                    },
+                }
+            }
+        }
+    });
+	jQuery("#sendProtocalBtn").click(function(){
+		var bv =jQuery('#proctocalForm').data('bootstrapValidator');
+		bv.validate();
+		if (bv.isValid()) {
+		let param={'msgType':jQuery("#msgTypeControl").val(), 'ID': Number(jQuery("#IDControl").val()),
 					"MID": jQuery("#MIDControl").val(), "BID": jQuery("#BIDControl").val(), 
 					"ProcessName": jQuery("#ProcessNameControl").val(),"OrderSeq":Number(jQuery("#OrderSeqControl").val()),
 					"OrderName":jQuery("#OrderNameControl").val(),"ParaInfo":{"MODE":jQuery("#MODEControl").val()
 					},"Protocal":jQuery("#ProtocalControl").val()};    
-			jQuery.ajax({
+		jQuery.ajax({
 					type: 'POST',  
 					data: JSON.stringify(param),
 					dataType:"text",
@@ -138,12 +171,13 @@
 						alert(textStatus);
 					}
 				});
-		  });
+			}});
 		});
+		
 		jQuery('#datetimepicker1').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:ss',
+		format: 'YYYY-MM-DD HH:mm:ss',		
 	});
-	</script>
+</script>
 	{{ template "bottom"}}
 </body>
 </html>
