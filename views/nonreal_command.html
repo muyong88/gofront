@@ -19,7 +19,7 @@
 				<div  class="panel-title ">非实时命令</div>
 			</div>
 		<br/>
-		<form role="form" class="form-horizontal ">
+		<form role="form" id="non_realForm" class="form-horizontal ">
 			<div class="form-group">
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息标识</label>			
 				<div class="col-sm-3">
@@ -51,7 +51,7 @@
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">会话标识</label>			
 				<div class="col-sm-3">
-					<input type="text" id="MSGIDControl" class="form-control"  placeholder="undetermined" >
+					<input type="text" id="MSGIDControl" name="MSGID" class="form-control"  placeholder="undetermined" >
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">消息发送者</label>			
 				<div class="col-sm-3">
@@ -62,31 +62,31 @@
 			</div>
 			<div  class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">时间</label>			
-				<div class='input-group date col-sm-3' id='datetimepicker1'>
-					<input type='text' class="form-control" />
-					<span class="input-group-addon">
+				<div class='input-group date col-sm-3'  >
+					<input type='text'   class="form-control" name="datetimepicker1" id='datetimepicker1' />
+					<!-- <span class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
-					</span>
+					</span> -->
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">发送会话标识</label>			
 				<div class="col-sm-3">
-					<input type="text"  id="sendSessionIDControl" class="form-control"  placeholder="undetermined" >
+					<input type="text"  id="sendSessionIDControl" name="sendSessionID" class="form-control"  placeholder="undetermined" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">文件名</label>			
 				<div class="col-sm-3">
-					<input type="text" id="filenameControl" class="form-control"  placeholder="abc.txt" >
+					<input type="text" id="filenameControl" name="filename" class="form-control"  placeholder="abc.txt" >
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">文件路径</label>			
 				<div class="col-sm-3">
-					<input type="text" id="filePathControl" class="form-control"  placeholder="/home/oliver/" >
+					<input type="text" id="filePathControl" name="filePath" class="form-control"  placeholder="/home/oliver/" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">目的地</label>			
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="destinationControl" placeholder="CTCC/BACC" >
+					<input type="text" class="form-control" id="destinationControl" name="destination" placeholder="CTCC/BACC" >
 				</div>
 			</div>
 		</form>
@@ -99,42 +99,7 @@
 		</form>
 	</div>
 </div>
-<script>
-	jQuery(document).ready(function(){
-		jQuery('#datetimepicker1').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:ss',
-		});
-		jQuery("#sendNonRealBtn").click(function(){
-			let param={'msgTag':jQuery("#msgTagControl").val(), 'missionID': jQuery("#missionIDControl").val(),
-					"msgType": jQuery("#msgTypeControl").val(), "subtype": jQuery("#subtypeControl").val(), 
-					"MSGID": jQuery("#MSGIDControl").val(),"sender":jQuery("#senderControl").val(),
-					"timestamp":jQuery("#datetimepicker1").find("input").val(),"content":{"sendSessionID":jQuery("#sendSessionIDControl").val(),
-					"filename":jQuery("#filenameControl").val(),"filePath":jQuery("#filePathControl").val(),
-						"destination":jQuery("#destinationControl").val()}};    
-			jQuery.ajax({
-					type: 'POST',  
-					data: JSON.stringify(param),
-					dataType:"text",
-					contentType:"application/json",
-					crossDomain: true,
-					xhrFields: {
-						withCredentials: true
-					},
-					url : "/non_real/send_command",
-					success: function(data) {
-						alert("send success!");
-					},
-					complete: function( xhr,data ){
-						
-					},
-					error:function(XMLHttpRequest, textStatus){  
-						alert(textStatus);
-					}
-				});
-		  });
-		});			
-
-</script>
+<script src="/public/assets/js/nonreal_command.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>

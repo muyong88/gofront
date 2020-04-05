@@ -18,7 +18,7 @@
 				<div  class="panel-title ">CCTC命令</div>
 			</div>
 			<br/>
-			<form role="form" class="form-horizontal">
+			<form role="form" id="cctcForm" class="form-horizontal">
 			<div class="form-group">
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
@@ -63,20 +63,20 @@
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">下行开始时间</label>			
-				<div class='input-group date col-sm-3' id='datetimepicker1' >
-					<input type='text' class="form-control" />
-					<span class="input-group-addon">
+				<div class='input-group date col-sm-3'  >
+					<input type='text' class="form-control" id='datetimepicker1' name='datetimepicker1'/>
+					<!-- <span class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
-					</span>
+					</span> -->
 				</div>
 			</div>
 			<div  class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">下行结束时间</label>			
-				<div class='input-group date col-sm-3' id='datetimepicker2' >
-					<input type='text' class="form-control" />
-					<span class="input-group-addon">
+				<div class='input-group date col-sm-3' >
+					<input type='text' class="form-control" id='datetimepicker2'  name='datetimepicker2' />
+					<!-- <span class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
-					</span>
+					</span> -->
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">主份软件主机名称</label>			
 				<div class="col-sm-3">
@@ -105,42 +105,6 @@
 	</div>
 </div>
 	{{ template "bottom"}}
-	<script>
-		jQuery(document).ready(function(){
-			jQuery("#sendCCTCBtn").click(function(){
-			let param={'msgType':jQuery("#msgTypeControl").val(), 'Operation': jQuery("#operationControl").val(),
-					"SysId": Number(jQuery("#sysIdControl").val()), "Pattern": Number(jQuery("#patternControl").val()), 
-					"Channel": Number(jQuery("#channelControl").val()),"BeginTime":jQuery("#datetimepicker1").find("input").val(),
-					"EndTime":jQuery("#datetimepicker2").find("input").val(),"MainHostName":jQuery("#mainHostNameControl").val(),
-					"BackupHostName":jQuery("#backupHostNameControl").val()};    
-			jQuery.ajax({
-					type: 'POST',  
-					data: JSON.stringify(param),
-					dataType:"text",
-					contentType:"application/json",
-					crossDomain: true,
-					xhrFields: {
-						withCredentials: true
-					},
-					url : "/cctc/send_command",
-					success: function(data) {
-						alert("send success!");
-					},
-					complete: function( xhr,data ){
-						
-					},
-					error:function(XMLHttpRequest, textStatus){  
-						alert(textStatus);
-					}
-				});
-		  });
-		});
-		jQuery('#datetimepicker1').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:ss',
-    });
-		jQuery('#datetimepicker2').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm:ss',
-    });
-		</script>
+	<script src="/public/assets/js/cctc_command.js"></script>
 </body>
 </html>
