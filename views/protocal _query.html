@@ -17,22 +17,23 @@
 				<br/>
 				<form role="form" class="form-horizontal form-groups-bordered">
 					<div class="form-group">
-						<label class="col-sm-1 control-label">来源站</label>			
+						<label class="col-sm-1 control-label ">来源站</label>			
 						<div class="col-sm-2">
-							<select class="form-control">
+							<select class="form-control" disabled>
 								<option>ALL</option>
 							</select>
 						</div>
-						<label class="col-sm-1 control-label">飞行器</label>			
+						<label class="col-sm-1 control-label">任务号</label>			
 						<div class="col-sm-2">
-							<select class="form-control">
-								<option>ALL</option>
+							<select class="form-control" id= "MIDControl">
+								<option>HXC</option>
+								<option>CLOSE</option>
 							</select>									
 						</div>
-						<label class="col-sm-1 control-label">协议</label>			
-						<div class="col-sm-2">
-						<select class="form-control">
-							<option>ALL</option>
+						<label class="col-sm-1 control-label">协议进程名称</label>			
+						<div class="col-sm-3">
+						<select class="form-control" id="ProcessNameControl">
+							<option>LINK_CTCC-TL1A1_POAC</option>
 						</select>	
 					    </div>		
 						<div class="col-sm-2">

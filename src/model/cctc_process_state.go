@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
@@ -58,6 +59,13 @@ func GetOneCCTCProcessState(process *CCTC_Process_State) (bool, error) {
 //查询所有
 func GetAllCCTCProcessState() ([]map[string]string, error) {
 	return gofrontdb.EngineGroup().QueryString("select * from CCTC_Process_State")
+}
+
+//条件查询
+func GetCCTCProcessStateConditions(msgType string, sysId int8) ([]map[string]string, error) {
+	sqlText := "select * from CCTC_Process_State where MsgType = '%s' and SysId = %d "
+	sqlText = fmt.Sprintf(sqlText, msgType, sysId)
+	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 
 func (this *CCTC_Process_State) GetJsonString() string {

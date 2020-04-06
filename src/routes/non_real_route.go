@@ -54,7 +54,10 @@ func Non_Real_Send_Command(ctx iris.Context) {
 
 //查询Db
 func Non_Real_Query_Db(ctx iris.Context) {
-	results, _ := model.GetAllNonRealProcessState()
+	var state model.Non_Real_File_State
+	ctx.ReadJSON(&state)
+	// results, _ := model.GetAllNonRealProcessState()
+	results, _ := model.GetNonRealProcessStateCondition(state.MsgType, state.MissionID)
 	bjson, _ := json.Marshal(results)
 	ctx.JSON(string(bjson))
 }

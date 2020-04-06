@@ -2,27 +2,28 @@ package model
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
 )
 
 type Non_Real_File_State struct {
-	Identify      int64  `xorm:"pk autoincr  notnull"` //自增id
-	MsgSign       string `xorm:"notnull"`
-	MsgTag        string `xorm:"notnull"`
-	MsgType       string `xorm:"notnull"`
-	MissionID     string `xorm:"notnull"`
-	Subtype       string `xorm:"notnull"`
-	MSGID         string `xorm:"notnull"`
-	Sender        string `xorm:"notnull"`
-	Timestamp     string `xorm:"notnull"`
-	Type          string `xorm:"notnull"`
-	SendSessionID string `xorm:"notnull"`
-	FileName      string `xorm:"notnull"`
-	FilePath      string `xorm:"notnull"`
-	Status        string `xorm:"notnull"`
-	Station       string `xorm:"notnull"`
+	Identify      int64  `xorm:"pk autoincr  notnull" ` //自增id
+	MsgSign       string `xorm:"notnull" `
+	MsgTag        string `xorm:"notnull" json:"msgTag"`
+	MsgType       string `xorm:"notnull" json:"msgType"`
+	MissionID     string `xorm:"notnull" json:"missionID"`
+	Subtype       string `xorm:"notnull" json:"subtype"`
+	MSGID         string `xorm:"notnull" json:"MSGID"`
+	Sender        string `xorm:"notnull" json:"sender"`
+	Timestamp     string `xorm:"notnull" json:"timestamp"`
+	Type          string `xorm:"notnull" json:"type"`
+	SendSessionID string `xorm:"notnull" json:"sendSessionID"`
+	FileName      string `xorm:"notnull" json:"fileName"`
+	FilePath      string `xorm:"notnull" json:"filePath"`
+	Status        string `xorm:"notnull" json:"status"`
+	Station       string `xorm:"notnull" json:"station"`
 }
 
 //入库
@@ -41,6 +42,13 @@ func GetNon_Real_File_State(state *Non_Real_File_State) (bool, error) {
 //查询所有
 func GetAllNonRealProcessState() ([]map[string]string, error) {
 	return gofrontdb.EngineGroup().QueryString("select * from Non_Real_File_State")
+}
+
+//条件查询
+func GetNonRealProcessStateCondition(msgType string, missionID string) ([]map[string]string, error) {
+	sqlText := "select * from Non_Real_File_State where MsgType = '%s' and MissionID = '%s' "
+	sqlText = fmt.Sprintf(sqlText, msgType, missionID)
+	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 
 func (this *Non_Real_File_State) GetJsonString() string {

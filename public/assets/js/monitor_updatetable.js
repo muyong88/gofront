@@ -36,9 +36,9 @@
 } 
 	  }
 	  function updateProtocalTable(obj){
-            var trStr = '';//动态拼接table
+            var trStr = '';//动态拼接tablem
             trStr += '<tr>';//拼接处规范的表格形式
-            trStr += '<td>'+ obj.MsgType+'</td>';
+            trStr += '<td>'+ obj.msgType+'</td>';
             trStr += '<td>'+ obj.ID+'</td>';
             trStr += '<td>'+ obj.MID+'</td>';
             trStr += '<td>'+ obj.BID+'</td>';
@@ -95,19 +95,19 @@
 	  function updateNonRealTable(obj){
             var trStr = '';//动态拼接table
             trStr += '<tr>';//拼接处规范的表格形式
-            trStr += '<td>'+ obj.MsgTag+'</td>';
-            trStr += '<td>'+ obj.MsgType+'</td>';
-            trStr += '<td>'+ obj.MissionID+'</td>';
-            trStr += '<td>'+ obj.Subtype+'</td>';
+            trStr += '<td>'+ obj.msgTag+'</td>';
+            trStr += '<td>'+ obj.msgType+'</td>';
+            trStr += '<td>'+ obj.missionID+'</td>';
+            trStr += '<td>'+ obj.subtype+'</td>';
             trStr += '<td>'+ obj.MSGID+'</td>';
-            trStr += '<td>'+ obj.Sender+'</td>';
-            trStr += '<td>'+ obj.Timestamp+'</td>';
-            trStr += '<td>'+ obj.Type+'</td>';
-            trStr += '<td>'+ obj.SendSessionID+'</td>';
-            trStr += '<td>'+ obj.FileName+'</td>';
-            trStr += '<td>'+ obj.FilePath+'</td>';
-            trStr += '<td>'+ obj.Status+'</td>';
-            trStr += '<td>'+ obj.Station+'</td>';
+            trStr += '<td>'+ obj.sender+'</td>';
+            trStr += '<td>'+ obj.timestamp+'</td>';
+            trStr += '<td>'+ obj.type+'</td>';
+            trStr += '<td>'+ obj.sendSessionID+'</td>';
+            trStr += '<td>'+ obj.fileName+'</td>';
+            trStr += '<td>'+ obj.filePath+'</td>';
+            trStr += '<td>'+ obj.status+'</td>';
+            trStr += '<td>'+ obj.station+'</td>';
 			      trStr+='</tr>';
 			      jQuery('#nonreal_tb').append(trStr);
 	  }

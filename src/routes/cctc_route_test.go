@@ -20,7 +20,7 @@ func Test_CCTC_Process_state_Post(t *testing.T) {
 	mapStr := map[string]interface{}{
 		"msgType":              "CTCCFRONTEND_STATE_REPORT",
 		"processId":            123,
-		"sysId":                1,
+		"sysId":                2,
 		"pattern":              1,
 		"channel":              1,
 		"isSend32KB":           1,
@@ -54,7 +54,7 @@ func Test_CCTC_Process_state_Post(t *testing.T) {
 
 func Test_CCTC_Send_Command(t *testing.T) {
 	comStr := `{"msgType": "CTCCFRONTEND_CONTROL", "Operation": "Open",
-	"SysId": 1, "Pattern": 1, 
+	"SysId": 2, "Pattern": 1, 
 	"Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""}`
 	HttpRequest.JSON().Post("http://localhost:8080/cctc/send_command", comStr)
 

@@ -11,11 +11,11 @@ func Test_Protocal_Process_state_Post(t *testing.T) {
 	{
 		"msgType": "ProtocalReport",
 		"PID": 1234,
-		"MID": "HXC",
+		"MID": "CLOSE",
 		"BID": "00112233",
 		"ID": 1,
 		"MainOrBackup": 1,
-		"ProcessName": "LINK_CTCC - TL1A1_POAC",
+		"ProcessName": "LINK_CTCC-TL1A1_POAC",
 		"Report": {
 			"Report_type": "CP_REPORT_ON_TIMER",
 			"Command_type": "bb",

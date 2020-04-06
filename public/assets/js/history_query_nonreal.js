@@ -1,8 +1,7 @@
 jQuery(document).ready(function(){               
     jQuery("#queryBtn").click(function(){
-        let param={"msgType": "CTCCFRONTEND_CONTROL", "Operation": "Open",
-        "SysId": 1, "Pattern": 1, 
-        "Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""};    
+        jQuery('#nonreal_tb').html("");
+        let param={"msgType": jQuery("#msgTypeControl").val(), "missionID": jQuery("#missionIDControl").val()};    
         jQuery.ajax({
         type: 'POST',  
         data: JSON.stringify(param),

@@ -58,7 +58,10 @@ func Protocal_Process_Send_Command(ctx iris.Context) {
 
 //查询Db
 func Protocal_Query_Db(ctx iris.Context) {
-	results, _ := model.GetAllProctocalProcessDbState()
+	var state model.Protocal_Process_State
+	ctx.ReadJSON(&state)
+	// results, _ := model.GetAllProctocalProcessDbState()
+	results, _ := model.GetProctocalProcessDbStateCondition(state.MID, state.ProcessName)
 	bjson, _ := json.Marshal(results)
 	ctx.JSON(string(bjson))
 }

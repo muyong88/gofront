@@ -39,6 +39,16 @@ jQuery(document).ready(function(){
         }
     }
 });
+jQuery("#OrderNameControl").change(function(){
+    var opt=jQuery("#OrderNameControl").val();
+    if(opt=="MODE"){
+        jQuery("#MODEControl").val("");
+        jQuery("#MODEControl").attr("disabled",false);
+    }else{
+        jQuery("#MODEControl").val("");
+        jQuery("#MODEControl").attr("disabled",true);
+    }
+});
 jQuery("#sendProtocalBtn").click(function(){
     var bv =jQuery('#proctocalForm').data('bootstrapValidator');
     bv.validate();

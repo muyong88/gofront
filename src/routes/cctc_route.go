@@ -69,7 +69,10 @@ func CCTC_Send_Command(ctx iris.Context) {
 }
 
 func CCTC_Query_Db(ctx iris.Context) {
-	results, _ := model.GetAllCCTCProcessState()
+	var state model.CCTC_Process_State
+	ctx.ReadJSON(&state)
+	// results, _ := model.GetAllCCTCProcessState()
+	results, _ := model.GetCCTCProcessStateConditions(state.MsgType, state.SysId)
 	bjson, _ := json.Marshal(results)
 	ctx.JSON(string(bjson))
 }
