@@ -3,6 +3,7 @@ package routes
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/kataras/golog"
 	"github.com/kataras/iris"
@@ -38,6 +39,7 @@ func Protocal_Process_state_Post(ctx iris.Context) {
 	}
 	//Stub:展示
 	controller.SendWebsocketMsg([]byte(process_state.GetJsonString()))
+	controller.ProctocalUpdateTime = time.Now()
 }
 
 //发送控制命令接口

@@ -3,6 +3,7 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"github.com/yanzhen74/gofront/src/model"
 )
@@ -26,6 +27,7 @@ func RunProcessor() {
 				fmt.Println(err2)
 			}
 			SendWebsocketMsg([]byte(file_state.GetJsonString()))
+			NonRealUpdateTime = time.Now()
 		}
 
 	}

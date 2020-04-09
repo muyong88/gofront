@@ -31,10 +31,46 @@
        			 break;
 			case "Protocal_Process_State":      
 			 updateProtocalTable(obj);
-       			 break;
+              break;
+      case "NewMessage":
+        updateNewMessage(obj)
+        break;
      		default:        
-} 
-	  }
+      } 
+    }
+    function updateNewMessage(obj){
+      var trStr = '';
+      trStr += '<td>'+ obj.TimeStamp+'</td>';
+      trStr += '<td>'+ obj.MsgSummary+'</td>'; 
+      if(obj.MsgFlag=="CCTC"){
+        if(obj.SuccessFlag=="warning"){
+          jQuery('#cctcRow').addClass("warning");
+          jQuery('#cctcRow').removeClass("success");
+        }else{
+          jQuery('#cctcRow').addClass("success");
+          jQuery('#cctcRow').removeClass("warning");
+        }        
+        jQuery('#cctcRow').html(trStr);
+      }else if(obj.MsgFlag=="Proctocal"){
+        if(obj.SuccessFlag=="warning"){
+          jQuery('#protocalRow').addClass("warning");
+          jQuery('#protocalRow').removeClass("success");
+        }else{
+          jQuery('#protocalRow').addClass("success");
+          jQuery('#protocalRow').removeClass("warning");
+        }    
+        jQuery('#protocalRow').html(trStr);
+      }else if(obj.MsgFlag=="NonReal"){
+        if(obj.SuccessFlag=="warning"){
+          jQuery('#NonRealRow').addClass("warning");
+          jQuery('#NonRealRow').removeClass("success");
+        }else{
+          jQuery('#NonRealRow').addClass("success");
+          jQuery('#NonRealRow').removeClass("warning");
+        }    
+        jQuery('#NonRealRow').html(trStr);
+      }
+    }
 	  function updateProtocalTable(obj){
             var trStr = '';//动态拼接tablem
             trStr += '<tr>';//拼接处规范的表格形式

@@ -38,6 +38,7 @@ func main() {
 
 	controller.Run_network() // Receive network data
 	go controller.RunProcessor()
+	go controller.RunHeartBeatProcessor()
 
 	app.Run(iris.Addr(":"+parse.AppConfig.Port), iris.WithConfiguration(iris.YAML("config/iris.yaml")))
 }
