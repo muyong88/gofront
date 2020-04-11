@@ -146,5 +146,29 @@
             trStr += '<td>'+ obj.station+'</td>';
 			      trStr+='</tr>';
 			      jQuery('#nonreal_tb').append(trStr);
-	  }
+    }
+
+    jQuery('#newMSg_tbody').bind('DOMNodeInserted', function () {
+      var count = jQuery("#newMSg_tbody").find("tr").length;
+      jQuery('#newMsgNum').text(count.toString());
+      
+  });
+
+  jQuery('#cctc_tbody').bind('DOMNodeInserted', function () {
+    var count = jQuery("#cctc_tbody").find("tr").length;
+    jQuery('#cctcNum').text(count.toString());
+    
+});
+
+  jQuery('#protocal_tbody').bind('DOMNodeInserted', function () {
+    var count = jQuery("#protocal_tbody").find("tr").length;
+    jQuery('#protocalNum').text(count.toString());
+    
+});
+    
+    jQuery('#nonreal_tbody').bind('DOMNodeInserted', function () {
+      var count = jQuery("#nonreal_tbody").find("tr").length;
+      jQuery('#nonRealNum').text(count.toString());
+      
+  });
 

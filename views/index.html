@@ -19,7 +19,7 @@
 		
 				<div class="tile-stats tile-red">
 					<div class="icon"><i class="entypo-users"></i></div>
-					<div class="num" >0</div>
+					<div class="num" id="newMsgNum">3</div>
 		
 					<h3>New Messages</h3>
 					<p>message nums need attentions in message db.</p>
@@ -31,7 +31,7 @@
 		
 				<div class="tile-stats tile-green">
 					<div class="icon"><i class="entypo-chart-bar"></i></div>
-					<div class="num" >0</div>
+					<div class="num" id="cctcNum">0</div>
 		
 					<h3>CCTC Process State</h3>
 					<p>nums in cctc table since start or refresh.</p>
@@ -43,7 +43,7 @@
 		
 				<div class="tile-stats tile-aqua">
 					<div class="icon"><i class="entypo-mail"></i></div>
-					<div class="num" >0</div>
+					<div class="num" id="protocalNum">0</div>
 		
 					<h3>Protocal Process State</h3>
 					<p>nums in protocal table since start or refresh.</p>
@@ -55,7 +55,7 @@
 		
 				<div class="tile-stats tile-blue">
 					<div class="icon"><i class="entypo-rss"></i></div>
-					<div class="num" >0</div>
+					<div class="num" id="nonRealNum">0</div>
 		
 					<h3>File Send State</h3>
 					<p>nums in non-real  since start or refresh.</p>
@@ -94,7 +94,7 @@
 								<td></td>
 								<td>ping Non Real........</td>
 							</tr>
-						<tbody>
+						<tbody id="newMSg_tbody">
 
 						</tbody>
 					</table>
@@ -148,7 +148,7 @@
 								<th>TimeStamp</th>
 							</tr>
 						</thead>		
-						<tbody>
+						<tbody id="cctc_tbody">
 						</tbody>
 					</table>
 				</div>
@@ -187,7 +187,7 @@
 								<th>Send_no</th>								
 							</tr>
 						</thead>		
-						<tbody>
+						<tbody id="protocal_tbody">
 						</tbody>
 					</table>
 				</div>
@@ -223,7 +223,7 @@
 								<th>Station</th>
 							</tr>
 						</thead>		
-						<tbody>
+						<tbody id="nonreal_tbody">
 						</tbody>
 					</table>
 				</div>
