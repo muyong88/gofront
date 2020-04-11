@@ -21,7 +21,7 @@
 		});
 	  })();
 	  function updateTable(msg){
-		var obj = eval("("+msg+")");
+    var obj = eval("("+msg+")");
 		switch(obj.MsgSign) {
      		case "Non_Real_File_State":
 			 updateNonRealTable(obj);
@@ -29,20 +29,20 @@
 			 case "CCTC_Process_State":   
 			 updateCCTCTable(obj);
        			 break;
-			case "Protocal_Process_State":      
+      case "Protocal_Process_State":    
 			 updateProtocalTable(obj);
               break;
       case "NewMessage":
-        updateNewMessage(obj)
+        updateNewMessage(obj);
         break;
-     		default:        
+     		default:     
       } 
     }
     function updateNewMessage(obj){
       var trStr = '';
       trStr += '<td>'+ obj.TimeStamp+'</td>';
       trStr += '<td>'+ obj.MsgSummary+'</td>'; 
-      if(obj.MsgFlag=="CCTC"){
+      if(obj.MsgFlag=="CCTCHB"){
         if(obj.SuccessFlag=="warning"){
           jQuery('#cctcRow').addClass("warning");
           jQuery('#cctcRow').removeClass("success");
@@ -51,7 +51,7 @@
           jQuery('#cctcRow').removeClass("warning");
         }        
         jQuery('#cctcRow').html(trStr);
-      }else if(obj.MsgFlag=="Proctocal"){
+      }else if(obj.MsgFlag=="ProctocalHB"){
         if(obj.SuccessFlag=="warning"){
           jQuery('#protocalRow').addClass("warning");
           jQuery('#protocalRow').removeClass("success");
@@ -60,7 +60,7 @@
           jQuery('#protocalRow').removeClass("warning");
         }    
         jQuery('#protocalRow').html(trStr);
-      }else if(obj.MsgFlag=="NonReal"){
+      }else if(obj.MsgFlag=="NonRealHB"){
         if(obj.SuccessFlag=="warning"){
           jQuery('#NonRealRow').addClass("warning");
           jQuery('#NonRealRow').removeClass("success");
@@ -69,6 +69,13 @@
           jQuery('#NonRealRow').removeClass("warning");
         }    
         jQuery('#NonRealRow').html(trStr);
+      }else if(obj.MsgFlag=="ProctocalRevStart"){
+        var tmpStr ='<tr class="success">'+'<td>'+ obj.TimeStamp+'</td>'+'<td>'+ obj.MsgSummary+'</td>'+'</tr>';
+        jQuery('#newMSg_tbody').append(tmpStr);
+      }else if(obj.MsgFlag=="ProctocalRevEnd"){
+        jQuery('#newMSg_tbody td').filter(function() {
+          return jQuery(this).text() === obj.MsgSummary;
+        }).closest("tr").remove();
       }
     }
 	  function updateProtocalTable(obj){

@@ -3,6 +3,7 @@ package routes
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"time"
 
 	"github.com/kataras/golog"
@@ -40,6 +41,19 @@ func Protocal_Process_state_Post(ctx iris.Context) {
 	//Stub:展示
 	controller.SendWebsocketMsg([]byte(process_state.GetJsonString()))
 	controller.ProctocalUpdateTime = time.Now()
+	time.Sleep(300 * time.Millisecond)
+	//如果接收状态反转，则发送一份到NEW MESSAGE
+	if process_state.Report.Recv_status_revert == true {
+		strSumary := "(" + process_state.MID + "," + process_state.ProcessName + "," + strconv.Itoa(int(process_state.MainOrBackup)) + ")" + " Receiving data"
+		var msg model.NewMeassage
+		if process_state.Report.Recv_status == true {
+			msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevStart", SuccessFlag: "Success"}
+		} else {
+			msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevEnd", SuccessFlag: "Success"}
+		}
+		msgJson, _ := json.Marshal(msg)
+		controller.SendWebsocketMsg([]byte(msgJson))
+	}
 }
 
 //发送控制命令接口
