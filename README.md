@@ -21,3 +21,7 @@
     | +-- /src/utils 工具代码
     | +-- /src/gofrontdb db操作代码
     -- main.go 主程序
+
+#  运行调试
+    安装kafka和zookeeper，VSCODE打开项目调试
+
