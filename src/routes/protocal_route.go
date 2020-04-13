@@ -12,69 +12,69 @@ import (
 	"github.com/yanzhen74/gofront/src/model"
 )
 
-//协议主控进程与网站间接口
-func Protocal_Hub(party iris.Party) {
+//ProtocalHub 协议主控进程与网站间接口
+func ProtocalHub(party iris.Party) {
 	home := party.Party("/protocal")
 	home.Get("/query", func(ctx iris.Context) {
 		ctx.View("protocal _query.html")
 	})
 	home.Get("/commandpage", func(ctx iris.Context) {
-		ctx.View("protocal_command.html")
+		ctx.View("ProtocalCommand.html")
 	})
-	home.Post("/process_state", Protocal_Process_state_Post)
-	home.Post("/send_command", Protocal_Process_Send_Command)
-	home.Post("/query_db", Protocal_Query_Db)
+	home.Post("/process_state", ProtocalProcessStatePost)
+	home.Post("/send_command", ProtocalProcessSendCommand)
+	home.Post("/query_db", ProtocalQueryDb)
 }
 
-//协议进程状态更新接口
-func Protocal_Process_state_Post(ctx iris.Context) {
-	var process_state model.Protocal_Process_State
-	if err := ctx.ReadJSON(&process_state); err != nil {
+//ProtocalProcessStatePost 协议进程状态更新接口
+func ProtocalProcessStatePost(ctx iris.Context) {
+	var processState model.ProtocalProcessState
+	if err := ctx.ReadJSON(&processState); err != nil {
 		fmt.Println(err)
 		return
 	}
 	// fmt.Println(process_state)
-	_, err := model.CreateProtocal_Process_State(&process_state)
+	_, err := model.CreateProtocalProcessState(&processState)
 	if err != nil {
 		fmt.Println(err)
 	}
 	//Stub:展示
-	controller.SendWebsocketMsg([]byte(process_state.GetJsonString()))
+	controller.SendWebsocketMsg([]byte(processState.GetJSONString()))
 	controller.ProctocalUpdateTime = time.Now()
 	time.Sleep(300 * time.Millisecond)
 	//如果接收状态反转，则发送一份到NEW MESSAGE
-	if process_state.Report.Recv_status_revert == true {
-		strSumary := "(" + process_state.MID + "," + process_state.ProcessName + "," + strconv.Itoa(int(process_state.MainOrBackup)) + ")" + " Receiving data"
+	if processState.Report.RecvStatusRevert == true {
+		strSumary := "(" + processState.MID + "," + processState.ProcessName + "," + strconv.Itoa(int(processState.MainOrBackup)) + ")" + " Receiving data"
 		var msg model.NewMeassage
-		if process_state.Report.Recv_status == true {
+		if processState.Report.RecvStatus == true {
 			msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevStart", SuccessFlag: "Success"}
 		} else {
 			msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevEnd", SuccessFlag: "Success"}
 		}
-		msgJson, _ := json.Marshal(msg)
-		controller.SendWebsocketMsg([]byte(msgJson))
+		msgJSON, _ := json.Marshal(msg)
+		controller.SendWebsocketMsg([]byte(msgJSON))
 	}
 }
 
-//发送控制命令接口
+//ProtocalProcessSendCommand 发送控制命令接口
 //1.接口类型：Kafka
 //2.消息方向：网站→主控
-func Protocal_Process_Send_Command(ctx iris.Context) {
-	var propro_command model.Protocal_Command
-	if err := ctx.ReadJSON(&propro_command); err != nil {
+func ProtocalProcessSendCommand(ctx iris.Context) {
+	var proCommand model.ProtocalCommand
+	if err := ctx.ReadJSON(&proCommand); err != nil {
 		fmt.Println(err)
 		golog.Error(err)
 		return
 	}
 	network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("5")
 	if err == nil {
-		controller.SendDataToTopic(network.NetWorkTopic, propro_command.GetJsonCommand())
+		controller.SendDataToTopic(network.NetWorkTopic, proCommand.GetJSONCommand())
 	}
 }
 
-//查询Db
-func Protocal_Query_Db(ctx iris.Context) {
-	var state model.Protocal_Process_State
+//ProtocalQueryDb 查询Db
+func ProtocalQueryDb(ctx iris.Context) {
+	var state model.ProtocalProcessState
 	ctx.ReadJSON(&state)
 	// results, _ := model.GetAllProctocalProcessDbState()
 	results, _ := model.GetProctocalProcessDbStateCondition(state.MID, state.ProcessName)

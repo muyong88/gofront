@@ -26,17 +26,17 @@ func main() {
 	tmpl.Reload(true)                     // 在每个请求上 重新加载模板（开发模式）
 	app.RegisterView(tmpl)
 
-	gofrontdb.MasterEngine().Sync2(new(model.CCTC_Process_State))        //库结构同步
-	gofrontdb.SlaveEngine().Sync2(new(model.CCTC_Process_State))         //库结构同步
-	gofrontdb.MasterEngine().Sync2(new(model.Protocal_Process_State_Db)) //库结构同步
-	gofrontdb.SlaveEngine().Sync2(new(model.Protocal_Process_State_Db))  //库结构同步
-	gofrontdb.MasterEngine().Sync2(new(model.Non_Real_File_State))       // 库结构同步
-	gofrontdb.SlaveEngine().Sync2(new(model.Non_Real_File_State))        // 库结构同步
+	gofrontdb.MasterEngine().Sync2(new(model.CTCCProcessState))       //库结构同步
+	gofrontdb.SlaveEngine().Sync2(new(model.CTCCProcessState))        //库结构同步
+	gofrontdb.MasterEngine().Sync2(new(model.ProtocalProcessStateDb)) //库结构同步
+	gofrontdb.SlaveEngine().Sync2(new(model.ProtocalProcessStateDb))  //库结构同步
+	gofrontdb.MasterEngine().Sync2(new(model.NonRealFileState))       // 库结构同步
+	gofrontdb.SlaveEngine().Sync2(new(model.NonRealFileState))        // 库结构同步
 
 	model.MsgChan = make(chan model.Message)
-	controller.Init_network("config/conf/NetWork.xml") // init net
+	controller.InitNetwork("config/conf/NetWork.xml") // init net
 
-	controller.Run_network() // Receive network data
+	controller.RunNetwork() // Receive network data
 	go controller.RunProcessor()
 	go controller.RunHeartBeatProcessor()
 

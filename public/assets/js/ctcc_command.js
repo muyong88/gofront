@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
         autoclose: true,
         language: 'zh-CN'
     }).on('changeDate',function(e) { 
-    jQuery('#cctcForm').data('bootstrapValidator') 
+    jQuery('#ctccForm').data('bootstrapValidator') 
     .updateStatus('datetimepicker1', 'NOT_VALIDATED',null) 
     .validateField('datetimepicker1'); 
     var starttime=jQuery("#datetimepicker1").val();
@@ -13,7 +13,7 @@ jQuery(document).ready(function(){
     jQuery("#datetimepicker1").datetimepicker('hide');
     });
     jQuery(document).on('changeDate', '#datetimepicker1', function () {
-    jQuery('#cctcForm').data('bootstrapValidator') 
+    jQuery('#ctccForm').data('bootstrapValidator') 
     .updateStatus('datetimepicker1', 'NOT_VALIDATED',null) 
     .validateField('datetimepicker1'); 
     });
@@ -23,7 +23,7 @@ jQuery(document).ready(function(){
         autoclose: true,
         language: 'zh-CN'
     }).on('changeDate',function(e) { 
-    jQuery('#cctcForm').data('bootstrapValidator') 
+    jQuery('#ctccForm').data('bootstrapValidator') 
     .updateStatus('datetimepicker2', 'NOT_VALIDATED',null) 
     .validateField('datetimepicker2'); 
     var endtime=jQuery("#datetimepicker2").val();
@@ -31,12 +31,12 @@ jQuery(document).ready(function(){
     jQuery("#datetimepicker2").datetimepicker('hide'); 
     });
     jQuery(document).on('changeDate', '#datetimepicker2', function () {
-    jQuery('#cctcForm').data('bootstrapValidator') 
+    jQuery('#ctccForm').data('bootstrapValidator') 
     .updateStatus('datetimepicker2', 'NOT_VALIDATED',null) 
     .validateField('datetimepicker2'); 
     });
-    jQuery("#sendCCTCBtn").click(function(){
-    var bv =jQuery('#cctcForm').data('bootstrapValidator');
+    jQuery("#sendCTCCBtn").click(function(){
+    var bv =jQuery('#ctccForm').data('bootstrapValidator');
     bv.validate();
     if (bv.isValid()) {
         let param={'msgType':jQuery("#msgTypeControl").val(), 'Operation': jQuery("#operationControl").val(),
@@ -53,7 +53,7 @@ jQuery(document).ready(function(){
             xhrFields: {
                 withCredentials: true
             },
-            url : "/cctc/send_command",
+            url : "/ctcc/send_command",
             success: function(data) {
                 alert("send success!");
             },
@@ -66,7 +66,7 @@ jQuery(document).ready(function(){
         });
     }});
 });
-jQuery('#cctcForm').bootstrapValidator({
+jQuery('#ctccForm').bootstrapValidator({
 message: 'This value is not valid',
 feedbackIcons: {
     valid: 'glyphicon glyphicon-ok',

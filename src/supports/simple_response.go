@@ -6,6 +6,7 @@ import (
 	"github.com/kataras/iris"
 )
 
+//const const
 const (
 	// key定义
 	CODE  string = "code"
@@ -51,10 +52,11 @@ const (
 )
 
 // 200 define
-func Ok_(ctx iris.Context, msg string) {
-	Ok(ctx, msg, nil)
-}
+// func Ok_(ctx iris.Context, msg string) {
+// 	Ok(ctx, msg, nil)
+// }
 
+//Ok Ok
 func Ok(ctx iris.Context, msg string, data interface{}) {
 	ctx.StatusCode(iris.StatusOK)
 	// ctx.Header("Access-Control-Expose-Headers", "Authorization")
@@ -67,7 +69,8 @@ func Ok(ctx iris.Context, msg string, data interface{}) {
 	})
 }
 
-func Ok_page(ctx iris.Context, msg string, page int, data interface{}) {
+//OkPage Ok_page
+func OkPage(ctx iris.Context, msg string, page int, data interface{}) {
 	ctx.StatusCode(iris.StatusOK)
 	ctx.JSON(iris.Map{
 		CODE:  iris.StatusOK,
@@ -77,7 +80,7 @@ func Ok_page(ctx iris.Context, msg string, page int, data interface{}) {
 	})
 }
 
-// 401 error define
+//Unauthorized 401 error define
 func Unauthorized(ctx iris.Context, msg string, data interface{}) {
 	unauthorized := iris.StatusUnauthorized
 
@@ -89,7 +92,7 @@ func Unauthorized(ctx iris.Context, msg string, data interface{}) {
 	})
 }
 
-// common error define
+//Error common error define
 func Error(ctx iris.Context, status int, msg string, data interface{}) {
 	ctx.StatusCode(status)
 	ctx.JSON(iris.Map{

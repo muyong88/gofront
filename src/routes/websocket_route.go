@@ -11,6 +11,7 @@ import (
 
 const namespace = "default"
 
+//WebsocketHub WebsocketHub
 func WebsocketHub(party iris.Party) {
 	controller.WebSocketConn = new(model.WebsocketConnStruct)
 	controller.WebSocketConn.Count = 0
@@ -33,7 +34,7 @@ var serverEvents = websocket.Namespaces{
 			}
 			controller.WebSocketConn.Count = controller.WebSocketConn.Count + 1
 			ctx := websocket.GetContext(nsConn.Conn)
-			golog.Errorf("[%s] connected to namespace [%s] with IP [%s]",
+			golog.Infof("[%s] connected to namespace [%s] with IP [%s]",
 				nsConn, msg.Namespace,
 				ctx.RemoteAddr())
 			return nil

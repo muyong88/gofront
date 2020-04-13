@@ -9,14 +9,14 @@ import (
 	"github.com/yanzhen74/gofront/src/supports"
 )
 
-//所有路由
+//Hub 所有路由
 func Hub(app *iris.Application) {
 	preSettring(app)
 	var main = corsSetting(app)
 	HomeHub(main)
-	CCTC_Hub(main)
-	Protocal_Hub(main)
-	Non_Real_Hub(main)
+	CTCCHub(main)
+	ProtocalHub(main)
+	NonRealHub(main)
 	WebsocketHub(main)
 }
 
@@ -24,7 +24,6 @@ func corsSetting(app *iris.Application) (main iris.Party) {
 	var (
 		crs context.Handler
 	)
-
 	crs = cors.New(cors.Options{
 		AllowedOrigins: []string{"*"}, //允许通过的主机名称
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},

@@ -8,7 +8,8 @@ import (
 	"github.com/yanzhen74/gofront/src/gofrontdb"
 )
 
-type Non_Real_File_State struct {
+//NonRealFileState 非实时文件状态结构体
+type NonRealFileState struct {
 	Identify      int64  `xorm:"pk autoincr  notnull" ` //自增id
 	MsgSign       string `xorm:"notnull" `
 	MsgTag        string `xorm:"notnull" json:"msgTag"`
@@ -26,33 +27,34 @@ type Non_Real_File_State struct {
 	Station       string `xorm:"notnull" json:"station"`
 }
 
-//入库
-func CreateNon_Real_File_State(state *Non_Real_File_State) (int64, error) {
-	state.MsgSign = "Non_Real_File_State"
+//CreateNonRealFileState 入库
+func CreateNonRealFileState(state *NonRealFileState) (int64, error) {
+	state.MsgSign = "NonRealFileState"
 	e := gofrontdb.EngineGroup()
 	return e.Insert(state)
 }
 
-//查询一条
-func GetNon_Real_File_State(state *Non_Real_File_State) (bool, error) {
+//GetNonRealFileState 查询一条
+func GetNonRealFileState(state *NonRealFileState) (bool, error) {
 	e := gofrontdb.EngineGroup()
 	return e.Get(state)
 }
 
-//查询所有
+//GetAllNonRealProcessState 查询所有
 func GetAllNonRealProcessState() ([]map[string]string, error) {
-	return gofrontdb.EngineGroup().QueryString("select * from Non_Real_File_State")
+	return gofrontdb.EngineGroup().QueryString("select * from NonRealFileState")
 }
 
-//条件查询
+//GetNonRealProcessStateCondition 条件查询
 func GetNonRealProcessStateCondition(msgType string, missionID string) ([]map[string]string, error) {
-	sqlText := "select * from Non_Real_File_State where MsgType = '%s' and MissionID = '%s' "
+	sqlText := "select * from NonRealFileState where MsgType = '%s' and MissionID = '%s' "
 	sqlText = fmt.Sprintf(sqlText, msgType, missionID)
 	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 
-func (this *Non_Real_File_State) GetJsonString() string {
-	data, err := json.Marshal(this)
+//GetJSONString 获取json
+func (non *NonRealFileState) GetJSONString() string {
+	data, err := json.Marshal(non)
 	if err != nil {
 		golog.Errorf("Json marshaling failed：%s", err)
 	}

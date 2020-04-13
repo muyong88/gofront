@@ -7,15 +7,18 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+//DBConfig DBConfig
 var (
 	DBConfig DB
 )
 
+//DB DB STRUCT
 type DB struct {
 	Master DBConfigInfo `yaml:"Master"`
 	Slave  DBConfigInfo `yaml:"Slave"`
 }
 
+//DBConfigInfo DB Config Info
 type DBConfigInfo struct {
 	Dialect      string `yaml:"dialect"`
 	User         string `yaml:"user"`
@@ -24,7 +27,7 @@ type DBConfigInfo struct {
 	Port         int    `yaml:"port"`
 	Database     string `yaml:"database"`
 	Charset      string `yaml:"charset"`
-	ShowSql      bool   `yaml:"showSql"`
+	ShowSQL      bool   `yaml:"ShowSQL"`
 	LogLevel     string `yaml:"logLevel"`
 	MaxOpenConns int    `yaml:"maxOpenConns"`
 	MaxIdleConns int    `yaml:"maxIdleConns"`
@@ -36,6 +39,7 @@ type DBConfigInfo struct {
 	//Sslmode         string `yaml:"sslmode"`
 }
 
+//DBSettingParse DB Setting Parse
 func DBSettingParse() {
 	golog.Info("@@@ Init db conf")
 	//data, err := ioutil.ReadFile("conf/db.yml")

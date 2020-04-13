@@ -8,6 +8,7 @@ import (
 	"github.com/yanzhen74/gofront/src/model"
 )
 
+//RunProcessor 用于KAFKA接收数据
 func RunProcessor() {
 	for {
 		msgRe := <-model.MsgChan
@@ -16,17 +17,17 @@ func RunProcessor() {
 			continue
 		}
 		if msgRe.Topic == network.NetWorkTopic {
-			var file_state model.Non_Real_File_State
-			err1 := json.Unmarshal(msgRe.Content, &file_state)
+			var fileState model.NonRealFileState
+			err1 := json.Unmarshal(msgRe.Content, &fileState)
 			if err1 != nil {
 				fmt.Println(err1)
 				continue
 			}
-			_, err2 := model.CreateNon_Real_File_State(&file_state)
+			_, err2 := model.CreateNonRealFileState(&fileState)
 			if err2 != nil {
 				fmt.Println(err2)
 			}
-			SendWebsocketMsg([]byte(file_state.GetJsonString()))
+			SendWebsocketMsg([]byte(fileState.GetJSONString()))
 			NonRealUpdateTime = time.Now()
 		}
 

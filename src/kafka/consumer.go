@@ -11,21 +11,23 @@ import (
 	"github.com/yanzhen74/gofront/src/model"
 )
 
+//Consumer 消费者结构体
 type Consumer struct {
-	consumer            *sarama.Consumer
-	partition_consumers *[]*sarama.PartitionConsumer
-	topic               string
+	consumer           *sarama.Consumer
+	partitionConsumers *[]*sarama.PartitionConsumer
+	topic              string
 }
 
-func (this *Consumer) Init(config *model.NetWork) (int, error) {
+//Init 利用配置初始化消费者
+func (con *Consumer) Init(config *model.NetWork) (int, error) {
 	fmt.Println("init kafka consumer")
 	conf := sarama.NewConfig()
 	conf.Consumer.Return.Errors = true
 	conf.Version = sarama.V0_10_2_1
 	conf.Consumer.MaxWaitTime = time.Duration(30) * time.Millisecond
-	this.partition_consumers = new([]*sarama.PartitionConsumer)
+	con.partitionConsumers = new([]*sarama.PartitionConsumer)
 	ips := strings.Split(config.NetWorkIP, ";")
-	this.topic = config.NetWorkTopic
+	con.topic = config.NetWorkTopic
 	// consumer
 	consumer, err := sarama.NewConsumer(ips, conf)
 	if err != nil {
@@ -33,7 +35,7 @@ func (this *Consumer) Init(config *model.NetWork) (int, error) {
 		golog.Errorf("consumer kafka create error %s\n", err.Error())
 		return -1, err
 	}
-	this.consumer = &consumer
+	con.consumer = &consumer
 	partitionList, err := consumer.Partitions(config.NetWorkTopic)
 	if err != nil {
 		fmt.Println("Failed to get the list of partitions: ", err)
@@ -41,41 +43,41 @@ func (this *Consumer) Init(config *model.NetWork) (int, error) {
 		return -1, err
 	}
 	for partition := range partitionList {
-		partition_consumer, err := consumer.ConsumePartition(config.NetWorkTopic, int32(partition), sarama.OffsetNewest)
+		partitionConsumer, err := consumer.ConsumePartition(config.NetWorkTopic, int32(partition), sarama.OffsetNewest)
 		if err != nil {
-			fmt.Printf("try create partition_consumer error %s\n", err.Error())
-			golog.Errorf("try create partition_consumer error %s\n", err.Error())
+			fmt.Printf("try create partitionConsumer error %s\n", err.Error())
+			golog.Errorf("try create partitionConsumer error %s\n", err.Error())
 			return -1, err
 		}
-		*(this.partition_consumers) = append(*(this.partition_consumers), &partition_consumer)
+		*(con.partitionConsumers) = append(*(con.partitionConsumers), &partitionConsumer)
 	}
 	return 1, nil
 }
 
-//consume data
-func (this *Consumer) Receive() {
+//Receive consume data
+func (con *Consumer) Receive() {
 
-	for _, partition_consumer := range *(this.partition_consumers) {
-		go process(this.topic, *partition_consumer)
+	for _, partitionConsumer := range *(con.partitionConsumers) {
+		go process(con.topic, *partitionConsumer)
 	}
 
 }
-func process(topic string, partition_consumer sarama.PartitionConsumer) {
+func process(topic string, partitionConsumer sarama.PartitionConsumer) {
 	ticker := time.NewTicker(time.Millisecond * time.Duration(100))
-	cases := init_cases(partition_consumer.Messages(),
-		partition_consumer.Errors(),
+	cases := initCases(partitionConsumer.Messages(),
+		partitionConsumer.Errors(),
 		ticker)
 	for {
 		chose, value, _ := reflect.Select(cases)
 
 		switch chose {
-		case 0: // chan_msg
+		case 0: // chanMsg
 			msg := (value.Interface()).(*sarama.ConsumerMessage)
 			fmt.Printf("msg offset: %d, partition: %d, timestamp: %s, value: %s\n",
 				msg.Offset, msg.Partition, msg.Timestamp.String(), string(msg.Value))
 			msgM := model.Message{Content: msg.Value, Topic: topic}
 			model.MsgChan <- msgM
-		case 1: // chan_err
+		case 1: // chanErr
 			err := (value.Interface()).(*sarama.ConsumerError)
 			fmt.Printf("err :%s\n", err.Error())
 			golog.Errorf("err :%s\n", err.Error())
@@ -91,22 +93,22 @@ func process(topic string, partition_consumer sarama.PartitionConsumer) {
 		}
 	}
 }
-func init_cases(
-	chan_msg <-chan *sarama.ConsumerMessage,
-	chan_err <-chan *sarama.ConsumerError,
+func initCases(
+	chanMsg <-chan *sarama.ConsumerMessage,
+	chanErr <-chan *sarama.ConsumerError,
 	ticker *time.Ticker) (cases []reflect.SelectCase) {
 
 	// chan msg
 	selectcase := reflect.SelectCase{
 		Dir:  reflect.SelectRecv,
-		Chan: reflect.ValueOf(chan_msg),
+		Chan: reflect.ValueOf(chanMsg),
 	}
 	cases = append(cases, selectcase)
 
 	// chan err
 	selectcase = reflect.SelectCase{
 		Dir:  reflect.SelectRecv,
-		Chan: reflect.ValueOf(chan_err),
+		Chan: reflect.ValueOf(chanErr),
 	}
 	cases = append(cases, selectcase)
 

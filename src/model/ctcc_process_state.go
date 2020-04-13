@@ -8,12 +8,13 @@ import (
 	"github.com/yanzhen74/gofront/src/gofrontdb"
 )
 
-type CCTC_Process_State struct {
+//CTCCProcessState CTCC进程状态结构体
+type CTCCProcessState struct {
 	Identify             int64   `xorm:"pk autoincr  notnull"` //自增id
 	MsgSign              string  `xorm:"notnull"`
 	MsgType              string  `xorm:"notnull" json:"msgType"`              //消息类型
-	ProcessId            int8    `xorm:"notnull" json:"processId"`            //进程标识
-	SysId                int8    `xorm:"notnull" json:"sysId"`                //软件标识
+	ProcessID            int8    `xorm:"notnull" json:"processId"`            //进程标识
+	SysID                int8    `xorm:"notnull" json:"sysId"`                //软件标识
 	Pattern              int8    `xorm:"notnull" json:"pattern"`              //软件模式
 	Channel              int8    `xorm:"notnull" json:"channel"`              //下行通道
 	IsSend32KB           int8    `xorm:"notnull" json:"isSend32KB"`           //是否转发32KB数据
@@ -42,43 +43,44 @@ type CCTC_Process_State struct {
 	TimeStamp            string  `xorm:"notnull" json:"timeStamp"`            //时间戳
 }
 
-//入库
-func CreateCCTCProcessState(process *CCTC_Process_State) (int64, error) {
+//CreateCTCCProcessState 入库
+func CreateCTCCProcessState(process *CTCCProcessState) (int64, error) {
 	e := gofrontdb.EngineGroup()
-	process.MsgSign = "CCTC_Process_State"
+	process.MsgSign = "CTCCProcessState"
 	return e.Insert(process)
 	//stub:展示
 }
 
-//查询一个
-func GetOneCCTCProcessState(process *CCTC_Process_State) (bool, error) {
+//GetOneCTCCProcessState 查询一个
+func GetOneCTCCProcessState(process *CTCCProcessState) (bool, error) {
 	e := gofrontdb.EngineGroup()
 	return e.Get(process)
 }
 
-//查询所有
-func GetAllCCTCProcessState() ([]map[string]string, error) {
-	return gofrontdb.EngineGroup().QueryString("select * from CCTC_Process_State")
+//GetAllCTCCProcessState 查询所有
+func GetAllCTCCProcessState() ([]map[string]string, error) {
+	return gofrontdb.EngineGroup().QueryString("select * from CTCCProcessState")
 }
 
-//条件查询
-func GetCCTCProcessStateConditions(msgType string, sysId int8) ([]map[string]string, error) {
-	sqlText := "select * from CCTC_Process_State where MsgType = '%s' and SysId = %d "
-	sqlText = fmt.Sprintf(sqlText, msgType, sysId)
+//GetCTCCProcessStateConditions 条件查询
+func GetCTCCProcessStateConditions(msgType string, sysID int8) ([]map[string]string, error) {
+	sqlText := "select * from CTCCProcessState where MsgType = '%s' and SysId = %d "
+	sqlText = fmt.Sprintf(sqlText, msgType, sysID)
 	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 
-func (this *CCTC_Process_State) GetJsonString() string {
-	data, err := json.Marshal(this)
+//GetJSONString 获取json字符串
+func (pro *CTCCProcessState) GetJSONString() string {
+	data, err := json.Marshal(pro)
 	if err != nil {
 		golog.Errorf("Json marshaling failed：%s", err)
 	}
 	return string(data)
 }
 
-// //字符数组转换成CCTC_Process_State结构体
-// func GetUserFromJson(data []byte) (*CCTC_Process_State, error) {
-// 	var CCTC_Process_State CCTC_Process_State
-// 	err := json.Unmarshal(data, &CCTC_Process_State)
-// 	return &CCTC_Process_State, err
+// //字符数组转换成CTCC_Process_State结构体
+// func GetUserFromJson(data []byte) (*CTCCProcessState, error) {
+// 	var CTCCProcessState CTCCProcessState
+// 	err := json.Unmarshal(data, &CTCCProcessState)
+// 	return &CTCCProcessState, err
 // }

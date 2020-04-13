@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){               
     jQuery("#queryBtn").click(function(){
-        jQuery('#cctc_tb').html("");
+        jQuery('#ctcc_tb').html("");
         let param={"msgType": jQuery("#msgTypeControl").val(),"sysId": Number(jQuery("#sysIdControl").val())};    
         jQuery.ajax({
         type: 'POST',  
@@ -11,16 +11,16 @@ jQuery(document).ready(function(){
         xhrFields: {
             withCredentials: true
         },
-        url : "/cctc/query_db",
+        url : "/ctcc/query_db",
         success: function(data) {
-            updateCCTCTable(data);
+            updateCTCCTable(data);
         },
         complete: function( xhr,data ){
         }
     });
     });
 });
-function updateCCTCTable(data){
+function updateCTCCTable(data){
     var objs = eval("("+data+")"); 
     var trStr = '';//动态拼接table  
     jQuery.each(objs, function (index, obj) {
@@ -56,5 +56,5 @@ function updateCCTCTable(data){
     trStr += '<td>'+ obj.TimeStamp+'</td> ';
     trStr+='</tr>';
 });
-    jQuery('#cctc_tb').html(trStr);
+    jQuery('#ctcc_tb').html(trStr);
 }

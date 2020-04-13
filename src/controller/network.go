@@ -8,14 +8,22 @@ import (
 	"github.com/yanzhen74/gofront/src/model"
 )
 
+//Consumers 消费者集合
 var Consumers *[]*kafka.Consumer = new([]*kafka.Consumer)
+
+//Producers 生产者集合
 var Producers *[]*kafka.Producer = new([]*kafka.Producer)
+
+//WebSocketConn WebSocket连接
 var WebSocketConn *model.WebsocketConnStruct
+
+//NetConfig 网络配置
 var NetConfig *model.NetWorks = new(model.NetWorks)
 
-func Init_network(conf string) bool {
+//InitNetwork 初始化NetConfig
+func InitNetwork(conf string) bool {
 	// init net config
-	netConfig, err := model.Read_network_config(conf)
+	netConfig, err := model.ReadNetworkConfig(conf)
 	NetConfig = netConfig
 	if err != nil {
 		fmt.Printf("error is %v", err)
@@ -41,15 +49,15 @@ func Init_network(conf string) bool {
 	return true
 }
 
-//receive data
-func Run_network() bool {
+//RunNetwork receive data
+func RunNetwork() bool {
 	for _, c := range *Consumers {
 		c.Receive()
 	}
 	return true
 }
 
-//send data to topic
+//SendDataToTopic send data to topic
 func SendDataToTopic(topic string, data string) {
 	for _, p := range *Producers {
 		if p.Topic == topic {
@@ -58,6 +66,7 @@ func SendDataToTopic(topic string, data string) {
 	}
 }
 
+//SendWebsocketMsg websocket发送数据到前端页面
 func SendWebsocketMsg(msg []byte) {
 	if WebSocketConn != nil && WebSocketConn.Count > 0 {
 		WebSocketConn.ConnServer.Broadcast(nil, websocket.Message{

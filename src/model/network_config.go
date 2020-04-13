@@ -9,11 +9,13 @@ import (
 	"github.com/pkg/errors"
 )
 
+//NetWorks NetWorks
 type NetWorks struct {
 	XMLName     xml.Name  `xml:"ROOT"`
 	NetWorkList []NetWork `xml:"NetWork"`
 }
 
+//NetWork NetWork
 type NetWork struct {
 	XMLName         xml.Name `xml:"NetWork"`
 	NetWorkSeqNum   string   `xml:"NetWorkSeqNum,attr"`
@@ -23,7 +25,8 @@ type NetWork struct {
 	NetWorkProtocal string   `xml:"NetWorkProtocal,attr"`
 }
 
-func Read_network_config(filename string) (*NetWorks, error) {
+//ReadNetworkConfig 读取filename网络配置
+func ReadNetworkConfig(filename string) (*NetWorks, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		fmt.Printf("error: %v", err)
@@ -49,8 +52,9 @@ func Read_network_config(filename string) (*NetWorks, error) {
 	return &v, err
 }
 
-func (this *NetWorks) GetNetWorkByNetWorkSeqNum(seq string) (*NetWork, error) {
-	for _, network := range this.NetWorkList {
+//GetNetWorkByNetWorkSeqNum  获取指定seq网络配置
+func (ne *NetWorks) GetNetWorkByNetWorkSeqNum(seq string) (*NetWork, error) {
+	for _, network := range ne.NetWorkList {
 		if network.NetWorkSeqNum == seq {
 			return &network, nil
 		}

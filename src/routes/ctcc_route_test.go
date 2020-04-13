@@ -9,14 +9,14 @@ import (
 
 func Test_DownLink_Get(t *testing.T) {
 
-	urlStr := "http://localhost:8080/cctc/downlink?downlinkBeginTime=20200218162020&downlinkEndTime=20200218162040&pageSize=100&pageNo=0"
+	urlStr := "http://localhost:8080/ctcc/downlink?downlinkBeginTime=20200218162020&downlinkEndTime=20200218162040&pageSize=100&pageNo=0"
 
 	res, _ := HttpRequest.Get(urlStr)
 	body, _ := res.Body()
 	fmt.Println(string(body))
 }
 
-func Test_CCTC_Process_state_Post(t *testing.T) {
+func Test_CTCC_Process_state_Post(t *testing.T) {
 	mapStr := map[string]interface{}{
 		"msgType":              "CTCCFRONTEND_STATE_REPORT",
 		"processId":            123,
@@ -48,14 +48,14 @@ func Test_CCTC_Process_state_Post(t *testing.T) {
 		"sendSmallCraftFrames": "0",
 		"timeStamp":            "2018-11-29_14:02:43.423.5",
 	}
-	HttpRequest.JSON().Post("http://localhost:8080/cctc/process_state", mapStr)
+	HttpRequest.JSON().Post("http://localhost:8080/ctcc/process_state", mapStr)
 
 }
 
-func Test_CCTC_Send_Command(t *testing.T) {
+func Test_CTCC_Send_Command(t *testing.T) {
 	comStr := `{"msgType": "CTCCFRONTEND_CONTROL", "Operation": "Open",
 	"SysId": 2, "Pattern": 1, 
 	"Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""}`
-	HttpRequest.JSON().Post("http://localhost:8080/cctc/send_command", comStr)
+	HttpRequest.JSON().Post("http://localhost:8080/ctcc/send_command", comStr)
 
 }

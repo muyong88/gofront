@@ -6,7 +6,8 @@ import (
 	"github.com/kataras/golog"
 )
 
-type Protocal_Command struct {
+//ProtocalCommand 协议命令结构体
+type ProtocalCommand struct {
 	MsgType     string   `json:"msgType"`
 	ID          int      `json:"ID"`
 	MID         string   `json:"MID"`
@@ -18,17 +19,21 @@ type Protocal_Command struct {
 	Protocal    string   `json:"Protocal"`
 }
 
+//ParaInfo ParaInfo
 type ParaInfo struct {
 	MODE string `json:"MODE"`
 }
 
-func (this *Protocal_Command) GetJsonCommand() string {
-	data, err := json.Marshal(this)
+//GetJSONCommand get json
+func (pro *ProtocalCommand) GetJSONCommand() string {
+	data, err := json.Marshal(pro)
 	if err != nil {
 		golog.Errorf("Json marshaling failed：%s", err)
 	}
 	return string(data)
 }
-func (this *Protocal_Command) InitByJson(data []byte) error {
-	return json.Unmarshal(data, this)
+
+//InitByJSON init
+func (pro *ProtocalCommand) InitByJSON(data []byte) error {
+	return json.Unmarshal(data, pro)
 }

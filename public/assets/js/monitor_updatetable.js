@@ -23,13 +23,13 @@
 	  function updateTable(msg){
     var obj = eval("("+msg+")");
 		switch(obj.MsgSign) {
-     		case "Non_Real_File_State":
+     		case "NonRealFileState":
 			 updateNonRealTable(obj);
        		 	break;
-			 case "CCTC_Process_State":   
-			 updateCCTCTable(obj);
+			 case "CTCCProcessState":   
+			 updateCTCCTable(obj);
        			 break;
-      case "Protocal_Process_State":    
+      case "ProtocalProcessState":    
 			 updateProtocalTable(obj);
               break;
       case "NewMessage":
@@ -42,15 +42,15 @@
       var trStr = '';
       trStr += '<td>'+ obj.TimeStamp+'</td>';
       trStr += '<td>'+ obj.MsgSummary+'</td>'; 
-      if(obj.MsgFlag=="CCTCHB"){
+      if(obj.MsgFlag=="CTCCHB"){
         if(obj.SuccessFlag=="warning"){
-          jQuery('#cctcRow').addClass("warning");
-          jQuery('#cctcRow').removeClass("success");
+          jQuery('#ctccRow').addClass("warning");
+          jQuery('#ctccRow').removeClass("success");
         }else{
-          jQuery('#cctcRow').addClass("success");
-          jQuery('#cctcRow').removeClass("warning");
+          jQuery('#ctccRow').addClass("success");
+          jQuery('#ctccRow').removeClass("warning");
         }        
-        jQuery('#cctcRow').html(trStr);
+        jQuery('#ctccRow').html(trStr);
       }else if(obj.MsgFlag=="ProctocalHB"){
         if(obj.SuccessFlag=="warning"){
           jQuery('#protocalRow').addClass("warning");
@@ -100,7 +100,7 @@
 			      trStr+='</tr>';
 			jQuery('#protocal_tb').append(trStr);
 	  }
-	  function updateCCTCTable(obj){
+	  function updateCTCCTable(obj){
             var trStr = '';//动态拼接table
             trStr += '<tr>';//拼接处规范的表格形式
             trStr += '<td>'+ obj.msgType+'</td>';
@@ -133,7 +133,7 @@
             trStr += '<td>'+ obj.sendSmallCraftFrames+'</td>';
             trStr += '<td>'+ obj.timeStamp+'</td> ';
 			trStr+='</tr>';
-			jQuery('#cctc_tb').append(trStr);
+			jQuery('#ctcc_tb').append(trStr);
 	  }
 	  function updateNonRealTable(obj){
             var trStr = '';//动态拼接table
@@ -161,9 +161,9 @@
       
   });
 
-  jQuery('#cctc_tbody').bind('DOMNodeInserted', function () {
-    var count = jQuery("#cctc_tbody").find("tr").length;
-    jQuery('#cctcNum').text(count.toString());
+  jQuery('#ctcc_tbody').bind('DOMNodeInserted', function () {
+    var count = jQuery("#ctcc_tbody").find("tr").length;
+    jQuery('#ctccNum').text(count.toString());
     
 });
 

@@ -2,13 +2,15 @@ package model
 
 import (
 	"encoding/json"
+
 	"github.com/kataras/golog"
 )
 
-type CCTC_Command struct {
+//CTCCCommand CTCC命令结构体
+type CTCCCommand struct {
 	MsgType        string `json:"msgType"`
 	Operation      string `json:"Operation"`
-	SysId          int    `json:"SysId"`
+	SysID          int    `json:"SysId"`
 	Pattern        int    `json:"Pattern"`
 	Channel        int    `json:"Channel"`
 	BeginTime      string `json:"BeginTime"`
@@ -17,13 +19,16 @@ type CCTC_Command struct {
 	BackupHostName string `json:"BackupHostName"`
 }
 
-func (this *CCTC_Command) GetJsonCommand() string {
-	data, err := json.Marshal(this)
+//GetJSONCommand GET JSON COMMAND
+func (command *CTCCCommand) GetJSONCommand() string {
+	data, err := json.Marshal(command)
 	if err != nil {
 		golog.Errorf("Json marshaling failed：%s", err)
 	}
 	return string(data)
 }
-func (this *CCTC_Command) InitByJson(data []byte) error {
-	return json.Unmarshal(data, this)
+
+//InitByJSON 用JSON初始化结构体
+func (command *CTCCCommand) InitByJSON(data []byte) error {
+	return json.Unmarshal(data, command)
 }

@@ -2,7 +2,7 @@
 <ROOT>
     <NetWork NetWorkSeqNum="1" NetWorkName="Producer" NetWorkIP="localhost:9092" NetWorkTopic="kafkaTest"  NetWorkProtocal="kafka" />  <!-- 测试-生产者 -->
     <NetWork NetWorkSeqNum="2" NetWorkName="Consumer" NetWorkIP="localhost:9092" NetWorkTopic="kafkaTest" NetWorkProtocal="kafka" />    <!-- 测试-消费者 -->
-    <NetWork NetWorkSeqNum="3" NetWorkName="Producer" NetWorkIP="localhost:9092" NetWorkTopic="CCTCControlCommand"  NetWorkProtocal="kafka" />    <!-- 发送CCTC-主控控制命令-生产者 -->
+    <NetWork NetWorkSeqNum="3" NetWorkName="Producer" NetWorkIP="localhost:9092" NetWorkTopic="CTCCControlCommand"  NetWorkProtocal="kafka" />    <!-- 发送CTCC-主控控制命令-生产者 -->
     <NetWork NetWorkSeqNum="4" NetWorkName="Producer" NetWorkIP="localhost:9092" NetWorkTopic="FileCommandP"  NetWorkProtocal="kafka" />  <!-- 发送非实时前端-文件命令-生产者 -->
     <NetWork NetWorkSeqNum="5" NetWorkName="Producer" NetWorkIP="localhost:9092" NetWorkTopic="ProControlCommand"  NetWorkProtocal="kafka" />  <!-- 协议进程-控制命令-生产者 -->
     <NetWork NetWorkSeqNum="6" NetWorkName="Consumer" NetWorkIP="localhost:9092" NetWorkTopic="FileSendStateC" NetWorkProtocal="kafka" />  <!-- 非实时前端-文件发送状态-消费者 -->

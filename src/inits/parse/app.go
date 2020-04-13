@@ -9,8 +9,8 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+//AppConfig 解析app.yml中的Other项
 var (
-	// 解析app.yml中的Other项
 	AppConfig appConfig
 )
 
@@ -22,6 +22,7 @@ type appConfig struct {
 	Secret     string   `yaml:"Secret"`
 }
 
+//AppConfigParse App Config Parse
 func AppConfigParse() {
 	golog.Info("@@@ Init app conf")
 

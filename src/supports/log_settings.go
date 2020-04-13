@@ -53,7 +53,7 @@ func newLogFile(filename string) *os.File {
 	return file
 }
 
-// 记录请求的 logger
+//NewRequestLogger 记录请求的 logger
 func NewRequestLogger() (h iris.Handler, close func() error) {
 	var (
 		err               error

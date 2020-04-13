@@ -6,8 +6,8 @@ import (
 
 func TestNetWork(t *testing.T) {
 
-	Init_network("../../config/conf/NetWork.xml")
-	Run_network()
+	InitNetwork("../../config/conf/NetWork.xml")
+	RunNetwork()
 	for _, p := range *Producers {
 		p.Send("hello, i am a producer")
 	}

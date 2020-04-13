@@ -1,7 +1,7 @@
 
 #自定义配置
 Port: 8080
-IgnoreURLs: [/cctc/downlink, /non_real, /protocal, /echo]
+IgnoreURLs: [/ctcc/downlink, /non_real, /protocal, /echo]
 JWTTimeout: 900 #second
 LogLevel: debug
 Secret: xxx-Secret

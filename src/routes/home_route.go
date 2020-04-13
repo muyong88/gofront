@@ -4,7 +4,7 @@ import (
 	"github.com/kataras/iris"
 )
 
-//stub:
+//HomeHub HomeHub
 func HomeHub(party iris.Party) {
 	home := party.Party("/")
 

@@ -10,7 +10,7 @@ import (
 	"github.com/kataras/golog"
 
 	"github.com/go-xorm/xorm"
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3" //引入sqlite3
 )
 
 var (
@@ -23,7 +23,7 @@ var (
 	lockGroup   sync.Mutex
 )
 
-//创建引擎组，读写分离，单例
+//EngineGroup 创建引擎组，读写分离，单例
 func EngineGroup() *xorm.EngineGroup {
 	if engineGroup != nil {
 		goto EXIST
@@ -42,7 +42,7 @@ EXIST:
 	return engineGroup
 }
 
-// 主库，单例
+//MasterEngine 主库，单例
 func MasterEngine() *xorm.Engine {
 	var (
 		master = parse.DBConfig.Master
@@ -71,7 +71,7 @@ EXIST:
 	return masterEngine
 }
 
-// 从库，单例
+//SlaveEngine 从库，单例
 func SlaveEngine() *xorm.Engine {
 	var (
 		slave = parse.DBConfig.Slave
@@ -108,7 +108,7 @@ func createEngine(dbInfo parse.DBConfigInfo, isMaster bool) {
 	}
 	//settings(engine, &dbIndo)
 
-	engine.ShowSQL(dbInfo.ShowSql)
+	engine.ShowSQL(dbInfo.ShowSQL)
 	engine.SetMapper(core.SameMapper{}) //SnakeMapper 支持struct为驼峰式命名，表结构为下划线命名之间的转换，这个是默认的Maper
 	engine.SetTZLocation(utils.SysTimeLocation)
 	if dbInfo.MaxIdleConns > 0 {
@@ -129,7 +129,7 @@ func createEngine(dbInfo parse.DBConfigInfo, isMaster bool) {
 
 }
 
-// 获取数据库连接的url
+//GetConnURL 获取数据库连接的url
 // true：master主库
 func GetConnURL(isMaster bool) (url string) {
 	url = "./db/front_master.db"

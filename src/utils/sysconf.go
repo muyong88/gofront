@@ -26,5 +26,5 @@ const (
 
 )
 
-// 中国时区
+//SysTimeLocation 中国时区
 var SysTimeLocation, _ = time.LoadLocation("Asia/Chongqing")
