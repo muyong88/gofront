@@ -19,21 +19,17 @@
 					<div class="form-group">
 						<label class="col-sm-1 control-label ">来源站</label>			
 						<div class="col-sm-2">
-							<select class="form-control" disabled>
-								<option>ALL</option>
+							<select class="form-control" id="sourceStationControl" disabled >
 							</select>
 						</div>
 						<label class="col-sm-1 control-label">任务号</label>			
 						<div class="col-sm-2">
 							<select class="form-control" id= "MIDControl">
-								<option>HXC</option>
-								<option>CLOSE</option>
 							</select>									
 						</div>
 						<label class="col-sm-1 control-label">协议进程名称</label>			
 						<div class="col-sm-3">
 						<select class="form-control" id="ProcessNameControl">
-							<option>LINK_CTCC-TL1A1_POAC</option>
 						</select>	
 					    </div>		
 						<div class="col-sm-2">
@@ -73,6 +69,7 @@
 	</div>
 </div>
 <script src="/public/assets/js/history_query_protocal.js"></script>
+<script src="/public/assets/js/select-assignment.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>

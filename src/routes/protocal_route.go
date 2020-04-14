@@ -19,7 +19,7 @@ func ProtocalHub(party iris.Party) {
 		ctx.View("protocal _query.html")
 	})
 	home.Get("/commandpage", func(ctx iris.Context) {
-		ctx.View("ProtocalCommand.html")
+		ctx.View("protocal_command.html")
 	})
 	home.Post("/process_state", ProtocalProcessStatePost)
 	home.Post("/send_command", ProtocalProcessSendCommand)

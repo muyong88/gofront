@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){               
     jQuery("#queryBtn").click(function(){
         jQuery('#nonreal_tb').html("");
-        let param={"msgType": jQuery("#msgTypeControl").val(), "missionID": jQuery("#missionIDControl").val()};    
+        let param={"msgType": jQuery("#msgTypeControl_NonReal").val(), "missionID": jQuery("#missionIDControl").val()};    
         jQuery.ajax({
         type: 'POST',  
         data: JSON.stringify(param),

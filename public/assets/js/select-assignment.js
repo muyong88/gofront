@@ -1,0 +1,40 @@
+jQuery(document).ready(function(){
+    
+    //CTCC前端
+    //1.消息类型
+    jQuery("#msgTypeControl_CTCC").append( 
+        "<option>CTCCFRONTEND_STATE_REPORT</option>\
+         <option>CTCCFRONTEND_CONTROL</option>"
+    );
+    //2.软件标识
+    jQuery("#sysIdControl").append( 
+        "<option>1</option>\
+         <option>2</option>"
+    );
+
+    //协议
+    //1.来源站
+    jQuery("#sourceStationControl").append( 
+        "<option>ALL</option>"
+    );
+    //2.任务号
+    jQuery("#MIDControl").append( 
+        "<option>HXC</option>\
+         <option>CLOSE</option>"
+    );
+    //3.协议进程名称
+    jQuery("#ProcessNameControl").append( 
+        "<option>LINK_CTCC-TL1A1_POAC</option>"
+    );
+
+    //非实时
+    //1.任务号
+    jQuery("#missionIDControl").append( 
+        "<option>eerr</option>\
+         <option>ABAb</option>"
+    );
+    //2.消息类型
+    jQuery("#msgTypeControl_NonReal").append( 
+        "<option>SJTZ</option>"
+    );
+});

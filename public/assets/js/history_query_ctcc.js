@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){               
     jQuery("#queryBtn").click(function(){
         jQuery('#ctcc_tb').html("");
-        let param={"msgType": jQuery("#msgTypeControl").val(),"sysId": Number(jQuery("#sysIdControl").val())};    
+        let param={"msgType": jQuery("#msgTypeControl_CTCC").val(),"sysId": Number(jQuery("#sysIdControl").val())};    
         jQuery.ajax({
         type: 'POST',  
         data: JSON.stringify(param),

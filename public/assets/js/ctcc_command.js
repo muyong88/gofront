@@ -39,7 +39,7 @@ jQuery(document).ready(function(){
     var bv =jQuery('#ctccForm').data('bootstrapValidator');
     bv.validate();
     if (bv.isValid()) {
-        let param={'msgType':jQuery("#msgTypeControl").val(), 'Operation': jQuery("#operationControl").val(),
+        let param={'msgType':jQuery("#msgTypeControl_CTCC").val(), 'Operation': jQuery("#operationControl").val(),
             "SysId": Number(jQuery("#sysIdControl").val()), "Pattern": Number(jQuery("#patternControl").val()), 
             "Channel": Number(jQuery("#channelControl").val()),"BeginTime":jQuery("#datetimepicker1").val(),
             "EndTime":jQuery("#datetimepicker2").val(),"MainHostName":jQuery("#mainHostNameControl").val(),
