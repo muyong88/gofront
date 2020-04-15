@@ -79,7 +79,7 @@ jQuery(document).ready(function(){
         bv.validate();
         if (bv.isValid()) {
         let param={'msgTag':jQuery("#msgTagControl").val(), 'missionID': jQuery("#missionIDControl").val(),
-                "msgType": jQuery("#msgTypeControl").val(), "subtype": jQuery("#subtypeControl").val(), 
+                "msgType": jQuery("#msgTypeControl_NonReal").val(), "subtype": jQuery("#subtypeControl").val(), 
                 "MSGID": jQuery("#MSGIDControl").val(),"sender":jQuery("#senderControl").val(),
                 "timestamp":jQuery("#datetimepicker1").val(),"content":{"sendSessionID":jQuery("#sendSessionIDControl").val(),
                 "filename":jQuery("#filenameControl").val(),"filePath":jQuery("#filePathControl").val(),

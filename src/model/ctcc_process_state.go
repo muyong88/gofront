@@ -32,7 +32,7 @@ type CTCCProcessState struct {
 	SaveWriteShmLoop     string  `xorm:"notnull" json:"saveWriteShmLoop"`     //存储共享内存写入循环次数
 	SaveReadShmLoop      string  `xorm:"notnull" json:"saveReadShmLoop"`      //存储共享内存读出循环次数
 	SaveWriteShmSpeed    float64 `xorm:"notnull" json:"saveWriteShmSpeed"`    //存储共享内存写入数据速度
-	SaveReadShmSpeed     float64 `xorm:"notnull" json:"SaveReadShmSpeed"`     //存储共享内存读取数据速度
+	SaveReadShmSpeed     float64 `xorm:"notnull" json:"saveReadShmSpeed"`     //存储共享内存读取数据速度
 	RecvBeats            int8    `xorm:"notnull" json:"recvBeats"`            //接收数据线程心跳
 	ResendBeats          int8    `xorm:"notnull" json:"resendBeats"`          //转发数据线程心跳
 	SaveBeats            int8    `xorm:"notnull" json:"saveBeats"`            //存储数据线程心跳

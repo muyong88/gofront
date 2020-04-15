@@ -11,6 +11,33 @@ jQuery(document).ready(function(){
         "<option>1</option>\
          <option>2</option>"
     );
+    //3.命令名称
+    jQuery("#operationControl").append( 
+        "<option>OPEN</option>\
+         <option>CLOSE</option>\
+         <option>KILL</option>\
+         <option>START</option>\
+         <option>STOP</option>\
+         <option>CLEAR</option>"
+    );
+    //4.软件模式
+    jQuery("#patternControl").append( 
+        "<option>1</option>\
+         <option>2</option>"
+    );
+    //5.下行通道
+    jQuery("#channelControl").append( 
+        "<option>1</option>\
+         <option>2</option>"
+    );
+    //6.主份软件主机名称
+    jQuery("#mainHostNameControl").append( 
+        "<option>undetermined</option>"
+    );
+    //7.备份软件主机名称
+    jQuery("#backupHostNameControl").append( 
+        "<option>undetermined</option>"
+    );
 
     //协议
     //1.来源站
@@ -26,6 +53,31 @@ jQuery(document).ready(function(){
     jQuery("#ProcessNameControl").append( 
         "<option>LINK_CTCC-TL1A1_POAC</option>"
     );
+    //4.消息类型
+    jQuery("#msgTypeControl_Protocal").append( 
+        "<option>ProtocalReport</option>"
+    );
+    //5.软件标识
+    jQuery("#IDControl").append( 
+        "<option>1</option>\
+         <option>2</option>"
+    );
+    //6.命令名称
+    jQuery("#OrderNameControl").append( 
+        "<option>START</option>\
+        <option>STOP</option>\
+        <option>MODE</option>\
+        <option>OPEN</option>\
+        <option>CLOSE</option>\
+        <option>SEND</option>\
+        <option>RESET</option>\
+        <option>REPORT</option>\
+        <option>ARCHIVE</option>"
+    );
+    //7.协议名称
+    jQuery("#ProtocalControl").append( 
+        "<option>LINK</option>"
+    );
 
     //非实时
     //1.任务号
@@ -37,4 +89,17 @@ jQuery(document).ready(function(){
     jQuery("#msgTypeControl_NonReal").append( 
         "<option>SJTZ</option>"
     );
+    //3.消息标识
+    jQuery("#msgTagControl").append( 
+        "<option>MCSMES</option>"
+    );
+    //4.子消息类型
+    jQuery("#subtypeControl").append( 
+        "<option>MCSMES</option>"
+    );
+    //5.消息发送者
+    jQuery("#senderControl").append( 
+        "<option>OIM</option>"
+    );
+
 });

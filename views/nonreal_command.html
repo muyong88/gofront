@@ -24,27 +24,23 @@
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息标识</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="msgTagControl">
-						<option>MCSMES</option>
 					</select>
 				</div>
-				<label style="text-align:left"  class="col-sm-2 control-label">任务标识</label>			
+				<label style="text-align:left"  class="col-sm-2 control-label">任务号</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="missionIDControl">
-						<option>undetermined</option>
 					</select>									
 				</div>
 			</div>
 			<div class="form-group">
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
-					<select class="form-control" id="msgTypeControl">
-						<option>SJTZ</option>
+					<select class="form-control" id="msgTypeControl_NonReal">
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">子消息类型</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="subtypeControl">
-						<option>WJFS</option>
 					</select>									
 				</div>
 			</div>
@@ -56,7 +52,6 @@
 				<label style="text-align:left"  class="col-sm-2 control-label">消息发送者</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="senderControl">
-						<option>OIM</option>
 					</select>									
 				</div>
 			</div>
@@ -100,6 +95,7 @@
 	</div>
 </div>
 <script src="/public/assets/js/nonreal_command.js"></script>
+<script src="/public/assets/js/select-assignment.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>

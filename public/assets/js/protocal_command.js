@@ -53,7 +53,7 @@ jQuery("#sendProtocalBtn").click(function(){
     var bv =jQuery('#proctocalForm').data('bootstrapValidator');
     bv.validate();
     if (bv.isValid()) {
-    let param={'msgType':jQuery("#msgTypeControl").val(), 'ID': Number(jQuery("#IDControl").val()),
+    let param={'msgType':jQuery("#msgTypeControl_Protocal").val(), 'ID': Number(jQuery("#IDControl").val()),
                 "MID": jQuery("#MIDControl").val(), "BID": jQuery("#BIDControl").val(), 
                 "ProcessName": jQuery("#ProcessNameControl").val(),"OrderSeq":Number(jQuery("#OrderSeqControl").val()),
                 "OrderName":jQuery("#OrderNameControl").val(),"ParaInfo":{"MODE":jQuery("#MODEControl").val()

@@ -23,15 +23,12 @@
 			<div class="form-group">
 				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
 				<div class="col-sm-3">
-					<select class="form-control" id="msgTypeControl">
-						<option>ProtocalReport</option>
+					<select class="form-control" id="msgTypeControl_Protocal">
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">软件标识</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="IDControl">
-						<option>1</option>
-						<option>2</option>
 					</select>									
 				</div>
 			</div>
@@ -39,7 +36,6 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">任务号</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="MIDControl" >
-						<option>HXC</option>
 					</select>
 				</div>
 
@@ -52,7 +48,6 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">协议进程名称</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="ProcessNameControl">
-						<option>LINK_CTCC-TL1A1_POAC</option>
 					</select>
 				</div>
 
@@ -65,15 +60,6 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">命令名称</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="OrderNameControl">
-						<option>START</option>
-						<option>STOP</option>
-						<option>MODE</option>
-						<option>OPEN</option>
-						<option>CLOSE</option>
-						<option>SEND</option>
-						<option>RESET</option>
-						<option>REPORT</option>
-						<option>ARCHIVE</option>
 					</select>
 				</div>
 				<label style="text-align:left"  class="col-sm-2 control-label">命令参数(MODE)</label>			
@@ -85,7 +71,6 @@
 				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">协议名称</label>			
 				<div class="col-sm-3">
 					<select class="form-control" id="ProtocalControl">
-						<option>LINK</option>
 					</select>
 				</div>
 			</div>
@@ -101,6 +86,7 @@
 	</div>
 </div>
 <script src="/public/assets/js/protocal_command.js"></script>
+<script src="/public/assets/js/select-assignment.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>
