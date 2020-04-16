@@ -75,7 +75,7 @@ func CTCCQueryDb(ctx iris.Context) {
 	var state model.CTCCProcessState
 	ctx.ReadJSON(&state)
 	// results, _ := model.GetAllCTCCProcessState()
-	results, _ := model.GetCTCCProcessStateConditions(state.MsgType, state.SysID)
+	results, _ := model.GetCTCCProcessStateConditions(state.MsgType, state.SysID, state.StartTime, state.EndTime)
 	bjson, _ := json.Marshal(results)
 	ctx.JSON(string(bjson))
 }

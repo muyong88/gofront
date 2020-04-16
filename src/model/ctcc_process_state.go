@@ -41,6 +41,8 @@ type CTCCProcessState struct {
 	SendIPinIPFrames     string  `xorm:"notnull" json:"sendIPinIPFrames"`     //转发IPinIP数据帧计数
 	SendSmallCraftFrames string  `xorm:"notnull" json:"sendSmallCraftFrames"` //转发小飞行器数据帧计数
 	TimeStamp            string  `xorm:"notnull" json:"timeStamp"`            //时间戳
+	StartTime            string  `json:"startTime"`
+	EndTime              string  `json:"endTime"`
 }
 
 //CreateCTCCProcessState 入库
@@ -63,9 +65,15 @@ func GetAllCTCCProcessState() ([]map[string]string, error) {
 }
 
 //GetCTCCProcessStateConditions 条件查询
-func GetCTCCProcessStateConditions(msgType string, sysID int8) ([]map[string]string, error) {
+func GetCTCCProcessStateConditions(msgType string, sysID int8, startTime string, endTime string) ([]map[string]string, error) {
 	sqlText := "select * from CTCCProcessState where MsgType = '%s' and SysId = %d "
 	sqlText = fmt.Sprintf(sqlText, msgType, sysID)
+	if startTime != "" {
+		sqlText = sqlText + fmt.Sprintf(" and timestamp >= '%s'", startTime)
+	}
+	if endTime != "" {
+		sqlText = sqlText + fmt.Sprintf(" and timestamp <= '%s'", endTime)
+	}
 	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 

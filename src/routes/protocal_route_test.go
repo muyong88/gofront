@@ -22,8 +22,8 @@ func Test_Protocal_Process_state_Post(t *testing.T) {
 			"Command_result": "bb",
 			"Recv_status_revert": true,
 			"Recv_status": false,
-			"First": "yyyyMMddHHmmss",
-			"Last": "yyyyMMddHHmmss",
+			"First": "20200320101020",
+			"Last": "20200320102020",
 			"Recv_count": 100,
 			"Send_no": 100
 		}

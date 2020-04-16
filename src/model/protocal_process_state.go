@@ -20,6 +20,8 @@ type ProtocalProcessState struct {
 	ProcessName  string         `xorm:"notnull" json:"ProcessName"`  //协议进程名称
 	MainOrBackup int8           `xorm:"notnull" json:"MainOrBackup"` //主备类型
 	Report       ProtocalReport `xorm:"notnull"`                     //报告内容
+	StartTime    string         `json:"startTime"`
+	EndTime      string         `json:"endTime"`
 }
 
 //ProtocalReport ProtocalReport
@@ -95,9 +97,15 @@ func GetAllProctocalProcessDbState() ([]map[string]string, error) {
 }
 
 //GetProctocalProcessDbStateCondition 条件查询
-func GetProctocalProcessDbStateCondition(mid string, ProcessName string) ([]map[string]string, error) {
-	sqlText := "select * from ProtocalProcessStateDb where MID = '%s' and ProcessName = '%s' "
-	sqlText = fmt.Sprintf(sqlText, mid, ProcessName)
+func GetProctocalProcessDbStateCondition(mid string, processName string, reprotType string, startTime string, endTime string) ([]map[string]string, error) {
+	sqlText := "select * from ProtocalProcessStateDb where MID = '%s' and ProcessName = '%s' and Report_type = '%s' "
+	sqlText = fmt.Sprintf(sqlText, mid, processName, reprotType)
+	if startTime != "" {
+		sqlText = sqlText + fmt.Sprintf(" and First >= '%s'", startTime)
+	}
+	if endTime != "" {
+		sqlText = sqlText + fmt.Sprintf(" and Last <= '%s'", endTime)
+	}
 	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 

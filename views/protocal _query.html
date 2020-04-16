@@ -15,26 +15,45 @@
 		<div class="panel panel-primary" data-collapsed="0" style="border: none;">
 			<div class="panel-heading" >
 				<br/>
-				<form role="form" class="form-horizontal form-groups-bordered">
-					<div class="form-group">
-						<label class="col-sm-1 control-label ">来源站</label>			
-						<div class="col-sm-2">
-							<select class="form-control" id="sourceStationControl" disabled >
-							</select>
+				<form role="form" class="form-horizontal ">
+					<div class="col-sm-11">
+						<div class="form-group">
+							<label style="text-align:left" class="col-sm-1 control-label ">来源站</label>			
+							<div class="col-sm-3">
+								<select class="form-control" id="sourceStationControl" disabled >
+								</select>
+							</div>
+							<label style="text-align:left" class="col-sm-1 control-label">任务号</label>			
+							<div class="col-sm-3">
+								<select class="form-control" id= "MIDControl">
+								</select>									
+							</div>
+							<label style="text-align:left" class="col-sm-1 control-label">协议进程名称</label>			
+							<div class="col-sm-3">
+							<select class="form-control" id="ProcessNameControl">
+							</select>	
+					    	</div>									
 						</div>
-						<label class="col-sm-1 control-label">任务号</label>			
-						<div class="col-sm-2">
-							<select class="form-control" id= "MIDControl">
-							</select>									
+						<div class="form-group">
+							<label style="text-align:left" class="col-sm-1 control-label ">报告类型</label>			
+							<div class="col-sm-3">
+								<select class="form-control" id="Report_typeControl"  >
+								</select>
+							</div>
+							<label style="text-align:left" class="col-sm-1 control-label">开始时间</label>			
+							<div class='input-group date col-sm-3'  >
+								<input type='text' class="form-control" id='datetimepicker1' name='datetimepicker1'/>
+							</div>
+							<label style="text-align:left" class="col-sm-1 control-label">结束时间</label>			
+							<div class='input-group date col-sm-3'  >
+								<input type='text' class="form-control" id='datetimepicker2' name='datetimepicker1'/>
+							</div>								
 						</div>
-						<label class="col-sm-1 control-label">协议进程名称</label>			
-						<div class="col-sm-3">
-						<select class="form-control" id="ProcessNameControl">
-						</select>	
-					    </div>		
-						<div class="col-sm-2">
-							<button type="button" class="btn btn-default" id="queryBtn">查询</button>
-						</div>								
+					</div>
+					<div class="col-sm-1 ">
+						<div class="form-group" style=" transform: translateY(50%);">
+							<button type="button" class="btn btn-default  btn-lg" id="queryBtn">查询</button>
+						</div>
 					</div>
 				</form>
 				<br/>

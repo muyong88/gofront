@@ -25,6 +25,8 @@ type NonRealFileState struct {
 	FilePath      string `xorm:"notnull" json:"filePath"`
 	Status        string `xorm:"notnull" json:"status"`
 	Station       string `xorm:"notnull" json:"station"`
+	StartTime     string `json:"startTime"`
+	EndTime       string `json:"endTime"`
 }
 
 //CreateNonRealFileState 入库
@@ -46,9 +48,15 @@ func GetAllNonRealProcessState() ([]map[string]string, error) {
 }
 
 //GetNonRealProcessStateCondition 条件查询
-func GetNonRealProcessStateCondition(msgType string, missionID string) ([]map[string]string, error) {
-	sqlText := "select * from NonRealFileState where MsgType = '%s' and MissionID = '%s' "
+func GetNonRealProcessStateCondition(msgType string, missionID string, startTime string, endTime string) ([]map[string]string, error) {
+	sqlText := "select * from NonRealFileState where MsgType = '%s' and MissionID = '%s'"
 	sqlText = fmt.Sprintf(sqlText, msgType, missionID)
+	if startTime != "" {
+		sqlText = sqlText + fmt.Sprintf(" and timestamp >= '%s'", startTime)
+	}
+	if endTime != "" {
+		sqlText = sqlText + fmt.Sprintf(" and timestamp <= '%s'", endTime)
+	}
 	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 

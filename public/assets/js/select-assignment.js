@@ -78,6 +78,14 @@ jQuery(document).ready(function(){
     jQuery("#ProtocalControl").append( 
         "<option>LINK</option>"
     );
+    //8.报告类型
+    jQuery("#Report_typeControl").append( 
+        "<option>CP_REPORT_INIT</option>\
+        <option>CP_REPORT_CLOSE</option>\
+        <option>CP_REPORT_ON_TIMER</option>\
+        <option>CP_REPORT_ON_CMD</option>\
+        <option>CP_REPORT_ON_STATUS_CHANGE</option>"
+    );
 
     //非实时
     //1.任务号
