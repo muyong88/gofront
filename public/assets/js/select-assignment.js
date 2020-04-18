@@ -51,7 +51,8 @@ jQuery(document).ready(function(){
     );
     //3.协议进程名称
     jQuery("#ProcessNameControl").append( 
-        "<option>LINK_CTCC-TL1A1_POAC</option>"
+        "<option>ALL</option>\
+        <option>LINK_CTCC-TL1A1_POAC</option>"
     );
     //4.消息类型
     jQuery("#msgTypeControl_Protocal").append( 
@@ -80,7 +81,8 @@ jQuery(document).ready(function(){
     );
     //8.报告类型
     jQuery("#Report_typeControl").append( 
-        "<option>CP_REPORT_INIT</option>\
+        "<option>ALL</option>\
+        <option>CP_REPORT_INIT</option>\
         <option>CP_REPORT_CLOSE</option>\
         <option>CP_REPORT_ON_TIMER</option>\
         <option>CP_REPORT_ON_CMD</option>\

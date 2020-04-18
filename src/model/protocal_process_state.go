@@ -98,8 +98,14 @@ func GetAllProctocalProcessDbState() ([]map[string]string, error) {
 
 //GetProctocalProcessDbStateCondition 条件查询
 func GetProctocalProcessDbStateCondition(mid string, processName string, reprotType string, startTime string, endTime string) ([]map[string]string, error) {
-	sqlText := "select * from ProtocalProcessStateDb where MID = '%s' and ProcessName = '%s' and Report_type = '%s' "
-	sqlText = fmt.Sprintf(sqlText, mid, processName, reprotType)
+	sqlText := "select * from ProtocalProcessStateDb where MID = '%s'  "
+	sqlText = fmt.Sprintf(sqlText, mid)
+	if processName != "ALL" {
+		sqlText = sqlText + fmt.Sprintf(" and ProcessName = '%s'", processName)
+	}
+	if reprotType != "ALL" {
+		sqlText = sqlText + fmt.Sprintf(" and ReportType = '%s'", reprotType)
+	}
 	if startTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and First >= '%s'", startTime)
 	}

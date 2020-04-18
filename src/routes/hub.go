@@ -3,7 +3,6 @@ package routes
 import (
 	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/context"
 	"github.com/kataras/iris/middleware/recover"
 	"github.com/yanzhen74/gofront/src/inits/parse"
 	"github.com/yanzhen74/gofront/src/supports"
@@ -21,10 +20,10 @@ func Hub(app *iris.Application) {
 }
 
 func corsSetting(app *iris.Application) (main iris.Party) {
-	var (
-		crs context.Handler
-	)
-	crs = cors.New(cors.Options{
+	// var (
+	// 	crs context.Handler
+	// )
+	crs := cors.New(cors.Options{
 		AllowedOrigins: []string{"*"}, //允许通过的主机名称
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders: []string{"*"},
