@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{ template "header"}}
+	<script src="/public/assets/js/neffos.js"></script>
+	<style type="text/css">
+		 .table {
+        table-layout: fixed ;
+	}
+	.table tbody tr td{
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+	}
+	</style>
+</head>
+
+
+<body class="page-body  page-fade" >
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+	
+	{{ template "navigator"}}
+
+	<div class="main-content" style="overflow:scroll;">
+
+		
+		<br />
+		
+		<table class="table table-bordered datatable" id="ctcc_tb">
+			<thead>
+				<tr class="replace-inputs">
+					<th style="width: 240px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 110px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 140px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 160px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 190px;"></th>
+				</tr>
+				<tr>
+					<th >MsgType</th>
+					<th>ProcessId</th>
+					<th>SysId</th>
+					<th>Pattern</th>
+					<th>Channel</th>
+					<th>IsSend32KB</th>
+					<th>IsSendIPinIP</th>
+					<th>IsSaveFile</th>
+					<th>IsArchive</th>
+					<th>ResendShmHead</th>
+					<th>ResendShmTear</th>
+					<th>ResendWriteShmLoop</th>
+					<th>ResendReadShmLoop</th>
+					<th>ResendWriteShmSpeed</th>
+					<th>ResendReadShmSpeed</th>
+					<th>SaveShmHead</th>
+					<th>SaveShmTear</th>
+					<th>SaveWriteShmLoop</th>
+					<th>SaveReadShmLoop</th>
+					<th>SaveWriteShmSpeed</th>
+					<th>SaveReadShmSpeed</th>
+					<th>RecvBeats</th>
+					<th>ResendBeats</th>
+					<th>SaveBeats</th>
+					<th>RecvBytes</th>
+					<th>Send32KFrames</th>
+					<th>SendIPinIPFrames</th>
+					<th>SendSmallCraftFrames</th>
+					<th>TimeStamp</th>
+				</tr>
+			</thead>
+			<tbody id="ctcc_tbody">
+			</tbody>
+		</table>
+		
+		<script type="text/javascript">
+			jQuery(document).ready(function()
+			{
+				var table = jQuery("#ctcc_tb").dataTable({
+					"sPaginationType": "bootstrap",
+					"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+					"bStateSave": true,
+				});
+				
+				table.columnFilter({
+					"sPlaceHolder" : "head:after"
+				});
+
+				
+			});
+		</script>
+		
+		<br />
+        
+		
+	
+
+	
+	</div>
+	<script src="/public/assets/js/cctc_monitor.js"></script>
+	{{ template "bottom"}}
+</body>
+</html>

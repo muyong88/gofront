@@ -19,6 +19,9 @@ func NonRealHub(party iris.Party) {
 	home.Get("/commandpage", func(ctx iris.Context) {
 		ctx.View("nonreal_command.html")
 	})
+	home.Get("/monitor", func(ctx iris.Context) {
+		ctx.View("nonreal_monitor.html")
+	})
 	home.Get("/filestate", FileStateGet)
 	home.Post("/send_command", NonRealSendCommand)
 	home.Post("/query_db", NonRealQueryDb)

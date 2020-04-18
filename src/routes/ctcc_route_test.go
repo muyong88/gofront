@@ -54,7 +54,7 @@ func Test_CTCC_Process_state_Post(t *testing.T) {
 
 func Test_CTCC_Send_Command(t *testing.T) {
 	comStr := `{"msgType": "CTCCFRONTEND_CONTROL", "Operation": "Open",
-	"SysId": 2, "Pattern": 1, 
+	"SysId": 3, "Pattern": 1, 
 	"Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""}`
 	HttpRequest.JSON().Post("http://localhost:8080/ctcc/send_command", comStr)
 

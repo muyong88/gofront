@@ -13,7 +13,7 @@ func Test_Protocal_Process_state_Post(t *testing.T) {
 		"PID": 1234,
 		"MID": "CLOSE",
 		"BID": "00112233",
-		"ID": 1,
+		"ID": 2,
 		"MainOrBackup": 1,
 		"ProcessName": "LINK_CTCC-TL1A1_POAC",
 		"Report": {

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{ template "header"}}
+	<script src="/public/assets/js/neffos.js"></script>
+	<style type="text/css">
+	.table {
+        table-layout: fixed ;
+	}
+	.table tbody tr td{
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+	}
+	</style>
+</head>
+
+
+<body class="page-body  page-fade" >
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+	
+	{{ template "navigator"}}
+
+	<div class="main-content" style="overflow:scroll;">
+
+		
+		<br />
+		
+		<table class="table table-bordered datatable" id="nonreal_tb">
+			<thead>
+				<tr class="replace-inputs">
+					<th style="width: 140px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 110px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 200px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 140px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>					
+				</tr>
+				<tr>
+					<th>MsgTag</th>
+					<th>MsgType</th>
+					<th>MissionID</th>
+					<th>Subtype</th>
+					<th>MSGID</th>
+					<th>Sender</th>
+					<th>Timestamp</th>
+					<th>Type</th>
+					<th>SendSessionID</th>
+					<th>FileName</th>
+					<th>FilePath</th>
+					<th>Status</th>
+					<th>Station</th>
+				</tr>
+			</thead>
+			<tbody id="nonreal_tbody">
+			</tbody>
+		</table>
+		
+		<script type="text/javascript">
+			jQuery(document).ready(function()
+			{
+				var table = jQuery("#nonreal_tb").dataTable({
+					"sPaginationType": "bootstrap",
+					"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+					"bStateSave": true,
+				});
+				
+				table.columnFilter({
+					"sPlaceHolder" : "head:after"
+				});
+
+				
+			});
+		</script>
+		
+		<br />
+        
+		
+	
+
+	
+	</div>
+	<script src="/public/assets/js/nonreal_monitor.js"></script>
+	{{ template "bottom"}}
+</body>
+</html>

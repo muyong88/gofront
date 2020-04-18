@@ -20,6 +20,9 @@ func CTCCHub(party iris.Party) {
 	home.Get("/commandpage", func(ctx iris.Context) {
 		ctx.View("ctcc_command.html")
 	})
+	home.Get("/monitor", func(ctx iris.Context) {
+		ctx.View("ctcc_monitor.html")
+	})
 	home.Get("/downlink", CTCCDownLinkGet)
 	home.Post("/query_db", CTCCQueryDb)
 	home.Post("/process_state", CTCCProcessstatePost)

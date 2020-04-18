@@ -35,15 +35,62 @@
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
             <li id="monitor_real">
-                <a href="/home">
+                <a>
                     <i class="entypo-monitor"></i>
                     <span class="title">实时监控</span>
                 </a>
+                <ul>
+                    <li id="home_page">
+                        <a href="/home">
+                            <span class="title">主页</span>
+                        </a>
+                    </li>
+                    <li id="ctcc_monitor"> 
+                        <a href="/ctcc/monitor/">
+                            <span class="title">CTCC前端</span>
+                        </a>
+                    </li>
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/ctcc/monitor')>0){
+                            jQuery("#monitor_real").addClass('opened active');
+                            jQuery("#ctcc_monitor").addClass('active');
+                        }
+                    });
+                    </script>
+                    <li id="protocal_monitor">
+                        <a href="/protocal/monitor">
+                            <span class="title">协议进程</span>
+                        </a>
+                    </li>
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/protocal/monitor')>0){
+                            jQuery("#monitor_real").addClass('opened active');
+                            jQuery("#protocal_monitor").addClass('active');
+                        }
+                    });
+                    </script>
+                    <li id="nonreal_monitor">
+                        <a href="/non_real/monitor">
+                            <span class="title">非实时前端</span>
+                        </a>
+                    </li>
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/non_real/monitor')>0){
+                            jQuery("#monitor_real").addClass('opened active');
+                            jQuery("#nonreal_monitor").addClass('active');
+                        }
+                    });
+                 </script>
+                </ul>
             </li>
             <script>
                 jQuery(document).ready(function(){
                 if(window.location.href.indexOf('home')>0){
                     jQuery("#monitor_real").addClass('opened active');
+                    jQuery("#home_page").addClass('active');
                 }
             });
             </script>
