@@ -105,4 +105,43 @@ jQuery(document).ready(function(){
                 }
             });
     }});
+    if(getQueryVariable("MsgTag")!=null){
+        jQuery("#msgTagControl").val(getQueryVariable("MsgTag"));
+        jQuery("#msgTagControl").attr("disabled",true);
+    }
+    if(getQueryVariable("MsgType")!=null){
+        jQuery("#msgTypeControl_NonReal").val(getQueryVariable("MsgType"));
+        jQuery("#msgTypeControl_NonReal").attr("disabled",true);
+    }
+    if(getQueryVariable("MissionID")!=null){
+        jQuery("#missionIDControl").val(getQueryVariable("MissionID"));
+        jQuery("#missionIDControl").attr("disabled",true);
+    }
+    if(getQueryVariable("Subtype")!=null){
+        jQuery("#subtypeControl").val(getQueryVariable("Subtype"));
+        jQuery("#subtypeControl").attr("disabled",true);
+    }
+    if(getQueryVariable("MSGID")!=null){
+        jQuery("#MSGIDControl").val(getQueryVariable("MSGID"));
+        jQuery("#MSGIDControl").attr("disabled",true);
+    }
+    if(getQueryVariable("Sender")!=null){
+        jQuery("#senderControl").val(getQueryVariable("Sender"));
+        jQuery("#senderControl").attr("disabled",true);
+    }
+    if(getQueryVariable("SendSessionID")!=null){
+        jQuery("#sendSessionIDControl").val(getQueryVariable("SendSessionID"));
+        jQuery("#sendSessionIDControl").attr("disabled",true);
+    }
     });			
+
+    function getQueryVariable(variable)
+    {
+           var query = window.location.search.substring(1);
+           var vars = query.split("&");
+           for (var i=0;i<vars.length;i++) {
+                   var pair = vars[i].split("=");
+                   if(pair[0] == variable){return pair[1];}
+           }
+           return(null);
+    }

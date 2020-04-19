@@ -46,7 +46,8 @@
 		obj.fileName,
 		obj.filePath,
 		obj.status,
-		obj.station
+		obj.station,
+		'<a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
     ]).draw();
 	  };
 

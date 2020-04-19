@@ -11,7 +11,7 @@
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 	
 	{{ template "navigator"}}
-	<div class="main-content" style="overflow:scroll;text-overflow: ellipsis;white-space: nowrap;">
+	<div class="main-content" style="overflow-x:scroll;text-overflow: ellipsis;white-space: nowrap;">
 		<div class="panel panel-primary" data-collapsed="0" style="border: none;">
 			<div class="panel-heading" >
 				<br/>
@@ -76,7 +76,8 @@
 						<th>First</th>
 						<th>Last</th>
 						<th>Recv_count</th>
-						<th>Send_no</th>								
+						<th>Send_no</th>	
+						<th>操作</th>							
 					</tr>
 				</thead>
 				<tbody id="protocal_tb">
@@ -87,8 +88,9 @@
 
 	</div>
 </div>
-<script src="/public/assets/js/history_query_protocal.js"></script>
+
 <script src="/public/assets/js/select-assignment.js"></script>
+<script src="/public/assets/js/history_query_protocal.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>

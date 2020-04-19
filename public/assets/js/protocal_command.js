@@ -79,4 +79,37 @@ jQuery("#sendProtocalBtn").click(function(){
                 }
             });
         }});
+        if(getQueryVariable("MsgType")!=null){
+            jQuery("#msgTypeControl_Protocal").val(getQueryVariable("MsgType"));
+            jQuery("#msgTypeControl_Protocal").attr("disabled",true);
+        }
+        if(getQueryVariable("ID")!=null){
+            jQuery("#IDControl").val(getQueryVariable("ID"));
+            jQuery("#IDControl").attr("disabled",true);
+        }
+        if(getQueryVariable("MID")!=null){
+            jQuery("#MIDControl").val(getQueryVariable("MID"));
+            jQuery("#MIDControl").attr("disabled",true);
+        }
+        if(getQueryVariable("BID")!=null){
+            jQuery("#BIDControl").val(getQueryVariable("BID"));
+            jQuery("#BIDControl").attr("disabled",true);
+        }
+        if(getQueryVariable("ProcessName")!=null){
+            jQuery("#ProcessNameControl").val(getQueryVariable("ProcessName"));
+            jQuery("#ProcessNameControl").attr("disabled",true);
+            jQuery("#ProtocalControl").val(getQueryVariable("ProcessName").split("_"[0]));
+            jQuery("#ProtocalControl").attr("disabled",true);
+        }
     });
+
+    function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(null);
+}

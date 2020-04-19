@@ -65,6 +65,23 @@ jQuery(document).ready(function(){
             }
         });
     }});
+    if(getQueryVariable("MsgType")!=null){
+        jQuery("#msgTypeControl_CTCC").val(getQueryVariable("MsgType"));
+        jQuery("#msgTypeControl_CTCC").attr("disabled",true);
+    }
+    if(getQueryVariable("SysId")!=null){
+        jQuery("#sysIdControl").val(getQueryVariable("SysId"));
+        jQuery("#sysIdControl").attr("disabled",true);
+    }
+    if(getQueryVariable("Pattern")!=null){
+        jQuery("#patternControl").val(getQueryVariable("Pattern"));
+        jQuery("#patternControl").attr("disabled",true);
+    }
+    if(getQueryVariable("Channel")!=null){
+        jQuery("#channelControl").val(getQueryVariable("Channel"));
+        jQuery("#channelControl").attr("disabled",true);
+    }
+
 });
 jQuery('#ctccForm').bootstrapValidator({
 message: 'This value is not valid',
@@ -94,3 +111,14 @@ fields: {
     }
 }
 });
+
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(null);
+}

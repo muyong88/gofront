@@ -11,7 +11,7 @@
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 	
 	{{ template "navigator"}}
-	<div class="main-content" style="overflow:scroll;text-overflow: ellipsis;white-space: nowrap;">
+	<div class="main-content" style="overflow-x:scroll;text-overflow: ellipsis;white-space: nowrap;">
 		<div class="panel panel-primary" data-collapsed="0" style="border: none;">
 			<div class="panel-heading" >
 				<br/>
@@ -63,7 +63,8 @@
 						<th>FileName</th>
 						<th>FilePath</th>
 						<th>Status</th>
-						<th>Station</th>							
+						<th>Station</th>
+						<th>操作</th>								
 					</tr>
 				</thead>
 				<tbody id="nonreal_tb">
@@ -74,8 +75,8 @@
 
 	</div>
 </div>
-<script src="/public/assets/js/history_query_nonreal.js"></script>
 <script src="/public/assets/js/select-assignment.js"></script>
+<script src="/public/assets/js/history_query_nonreal.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>

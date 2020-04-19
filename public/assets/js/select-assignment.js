@@ -105,11 +105,12 @@ jQuery(document).ready(function(){
     );
     //4.子消息类型
     jQuery("#subtypeControl").append( 
-        "<option>MCSMES</option>"
+        "<option>WJCSZT</option>"
     );
     //5.消息发送者
     jQuery("#senderControl").append( 
-        "<option>OIM</option>"
+        "<option>OIM</option>\
+        <option>FEPRECP</option>"
     );
 
 });

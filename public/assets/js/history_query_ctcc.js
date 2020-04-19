@@ -99,7 +99,9 @@ function updateCTCCTable(data){
     trStr += '<td>'+ obj.SendIPinIPFrames+'</td>';
     trStr += '<td>'+ obj.SendSmallCraftFrames+'</td>';
     trStr += '<td>'+ obj.TimeStamp+'</td> ';
+    trStr += '<td><a href="/ctcc/commandpage?MsgType='+obj.MsgType+'&SysId='+obj.SysId+'&Pattern='+obj.Pattern+'&Channel='+obj.Channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
     trStr+='</tr>';
 });
     jQuery('#ctcc_tb').html(trStr);
 }
+

@@ -97,8 +97,9 @@
 			      trStr += '<td>'+ obj.Report.Last+'</td>';
             trStr += '<td>'+ obj.Report.Recv_count+'</td>';
             trStr += '<td>'+ obj.Report.Send_no+'</td>';
-			      trStr+='</tr>';
-			jQuery('#protocal_tb').append(trStr);
+            trStr += '<td><a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
+            trStr+='</tr>';
+            jQuery('#protocal_tb').append(trStr);
 	  }
 	  function updateCTCCTable(obj){
             var trStr = '';//动态拼接table
@@ -132,6 +133,7 @@
             trStr += '<td>'+ obj.sendIPinIPFrames+'</td>';
             trStr += '<td>'+ obj.sendSmallCraftFrames+'</td>';
             trStr += '<td>'+ obj.timeStamp+'</td> ';
+            trStr += '<td><a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
 			trStr+='</tr>';
 			jQuery('#ctcc_tb').append(trStr);
 	  }
@@ -151,6 +153,7 @@
             trStr += '<td>'+ obj.filePath+'</td>';
             trStr += '<td>'+ obj.status+'</td>';
             trStr += '<td>'+ obj.station+'</td>';
+            trStr += '<td><a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
 			      trStr+='</tr>';
 			      jQuery('#nonreal_tb').append(trStr);
     }
