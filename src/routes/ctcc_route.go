@@ -15,13 +15,28 @@ import (
 func CTCCHub(party iris.Party) {
 	home := party.Party("/ctcc")
 	home.Get("/query", func(ctx iris.Context) {
-		ctx.View("ctcc_query.html")
+		session := sess.Start(ctx)
+		if auth, _ := session.GetBoolean("authenticated"); !auth {
+			ctx.Redirect("/login")
+		} else {
+			ctx.View("ctcc_query.html")
+		}
 	})
 	home.Get("/commandpage", func(ctx iris.Context) {
-		ctx.View("ctcc_command.html")
+		session := sess.Start(ctx)
+		if auth, _ := session.GetBoolean("authenticated"); !auth {
+			ctx.Redirect("/login")
+		} else {
+			ctx.View("ctcc_command.html")
+		}
 	})
 	home.Get("/monitor", func(ctx iris.Context) {
-		ctx.View("ctcc_monitor.html")
+		session := sess.Start(ctx)
+		if auth, _ := session.GetBoolean("authenticated"); !auth {
+			ctx.Redirect("/login")
+		} else {
+			ctx.View("ctcc_monitor.html")
+		}
 	})
 	home.Get("/downlink", CTCCDownLinkGet)
 	home.Post("/query_db", CTCCQueryDb)

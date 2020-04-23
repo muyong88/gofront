@@ -16,13 +16,31 @@ import (
 func ProtocalHub(party iris.Party) {
 	home := party.Party("/protocal")
 	home.Get("/query", func(ctx iris.Context) {
-		ctx.View("protocal _query.html")
+		session := sess.Start(ctx)
+		if auth, _ := session.GetBoolean("authenticated"); !auth {
+			ctx.Redirect("/login")
+		} else {
+			ctx.View("protocal _query.html")
+		}
+
 	})
 	home.Get("/commandpage", func(ctx iris.Context) {
-		ctx.View("protocal_command.html")
+		session := sess.Start(ctx)
+		if auth, _ := session.GetBoolean("authenticated"); !auth {
+			ctx.Redirect("/login")
+		} else {
+			ctx.View("protocal_command.html")
+		}
+
 	})
 	home.Get("/monitor", func(ctx iris.Context) {
-		ctx.View("protocal_monitor.html")
+		session := sess.Start(ctx)
+		if auth, _ := session.GetBoolean("authenticated"); !auth {
+			ctx.Redirect("/login")
+		} else {
+			ctx.View("protocal_monitor.html")
+		}
+
 	})
 	home.Post("/process_state", ProtocalProcessStatePost)
 	home.Post("/send_command", ProtocalProcessSendCommand)
