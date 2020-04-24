@@ -6,6 +6,7 @@ import (
 
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/sessions"
+	"github.com/yanzhen74/gofront/src/model"
 )
 
 var (
@@ -32,9 +33,20 @@ func HomeHub(party iris.Party) {
 		}
 	})
 	home.Post("/user", func(ctx iris.Context) { //验证用户
-
+		var user model.Users
+		if err := ctx.ReadJSON(&user); err != nil {
+			ctx.JSON(iris.Map{"login_status": "invalid"})
+			return
+		}
+		model.GetUserByNameAndPassword(&user)
+		if user.Role != 1 && user.Role != 2 {
+			ctx.JSON(iris.Map{"login_status": "invalid"})
+			return
+		}
 		session := sess.Start(ctx)
+		session.Set("username", user.UserName)
 		session.Set("authenticated", true)
+		session.Set("role", user.Role)
 		ctx.JSON(iris.Map{"login_status": "success"})
 	})
 	home.Get("/logout", func(ctx iris.Context) { //   退出登录模块

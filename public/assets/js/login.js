@@ -53,16 +53,13 @@ var neonLogin = neonLogin || {};
 					
 					// The form data are subbmitted, we can forward the progress to 70%
 					neonLogin.setPercentage(40 + random_pct);
-											
+					let param={"username": jQuery("#username").val(),"password": jQuery("#password").val()}; 					
 					// Send data to the server
 					jQuery.ajax({
 						url: '/user',
 						method: 'POST',
-						dataType: 'json',
-						data: {
-							username: jQuery("#username").val(),
-							password: jQuery("#password").val(),
-						},
+						dataType: 'JSON',
+						data: JSON.stringify(param),
 						error: function()
 						{
 							alert("An error occoured!");
