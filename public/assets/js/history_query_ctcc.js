@@ -99,7 +99,11 @@ function updateCTCCTable(data){
     trStr += '<td>'+ obj.SendIPinIPFrames+'</td>';
     trStr += '<td>'+ obj.SendSmallCraftFrames+'</td>';
     trStr += '<td>'+ obj.TimeStamp+'</td> ';
-    trStr += '<td><a href="/ctcc/commandpage?MsgType='+obj.MsgType+'&SysId='+obj.SysId+'&Pattern='+obj.Pattern+'&Channel='+obj.Channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
+    if(jQuery("#cctc_head_op").css("display")=='none'){
+        trStr += '<td  style="display:none;"><a href="/ctcc/commandpage?MsgType='+obj.MsgType+'&SysId='+obj.SysId+'&Pattern='+obj.Pattern+'&Channel='+obj.Channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
+    }else{
+        trStr += '<td><a href="/ctcc/commandpage?MsgType='+obj.MsgType+'&SysId='+obj.SysId+'&Pattern='+obj.Pattern+'&Channel='+obj.Channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
+    }
     trStr+='</tr>';
 });
     jQuery('#ctcc_tb').html(trStr);

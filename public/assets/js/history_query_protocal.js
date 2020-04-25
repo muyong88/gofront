@@ -81,7 +81,11 @@ function updateProtocalTable(data){
         trStr += '<td>'+ obj.Last+'</td>';
         trStr += '<td>'+ obj.RecvCount+'</td>';
         trStr += '<td>'+ obj.SendNo+'</td>';
-        trStr += '<td><a href="/protocal/commandpage?MsgType='+obj.MsgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
+        if(jQuery("#protocal_head_op").css("display")=='none'){
+            trStr += '<td style="display:none;"><a href="/protocal/commandpage?MsgType='+obj.MsgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
+        }else{
+            trStr += '<td><a href="/protocal/commandpage?MsgType='+obj.MsgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
+        }
         trStr+='</tr>';
 });
     jQuery('#protocal_tb').html(trStr);

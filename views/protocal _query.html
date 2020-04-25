@@ -10,9 +10,9 @@
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 	
-	{{ template "navigator"}}
+	{{ template "navigator" .role}}
 	<div class="main-content" style="overflow-x:scroll;text-overflow: ellipsis;white-space: nowrap;">
-		{{ template "header-header"}}
+		{{ template "content-header" .username}}
 		<div class="panel panel-primary" data-collapsed="0" style="border: none;">
 			<div class="panel-heading" >
 				<br/>
@@ -78,7 +78,11 @@
 						<th>Last</th>
 						<th>Recv_count</th>
 						<th>Send_no</th>	
-						<th>操作</th>							
+						{{if .role}}
+						<th id="protocal_head_op">操作</th>
+						{{else}}
+						<th id="protocal_head_op" style="display:none;">操作</th>
+						{{end}}						
 					</tr>
 				</thead>
 				<tbody id="protocal_tb">

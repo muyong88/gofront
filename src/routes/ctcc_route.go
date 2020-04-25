@@ -15,28 +15,13 @@ import (
 func CTCCHub(party iris.Party) {
 	home := party.Party("/ctcc")
 	home.Get("/query", func(ctx iris.Context) {
-		session := sess.Start(ctx)
-		if auth, _ := session.GetBoolean("authenticated"); !auth {
-			ctx.Redirect("/login")
-		} else {
-			ctx.View("ctcc_query.html")
-		}
+		getPage(ctx, "ctcc_query.html")
 	})
 	home.Get("/commandpage", func(ctx iris.Context) {
-		session := sess.Start(ctx)
-		if auth, _ := session.GetBoolean("authenticated"); !auth {
-			ctx.Redirect("/login")
-		} else {
-			ctx.View("ctcc_command.html")
-		}
+		getPage(ctx, "ctcc_command.html")
 	})
 	home.Get("/monitor", func(ctx iris.Context) {
-		session := sess.Start(ctx)
-		if auth, _ := session.GetBoolean("authenticated"); !auth {
-			ctx.Redirect("/login")
-		} else {
-			ctx.View("ctcc_monitor.html")
-		}
+		getPage(ctx, "ctcc_monitor.html")
 	})
 	home.Get("/downlink", CTCCDownLinkGet)
 	home.Post("/query_db", CTCCQueryDb)
@@ -96,4 +81,22 @@ func CTCCQueryDb(ctx iris.Context) {
 	results, _ := model.GetCTCCProcessStateConditions(state.MsgType, state.SysID, state.StartTime, state.EndTime)
 	bjson, _ := json.Marshal(results)
 	ctx.JSON(string(bjson))
+}
+
+func getPage(ctx iris.Context, pageName string) {
+	session := sess.Start(ctx)
+	if auth, _ := session.GetBoolean("authenticated"); !auth {
+		ctx.Redirect("/login")
+	} else {
+		role, _ := session.GetInt("role")
+		username := session.GetString("username")
+		if role == 1 {
+			ctx.ViewData("role", true)
+			ctx.ViewData("username", username)
+		} else {
+			ctx.ViewData("role", false)
+			ctx.ViewData("username", username)
+		}
+		ctx.View(pageName)
+	}
 }

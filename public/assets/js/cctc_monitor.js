@@ -32,7 +32,8 @@
     
 	  
 	  function updateCTCCTable(obj){
-         var table = jQuery('#ctcc_tb').DataTable();
+
+      var table = jQuery('#ctcc_tb').DataTable();
     table.row.add([
       obj.msgType,
       obj.processId,

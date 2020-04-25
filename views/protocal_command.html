@@ -10,9 +10,9 @@
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 	
-	{{ template "navigator"}}
+	{{ template "navigator" .role}}
 	<div class="main-content" >
-		{{ template "header-header"}}
+		{{ template "content-header" .username}}
 		<br/>
 		<div class="panel panel-primary" >
 			<div class="panel-heading">

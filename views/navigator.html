@@ -141,13 +141,21 @@
                  </script>
                 </ul>
             </li>
+            {{if .}}
             <li id="comand_all">
+            {{else}}
+            <li id="comand_all" style="display:none;"></li>
+            {{end}}
                 <a>
                     <i class="entypo-newspaper"></i>
                     <span class="title">控制命令</span>
                 </a>
                 <ul>
+                    {{if .}}
                     <li id="comand_ctcc">
+                    {{else}}
+                    <li id="comand_ctcc" style="display:none;">
+                    {{end}}
                         <a href="/ctcc/commandpage">
                             <span class="title">CTCC前端</span>
                         </a>
@@ -160,7 +168,11 @@
                         }
                     });
                     </script>
+                     {{if .}}
                     <li id="comand_protocal">
+                    {{else}}
+                    <li id="comand_protocal"  style="display:none;"></li>
+                    {{end}}
                         <a href="/protocal/commandpage">
                             <span class="title">协议进程</span>
                         </a>
@@ -173,7 +185,11 @@
                         }
                     });
                     </script>
+                     {{if .}}
                     <li id="comand_nonreal"> 
+                    {{else}}
+                    <li id="comand_nonreal"  style="display:none;"> 
+                    {{end}}
                         <a href="/non_real/commandpage" >
                             <span class="title">非实时前端</span>
                         </a>

@@ -97,7 +97,11 @@
 			      trStr += '<td>'+ obj.Report.Last+'</td>';
             trStr += '<td>'+ obj.Report.Recv_count+'</td>';
             trStr += '<td>'+ obj.Report.Send_no+'</td>';
-            trStr += '<td><a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
+            if(jQuery("#protocal_head_op").css("display")=='none'){
+              trStr += '<td  style="display:none;"><a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
+            }else{
+              trStr += '<td><a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
+            }
             trStr+='</tr>';
             jQuery('#protocal_tb').append(trStr);
 	  }
@@ -117,24 +121,28 @@
             trStr += '<td>'+ obj.resendShmTear+'</td>';
             trStr += '<td>'+ obj.resendWriteShmLoop+'</td>';
             trStr += '<td>'+ obj.resendReadShmLoop+'</td>';
-			trStr += '<td>'+ obj.resendWriteShmSpeed+'</td>';
+			      trStr += '<td>'+ obj.resendWriteShmSpeed+'</td>';
             trStr += '<td>'+ obj.resendReadShmSpeed+'</td>';
             trStr += '<td>'+ obj.saveShmHead+'</td>';
             trStr += '<td>'+ obj.saveShmTear+'</td>';
             trStr += '<td>'+ obj.saveWriteShmLoop+'</td>';
             trStr += '<td>'+ obj.saveReadShmLoop+'</td>';
-			trStr += '<td>'+ obj.saveWriteShmSpeed+'</td>';
+			      trStr += '<td>'+ obj.saveWriteShmSpeed+'</td>';
             trStr += '<td>'+ obj.saveReadShmSpeed+'</td>';
             trStr += '<td>'+ obj.recvBeats+'</td>';
             trStr += '<td>'+ obj.resendBeats+'</td>';
-			trStr += '<td>'+ obj.saveBeats+'</td>';
+			      trStr += '<td>'+ obj.saveBeats+'</td>';
             trStr += '<td>'+ obj.recvBytes+'</td>';
             trStr += '<td>'+ obj.send32KFrames+'</td>';
             trStr += '<td>'+ obj.sendIPinIPFrames+'</td>';
             trStr += '<td>'+ obj.sendSmallCraftFrames+'</td>';
             trStr += '<td>'+ obj.timeStamp+'</td> ';
-            trStr += '<td><a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
-			trStr+='</tr>';
+            if(jQuery("#cctc_head_op").css("display")=='none'){
+              trStr += '<td style="display:none;"><a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
+            }else{
+              trStr += '<td><a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
+            }
+            trStr+='</tr>';
 			jQuery('#ctcc_tb').append(trStr);
 	  }
 	  function updateNonRealTable(obj){
@@ -153,8 +161,12 @@
             trStr += '<td>'+ obj.filePath+'</td>';
             trStr += '<td>'+ obj.status+'</td>';
             trStr += '<td>'+ obj.station+'</td>';
-            trStr += '<td><a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
-			      trStr+='</tr>';
+            if(jQuery("#nonreal_head_op").css("display")=='none'){
+              trStr += '<td style="display:none;"><a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
+            }else{
+              trStr += '<td><a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
+            }            
+            trStr+='</tr>';
 			      jQuery('#nonreal_tb').append(trStr);
     }
 

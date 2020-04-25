@@ -20,10 +20,10 @@
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 	
-	{{ template "navigator"}}
+	{{ template "navigator" .role}}
 
 	<div class="main-content" style="overflow:scroll;">
-		{{ template "header-header"}}
+		{{ template "content-header" .username}}
 		
 		<br />
 		
@@ -45,8 +45,12 @@
 					<th style="width: 180px;"></th>
 					<th style="width: 180px;"></th>
 					<th style="width: 180px;"></th>
-					<th style="width: 140px;"></th>		
-					<th style="width: 100px;"></th>				
+					<th style="width: 140px;"></th>	
+					{{if .role}}		
+					<th style="width: 100px;"></th>		
+					{{else}}	
+					<th style="width: 100px;display:none;"></th>	
+					{{end}}				
 				</tr>
 				<tr>
 					<th>MsgType</th>
@@ -64,8 +68,12 @@
 					<th>First</th>
 					<th>Last</th>
 					<th>Recv_count</th>
-					<th>Send_no</th>		
-					<th>操作</th>				
+					<th>Send_no</th>
+					{{if .role}}		
+					<th>操作</th>	
+					{{else}}	
+					<th style="display:none;">操作</th>		
+					{{end}}				
 				</tr>
 			</thead>
 			<tbody id="protocal_tbody">

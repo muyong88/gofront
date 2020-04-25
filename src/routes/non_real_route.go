@@ -14,31 +14,14 @@ import (
 func NonRealHub(party iris.Party) {
 	home := party.Party("/non_real")
 	home.Get("/query", func(ctx iris.Context) {
-		session := sess.Start(ctx)
-		if auth, _ := session.GetBoolean("authenticated"); !auth {
-			ctx.Redirect("/login")
-		} else {
-			ctx.View("nonreal_query.html")
-		}
+		getPage(ctx, "nonreal_query.html")
 
 	})
 	home.Get("/commandpage", func(ctx iris.Context) {
-		session := sess.Start(ctx)
-		if auth, _ := session.GetBoolean("authenticated"); !auth {
-			ctx.Redirect("/login")
-		} else {
-			ctx.View("nonreal_command.html")
-		}
-
+		getPage(ctx, "nonreal_command.html")
 	})
 	home.Get("/monitor", func(ctx iris.Context) {
-		session := sess.Start(ctx)
-		if auth, _ := session.GetBoolean("authenticated"); !auth {
-			ctx.Redirect("/login")
-		} else {
-			ctx.View("nonreal_monitor.html")
-		}
-
+		getPage(ctx, "nonreal_monitor.html")
 	})
 	home.Get("/filestate", FileStateGet)
 	home.Post("/send_command", NonRealSendCommand)

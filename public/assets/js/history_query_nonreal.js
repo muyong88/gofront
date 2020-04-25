@@ -78,7 +78,11 @@ function updateNonrealTable(data){
         trStr += '<td>'+ obj.FilePath+'</td>';
         trStr += '<td>'+ obj.Status+'</td>';
         trStr += '<td>'+ obj.Station+'</td>';
-        trStr += '<td><a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
+        if(jQuery("#nonreal_head_op").css("display")=='none'){
+            trStr += '<td style="display:none;"><a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
+        }else{
+            trStr += '<td><a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
+        }        
         trStr+='</tr>';
 });
     jQuery('#nonreal_tb').html(trStr);

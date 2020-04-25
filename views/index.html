@@ -10,10 +10,10 @@
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 	
-	{{ template "navigator"}}
+	{{ template "navigator" .role}}
 
 	<div class="main-content">
-		{{ template "header-header"}}
+		{{ template "content-header" .username}}
 		<div class="row">
 			<div class="col-sm-3 col-xs-6">
 		
@@ -145,7 +145,11 @@
 								<th>SendIPinIPFrames</th>
 								<th>SendSmallCraftFrames</th>
 								<th>TimeStamp</th>
-								<th>操作</th>
+								{{if .role}}
+								<th id="cctc_head_op">操作</th>
+								{{else}}
+								<th id="cctc_head_op" style="display:none;">操作</th>
+								{{end}}
 							</tr>
 						</thead>		
 						<tbody id="ctcc_tbody">
@@ -185,7 +189,11 @@
 								<th>Last</th>
 								<th>Recv_count</th>
 								<th>Send_no</th>	
-								<th>操作</th>							
+								{{if .role}}
+								<th id="protocal_head_op">操作</th>
+								{{else}}
+								<th id="protocal_head_op" style="display:none;">操作</th>
+								{{end}}												
 							</tr>
 						</thead>		
 						<tbody id="protocal_tbody">
@@ -222,7 +230,11 @@
 								<th>FilePath</th>
 								<th>Status</th>
 								<th>Station</th>
-								<th>操作</th>	
+								{{if .role}}
+								<th id="nonreal_head_op">操作</th>
+								{{else}}
+								<th id="nonreal_head_op" style="display:none;">操作</th>
+								{{end}}	
 							</tr>
 						</thead>		
 						<tbody id="nonreal_tbody">

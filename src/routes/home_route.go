@@ -29,6 +29,15 @@ func HomeHub(party iris.Party) {
 		if auth, _ := session.GetBoolean("authenticated"); !auth {
 			ctx.Redirect("/login")
 		} else {
+			role, _ := session.GetInt("role")
+			username := session.GetString("username")
+			if role == 1 {
+				ctx.ViewData("role", true)
+				ctx.ViewData("username", username)
+			} else {
+				ctx.ViewData("role", false)
+				ctx.ViewData("username", username)
+			}
 			ctx.View("index.html")
 		}
 	})
