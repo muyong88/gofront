@@ -6,5 +6,17 @@
 <script src="/public/assets/js/neon-custom.js"></script>
 <script src="/public/assets/js/jquery-ui-1.10.3.minimal.min.js"></script>
 <script src="/public/assets/js/joinable.js"></script>
-
+<script>
+    jQuery(document).ready(function(){
+        setScroll();
+        jQuery(window).resize(function () {
+            setScroll();
+     });
+    });
+    function setScroll(){
+        var height=(parseInt(jQuery(window).height()))+"px";
+        jQuery(".main-content").css( "height",height);
+        jQuery(".main-content").css( "display","inline-block");
+    };
+</script>
 {{ end }}

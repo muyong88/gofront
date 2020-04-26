@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/kataras/iris"
@@ -25,21 +24,7 @@ func HomeHub(party iris.Party) {
 		ctx.View("login.html")
 	})
 	home.Get("/home", func(ctx iris.Context) { // 首页模块
-		session := sess.Start(ctx)
-		if auth, _ := session.GetBoolean("authenticated"); !auth {
-			ctx.Redirect("/login")
-		} else {
-			role, _ := session.GetInt("role")
-			username := session.GetString("username")
-			if role == 1 {
-				ctx.ViewData("role", true)
-				ctx.ViewData("username", username)
-			} else {
-				ctx.ViewData("role", false)
-				ctx.ViewData("username", username)
-			}
-			ctx.View("index.html")
-		}
+		getPage(ctx, "index.html")
 	})
 	home.Post("/user", func(ctx iris.Context) { //验证用户
 		var user model.Users
@@ -62,8 +47,6 @@ func HomeHub(party iris.Party) {
 		session := sess.Start(ctx)
 		// 撤销用户身份验证
 		session.Set("authenticated", false)
-		fmt.Println("session id:" + session.ID())
-		fmt.Println(session.GetAll())
 		ctx.Redirect("/login")
 	})
 }

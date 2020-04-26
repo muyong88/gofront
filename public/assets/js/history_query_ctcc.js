@@ -59,6 +59,7 @@ jQuery(document).ready(function(){
         url : "/ctcc/query_db",
         success: function(data) {
             updateCTCCTable(data);
+            // alert(jQuery(".main-content").height());
         },
         complete: function( xhr,data ){
         }
