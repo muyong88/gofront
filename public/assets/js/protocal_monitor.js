@@ -51,6 +51,17 @@
       obj.Report.Recv_count,
 	  obj.Report.Send_no,
 	  '<a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' 
-    ]).draw();
+	]);
+	var currentPage = table.page();
+    rowCount = table.data().length-1;
+    insertedRow = table.row(rowCount).data();
+    var tempRow;    
+    for (var i=rowCount;i>0;i--) {
+    tempRow = table.row(i-1).data();
+    table.row(i).data(tempRow);
+    table.row(i-1).data(insertedRow);
+   }     
+   //refresh the current page
+    table.page(currentPage).draw(false);
 	  };
 

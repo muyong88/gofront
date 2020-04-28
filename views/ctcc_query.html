@@ -10,7 +10,7 @@
 <div class="page-container" ><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 	
 	{{ template "navigator" .role}}
-	<div class="main-content " style="overflow-x:scroll;text-overflow: ellipsis;white-space: nowrap;">
+	<div class="main-content scroll-bottom" style="overflow-x:scroll;text-overflow: ellipsis;white-space: nowrap;">
 		{{ template "content-header" .username}}
 		<div class="panel panel-primary " data-collapsed="0" style="border: none;">
 			<div class="panel-heading" >

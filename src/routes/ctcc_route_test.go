@@ -20,7 +20,7 @@ func Test_CTCC_Process_state_Post(t *testing.T) {
 	mapStr := map[string]interface{}{
 		"msgType":              "CTCCFRONTEND_STATE_REPORT",
 		"processId":            123,
-		"sysId":                2,
+		"sysId":                1,
 		"pattern":              1,
 		"channel":              1,
 		"isSend32KB":           1,

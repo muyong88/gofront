@@ -79,8 +79,12 @@ func CTCCQueryDb(ctx iris.Context) {
 	ctx.ReadJSON(&state)
 	// results, _ := model.GetAllCTCCProcessState()
 	results, _ := model.GetCTCCProcessStateConditions(state.MsgType, state.SysID, state.StartTime, state.EndTime)
-	bjson, _ := json.Marshal(results)
-	ctx.JSON(string(bjson))
+	if results != nil {
+		bjson, _ := json.Marshal(results)
+		ctx.JSON(string(bjson))
+	} else {
+		ctx.JSON("{}")
+	}
 }
 
 func getPage(ctx iris.Context, pageName string) {

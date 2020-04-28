@@ -62,6 +62,10 @@ func NonRealQueryDb(ctx iris.Context) {
 	ctx.ReadJSON(&state)
 	// results, _ := model.GetAllNonRealProcessState()
 	results, _ := model.GetNonRealProcessStateCondition(state.MsgType, state.MissionID, state.StartTime, state.EndTime)
-	bjson, _ := json.Marshal(results)
-	ctx.JSON(string(bjson))
+	if results != nil {
+		bjson, _ := json.Marshal(results)
+		ctx.JSON(string(bjson))
+	} else {
+		ctx.JSON("{}")
+	}
 }
