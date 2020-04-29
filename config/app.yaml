@@ -1,5 +1,6 @@
 
 #自定义配置
+IP: 10.96.5.1
 Port: 8080
 IgnoreURLs: [/ctcc/downlink, /non_real, /protocal, /echo]
 JWTTimeout: 900 #second

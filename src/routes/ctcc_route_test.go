@@ -2,14 +2,30 @@ package routes
 
 import (
 	"fmt"
+	"io/ioutil"
 	"testing"
 
 	"github.com/kirinlabs/HttpRequest"
+	"gopkg.in/yaml.v2"
 )
 
-func Test_DownLink_Get(t *testing.T) {
+var (
+	AppConfig appConfig
+)
 
-	urlStr := "http://localhost:8080/ctcc/downlink?downlinkBeginTime=20200218162020&downlinkEndTime=20200218162040&pageSize=100&pageNo=0"
+type appConfig struct {
+	IP         string   `yaml:"IP"`
+	Port       string   `yaml:"Port"`
+	IgnoreURLs []string `yaml:"IgnoreURLs"`
+	JWTTimeout int64    `yaml:"JWTTimeout"`
+	LogLevel   string   `yaml:"LogLevel"`
+	Secret     string   `yaml:"Secret"`
+}
+
+func Test_DownLink_Get(t *testing.T) {
+	appData, _ := ioutil.ReadFile("../../config/app.yaml")
+	yaml.Unmarshal([]byte(appData), &AppConfig)
+	urlStr := "http://" + AppConfig.IP + ":" + AppConfig.Port + "ctcc/downlink?downlinkBeginTime=20200218162020&downlinkEndTime=20200218162040&pageSize=100&pageNo=0"
 
 	res, _ := HttpRequest.Get(urlStr)
 	body, _ := res.Body()
@@ -17,6 +33,8 @@ func Test_DownLink_Get(t *testing.T) {
 }
 
 func Test_CTCC_Process_state_Post(t *testing.T) {
+	appData, _ := ioutil.ReadFile("../../config/app.yaml")
+	yaml.Unmarshal([]byte(appData), &AppConfig)
 	mapStr := map[string]interface{}{
 		"msgType":              "CTCCFRONTEND_STATE_REPORT",
 		"processId":            123,
@@ -48,14 +66,16 @@ func Test_CTCC_Process_state_Post(t *testing.T) {
 		"sendSmallCraftFrames": "0",
 		"timeStamp":            "2018-11-29_14:02:43.423.5",
 	}
-	HttpRequest.JSON().Post("http://localhost:8080/ctcc/process_state", mapStr)
+	HttpRequest.JSON().Post("http://"+AppConfig.IP+":"+AppConfig.Port+"/ctcc/process_state", mapStr)
 
 }
 
 func Test_CTCC_Send_Command(t *testing.T) {
+	appData, _ := ioutil.ReadFile("../../config/app.yaml")
+	yaml.Unmarshal([]byte(appData), &AppConfig)
 	comStr := `{"msgType": "CTCCFRONTEND_CONTROL", "Operation": "Open",
 	"SysId": 3, "Pattern": 1, 
 	"Channel": 1,"BeginTime":"202002291020","EndTime":"202002291020","MainHostName":"","BackupHostName":""}`
-	HttpRequest.JSON().Post("http://localhost:8080/ctcc/send_command", comStr)
+	HttpRequest.JSON().Post("http://"+AppConfig.IP+":"+AppConfig.Port+"/ctcc/send_command", comStr)
 
 }

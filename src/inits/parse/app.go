@@ -15,6 +15,7 @@ var (
 )
 
 type appConfig struct {
+	IP         string   `yaml:"IP"`
 	Port       string   `yaml:"Port"`
 	IgnoreURLs []string `yaml:"IgnoreURLs"`
 	JWTTimeout int64    `yaml:"JWTTimeout"`

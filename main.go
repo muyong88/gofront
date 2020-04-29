@@ -42,5 +42,5 @@ func main() {
 	go controller.RunProcessor()
 	go controller.RunHeartBeatProcessor()
 
-	app.Run(iris.Addr(":"+parse.AppConfig.Port), iris.WithConfiguration(iris.YAML("config/iris.yaml")))
+	app.Run(iris.Addr(parse.AppConfig.IP+":"+parse.AppConfig.Port), iris.WithConfiguration(iris.YAML("config/iris.yaml")))
 }

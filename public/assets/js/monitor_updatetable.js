@@ -16,7 +16,7 @@
 		  }
 		};
 	  
-		neffos.dial("ws://localhost:8080/echo", events).then(function (client) {
+		neffos.dial("ws://"+document.location.host+"/echo", events).then(function (client) {
 		  client.connect("default");
 		});
 	  })();
