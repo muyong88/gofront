@@ -109,12 +109,48 @@
 		
 			<div class="col-sm-12">
 		
-				<div class="panel panel-primary" style="overflow:scroll; height:250px;text-overflow: ellipsis;white-space: nowrap;">
+				<div class="panel panel-primary" style="overflow:scroll; height:350px;text-overflow: ellipsis;white-space: nowrap;">
 					<div class="panel-heading">
 						<div class="panel-title">CTCC Process State</div>
 					</div>
-					<table id="ctcc_tb" class="table table-bordered table-responsive" >
+					<table id="ctcc_tb" class="table table-bordered table-responsive pagetable" >
 						<thead>
+							<tr class="replace-inputs">
+								<th style="width: 240px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 110px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 150px;"></th>
+								<th style="width: 150px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 140px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 170px;"></th>
+								<th style="width: 170px;"></th>
+								<th style="width: 170px;"></th>
+								<th style="width: 170px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 150px;"></th>
+								<th style="width: 150px;"></th>
+								<th style="width: 160px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 190px;"></th>
+								{{if .role}}
+								<th style="width: 100px;" ></th>
+								{{else}}
+								<th style="width: 100px;display:none;" ></th>
+								{{end}}	
+							</tr>
 							<tr>
 								<th>MsgType</th>
 								<th>ProcessId</th>
@@ -166,12 +202,35 @@
 		
 			<div class="col-sm-12" >
 		
-				<div class="panel panel-primary" style="overflow:scroll;  height:250px;text-overflow: ellipsis;white-space: nowrap;">
+				<div class="panel panel-primary" style="overflow:scroll;  height:350px;text-overflow: ellipsis;white-space: nowrap;">
 					<div class="panel-heading">
 						<div class="panel-title">Protocal Process State</div>
 					</div>
-					<table id="protocal_tb" class="table table-bordered table-responsive " >
+					<table id="protocal_tb" class="table table-bordered table-responsive pagetable" >
 						<thead>
+							<tr class="replace-inputs">
+								<th style="width: 190px;"></th>
+								<th style="width: 110px;"></th>
+								<th style="width: 110px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 140px;"></th>
+								<th style="width: 200px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 140px;"></th>
+								<th style="width: 150px;"></th>
+								<th style="width: 170px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 140px;"></th>	
+								{{if .role}}		
+								<th style="width: 100px;"></th>		
+								{{else}}	
+								<th style="width: 100px;display:none;"></th>	
+								{{end}}				
+							</tr>
 							<tr>
 								<th>MsgType</th>
 								<th>ID</th>
@@ -210,12 +269,32 @@
 		
 			<div class="col-sm-12" > 	
 		
-				<div class="panel panel-primary" style="overflow:scroll; height:250px;text-overflow: ellipsis;white-space: nowrap;">
+				<div class="panel panel-primary" style="overflow:scroll; height:350px;text-overflow: ellipsis;white-space: nowrap;">
 					<div class="panel-heading">
 						<div class="panel-title">File Send State</div>
 					</div>
-					<table id="nonreal_tb" class="table table-bordered table-responsive" style="word-break:break-all; word-wrap:break-all;">
+					<table id="nonreal_tb" class="table table-bordered table-responsive pagetable" style="word-break:break-all; word-wrap:break-all;">
 						<thead>
+							<tr class="replace-inputs">
+								<th style="width: 140px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 110px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 200px;"></th>
+								<th style="width: 120px;"></th>
+								<th style="width: 140px;"></th>
+								<th style="width: 150px;"></th>
+								<th style="width: 150px;"></th>
+								<th style="width: 180px;"></th>
+								<th style="width: 180px;"></th>	
+								{{if .role}}	
+								<th style="width: 100px;"></th>	
+								{{else}}	
+								<th style="width: 100px;display:none;"></th>		
+								{{end}}			
+							</tr>
 							<tr>
 								<th>MsgTag</th>
 								<th>MsgType</th>

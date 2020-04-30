@@ -1,8 +1,6 @@
 package routes
 
 import (
-	"time"
-
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/sessions"
 	"github.com/yanzhen74/gofront/src/model"
@@ -10,7 +8,7 @@ import (
 
 var (
 	cookieNameForSessionID = "gofrontcookies"
-	sess                   = sessions.New(sessions.Config{Cookie: cookieNameForSessionID, Expires: 45 * time.Minute})
+	sess                   = sessions.New(sessions.Config{Cookie: cookieNameForSessionID, Expires: 0})
 )
 
 //HomeHub HomeHub

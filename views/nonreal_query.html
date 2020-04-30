@@ -49,8 +49,28 @@
 				</form>
 				<br/>
 			</div>					
-			<table class="table table-bordered datatable"  >
+			<table class="table table-bordered datatable pagetable"  id="nonreal_table">
 				<thead>
+					<tr class="replace-inputs">
+						<th style="width: 140px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 110px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 200px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 140px;"></th>
+						<th style="width: 150px;"></th>
+						<th style="width: 150px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 180px;"></th>	
+						{{if .role}}	
+						<th style="width: 100px;"></th>	
+						{{else}}	
+						<th style="width: 100px;display:none;"></th>		
+						{{end}}			
+					</tr>
 					<tr>
 						<th>MsgTag</th>
 						<th>MsgType</th>

@@ -79,95 +79,113 @@
       }
     }
 	  function updateProtocalTable(obj){
-            var trStr = '';//动态拼接tablem
-            trStr += '<tr>';//拼接处规范的表格形式
-            trStr += '<td>'+ obj.msgType+'</td>';
-            trStr += '<td>'+ obj.ID+'</td>';
-            trStr += '<td>'+ obj.MID+'</td>';
-            trStr += '<td>'+ obj.BID+'</td>';
-		      	trStr += '<td>'+ obj.PID+'</td>';
-			      trStr += '<td>'+ obj.MainOrBackup+'</td>';
-            trStr += '<td>'+ obj.ProcessName+'</td>';
-            trStr += '<td>'+ obj.Report.Report_type+'</td>';
-            trStr += '<td>'+ obj.Report.Command_type+'</td>';
-            trStr += '<td>'+ obj.Report.Command_result+'</td>';
-            trStr += '<td>'+ obj.Report.Recv_status_revert+'</td>';
-            trStr += '<td>'+ obj.Report.Recv_status+'</td>';
-            trStr += '<td>'+ obj.Report.First+'</td>';
-			      trStr += '<td>'+ obj.Report.Last+'</td>';
-            trStr += '<td>'+ obj.Report.Recv_count+'</td>';
-            trStr += '<td>'+ obj.Report.Send_no+'</td>';
-            if(jQuery("#protocal_head_op").css("display")=='none'){
-              trStr += '<td  style="display:none;"><a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
-            }else{
-              trStr += '<td><a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a></td> ';
-            }
-            trStr+='</tr>';
-            jQuery('#protocal_tb').prepend(trStr);
-	  }
+      var table = jQuery('#protocal_tb').DataTable();
+      table.row.add([
+        obj.msgType,
+        obj.ID,
+        obj.MID,
+        obj.BID,
+        obj.PID,
+        obj.MainOrBackup,
+        obj.ProcessName,
+        obj.Report.Report_type,
+        obj.Report.Command_type,
+        obj.Report.Command_result,
+        obj.Report.Recv_status_revert,
+        obj.Report.Recv_status,
+        obj.Report.First,
+        obj.Report.Last,
+        obj.Report.Recv_count,
+      obj.Report.Send_no,
+      '<a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' 
+    ]);
+    var currentPage = table.page();
+      rowCount = table.data().length-1;
+      insertedRow = table.row(rowCount).data();
+      var tempRow;    
+      for (var i=rowCount;i>0;i--) {
+      tempRow = table.row(i-1).data();
+      table.row(i).data(tempRow);
+      table.row(i-1).data(insertedRow);
+    }     
+    //refresh the current page
+     table.page(currentPage).draw(false);
+	  };
 	  function updateCTCCTable(obj){
-            var trStr = '';//动态拼接table
-            trStr += '<tr>';//拼接处规范的表格形式
-            trStr += '<td>'+ obj.msgType+'</td>';
-            trStr += '<td>'+ obj.processId+'</td>';
-            trStr += '<td>'+ obj.sysId+'</td>';
-            trStr += '<td>'+ obj.pattern+'</td>';
-            trStr += '<td>'+ obj.channel+'</td>';
-            trStr += '<td>'+ obj.isSend32KB+'</td>';
-            trStr += '<td>'+ obj.isSendIPinIP+'</td>';
-            trStr += '<td>'+ obj.isSaveFile+'</td>';
-            trStr += '<td>'+ obj.isArchive+'</td>';
-            trStr += '<td>'+ obj.resendShmHead+'</td>';
-            trStr += '<td>'+ obj.resendShmTear+'</td>';
-            trStr += '<td>'+ obj.resendWriteShmLoop+'</td>';
-            trStr += '<td>'+ obj.resendReadShmLoop+'</td>';
-			      trStr += '<td>'+ obj.resendWriteShmSpeed+'</td>';
-            trStr += '<td>'+ obj.resendReadShmSpeed+'</td>';
-            trStr += '<td>'+ obj.saveShmHead+'</td>';
-            trStr += '<td>'+ obj.saveShmTear+'</td>';
-            trStr += '<td>'+ obj.saveWriteShmLoop+'</td>';
-            trStr += '<td>'+ obj.saveReadShmLoop+'</td>';
-			      trStr += '<td>'+ obj.saveWriteShmSpeed+'</td>';
-            trStr += '<td>'+ obj.saveReadShmSpeed+'</td>';
-            trStr += '<td>'+ obj.recvBeats+'</td>';
-            trStr += '<td>'+ obj.resendBeats+'</td>';
-			      trStr += '<td>'+ obj.saveBeats+'</td>';
-            trStr += '<td>'+ obj.recvBytes+'</td>';
-            trStr += '<td>'+ obj.send32KFrames+'</td>';
-            trStr += '<td>'+ obj.sendIPinIPFrames+'</td>';
-            trStr += '<td>'+ obj.sendSmallCraftFrames+'</td>';
-            trStr += '<td>'+ obj.timeStamp+'</td> ';
-            if(jQuery("#cctc_head_op").css("display")=='none'){
-              trStr += '<td style="display:none;"><a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
-            }else{
-              trStr += '<td><a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
-            }
-            trStr+='</tr>';
-			jQuery('#ctcc_tb').prepend(trStr);
+      var table = jQuery('#ctcc_tb').DataTable();
+      table.row.add([
+        obj.msgType,
+        obj.processId,
+        obj.sysId,
+        obj.pattern,
+        obj.channel,
+        obj.isSend32KB,
+        obj.isSendIPinIP,
+        obj.isSaveFile,
+        obj.isArchive,
+        obj.resendShmHead,
+        obj.resendShmTear,
+        obj.resendWriteShmLoop,
+        obj.resendReadShmLoop,
+        obj.resendWriteShmSpeed,
+        obj.resendReadShmSpeed,
+        obj.saveShmHead,
+        obj.saveShmTear,
+        obj.saveWriteShmLoop,
+        obj.saveReadShmLoop,
+        obj.saveWriteShmSpeed,
+        obj.saveReadShmSpeed,
+        obj.recvBeats,
+        obj.resendBeats,
+        obj.saveBeats,
+        obj.recvBytes,
+        obj.send32KFrames,
+        obj.sendIPinIPFrames,
+        obj.sendSmallCraftFrames,
+        obj.timeStamp,
+        '<a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a> '
+      ]);
+      var currentPage = table.page();
+      rowCount = table.data().length-1;
+      insertedRow = table.row(rowCount).data();
+      var tempRow;    
+      for (var i=rowCount;i>0;i--) {
+      tempRow = table.row(i-1).data();
+      table.row(i).data(tempRow);
+      table.row(i-1).data(insertedRow);
+     }    
+      table.page(currentPage).draw(false);
+      
 	  }
 	  function updateNonRealTable(obj){
-            var trStr = '';//动态拼接table
-            trStr += '<tr>';//拼接处规范的表格形式
-            trStr += '<td>'+ obj.msgTag+'</td>';
-            trStr += '<td>'+ obj.msgType+'</td>';
-            trStr += '<td>'+ obj.missionID+'</td>';
-            trStr += '<td>'+ obj.subtype+'</td>';
-            trStr += '<td>'+ obj.MSGID+'</td>';
-            trStr += '<td>'+ obj.sender+'</td>';
-            trStr += '<td>'+ obj.timestamp+'</td>';
-            trStr += '<td>'+ obj.type+'</td>';
-            trStr += '<td>'+ obj.sendSessionID+'</td>';
-            trStr += '<td>'+ obj.fileName+'</td>';
-            trStr += '<td>'+ obj.filePath+'</td>';
-            trStr += '<td>'+ obj.status+'</td>';
-            trStr += '<td>'+ obj.station+'</td>';
-            if(jQuery("#nonreal_head_op").css("display")=='none'){
-              trStr += '<td style="display:none;"><a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
-            }else{
-              trStr += '<td><a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
-            }            
-            trStr+='</tr>';
-			      jQuery('#nonreal_tb').prepend(trStr);
+      var table = jQuery('#nonreal_tb').DataTable();
+    table.row.add([
+		obj.msgTag,
+		obj.msgType,
+		obj.missionID,
+		obj.subtype,
+		obj.MSGID,
+		obj.sender,
+		obj.timestamp,
+		obj.type,
+		obj.sendSessionID,
+		obj.fileName,
+		obj.filePath,
+		obj.status,
+		obj.station,
+		'<a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
+	]);
+	var currentPage = table.page();
+    rowCount = table.data().length-1;
+    insertedRow = table.row(rowCount).data();
+    var tempRow;    
+    for (var i=rowCount;i>0;i--) {
+    tempRow = table.row(i-1).data();
+    table.row(i).data(tempRow);
+    table.row(i-1).data(insertedRow);
+   }     
+   //refresh the current page
+    table.page(currentPage).draw(false);
     }
 
     jQuery('#newMSg_tbody').bind('DOMNodeInserted', function () {
@@ -176,20 +194,20 @@
       
   });
 
-  jQuery('#ctcc_tbody').bind('DOMNodeInserted', function () {
-    var count = jQuery("#ctcc_tbody").find("tr").length;
+  jQuery('#ctcc_tbody').bind('DOMNodeInserted  DOMNodeRemoved', function () {
+    var count = jQuery("#ctcc_tb").DataTable().data().length;
     jQuery('#ctccNum').text(count.toString());
     
 });
 
-  jQuery('#protocal_tbody').bind('DOMNodeInserted', function () {
-    var count = jQuery("#protocal_tbody").find("tr").length;
+  jQuery('#protocal_tbody').bind('DOMNodeInserted  DOMNodeRemoved', function () {
+    var count = jQuery("#protocal_tb").DataTable().data().length;
     jQuery('#protocalNum').text(count.toString());
     
 });
     
-    jQuery('#nonreal_tbody').bind('DOMNodeInserted', function () {
-      var count = jQuery("#nonreal_tbody").find("tr").length;
+    jQuery('#nonreal_tbody').bind('DOMNodeInserted  DOMNodeRemoved', function () {
+      var count = jQuery("#nonreal_tb").DataTable().data().length;
       jQuery('#nonRealNum').text(count.toString());
       
   });

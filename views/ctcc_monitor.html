@@ -27,7 +27,7 @@
 		
 		<br />
 		
-		<table class="table table-bordered datatable" id="ctcc_tb">
+		<table class="table table-bordered datatable pagetable" id="ctcc_tb">
 			<thead>
 				<tr class="replace-inputs">
 					<th style="width: 240px;"></th>
@@ -105,23 +105,7 @@
 			<tbody id="ctcc_tbody">
 			</tbody>
 		</table>
-		
-		<script type="text/javascript">
-			jQuery(document).ready(function()
-			{
-				var table = jQuery("#ctcc_tb").dataTable({
-					"sPaginationType": "bootstrap",
-					"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-					"bStateSave": true,
-				});
-				
-				table.columnFilter({
-					"sPlaceHolder" : "head:after"
-				});
 
-				
-			});
-		</script>
 		
 		<br />
         

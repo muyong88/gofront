@@ -27,7 +27,7 @@
 		
 		<br />
 		
-		<table class="table table-bordered datatable" id="nonreal_tb">
+		<table class="table table-bordered datatable pagetable" id="nonreal_tb">
 			<thead>
 				<tr class="replace-inputs">
 					<th style="width: 140px;"></th>
@@ -74,22 +74,6 @@
 			</tbody>
 		</table>
 		
-		<script type="text/javascript">
-			jQuery(document).ready(function()
-			{
-				var table = jQuery("#nonreal_tb").dataTable({
-					"sPaginationType": "bootstrap",
-					"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-					"bStateSave": true,
-				});
-				
-				table.columnFilter({
-					"sPlaceHolder" : "head:after"
-				});
-
-				
-			});
-		</script>
 		
 		<br />
         

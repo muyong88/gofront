@@ -27,7 +27,7 @@
 		
 		<br />
 		
-		<table class="table table-bordered datatable" id="protocal_tb">
+		<table class="table table-bordered datatable pagetable" id="protocal_tb">
 			<thead>
 				<tr class="replace-inputs">
 					<th style="width: 190px;"></th>
@@ -80,22 +80,6 @@
 			</tbody>
 		</table>
 		
-		<script type="text/javascript">
-			jQuery(document).ready(function()
-			{
-				var table = jQuery("#protocal_tb").dataTable({
-					"sPaginationType": "bootstrap",
-					"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-					"bStateSave": true,
-				});
-				
-				table.columnFilter({
-					"sPlaceHolder" : "head:after"
-				});
-
-				
-			});
-		</script>
 		
 		<br />
         

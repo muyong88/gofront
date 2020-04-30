@@ -23,7 +23,16 @@
 <script src="/public/assets/js/datatables.responsive.js"></script>
 <script src="/public/assets/js/select2.min.js"></script>
 <script>$.noConflict();</script>
-
+<style type="text/css">
+    .table {
+   table-layout: fixed ;
+}
+.table tbody tr td{
+   overflow: hidden;
+   text-overflow:ellipsis;
+   white-space: nowrap;
+}
+</style>
 <link rel="stylesheet" href="/public/assets/css/jquery-ui-1.10.3.custom.min.css">
 <link rel="stylesheet" href="/public/assets/css/font-icons/entypo/css/entypo.css">
 <link rel="stylesheet" href="/public/assets/css/bootstrap.css">

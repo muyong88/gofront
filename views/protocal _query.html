@@ -15,7 +15,6 @@
 		{{ template "content-header" .username}}
 		<div class="panel panel-primary" data-collapsed="0" style="border: none;">
 			<div class="panel-heading" >
-				<br/>
 				<form role="form" class="form-horizontal ">
 					<div class="col-sm-11">
 						<div class="form-group">
@@ -59,8 +58,31 @@
 				</form>
 				<br/>
 			</div>					
-			<table class="table table-bordered datatable"  >
+			<table class="table table-bordered datatable pagetable"  id="protocal_table">
 				<thead>
+					<tr class="replace-inputs">
+						<th style="width: 190px;"></th>
+						<th style="width: 110px;"></th>
+						<th style="width: 110px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 140px;"></th>
+						<th style="width: 200px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 140px;"></th>
+						<th style="width: 150px;"></th>
+						<th style="width: 170px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 140px;"></th>	
+						{{if .role}}		
+						<th style="width: 100px;"></th>		
+						{{else}}	
+						<th style="width: 100px;display:none;"></th>	
+						{{end}}				
+					</tr>
 					<tr>
 						<th>MsgType</th>
 						<th>ID</th>

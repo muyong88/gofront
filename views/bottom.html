@@ -19,4 +19,19 @@
         jQuery(".scroll-bottom").css( "display","inline-block");
     };
 </script>
+<script type="text/javascript">
+    jQuery(document).ready(function()
+    {
+        var table = jQuery(".pagetable").dataTable({
+            "sPaginationType": "bootstrap",
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "bStateSave": true,
+            
+        });
+        
+        table.columnFilter({
+            "sPlaceHolder" : "head:after"
+        });					
+    });
+</script>
 {{ end }}

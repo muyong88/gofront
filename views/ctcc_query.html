@@ -13,7 +13,7 @@
 	<div class="main-content scroll-bottom" style="overflow-x:scroll;text-overflow: ellipsis;white-space: nowrap;">
 		{{ template "content-header" .username}}
 		<div class="panel panel-primary " data-collapsed="0" style="border: none;">
-			<div class="panel-heading" >
+			<div class="panel-heading" style="border: none;">
 				<br/>
 				<form role="form" class="form-horizontal form-groups-bordered">
 					<div class="col-sm-10">
@@ -48,8 +48,44 @@
 				</form>
 				<br/>
 			</div>			
-			<table class="table table-bordered datatable "  >
+			<table class="table table-bordered datatable pagetable"  id="ctcc_table">
 				<thead>
+					<tr class="replace-inputs">
+						<th style="width: 240px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 110px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 150px;"></th>
+						<th style="width: 150px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 140px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 170px;"></th>
+						<th style="width: 170px;"></th>
+						<th style="width: 170px;"></th>
+						<th style="width: 170px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 120px;"></th>
+						<th style="width: 150px;"></th>
+						<th style="width: 150px;"></th>
+						<th style="width: 160px;"></th>
+						<th style="width: 180px;"></th>
+						<th style="width: 190px;"></th>
+						{{if .role}}
+						<th style="width: 100px;" ></th>
+						{{else}}
+						<th style="width: 100px;display:none;" ></th>
+						{{end}}	
+					</tr>
 					<tr>
 						<th>MsgType</th>
 						<th>ProcessId</th>
@@ -91,7 +127,6 @@
 			
 				</tbody>
 			</table>	
-		
 		</div>
 
 	</div>

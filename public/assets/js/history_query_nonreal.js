@@ -62,28 +62,35 @@ jQuery(document).ready(function(){
 });
 function updateNonrealTable(data){
     var objs = eval("("+data+")"); 
-    var trStr = '';//动态拼接table  
+    var table = jQuery('#nonreal_table').DataTable();
     jQuery.each(objs, function (index, obj) {
-        trStr += '<tr>';//拼接处规范的表格形式
-        trStr += '<td>'+ obj.MsgTag+'</td>';
-        trStr += '<td>'+ obj.MsgType+'</td>';
-        trStr += '<td>'+ obj.MissionID+'</td>';
-        trStr += '<td>'+ obj.Subtype+'</td>';
-        trStr += '<td>'+ obj.MSGID+'</td>';
-        trStr += '<td>'+ obj.Sender+'</td>';
-        trStr += '<td>'+ obj.Timestamp+'</td>';
-        trStr += '<td>'+ obj.Type+'</td>';
-        trStr += '<td>'+ obj.SendSessionID+'</td>';
-        trStr += '<td>'+ obj.FileName+'</td>';
-        trStr += '<td>'+ obj.FilePath+'</td>';
-        trStr += '<td>'+ obj.Status+'</td>';
-        trStr += '<td>'+ obj.Station+'</td>';
-        if(jQuery("#nonreal_head_op").css("display")=='none'){
-            trStr += '<td style="display:none;"><a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
-        }else{
-            trStr += '<td><a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a></td> ';
-        }        
-        trStr+='</tr>';
+        table.row.add([
+            obj.MsgTag,
+            obj.MsgType,
+            obj.MissionID,
+            obj.Subtype,
+            obj.MSGID,
+            obj.Sender,
+            obj.Timestamp,
+            obj.Type,
+            obj.SendSessionID,
+            obj.FileName,
+            obj.FilePath,
+            obj.Status,
+            obj.Station,
+            '<a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
+        ]);    
 });
-    jQuery('#nonreal_tb').html(trStr);
+     
+var currentPage = table.page();
+    rowCount = table.data().length-1;
+    insertedRow = table.row(rowCount).data();
+    var tempRow;    
+    for (var i=rowCount;i>0;i--) {
+    tempRow = table.row(i-1).data();
+    table.row(i).data(tempRow);
+    table.row(i-1).data(insertedRow);
+   }     
+   //refresh the current page
+    table.page(currentPage).draw(false);
 }

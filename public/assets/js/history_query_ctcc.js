@@ -66,47 +66,47 @@ jQuery(document).ready(function(){
     });
     });
 });
+
+
 function updateCTCCTable(data){
     var objs = eval("("+data+")"); 
-    var trStr = '';//动态拼接table  
+    var table = jQuery('#ctcc_table').DataTable();
     jQuery.each(objs, function (index, obj) {
-    trStr += '<tr>';//拼接处规范的表格形式
-    trStr += '<td>'+ obj.MsgType+'</td>';
-    trStr += '<td>'+ obj.ProcessId+'</td>';
-    trStr += '<td>'+ obj.SysId+'</td>';
-    trStr += '<td>'+ obj.Pattern+'</td>';
-    trStr += '<td>'+ obj.Channel+'</td>';
-    trStr += '<td>'+ obj.IsSend32KB+'</td>';
-    trStr += '<td>'+ obj.IsSendIPinIP+'</td>';
-    trStr += '<td>'+ obj.IsSaveFile+'</td>';
-    trStr += '<td>'+ obj.IsArchive+'</td>';
-    trStr += '<td>'+ obj.ResendShmHead+'</td>';
-    trStr += '<td>'+ obj.ResendShmTear+'</td>';
-    trStr += '<td>'+ obj.ResendWriteShmLoop+'</td>';
-    trStr += '<td>'+ obj.ResendReadShmLoop+'</td>';
-    trStr += '<td>'+ obj.ResendWriteShmSpeed+'</td>';
-    trStr += '<td>'+ obj.ResendReadShmSpeed+'</td>';
-    trStr += '<td>'+ obj.SaveShmHead+'</td>';
-    trStr += '<td>'+ obj.SaveShmTear+'</td>';
-    trStr += '<td>'+ obj.SaveWriteShmLoop+'</td>';
-    trStr += '<td>'+ obj.SaveReadShmLoop+'</td>';
-    trStr += '<td>'+ obj.SaveWriteShmSpeed+'</td>';
-    trStr += '<td>'+ obj.SaveReadShmSpeed+'</td>';
-    trStr += '<td>'+ obj.RecvBeats+'</td>';
-    trStr += '<td>'+ obj.ResendBeats+'</td>';
-    trStr += '<td>'+ obj.SaveBeats+'</td>';
-    trStr += '<td>'+ obj.RecvBytes+'</td>';
-    trStr += '<td>'+ obj.Send32KFrames+'</td>';
-    trStr += '<td>'+ obj.SendIPinIPFrames+'</td>';
-    trStr += '<td>'+ obj.SendSmallCraftFrames+'</td>';
-    trStr += '<td>'+ obj.TimeStamp+'</td> ';
-    if(jQuery("#cctc_head_op").css("display")=='none'){
-        trStr += '<td  style="display:none;"><a href="/ctcc/commandpage?MsgType='+obj.MsgType+'&SysId='+obj.SysId+'&Pattern='+obj.Pattern+'&Channel='+obj.Channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
-    }else{
-        trStr += '<td><a href="/ctcc/commandpage?MsgType='+obj.MsgType+'&SysId='+obj.SysId+'&Pattern='+obj.Pattern+'&Channel='+obj.Channel+'" target="_blank" style="color:red;">发送命令</a></td> ';
-    }
-    trStr+='</tr>';
+        table.row.add([
+            obj.MsgType,
+            obj.ProcessId,
+            obj.SysId,
+            obj.Pattern,
+            obj.Channel,
+            obj.IsSend32KB,
+            obj.IsSendIPinIP,
+            obj.IsSaveFile,
+            obj.IsArchive,
+            obj.ResendShmHead,
+            obj.ResendShmTear,
+            obj.ResendWriteShmLoop,
+            obj.ResendReadShmLoop,
+            obj.ResendWriteShmSpeed,
+            obj.ResendReadShmSpeed,
+            obj.SaveShmHead,
+            obj.SaveShmTear,
+            obj.SaveWriteShmLoop,
+            obj.SaveReadShmLoop,
+            obj.SaveWriteShmSpeed,
+            obj.SaveReadShmSpeed,
+            obj.RecvBeats,
+            obj.ResendBeats,
+            obj.SaveBeats,
+            obj.RecvBytes,
+            obj.Send32KFrames,
+            obj.SendIPinIPFrames,
+            obj.SendSmallCraftFrames,
+            obj.TimeStamp,
+            '<a href="/ctcc/commandpage?MsgType='+obj.MsgType+'&SysId='+obj.SysId+'&Pattern='+obj.Pattern+'&Channel='+obj.Channel+'" target="_blank" style="color:red;">发送命令</a> '
+          ]);
+          var currentPage = table.page();
+          table.page(currentPage).draw(false);
 });
-    jQuery('#ctcc_tb').html(trStr);
+     
 }
 
