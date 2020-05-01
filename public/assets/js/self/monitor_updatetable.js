@@ -76,6 +76,7 @@
         obj.Report.Last,
         obj.Report.Recv_count,
       obj.Report.Send_no,
+      obj.updateTime,
       '<a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' 
     ]);
     var currentPage = table.page();
@@ -122,6 +123,7 @@
         obj.sendIPinIPFrames,
         obj.sendSmallCraftFrames,
         obj.timeStamp,
+        obj.updateTime,
         '<a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a> '
       ]);
       var currentPage = table.page();
@@ -151,7 +153,8 @@
 		obj.fileName,
 		obj.filePath,
 		obj.status,
-		obj.station,
+    obj.station,
+    obj.updateTime,
 		'<a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
 	]);
 	var currentPage = table.page();
@@ -190,4 +193,5 @@
       jQuery('#nonRealNum').text(count.toString());
       
   });
+
 

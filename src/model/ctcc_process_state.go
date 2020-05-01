@@ -43,6 +43,7 @@ type CTCCProcessState struct {
 	TimeStamp            string  `xorm:"notnull" json:"timeStamp"`            //时间戳
 	StartTime            string  `json:"startTime"`
 	EndTime              string  `json:"endTime"`
+	UpDateTime           string  `json:"updateTime"` //入库时间
 }
 
 //CreateCTCCProcessState 入库
@@ -62,6 +63,19 @@ func GetOneCTCCProcessState(process *CTCCProcessState) (bool, error) {
 //GetAllCTCCProcessState 查询所有
 func GetAllCTCCProcessState() ([]map[string]string, error) {
 	return gofrontdb.EngineGroup().QueryString("select * from CTCCProcessState")
+}
+
+// //GetCCTCProcessStateAfterUpdateTime  查询更新时间之后的数据
+// func GetCCTCProcessStateAfterUpdateTime(updateTime string) ([]map[string]string, error) {
+// 	sqlText := "select * from CTCCProcessState where UpDateTime >= '%s'"
+// 	sqlText = fmt.Sprintf(sqlText, updateTime)
+// 	return gofrontdb.EngineGroup().QueryString(sqlText)
+// }
+
+//GetCCTCProcessStateAfterUpdateTime  查询更新时间之后的数据
+func GetCCTCProcessStateAfterUpdateTime(updateTime string) (state []CTCCProcessState) {
+	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
+	return state
 }
 
 //GetCTCCProcessStateConditions 条件查询

@@ -35,6 +35,7 @@
 					<th style="width: 180px;"></th>
 					<th style="width: 180px;"></th>
 					<th style="width: 140px;"></th>	
+					<th style="width: 190px;"></th>
 					{{if .role}}		
 					<th style="width: 100px;"></th>		
 					{{else}}	
@@ -58,6 +59,7 @@
 					<th>Last</th>
 					<th>Recv_count</th>
 					<th>Send_no</th>
+					<th style="width: 190px;">更新时间</th>
 					{{if .role}}		
 					<th>操作</th>	
 					{{else}}	
@@ -66,6 +68,28 @@
 				</tr>
 			</thead>
 			<tbody id="protocal_tbody">
+				{{ range .protocal_table_date }}
+				<tr>
+					<td>{{ .MsgType }}</td>
+					<td>{{ .ID }}</td>
+					<td>{{ .MID }}</td>
+					<td>{{ .BID }}</td>
+					<td>{{ .PID }}</td>
+					<td>{{ .MainOrBackup }}</td>
+					<td>{{ .ProcessName }}</td>
+					<td>{{ .ReportType }}</td>
+					<td>{{ .CommandType }}</td>
+					<td>{{ .CommandResult }}</td>
+					<td>{{ .RecvStatusRevert }}</td>
+					<td>{{ .RecvStatus }}</td>
+					<td>{{ .First }}</td>
+					<td>{{ .Last }}</td>
+					<td>{{ .RecvCount }}</td>
+					<td>{{ .SendNo }}</td>
+					<td>{{ .UpDateTime }}</td>
+					<td><a href="/protocal/commandpage?MsgType={{ .MsgType }}&ID={{ .ID }}&MID={{ .MID }}&BID={{ .BID }}&ProcessName={{ .ProcessName }}" target="_blank" style="color:red;">发送命令</a></td>  
+				</tr>
+			{{ end }}
 			</tbody>
 		</table>
 		

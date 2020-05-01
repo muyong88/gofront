@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	{{ template "header"}}
-	<script src="/public/assets/js/neffos.js"></script>
 </head>
 
 
@@ -49,6 +48,7 @@
 					<th style="width: 160px;"></th>
 					<th style="width: 180px;"></th>
 					<th style="width: 190px;"></th>
+					<th style="width: 190px;"></th>
 					{{if .role}}
 					<th style="width: 100px;" ></th>
 					{{else}}
@@ -85,6 +85,7 @@
 					<th>SendIPinIPFrames</th>
 					<th>SendSmallCraftFrames</th>
 					<th>TimeStamp</th>
+					<th>更新时间</th>
 					{{if .role}}
 					<th>操作</th>
 					{{else}}
@@ -93,16 +94,48 @@
 				</tr>
 			</thead>
 			<tbody id="ctcc_tbody">
+			
+				{{ range .ctcc_table_date }}
+					<tr>
+						<td>{{ .MsgType }}</td>
+						<td>{{ .ProcessID }}</td>
+						<td>{{ .SysID }}</td>
+						<td>{{ .Pattern }}</td>
+						<td>{{ .Channel }}</td>
+						<td>{{ .IsSend32KB }}</td>
+						<td>{{ .IsSendIPinIP }}</td>
+						<td>{{ .IsSaveFile }}</td>
+						<td>{{ .IsArchive }}</td>
+						<td>{{ .ResendShmHead }}</td>
+						<td>{{ .ResendShmTear }}</td>
+						<td>{{ .ResendWriteShmLoop }}</td>
+						<td>{{ .ResendReadShmLoop }}</td>
+						<td>{{ .ResendWriteShmSpeed }}</td>
+						<td>{{ .ResendReadShmSpeed }}</td>
+						<td>{{ .SaveShmHead }}</td>
+						<td>{{ .SaveShmTear }}</td>
+						<td>{{ .SaveWriteShmLoop }}</td>
+						<td>{{ .SaveReadShmLoop }}</td>
+						<td>{{ .SaveWriteShmSpeed }}</td>
+						<td>{{ .SaveReadShmSpeed }}</td>
+						<td>{{ .RecvBeats }}</td>
+						<td>{{ .ResendBeats }}</td>
+						<td>{{ .SaveBeats }}</td>
+						<td>{{ .RecvBytes }}</td>
+						<td>{{ .Send32KFrames }}</td>
+						<td>{{ .SendIPinIPFrames }}</td>
+						<td>{{ .SendSmallCraftFrames }}</td>
+						<td>{{ .TimeStamp }}</td>
+						<td>{{ .UpDateTime }}</td>
+						<td ><a href="/ctcc/commandpage?MsgType={{ .MsgType }}&SysId={{ .SysID }}&Pattern={{ .Pattern }}&Channel={{ .Channel }}" target="_blank" style="color:red;">发送命令</a></td> 
+					</tr>
+				{{ end }}
 			</tbody>
 		</table>
 
 		
 		<br />
         
-		
-	
-
-	
 	</div>
 	{{ template "websocket"}}
 	<script src="/public/assets/js/self/ctcc_monitor.js"></script>

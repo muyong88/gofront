@@ -27,6 +27,7 @@ type NonRealFileState struct {
 	Station       string `xorm:"notnull" json:"station"`
 	StartTime     string `json:"startTime"`
 	EndTime       string `json:"endTime"`
+	UpDateTime    string `json:"updateTime"` //入库时间
 }
 
 //CreateNonRealFileState 入库
@@ -45,6 +46,12 @@ func GetNonRealFileState(state *NonRealFileState) (bool, error) {
 //GetAllNonRealProcessState 查询所有
 func GetAllNonRealProcessState() ([]map[string]string, error) {
 	return gofrontdb.EngineGroup().QueryString("select * from NonRealFileState")
+}
+
+//GetNonRealProcessAfterUpdateTime  查询更新时间之后的数据
+func GetNonRealProcessAfterUpdateTime(updateTime string) (state []NonRealFileState) {
+	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
+	return state
 }
 
 //GetNonRealProcessStateCondition 条件查询

@@ -22,6 +22,7 @@ type ProtocalProcessState struct {
 	Report       ProtocalReport `xorm:"notnull"`                     //报告内容
 	StartTime    string         `json:"startTime"`
 	EndTime      string         `json:"endTime"`
+	UpDateTime   string         `json:"updateTime"` //入库时间
 }
 
 //ProtocalReport ProtocalReport
@@ -42,22 +43,23 @@ type ProtocalReport struct {
 type ProtocalProcessStateDb struct {
 	Identify         int64  `xorm:"pk autoincr  notnull"` //自增id
 	MsgSign          string `xorm:"notnull"`
-	MsgType          string `xorm:"notnull"` //消息类型
-	ID               int8   `xorm:"notnull"` //软件标识
-	MID              string `xorm:"notnull"` //任务号
-	BID              string `xorm:"notnull"` //数据类型
-	PID              int    `xorm:"notnull"` //进程标识
-	ProcessName      string `xorm:"notnull"` //协议进程名称
-	MainOrBackup     int8   `xorm:"notnull"` //主备类型
-	ReportType       string `xorm:"notnull"` //报告类型
-	CommandType      string `xorm:"notnull"` //命令类型
-	CommandResult    string `xorm:"notnull"` //命令结果
-	RecvStatusRevert bool   `xorm:"notnull"` //接收状态反转
-	RecvStatus       bool   `xorm:"notnull"` //接收状态
-	First            string `xorm:"notnull"` //接收的第一帧时间
-	Last             string `xorm:"notnull"` //接收的最后一帧时间
-	RecvCount        int64  `xorm:"notnull"` //接收帧数
-	SendNo           int64  `xorm:"notnull"` //上行帧序号
+	MsgType          string `xorm:"notnull"`    //消息类型
+	ID               int8   `xorm:"notnull"`    //软件标识
+	MID              string `xorm:"notnull"`    //任务号
+	BID              string `xorm:"notnull"`    //数据类型
+	PID              int    `xorm:"notnull"`    //进程标识
+	ProcessName      string `xorm:"notnull"`    //协议进程名称
+	MainOrBackup     int8   `xorm:"notnull"`    //主备类型
+	ReportType       string `xorm:"notnull"`    //报告类型
+	CommandType      string `xorm:"notnull"`    //命令类型
+	CommandResult    string `xorm:"notnull"`    //命令结果
+	RecvStatusRevert bool   `xorm:"notnull"`    //接收状态反转
+	RecvStatus       bool   `xorm:"notnull"`    //接收状态
+	First            string `xorm:"notnull"`    //接收的第一帧时间
+	Last             string `xorm:"notnull"`    //接收的最后一帧时间
+	RecvCount        int64  `xorm:"notnull"`    //接收帧数
+	SendNo           int64  `xorm:"notnull"`    //上行帧序号
+	UpDateTime       string `json:"updateTime"` //入库时间
 }
 
 //CreateProtocalProcessState 入库
@@ -81,6 +83,7 @@ func CreateProtocalProcessState(process *ProtocalProcessState) (int64, error) {
 	processDb.Last = process.Report.Last
 	processDb.RecvCount = process.Report.RecvCount
 	processDb.SendNo = process.Report.SendNo
+	processDb.UpDateTime = process.UpDateTime
 	e := gofrontdb.EngineGroup()
 	return e.Insert(processDb)
 }
@@ -94,6 +97,12 @@ func GetOneProctocalProcessState(process *ProtocalProcessStateDb) (bool, error) 
 //GetAllProctocalProcessDbState 查询所有
 func GetAllProctocalProcessDbState() ([]map[string]string, error) {
 	return gofrontdb.EngineGroup().QueryString("select * from ProtocalProcessStateDb")
+}
+
+//GetProctocalProcessAfterUpdateTime  查询更新时间之后的数据
+func GetProctocalProcessAfterUpdateTime(updateTime string) (state []ProtocalProcessStateDb) {
+	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
+	return state
 }
 
 //GetProctocalProcessDbStateCondition 条件查询

@@ -1,6 +1,8 @@
 package routes
 
 import (
+	"time"
+
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/sessions"
 	"github.com/yanzhen74/gofront/src/model"
@@ -39,6 +41,7 @@ func HomeHub(party iris.Party) {
 		session.Set("username", user.UserName)
 		session.Set("authenticated", true)
 		session.Set("role", user.Role)
+		session.Set("loginTime", time.Now().Format("2006-01-02 15:04:05"))
 		ctx.JSON(iris.Map{"login_status": "success"})
 	})
 	home.Get("/logout", func(ctx iris.Context) { //   退出登录模块

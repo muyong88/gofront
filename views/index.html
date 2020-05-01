@@ -21,7 +21,7 @@
 					<div class="num" id="newMsgNum">3</div>
 		
 					<h3>New Messages</h3>
-					<p>message nums need attentions in message db.</p>
+					<p>message nums need attentions.</p>
 				</div>
 		
 			</div>
@@ -33,7 +33,7 @@
 					<div class="num" id="ctccNum">0</div>
 		
 					<h3>CTCC Process State</h3>
-					<p>nums in ctcc table since start or refresh.</p>
+					<p>nums in ctcc table since login .</p>
 				</div>
 		
 			</div>
@@ -45,7 +45,7 @@
 					<div class="num" id="protocalNum">0</div>
 		
 					<h3>Protocal Process State</h3>
-					<p>nums in protocal table since start or refresh.</p>
+					<p>nums in protocal table since login.</p>
 				</div>
 		
 			</div>
@@ -57,7 +57,7 @@
 					<div class="num" id="nonRealNum">0</div>
 		
 					<h3>File Send State</h3>
-					<p>nums in non-real  since start or refresh.</p>
+					<p>nums in non-real  since login.</p>
 				</div>
 		
 			</div>
@@ -114,7 +114,7 @@
 					</div>
 					<table id="ctcc_tb" class="table table-bordered table-responsive pagetable" >
 						<thead>
-							<tr class="replace-inputs">
+							<tr class="replace-inputs" style="display:none;">
 								<th style="width: 240px;"></th>
 								<th style="width: 120px;"></th>
 								<th style="width: 110px;"></th>
@@ -144,6 +144,7 @@
 								<th style="width: 160px;"></th>
 								<th style="width: 180px;"></th>
 								<th style="width: 190px;"></th>
+								<th style="width: 190px;"></th>
 								{{if .role}}
 								<th style="width: 100px;" ></th>
 								{{else}}
@@ -151,43 +152,79 @@
 								{{end}}	
 							</tr>
 							<tr>
-								<th>MsgType</th>
-								<th>ProcessId</th>
-								<th>SysId</th>
-								<th>Pattern</th>
-								<th>Channel</th>
-								<th>IsSend32KB</th>
-								<th>IsSendIPinIP</th>
-								<th>IsSaveFile</th>
-								<th>IsArchive</th>
-								<th>ResendShmHead</th>
-								<th>ResendShmTear</th>
-								<th>ResendWriteShmLoop</th>
-								<th>ResendReadShmLoop</th>
-								<th>ResendWriteShmSpeed</th>
-								<th>ResendReadShmSpeed</th>
-								<th>SaveShmHead</th>
-								<th>SaveShmTear</th>
-								<th>SaveWriteShmLoop</th>
-								<th>SaveReadShmLoop</th>
-								<th>SaveWriteShmSpeed</th>
-								<th>SaveReadShmSpeed</th>
-								<th>RecvBeats</th>
-								<th>ResendBeats</th>
-								<th>SaveBeats</th>
-								<th>RecvBytes</th>
-								<th>Send32KFrames</th>
-								<th>SendIPinIPFrames</th>
-								<th>SendSmallCraftFrames</th>
-								<th>TimeStamp</th>
+								<th style="width: 240px;">MsgType</th>
+								<th style="width: 120px;">ProcessId</th>
+								<th style="width: 110px;">SysId</th>
+								<th style="width: 120px;">Pattern</th>
+								<th style="width: 120px;">Channel</th>
+								<th style="width: 120px;">IsSend32KB</th>
+								<th style="width: 120px;">IsSendIPinIP</th>
+								<th style="width: 120px;">IsSaveFile</th>
+								<th style="width: 120px;">IsArchive</th>
+								<th style="width: 150px;">ResendShmHead</th>
+								<th style="width: 150px;">ResendShmTear</th>
+								<th style="width: 180px;">ResendWriteShmLoop</th>
+								<th style="width: 180px;">ResendReadShmLoop</th>
+								<th style="width: 180px;">ResendWriteShmSpeed</th>
+								<th style="width: 180px;">ResendReadShmSpeed</th>
+								<th style="width: 140px;">SaveShmHead</th>
+								<th style="width: 120px;">SaveShmTear</th>
+								<th style="width: 170px;">SaveWriteShmLoop</th>
+								<th style="width: 170px;">SaveReadShmLoop</th>
+								<th style="width: 170px;">SaveWriteShmSpeed</th>
+								<th style="width: 170px;">SaveReadShmSpeed</th>
+								<th style="width: 120px;" >RecvBeats</th>
+								<th style="width: 120px;">ResendBeats</th>
+								<th style="width: 120px;">SaveBeats</th>
+								<th style="width: 150px;">RecvBytes</th>
+								<th style="width: 150px;">Send32KFrames</th>
+								<th style="width: 160px;" >SendIPinIPFrames</th>
+								<th style="width: 180px;">SendSmallCraftFrames</th>
+								<th style="width: 190px;">TimeStamp</th>
+								<th style="width: 190px;">更新时间</th>
 								{{if .role}}
-								<th id="cctc_head_op">操作</th>
+								<th style="width: 100px;">操作</th>
 								{{else}}
-								<th id="cctc_head_op" style="display:none;">操作</th>
+								<th style="display:none;width: 100px;">操作</th>
 								{{end}}
 							</tr>
 						</thead>		
 						<tbody id="ctcc_tbody">
+						{{ range .ctcc_table_date }}
+						<tr>
+						<td>{{ .MsgType }}</td>
+						<td>{{ .ProcessID }}</td>
+						<td>{{ .SysID }}</td>
+						<td>{{ .Pattern }}</td>
+						<td>{{ .Channel }}</td>
+						<td>{{ .IsSend32KB }}</td>
+						<td>{{ .IsSendIPinIP }}</td>
+						<td>{{ .IsSaveFile }}</td>
+						<td>{{ .IsArchive }}</td>
+						<td>{{ .ResendShmHead }}</td>
+						<td>{{ .ResendShmTear }}</td>
+						<td>{{ .ResendWriteShmLoop }}</td>
+						<td>{{ .ResendReadShmLoop }}</td>
+						<td>{{ .ResendWriteShmSpeed }}</td>
+						<td>{{ .ResendReadShmSpeed }}</td>
+						<td>{{ .SaveShmHead }}</td>
+						<td>{{ .SaveShmTear }}</td>
+						<td>{{ .SaveWriteShmLoop }}</td>
+						<td>{{ .SaveReadShmLoop }}</td>
+						<td>{{ .SaveWriteShmSpeed }}</td>
+						<td>{{ .SaveReadShmSpeed }}</td>
+						<td>{{ .RecvBeats }}</td>
+						<td>{{ .ResendBeats }}</td>
+						<td>{{ .SaveBeats }}</td>
+						<td>{{ .RecvBytes }}</td>
+						<td>{{ .Send32KFrames }}</td>
+						<td>{{ .SendIPinIPFrames }}</td>
+						<td>{{ .SendSmallCraftFrames }}</td>
+						<td>{{ .TimeStamp }}</td>
+						<td>{{ .UpDateTime }}</td>
+						<td ><a href="/ctcc/commandpage?MsgType={{ .MsgType }}&SysId={{ .SysID }}&Pattern={{ .Pattern }}&Channel={{ .Channel }}" target="_blank" style="color:red;">发送命令</a></td> 
+						</tr>
+						{{ end }}
 						</tbody>
 					</table>
 				</div>
@@ -207,7 +244,7 @@
 					</div>
 					<table id="protocal_tb" class="table table-bordered table-responsive pagetable" >
 						<thead>
-							<tr class="replace-inputs">
+							<tr class="replace-inputs" style="display:none;">
 								<th style="width: 190px;"></th>
 								<th style="width: 110px;"></th>
 								<th style="width: 110px;"></th>
@@ -224,6 +261,7 @@
 								<th style="width: 180px;"></th>
 								<th style="width: 180px;"></th>
 								<th style="width: 140px;"></th>	
+								<th style="width: 190px;"></th>
 								{{if .role}}		
 								<th style="width: 100px;"></th>		
 								{{else}}	
@@ -231,30 +269,53 @@
 								{{end}}				
 							</tr>
 							<tr>
-								<th>MsgType</th>
-								<th>ID</th>
-								<th>MID</th>
-								<th>BID</th>
-								<th>PID</th>
-								<th>MainOrBackup</th>
-								<th>ProcessName</th>
-								<th>Report_type</th>
-								<th>Command_type</th>
-								<th>Command_result</th>
-								<th>Recv_status_revert</th>
-								<th>Recv_status</th>
-								<th>First</th>
-								<th>Last</th>
-								<th>Recv_count</th>
-								<th>Send_no</th>	
+								<th style="width: 190px;">MsgType</th>
+								<th style="width: 110px;">ID</th>
+								<th style="width: 110px;">MID</th>
+								<th style="width: 120px;">BID</th>
+								<th style="width: 120px;">PID</th>
+								<th style="width: 140px;">MainOrBackup</th>
+								<th style="width: 200px;">ProcessName</th>
+								<th style="width: 180px;">Report_type</th>
+								<th style="width: 140px;">Command_type</th>
+								<th style="width: 150px;">Command_result</th>
+								<th style="width: 170px;">Recv_status_revert</th>
+								<th  style="width: 180px;">Recv_status</th>
+								<th style="width: 180px;">First</th>
+								<th style="width: 180px;">Last</th>
+								<th style="width: 180px;">Recv_count</th>
+								<th style="width: 140px;">Send_no</th>	
+								<td  style="width: 190px;">更新时间</td>
 								{{if .role}}
-								<th id="protocal_head_op">操作</th>
+								<th id="protocal_head_op" style="width: 100px;">操作</th>
 								{{else}}
-								<th id="protocal_head_op" style="display:none;">操作</th>
+								<th id="protocal_head_op" style="display:none;width: 100px;">操作</th>
 								{{end}}												
 							</tr>
 						</thead>		
 						<tbody id="protocal_tbody">
+							{{ range .protocal_table_date }}
+				<tr>
+					<td>{{ .MsgType }}</td>
+					<td>{{ .ID }}</td>
+					<td>{{ .MID }}</td>
+					<td>{{ .BID }}</td>
+					<td>{{ .PID }}</td>
+					<td>{{ .MainOrBackup }}</td>
+					<td>{{ .ProcessName }}</td>
+					<td>{{ .ReportType }}</td>
+					<td>{{ .CommandType }}</td>
+					<td>{{ .CommandResult }}</td>
+					<td>{{ .RecvStatusRevert }}</td>
+					<td>{{ .RecvStatus }}</td>
+					<td>{{ .First }}</td>
+					<td>{{ .Last }}</td>
+					<td>{{ .RecvCount }}</td>
+					<td>{{ .SendNo }}</td>
+					<td>{{ .UpDateTime }}</td>
+					<td><a href="/protocal/commandpage?MsgType={{ .MsgType }}&ID={{ .ID }}&MID={{ .MID }}&BID={{ .BID }}&ProcessName={{ .ProcessName }}" target="_blank" style="color:red;">发送命令</a></td>  
+				</tr>
+			{{ end }}
 						</tbody>
 					</table>
 				</div>
@@ -272,9 +333,9 @@
 					<div class="panel-heading">
 						<div class="panel-title">File Send State</div>
 					</div>
-					<table id="nonreal_tb" class="table table-bordered table-responsive pagetable" style="word-break:break-all; word-wrap:break-all;">
+					<table id="nonreal_tb" class="table table-bordered table-responsive pagetable" >
 						<thead>
-							<tr class="replace-inputs">
+							<tr class="replace-inputs"  style="display:none;">
 								<th style="width: 140px;"></th>
 								<th style="width: 120px;"></th>
 								<th style="width: 110px;"></th>
@@ -288,6 +349,7 @@
 								<th style="width: 150px;"></th>
 								<th style="width: 180px;"></th>
 								<th style="width: 180px;"></th>	
+								<th style="width: 190px;"></th>
 								{{if .role}}	
 								<th style="width: 100px;"></th>	
 								{{else}}	
@@ -295,27 +357,47 @@
 								{{end}}			
 							</tr>
 							<tr>
-								<th>MsgTag</th>
-								<th>MsgType</th>
-								<th>MissionID</th>
-								<th>Subtype</th>
-								<th>MSGID</th>
-								<th>Sender</th>
-								<th>Timestamp</th>
-								<th>Type</th>
-								<th>SendSessionID</th>
-								<th>FileName</th>
-								<th>FilePath</th>
-								<th>Status</th>
-								<th>Station</th>
+								<th style="width: 140px;">MsgTag</th>
+								<th style="width: 120px;">MsgType</th>
+								<th style="width: 110px;">MissionID</th>
+								<th style="width: 120px;">Subtype</th>
+								<th style="width: 120px;">MSGID</th>
+								<th style="width: 120px;">Sender</th>
+								<th  style="width: 200px;">Timestamp</th>
+								<th style="width: 120px;">Type</th>
+								<th style="width: 140px;">SendSessionID</th>
+								<th  style="width: 150px;">FileName</th>
+								<th style="width: 150px;">FilePath</th>
+								<th style="width: 180px;">Status</th>
+								<th style="width: 180px;">Station</th>
+								<td  style="width: 190px;">更新时间</td>
 								{{if .role}}
-								<th id="nonreal_head_op">操作</th>
+								<th style="width: 100px;">操作</th>
 								{{else}}
-								<th id="nonreal_head_op" style="display:none;">操作</th>
+								<th style="display:none;width: 100px;">操作</th>
 								{{end}}	
 							</tr>
 						</thead>		
 						<tbody id="nonreal_tbody">
+							{{ range .nonreal_table_date }}
+							<tr>
+							<td>{{ .MsgTag }}</td>
+							<td>{{ .MsgType }}</td>
+							<td>{{ .MissionID }}</td>
+							<td>{{ .Subtype }}</td>
+							<td>{{ .MSGID }}</td>
+							<td>{{ .Sender }}</td>
+							<td>{{ .Timestamp }}</td>
+							<td>{{ .Type }}</td>
+							<td>{{ .SendSessionID }}</td>
+							<td>{{ .FileName }}</td>
+							<td>{{ .FilePath }}</td>
+							<td>{{ .Status }}</td>
+							<td>{{ .Station }}</td>
+							<td>{{ .UpDateTime }}</td>
+							<td><a href="/non_real/commandpage?MsgTag={{ .MsgTag }}&MsgType={{ .MsgType }}&MissionID={{ .MissionID }}&Subtype={{ .Subtype }}&MSGID={{ .MSGID }}&Sender={{ .Sender }}&SendSessionID={{ .SendSessionID }}" target="_blank" style="color:red;">发送命令</a></td>  
+							</tr>
+							{{ end }} 
 						</tbody>
 					</table>
 				</div>
@@ -328,5 +410,6 @@
 	{{ template "websocket"}}
 	<script src="/public/assets/js/self/monitor_updatetable.js"></script>
 	{{ template "bottom"}}
+	
 </body>
 </html>

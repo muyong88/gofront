@@ -32,6 +32,7 @@
 					<th style="width: 150px;"></th>
 					<th style="width: 180px;"></th>
 					<th style="width: 180px;"></th>	
+					<th style="width: 190px;"></th>
 					{{if .role}}	
 					<th style="width: 100px;"></th>	
 					{{else}}	
@@ -52,6 +53,7 @@
 					<th>FilePath</th>
 					<th>Status</th>
 					<th>Station</th>
+					<td>更新时间</td>
 					{{if .role}}
 					<th>操作</th>	
 					{{else}}
@@ -60,6 +62,25 @@
 				</tr>
 			</thead>
 			<tbody id="nonreal_tbody">
+				{{ range .nonreal_table_date }}
+				<tr>
+					<td>{{ .MsgTag }}</td>
+					<td>{{ .MsgType }}</td>
+					<td>{{ .MissionID }}</td>
+					<td>{{ .Subtype }}</td>
+					<td>{{ .MSGID }}</td>
+					<td>{{ .Sender }}</td>
+					<td>{{ .Timestamp }}</td>
+					<td>{{ .Type }}</td>
+					<td>{{ .SendSessionID }}</td>
+					<td>{{ .FileName }}</td>
+					<td>{{ .FilePath }}</td>
+					<td>{{ .Status }}</td>
+					<td>{{ .Station }}</td>
+					<td>{{ .UpDateTime }}</td>
+					<td><a href="/non_real/commandpage?MsgTag={{ .MsgTag }}&MsgType={{ .MsgType }}&MissionID={{ .MissionID }}&Subtype={{ .Subtype }}&MSGID={{ .MSGID }}&Sender={{ .Sender }}&SendSessionID={{ .SendSessionID }}" target="_blank" style="color:red;">发送命令</a></td>  
+				</tr>
+			{{ end }}
 			</tbody>
 		</table>
 		

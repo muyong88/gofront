@@ -21,6 +21,7 @@ func CTCCHub(party iris.Party) {
 		getPage(ctx, "ctcc_command.html")
 	})
 	home.Get("/monitor", func(ctx iris.Context) {
+
 		getPage(ctx, "ctcc_monitor.html")
 	})
 	home.Get("/downlink", CTCCDownLinkGet)
@@ -49,6 +50,7 @@ func CTCCProcessstatePost(ctx iris.Context) {
 		golog.Error(err)
 		return
 	}
+	processState.UpDateTime = time.Now().Format("2006-01-02 15:04:05")
 	//入库
 	model.CreateCTCCProcessState(&processState)
 	//stub：展示
@@ -100,6 +102,18 @@ func getPage(ctx iris.Context, pageName string) {
 		} else {
 			ctx.ViewData("role", false)
 			ctx.ViewData("username", username)
+		}
+		if pageName == "ctcc_monitor.html" || pageName == "index.html" {
+			results := model.GetCCTCProcessStateAfterUpdateTime(session.GetString("loginTime"))
+			ctx.ViewData("ctcc_table_date", results)
+		}
+		if pageName == "nonreal_monitor.html" || pageName == "index.html" {
+			results := model.GetNonRealProcessAfterUpdateTime(session.GetString("loginTime"))
+			ctx.ViewData("nonreal_table_date", results)
+		}
+		if pageName == "protocal_monitor.html" || pageName == "index.html" {
+			results := model.GetProctocalProcessAfterUpdateTime(session.GetString("loginTime"))
+			ctx.ViewData("protocal_table_date", results)
 		}
 		ctx.View(pageName)
 	}

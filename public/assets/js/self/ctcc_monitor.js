@@ -43,6 +43,7 @@
       obj.sendIPinIPFrames,
       obj.sendSmallCraftFrames,
       obj.timeStamp,
+      obj.updateTime,
       '<a href="/ctcc/commandpage?MsgType='+obj.msgType+'&SysId='+obj.sysId+'&Pattern='+obj.pattern+'&Channel='+obj.channel+'" target="_blank" style="color:red;">发送命令</a> '
     ]);
     var currentPage = table.page();

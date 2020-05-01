@@ -37,6 +37,7 @@ func ProtocalProcessStatePost(ctx iris.Context) {
 		return
 	}
 	// fmt.Println(process_state)
+	processState.UpDateTime = time.Now().Format("2006-01-02 15:04:05")
 	_, err := model.CreateProtocalProcessState(&processState)
 	if err != nil {
 		fmt.Println(err)
