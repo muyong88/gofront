@@ -3,16 +3,6 @@
 <head>
 	{{ template "header"}}
 	<script src="/public/assets/js/neffos.js"></script>
-	<style type="text/css">
-		 .table {
-        table-layout: fixed ;
-	}
-	.table tbody tr td{
-        overflow: hidden;
-        text-overflow:ellipsis;
-        white-space: nowrap;
-	}
-	</style>
 </head>
 
 
@@ -114,7 +104,8 @@
 
 	
 	</div>
-	<script src="/public/assets/js/ctcc_monitor.js"></script>
+	{{ template "websocket"}}
+	<script src="/public/assets/js/self/ctcc_monitor.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>

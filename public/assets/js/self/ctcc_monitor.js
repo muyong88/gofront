@@ -1,24 +1,4 @@
 
-	(function () {
-		var events = {
-		  default: {
-			_OnNamespaceConnected: function (ns, msg) {                 
-			  //stub:
-			 // alert("connected")
-			},
-			_OnNamespaceDisconnect: function (ns, msg) {
-			  //stub:
-			  
-			},
-			communicate: function (ns, msg) {
-				updateTable(msg.Body);
-			}
-		  }
-		};
-		neffos.dial("ws://"+document.location.host+"/echo", events).then(function (client) {
-		  client.connect("default");
-		});
-	  })();
 	  function updateTable(msg){
     var obj = eval("("+msg+")");
 		switch(obj.MsgSign) {
@@ -33,7 +13,7 @@
 	  function updateCTCCTable(obj){
 
       var table = jQuery('#ctcc_tb').DataTable();
-    table.row.add([
+      table.row.add([
       obj.msgType,
       obj.processId,
       obj.sysId,

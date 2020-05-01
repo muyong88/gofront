@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	{{ template "header"}}
-	<script src="/public/assets/js/neffos.js"></script>
 </head>
 
 
@@ -326,7 +325,8 @@
 		</div>
 	
 	</div>
-	<script src="/public/assets/js/monitor_updatetable.js"></script>
+	{{ template "websocket"}}
+	<script src="/public/assets/js/self/monitor_updatetable.js"></script>
 	{{ template "bottom"}}
 </body>
 </html>
