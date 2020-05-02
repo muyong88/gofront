@@ -63,34 +63,50 @@ jQuery(document).ready(function(){
 function updateNonrealTable(data){
     var objs = eval("("+data+")"); 
     var table = jQuery('#nonreal_table').DataTable();
+    table.clear();
+    var curtime= new Date();
     jQuery.each(objs, function (index, obj) {
-        table.row.add([
-            obj.MsgTag,
-            obj.MsgType,
-            obj.MissionID,
-            obj.Subtype,
-            obj.MSGID,
-            obj.Sender,
-            obj.Timestamp,
-            obj.Type,
-            obj.SendSessionID,
-            obj.FileName,
-            obj.FilePath,
-            obj.Status,
-            obj.Station,
-            '<a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
-        ]);    
+        var updatetime=new Date(obj.UpDateTime);
+        var datediffSecond=Math.round((curtime.getTime()-updatetime.getTime())/1000);
+        if(datediffSecond>300){
+            table.row.add([
+                '<font color="grey">'+obj.MsgTag+'</font>',
+                '<font color="grey">'+obj.MsgType+'</font>',
+                '<font color="grey">'+obj.MissionID+'</font>',
+                '<font color="grey">'+obj.Subtype+'</font>',
+                '<font color="grey">'+obj.MSGID+'</font>',
+                '<font color="grey">'+obj.Sender+'</font>',
+                '<font color="grey">'+obj.Timestamp+'</font>',
+                '<font color="grey">'+obj.Type+'</font>',
+                '<font color="grey">'+obj.SendSessionID+'</font>',
+                '<font color="grey">'+obj.FileName+'</font>',
+                '<font color="grey">'+obj.FilePath+'</font>',
+                '<font color="grey">'+obj.Status+'</font>',
+                '<font color="grey">'+obj.Station+'</font>',
+                '<font color="grey">'+obj.UpDateTime+'</font>',
+                '<a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
+            ]); 
+        }else{
+            table.row.add([
+                '<font color="black">'+obj.MsgTag+'</font>',
+                '<font color="black">'+obj.MsgType+'</font>',
+                '<font color="black">'+obj.MissionID+'</font>',
+                '<font color="black">'+obj.Subtype+'</font>',
+                '<font color="black">'+obj.MSGID+'</font>',
+                '<font color="black">'+obj.Sender+'</font>',
+                '<font color="black">'+obj.Timestamp+'</font>',
+                '<font color="black">'+obj.Type+'</font>',
+                '<font color="black">'+obj.SendSessionID+'</font>',
+                '<font color="black">'+obj.FileName+'</font>',
+                '<font color="black">'+obj.FilePath+'</font>',
+                '<font color="black">'+obj.Status+'</font>',
+                '<font color="black">'+obj.Station+'</font>',
+                '<font color="black">'+obj.UpDateTime+'</font>',
+                '<a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
+            ]); 
+        }
 });
      
-var currentPage = table.page();
-    rowCount = table.data().length-1;
-    insertedRow = table.row(rowCount).data();
-    var tempRow;    
-    for (var i=rowCount;i>0;i--) {
-    tempRow = table.row(i-1).data();
-    table.row(i).data(tempRow);
-    table.row(i-1).data(insertedRow);
-   }     
-   //refresh the current page
+    var currentPage = table.page();
     table.page(currentPage).draw(false);
 }

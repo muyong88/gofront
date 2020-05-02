@@ -56,6 +56,6 @@
     table.row(i-1).data(insertedRow);
    }     
    //refresh the current page
-    table.page(currentPage).draw(false);
+    var rownode=table.page(currentPage).draw(false);
 	  }	  
 

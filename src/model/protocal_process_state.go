@@ -121,6 +121,7 @@ func GetProctocalProcessDbStateCondition(mid string, processName string, reprotT
 	if endTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and Last <= '%s'", endTime)
 	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC"
 	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 

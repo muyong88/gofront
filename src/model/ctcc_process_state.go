@@ -88,6 +88,7 @@ func GetCTCCProcessStateConditions(msgType string, sysID int8, startTime string,
 	if endTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and timestamp <= '%s'", endTime)
 	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC"
 	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 

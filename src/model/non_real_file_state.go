@@ -64,6 +64,7 @@ func GetNonRealProcessStateCondition(msgType string, missionID string, startTime
 	if endTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and timestamp <= '%s'", endTime)
 	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC"
 	return gofrontdb.EngineGroup().QueryString(sqlText)
 }
 
