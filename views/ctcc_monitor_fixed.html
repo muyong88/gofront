@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{ template "header"}}
+	<style type="text/css">
+		.table tbody tr td{
+			color:red;
+		}
+	</style>
+</head>
+
+
+<body class="page-body  page-fade" >
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+	
+	{{ template "navigator" .role}}
+
+	<div class="main-content scroll-bottom" style="overflow:scroll;">
+		{{ template "content-header" .username}}
+		
+		<br />
+		
+		<table class="table table-bordered datatable pagetable" id="ctcc_tb">
+			<thead>
+				<tr class="replace-inputs">
+					<th style="width: 240px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 110px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 140px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 160px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 190px;"></th>
+					<th style="width: 190px;"></th>
+					{{if .role}}
+					<th style="width: 100px;" ></th>
+					{{else}}
+					<th style="width: 100px;display:none;" ></th>
+					{{end}}	
+				</tr>
+				<tr>
+					<th >MsgType</th>
+					<th>ProcessId</th>
+					<th>SysId</th>
+					<th>Pattern</th>
+					<th>Channel</th>
+					<th>IsSend32KB</th>
+					<th>IsSendIPinIP</th>
+					<th>IsSaveFile</th>
+					<th>IsArchive</th>
+					<th>ResendShmHead</th>
+					<th>ResendShmTear</th>
+					<th>ResendWriteShmLoop</th>
+					<th>ResendReadShmLoop</th>
+					<th>ResendWriteShmSpeed</th>
+					<th>ResendReadShmSpeed</th>
+					<th>SaveShmHead</th>
+					<th>SaveShmTear</th>
+					<th>SaveWriteShmLoop</th>
+					<th>SaveReadShmLoop</th>
+					<th>SaveWriteShmSpeed</th>
+					<th>SaveReadShmSpeed</th>
+					<th>RecvBeats</th>
+					<th>ResendBeats</th>
+					<th>SaveBeats</th>
+					<th>RecvBytes</th>
+					<th>Send32KFrames</th>
+					<th>SendIPinIPFrames</th>
+					<th>SendSmallCraftFrames</th>
+					<th>TimeStamp</th>
+					<th>更新时间</th>
+					{{if .role}}
+					<th>操作</th>
+					{{else}}
+					<th style="display:none;">操作</th>
+					{{end}}		
+				</tr>
+			</thead>
+			<tbody id="ctcc_tbody">
+			
+				{{ range .ctcc_table_date }}
+					<tr>
+						<td>{{ .MsgType }}</td>
+						<td>{{ .ProcessID }}</td>
+						<td>{{ .SysID }}</td>
+						<td>{{ .Pattern }}</td>
+						<td>{{ .Channel }}</td>
+						<td>{{ .IsSend32KB }}</td>
+						<td>{{ .IsSendIPinIP }}</td>
+						<td>{{ .IsSaveFile }}</td>
+						<td>{{ .IsArchive }}</td>
+						<td>{{ .ResendShmHead }}</td>
+						<td>{{ .ResendShmTear }}</td>
+						<td>{{ .ResendWriteShmLoop }}</td>
+						<td>{{ .ResendReadShmLoop }}</td>
+						<td>{{ .ResendWriteShmSpeed }}</td>
+						<td>{{ .ResendReadShmSpeed }}</td>
+						<td>{{ .SaveShmHead }}</td>
+						<td>{{ .SaveShmTear }}</td>
+						<td>{{ .SaveWriteShmLoop }}</td>
+						<td>{{ .SaveReadShmLoop }}</td>
+						<td>{{ .SaveWriteShmSpeed }}</td>
+						<td>{{ .SaveReadShmSpeed }}</td>
+						<td>{{ .RecvBeats }}</td>
+						<td>{{ .ResendBeats }}</td>
+						<td>{{ .SaveBeats }}</td>
+						<td>{{ .RecvBytes }}</td>
+						<td>{{ .Send32KFrames }}</td>
+						<td>{{ .SendIPinIPFrames }}</td>
+						<td>{{ .SendSmallCraftFrames }}</td>
+						<td>{{ .TimeStamp }}</td>
+						<td>{{ .UpDateTime }}</td>
+						<td ><a href="/ctcc/commandpage?MsgType={{ .MsgType }}&SysId={{ .SysID }}&Pattern={{ .Pattern }}&Channel={{ .Channel }}" target="_blank" style="color:red;">发送命令</a></td> 
+					</tr>
+				{{ end }}
+			</tbody>
+		</table>
+
+		
+		<br />
+        
+	</div>
+	{{ template "websocket"}}
+	<script src="/public/assets/js/self/ctcc_monitor_fixed.js"></script>
+	{{ template "bottom"}}
+</body>
+</html>

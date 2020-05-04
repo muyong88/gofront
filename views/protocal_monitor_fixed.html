@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{ template "header"}}
+	<style type="text/css">
+		.table tbody tr td{
+			color:red;
+		}
+	</style>
+</head>
+
+
+<body class="page-body  page-fade" >
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+	
+	{{ template "navigator" .role}}
+
+	<div class="main-content scroll-bottom" style="overflow:scroll;">
+		{{ template "content-header" .username}}
+		
+		<br />
+		
+		<table class="table table-bordered datatable pagetable" id="protocal_tb">
+			<thead>
+				<tr class="replace-inputs">
+					<th style="width: 190px;"></th>
+					<th style="width: 110px;"></th>
+					<th style="width: 110px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 120px;"></th>
+					<th style="width: 140px;"></th>
+					<th style="width: 200px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 140px;"></th>
+					<th style="width: 150px;"></th>
+					<th style="width: 170px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 180px;"></th>
+					<th style="width: 140px;"></th>	
+					<th style="width: 190px;"></th>
+					{{if .role}}		
+					<th style="width: 100px;"></th>		
+					{{else}}	
+					<th style="width: 100px;display:none;"></th>	
+					{{end}}				
+				</tr>
+				<tr>
+					<th>MsgType</th>
+					<th>ID</th>
+					<th>MID</th>
+					<th>BID</th>
+					<th>PID</th>
+					<th>MainOrBackup</th>
+					<th>ProcessName</th>
+					<th>Report_type</th>
+					<th>Command_type</th>
+					<th>Command_result</th>
+					<th>Recv_status_revert</th>
+					<th>Recv_status</th>
+					<th>First</th>
+					<th>Last</th>
+					<th>Recv_count</th>
+					<th>Send_no</th>
+					<th style="width: 190px;">更新时间</th>
+					{{if .role}}		
+					<th>操作</th>	
+					{{else}}	
+					<th style="display:none;">操作</th>		
+					{{end}}				
+				</tr>
+			</thead>
+			<tbody id="protocal_tbody">
+				{{ range .protocal_table_date }}
+				<tr>
+					<td>{{ .MsgType }}</td>
+					<td>{{ .ID }}</td>
+					<td>{{ .MID }}</td>
+					<td>{{ .BID }}</td>
+					<td>{{ .PID }}</td>
+					<td>{{ .MainOrBackup }}</td>
+					<td>{{ .ProcessName }}</td>
+					<td>{{ .ReportType }}</td>
+					<td>{{ .CommandType }}</td>
+					<td>{{ .CommandResult }}</td>
+					<td>{{ .RecvStatusRevert }}</td>
+					<td>{{ .RecvStatus }}</td>
+					<td>{{ .First }}</td>
+					<td>{{ .Last }}</td>
+					<td>{{ .RecvCount }}</td>
+					<td>{{ .SendNo }}</td>
+					<td>{{ .UpDateTime }}</td>
+					<td><a href="/protocal/commandpage?MsgType={{ .MsgType }}&ID={{ .ID }}&MID={{ .MID }}&BID={{ .BID }}&ProcessName={{ .ProcessName }}" target="_blank" style="color:red;">发送命令</a></td>  
+				</tr>
+			{{ end }}
+			</tbody>
+		</table>
+		
+		
+		<br />
+        
+		
+	
+
+	
+	</div>
+	{{ template "websocket"}}
+	<script src="/public/assets/js/self/protocal_monitor_fixed.js"></script>
+	{{ template "bottom"}}
+</body>
+</html>

@@ -58,6 +58,19 @@
                         }
                     });
                     </script>
+                     <li id="ctcc_fixed_monitor"> 
+                        <a href="/ctcc/fixed_monitor/">
+                            <span class="title">CTCC前端(固定)</span>
+                        </a>
+                    </li>
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/ctcc/fixed_monitor')>0){
+                            jQuery("#monitor_real").addClass('opened active');
+                            jQuery("#ctcc_fixed_monitor").addClass('active');
+                        }
+                    });
+                    </script>
                     <li id="protocal_monitor">
                         <a href="/protocal/monitor">
                             <span class="title">协议进程(滚动)</span>
@@ -68,6 +81,19 @@
                         if(window.location.href.indexOf('/protocal/monitor')>0){
                             jQuery("#monitor_real").addClass('opened active');
                             jQuery("#protocal_monitor").addClass('active');
+                        }
+                    });
+                    </script>
+                    <li id="protocal_fixed_monitor">
+                        <a href="/protocal/fixed_monitor">
+                            <span class="title">协议进程(固定)</span>
+                        </a>
+                    </li>
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/protocal/fixed_monitor')>0){
+                            jQuery("#monitor_real").addClass('opened active');
+                            jQuery("#protocal_fixed_monitor").addClass('active');
                         }
                     });
                     </script>
@@ -83,7 +109,7 @@
                             jQuery("#nonreal_monitor").addClass('active');
                         }
                     });
-                 </script>
+                 </script>              
                 </ul>
             </li>
             <script>

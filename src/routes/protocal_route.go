@@ -24,6 +24,9 @@ func ProtocalHub(party iris.Party) {
 	home.Get("/monitor", func(ctx iris.Context) {
 		getPage(ctx, "protocal_monitor.html")
 	})
+	home.Get("/fixed_monitor", func(ctx iris.Context) {
+		getPage(ctx, "protocal_monitor_fixed.html")
+	})
 	home.Post("/process_state", ProtocalProcessStatePost)
 	home.Post("/send_command", ProtocalProcessSendCommand)
 	home.Post("/query_db", ProtocalQueryDb)
@@ -51,9 +54,9 @@ func ProtocalProcessStatePost(ctx iris.Context) {
 		strSumary := "(" + processState.MID + "," + processState.ProcessName + "," + strconv.Itoa(int(processState.MainOrBackup)) + ")" + " Receiving data"
 		var msg model.NewMeassage
 		if processState.Report.RecvStatus == true {
-			msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevStart", SuccessFlag: "Success"}
+			msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevStart", SuccessFlag: "Success", MID: processState.MID, ProcessName: processState.ProcessName, MainOrBackup: processState.MainOrBackup}
 		} else {
-			msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevEnd", SuccessFlag: "Success"}
+			msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevEnd", SuccessFlag: "Success", MID: processState.MID, ProcessName: processState.ProcessName, MainOrBackup: processState.MainOrBackup}
 		}
 		msgJSON, _ := json.Marshal(msg)
 		controller.SendWebsocketMsg([]byte(msgJSON))

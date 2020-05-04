@@ -40,7 +40,7 @@ func Test_CTCC_Process_state_Post(t *testing.T) {
 		"processId":            123,
 		"sysId":                2,
 		"pattern":              1,
-		"channel":              1,
+		"channel":              2,
 		"isSend32KB":           1,
 		"isSendIPinIP":         1,
 		"isSaveFile":           1,

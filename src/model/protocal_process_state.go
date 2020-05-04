@@ -6,6 +6,7 @@ import (
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
+	"github.com/yanzhen74/gofront/src/inits/parse"
 )
 
 //ProtocalProcessState 协议状态结构体
@@ -13,12 +14,12 @@ type ProtocalProcessState struct {
 	Identify     int64          `xorm:"pk autoincr  notnull"` //自增id
 	MsgSign      string         `xorm:"notnull"`
 	MsgType      string         `xorm:"notnull" json:"msgType"`      //消息类型
-	ID           int8           `xorm:"notnull" json:"ID"`           //软件标识
+	ID           int            `xorm:"notnull" json:"ID"`           //软件标识
 	MID          string         `xorm:"notnull" json:"MID"`          //任务号
 	BID          string         `xorm:"notnull" json:"BID"`          //数据类型
 	PID          int            `xorm:"notnull" json:"PID"`          //进程标识
 	ProcessName  string         `xorm:"notnull" json:"ProcessName"`  //协议进程名称
-	MainOrBackup int8           `xorm:"notnull" json:"MainOrBackup"` //主备类型
+	MainOrBackup int            `xorm:"notnull" json:"MainOrBackup"` //主备类型
 	Report       ProtocalReport `xorm:"notnull"`                     //报告内容
 	StartTime    string         `json:"startTime"`
 	EndTime      string         `json:"endTime"`
@@ -44,12 +45,12 @@ type ProtocalProcessStateDb struct {
 	Identify         int64  `xorm:"pk autoincr  notnull"` //自增id
 	MsgSign          string `xorm:"notnull"`
 	MsgType          string `xorm:"notnull"`    //消息类型
-	ID               int8   `xorm:"notnull"`    //软件标识
+	ID               int    `xorm:"notnull"`    //软件标识
 	MID              string `xorm:"notnull"`    //任务号
 	BID              string `xorm:"notnull"`    //数据类型
 	PID              int    `xorm:"notnull"`    //进程标识
 	ProcessName      string `xorm:"notnull"`    //协议进程名称
-	MainOrBackup     int8   `xorm:"notnull"`    //主备类型
+	MainOrBackup     int    `xorm:"notnull"`    //主备类型
 	ReportType       string `xorm:"notnull"`    //报告类型
 	CommandType      string `xorm:"notnull"`    //命令类型
 	CommandResult    string `xorm:"notnull"`    //命令结果
@@ -103,6 +104,19 @@ func GetAllProctocalProcessDbState() ([]map[string]string, error) {
 func GetProctocalProcessAfterUpdateTime(updateTime string) (state []ProtocalProcessStateDb) {
 	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
 	return state
+}
+
+//GetProctocalProcessFixed 获取最新fixed数据
+func GetProctocalProcessFixed() (states []ProtocalProcessStateDb) {
+	for _, v := range parse.PROTOCALFIXLIST.ProtocalList {
+		var state ProtocalProcessStateDb
+		gofrontdb.EngineGroup().Where("MID = ? and ProcessName = ? and MainOrBackup = ? and UpDateTime = (select max(UpDateTime) from ProtocalProcessStateDb where MID = ? and ProcessName = ? and MainOrBackup = ?) ", v.MID, v.PROCESSNAME, v.MainOrBackUp, v.MID, v.PROCESSNAME, v.MainOrBackUp).Get(&state)
+		state.MID = v.MID
+		state.ProcessName = v.PROCESSNAME
+		state.MainOrBackup = v.MainOrBackUp
+		states = append(states, state)
+	}
+	return states
 }
 
 //GetProctocalProcessDbStateCondition 条件查询

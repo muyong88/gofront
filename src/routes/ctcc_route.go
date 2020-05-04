@@ -21,8 +21,10 @@ func CTCCHub(party iris.Party) {
 		getPage(ctx, "ctcc_command.html")
 	})
 	home.Get("/monitor", func(ctx iris.Context) {
-
 		getPage(ctx, "ctcc_monitor.html")
+	})
+	home.Get("/fixed_monitor", func(ctx iris.Context) {
+		getPage(ctx, "ctcc_monitor_fixed.html")
 	})
 	home.Get("/downlink", CTCCDownLinkGet)
 	home.Post("/query_db", CTCCQueryDb)
@@ -114,6 +116,12 @@ func getPage(ctx iris.Context, pageName string) {
 		if pageName == "protocal_monitor.html" || pageName == "index.html" {
 			results := model.GetProctocalProcessAfterUpdateTime(session.GetString("loginTime"))
 			ctx.ViewData("protocal_table_date", results)
+		}
+		if pageName == "ctcc_monitor_fixed.html" {
+			ctx.ViewData("ctcc_table_date", model.GetCTCCProcessFixed())
+		}
+		if pageName == "protocal_monitor_fixed.html" {
+			ctx.ViewData("protocal_table_date", model.GetProctocalProcessFixed())
 		}
 		ctx.View(pageName)
 	}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+    <CTCC SEQ="1" SYSID="1" CHANNEL="1" />   
+    <CTCC SEQ="2" SYSID="1" CHANNEL="2" />   
+    <CTCC SEQ="3" SYSID="2" CHANNEL="1" />   
+    <CTCC SEQ="4" SYSID="2" CHANNEL="2" />   
+</ROOT>

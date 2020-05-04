@@ -16,6 +16,8 @@ func main() {
 
 	parse.DBSettingParse() //DB配置
 
+	parse.ReadTableFixedConfig()
+
 	routes.Hub(app) //路由配置
 
 	app.HandleDir("/public", "./public")
