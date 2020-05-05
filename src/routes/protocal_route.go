@@ -45,7 +45,7 @@ func ProtocalProcessStatePost(ctx iris.Context) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	//Stub:展示
+	//展示
 	controller.SendWebsocketMsg([]byte(processState.GetJSONString()))
 	controller.ProctocalUpdateTime = time.Now()
 	time.Sleep(300 * time.Millisecond)

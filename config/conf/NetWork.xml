@@ -6,4 +6,6 @@
     <NetWork NetWorkSeqNum="4" NetWorkName="Producer" NetWorkIP="localhost:9092" NetWorkTopic="FileCommandP"  NetWorkProtocal="kafka" />  <!-- 发送非实时前端-文件命令-生产者 -->
     <NetWork NetWorkSeqNum="5" NetWorkName="Producer" NetWorkIP="localhost:9092" NetWorkTopic="ProControlCommand"  NetWorkProtocal="kafka" />  <!-- 协议进程-控制命令-生产者 -->
     <NetWork NetWorkSeqNum="6" NetWorkName="Consumer" NetWorkIP="localhost:9092" NetWorkTopic="FileSendStateC" NetWorkProtocal="kafka" />  <!-- 非实时前端-文件发送状态-消费者 -->
+    <NetWork NetWorkSeqNum="7" NetWorkName="Consumer" NetWorkIP="localhost:9092" NetWorkTopic="CTCCStateC" NetWorkProtocal="kafka" />  <!-- 非实时前端-文件发送状态-消费者 -->
+    <NetWork NetWorkSeqNum="8" NetWorkName="Consumer" NetWorkIP="localhost:9092" NetWorkTopic="ProtocalStateC" NetWorkProtocal="kafka" />  <!-- 非实时前端-文件发送状态-消费者 -->
 </ROOT>
