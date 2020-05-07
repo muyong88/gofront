@@ -25,6 +25,7 @@ func RunProcessor() {
 			err1 := json.Unmarshal(msgRe.Content, &fileState)
 			if err1 != nil {
 				fmt.Println(err1)
+				golog.Error(err1)
 				continue
 			}
 			fileState.UpDateTime = time.Now().Format("2006-01-02 15:04:05")
@@ -39,7 +40,7 @@ func RunProcessor() {
 			if err := json.Unmarshal(msgRe.Content, &processState); err != nil {
 				fmt.Println(err)
 				golog.Error(err)
-				return
+				continue
 			}
 			processState.UpDateTime = time.Now().Format("2006-01-02 15:04:05")
 			//入库
@@ -51,14 +52,13 @@ func RunProcessor() {
 			var processState model.ProtocalProcessState
 			if err := json.Unmarshal(msgRe.Content, &processState); err != nil {
 				fmt.Println(err)
-				return
+				golog.Error(err)
+				continue
 			}
 			// fmt.Println(process_state)
 			processState.UpDateTime = time.Now().Format("2006-01-02 15:04:05")
-			_, err := model.CreateProtocalProcessState(&processState)
-			if err != nil {
-				fmt.Println(err)
-			}
+			model.CreateProtocalProcessState(&processState)
+
 			//展示
 			SendWebsocketMsg([]byte(processState.GetJSONString()))
 			ProctocalUpdateTime = time.Now()
