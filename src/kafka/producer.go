@@ -3,6 +3,7 @@ package kafka
 import (
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/kataras/golog"
@@ -23,7 +24,8 @@ func (pro *Producer) Init(config *model.NetWork) (int, error) {
 	conf := sarama.NewConfig()
 	conf.Producer.Return.Successes = true
 	conf.Producer.Timeout = 5 * time.Second
-	p, err := sarama.NewSyncProducer([]string{config.NetWorkIP}, conf)
+	ips := strings.Split(config.NetWorkIP, ";")
+	p, err := sarama.NewSyncProducer(ips, conf)
 	if err != nil {
 		golog.Errorf("sarama.NewSyncProducer err, message=%s \n", err)
 		return -1, err
