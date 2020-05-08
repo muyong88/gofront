@@ -22,11 +22,11 @@
 <script type="text/javascript">
     jQuery(document).ready(function()
     {
-        var table = jQuery(".pagetable").dataTable({
+        var table = jQuery("#ctcc_tb,#protocal_tb,#nonreal_tb").dataTable({
             "sPaginationType": "bootstrap",
             "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             "bStateSave": true,
-            "order": [[ 2, "asc" ]]
+            "order": [[ 0, "desc" ]]
         });
         
         table.columnFilter({

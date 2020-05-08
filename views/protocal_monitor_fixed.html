@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
 	{{ template "header"}}
-	<style type="text/css">
-		.table tbody tr td{
-			color:red;
-		}
-	</style>
 </head>
 
 
@@ -21,9 +16,10 @@
 		
 		<br />
 		
-		<table class="table table-bordered datatable pagetable" id="protocal_tb">
+		<table class="table table-bordered datatable  " id="protocal_tb">
 			<thead>
 				<tr class="replace-inputs">
+					<th style="width: 190px;"></th>
 					<th style="width: 190px;"></th>
 					<th style="width: 110px;"></th>
 					<th style="width: 110px;"></th>
@@ -40,7 +36,6 @@
 					<th style="width: 180px;"></th>
 					<th style="width: 180px;"></th>
 					<th style="width: 140px;"></th>	
-					<th style="width: 190px;"></th>
 					{{if .role}}		
 					<th style="width: 100px;"></th>		
 					{{else}}	
@@ -48,6 +43,7 @@
 					{{end}}				
 				</tr>
 				<tr>
+					<th style="width: 190px;">更新时间</th>
 					<th>MsgType</th>
 					<th>ID</th>
 					<th>MID</th>
@@ -64,7 +60,6 @@
 					<th>Last</th>
 					<th>Recv_count</th>
 					<th>Send_no</th>
-					<th style="width: 190px;">更新时间</th>
 					{{if .role}}		
 					<th>操作</th>	
 					{{else}}	
@@ -72,9 +67,10 @@
 					{{end}}				
 				</tr>
 			</thead>
-			<tbody id="protocal_tbody">
+			<tbody>
 				{{ range .protocal_table_date }}
 				<tr>
+					<td>{{ .UpDateTime }}</td>
 					<td>{{ .MsgType }}</td>
 					<td>{{ .ID }}</td>
 					<td>{{ .MID }}</td>
@@ -91,7 +87,6 @@
 					<td>{{ .Last }}</td>
 					<td>{{ .RecvCount }}</td>
 					<td>{{ .SendNo }}</td>
-					<td>{{ .UpDateTime }}</td>
 					<td><a href="/protocal/commandpage?MsgType={{ .MsgType }}&ID={{ .ID }}&MID={{ .MID }}&BID={{ .BID }}&ProcessName={{ .ProcessName }}" target="_blank" style="color:red;">发送命令</a></td>  
 				</tr>
 			{{ end }}

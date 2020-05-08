@@ -48,9 +48,10 @@
 				</form>
 				<br/>
 			</div>			
-			<table class="table table-bordered datatable pagetable"  id="ctcc_table">
+			<table class="table table-bordered datatable  "  id="ctcc_tb">
 				<thead>
 					<tr class="replace-inputs">
+						<th style="width: 190px;"></th>
 						<th style="width: 240px;"></th>
 						<th style="width: 120px;"></th>
 						<th style="width: 110px;"></th>
@@ -80,7 +81,6 @@
 						<th style="width: 160px;"></th>
 						<th style="width: 180px;"></th>
 						<th style="width: 190px;"></th>
-						<th style="width: 190px;"></th>
 						{{if .role}}
 						<th style="width: 100px;" ></th>
 						{{else}}
@@ -88,6 +88,7 @@
 						{{end}}	
 					</tr>
 					<tr>
+						<th>更新时间</th>
 						<th>MsgType</th>
 						<th>ProcessId</th>
 						<th>SysId</th>
@@ -117,15 +118,14 @@
 						<th>SendIPinIPFrames</th>
 						<th>SendSmallCraftFrames</th>
 						<th>TimeStamp</th>
-						<th>更新时间</th>
 						{{if .role}}
-						<th id="cctc_head_op">操作</th>
+						<th>操作</th>
 						{{else}}
-						<th id="cctc_head_op" style="display:none;">操作</th>
+						<th style="display:none;">操作</th>
 						{{end}}
 					</tr>
 				</thead>
-				<tbody id="ctcc_tb">
+				<tbody>
 			
 				</tbody>
 			</table>	

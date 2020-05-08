@@ -117,9 +117,10 @@
 					<div class="panel-heading">
 						<div class="panel-title">CTCC Process State</div>
 					</div>
-					<table id="ctcc_tb" class="table table-bordered table-responsive pagetable" >
+					<table id="ctcc_tb" class="table table-bordered table-responsive  " >
 						<thead>
 							<tr class="replace-inputs" style="display:none;">
+								<th style="width: 190px;"></th>
 								<th style="width: 240px;"></th>
 								<th style="width: 120px;"></th>
 								<th style="width: 110px;"></th>
@@ -148,8 +149,7 @@
 								<th style="width: 150px;"></th>
 								<th style="width: 160px;"></th>
 								<th style="width: 180px;"></th>
-								<th style="width: 190px;"></th>
-								<th style="width: 190px;"></th>
+								<th style="width: 190px;"></th>								
 								{{if .role}}
 								<th style="width: 100px;" ></th>
 								{{else}}
@@ -157,6 +157,7 @@
 								{{end}}	
 							</tr>
 							<tr>
+								<th style="width: 190px;">更新时间</th>
 								<th style="width: 240px;">MsgType</th>
 								<th style="width: 120px;">ProcessId</th>
 								<th style="width: 110px;">SysId</th>
@@ -186,7 +187,6 @@
 								<th style="width: 160px;" >SendIPinIPFrames</th>
 								<th style="width: 180px;">SendSmallCraftFrames</th>
 								<th style="width: 190px;">TimeStamp</th>
-								<th style="width: 190px;">更新时间</th>
 								{{if .role}}
 								<th style="width: 100px;">操作</th>
 								{{else}}
@@ -197,6 +197,7 @@
 						<tbody id="ctcc_tbody">
 						{{ range .ctcc_table_date }}
 						<tr>
+						<td>{{ .UpDateTime }}</td>
 						<td>{{ .MsgType }}</td>
 						<td>{{ .ProcessID }}</td>
 						<td>{{ .SysID }}</td>
@@ -226,7 +227,6 @@
 						<td>{{ .SendIPinIPFrames }}</td>
 						<td>{{ .SendSmallCraftFrames }}</td>
 						<td>{{ .TimeStamp }}</td>
-						<td>{{ .UpDateTime }}</td>
 						<td ><a href="/ctcc/commandpage?MsgType={{ .MsgType }}&SysId={{ .SysID }}&Pattern={{ .Pattern }}&Channel={{ .Channel }}" target="_blank" style="color:red;">发送命令</a></td> 
 						</tr>
 						{{ end }}
@@ -247,9 +247,10 @@
 					<div class="panel-heading">
 						<div class="panel-title">Protocal Process State</div>
 					</div>
-					<table id="protocal_tb" class="table table-bordered table-responsive pagetable" >
+					<table id="protocal_tb" class="table table-bordered table-responsive  " >
 						<thead>
 							<tr class="replace-inputs" style="display:none;">
+								<th style="width: 190px;"></th>
 								<th style="width: 190px;"></th>
 								<th style="width: 110px;"></th>
 								<th style="width: 110px;"></th>
@@ -266,7 +267,6 @@
 								<th style="width: 180px;"></th>
 								<th style="width: 180px;"></th>
 								<th style="width: 140px;"></th>	
-								<th style="width: 190px;"></th>
 								{{if .role}}		
 								<th style="width: 100px;"></th>		
 								{{else}}	
@@ -274,6 +274,7 @@
 								{{end}}				
 							</tr>
 							<tr>
+								<th  style="width: 190px;">更新时间</td>
 								<th style="width: 190px;">MsgType</th>
 								<th style="width: 110px;">ID</th>
 								<th style="width: 110px;">MID</th>
@@ -290,7 +291,6 @@
 								<th style="width: 180px;">Last</th>
 								<th style="width: 180px;">Recv_count</th>
 								<th style="width: 140px;">Send_no</th>	
-								<td  style="width: 190px;">更新时间</td>
 								{{if .role}}
 								<th id="protocal_head_op" style="width: 100px;">操作</th>
 								{{else}}
@@ -301,6 +301,7 @@
 						<tbody id="protocal_tbody">
 							{{ range .protocal_table_date }}
 				<tr>
+					<td>{{ .UpDateTime }}</td>
 					<td>{{ .MsgType }}</td>
 					<td>{{ .ID }}</td>
 					<td>{{ .MID }}</td>
@@ -317,7 +318,6 @@
 					<td>{{ .Last }}</td>
 					<td>{{ .RecvCount }}</td>
 					<td>{{ .SendNo }}</td>
-					<td>{{ .UpDateTime }}</td>
 					<td><a href="/protocal/commandpage?MsgType={{ .MsgType }}&ID={{ .ID }}&MID={{ .MID }}&BID={{ .BID }}&ProcessName={{ .ProcessName }}" target="_blank" style="color:red;">发送命令</a></td>  
 				</tr>
 			{{ end }}
@@ -338,9 +338,10 @@
 					<div class="panel-heading">
 						<div class="panel-title">File Send State</div>
 					</div>
-					<table id="nonreal_tb" class="table table-bordered table-responsive pagetable" >
+					<table id="nonreal_tb" class="table table-bordered table-responsive  " >
 						<thead>
 							<tr class="replace-inputs"  style="display:none;">
+								<th style="width: 190px;"></th>
 								<th style="width: 140px;"></th>
 								<th style="width: 120px;"></th>
 								<th style="width: 110px;"></th>
@@ -354,7 +355,6 @@
 								<th style="width: 150px;"></th>
 								<th style="width: 180px;"></th>
 								<th style="width: 180px;"></th>	
-								<th style="width: 190px;"></th>
 								{{if .role}}	
 								<th style="width: 100px;"></th>	
 								{{else}}	
@@ -362,6 +362,7 @@
 								{{end}}			
 							</tr>
 							<tr>
+								<th  style="width: 190px;">更新时间</td>
 								<th style="width: 140px;">MsgTag</th>
 								<th style="width: 120px;">MsgType</th>
 								<th style="width: 110px;">MissionID</th>
@@ -375,7 +376,6 @@
 								<th style="width: 150px;">FilePath</th>
 								<th style="width: 180px;">Status</th>
 								<th style="width: 180px;">Station</th>
-								<td  style="width: 190px;">更新时间</td>
 								{{if .role}}
 								<th style="width: 100px;">操作</th>
 								{{else}}
@@ -386,6 +386,7 @@
 						<tbody id="nonreal_tbody">
 							{{ range .nonreal_table_date }}
 							<tr>
+							<td>{{ .UpDateTime }}</td>
 							<td>{{ .MsgTag }}</td>
 							<td>{{ .MsgType }}</td>
 							<td>{{ .MissionID }}</td>
@@ -399,7 +400,6 @@
 							<td>{{ .FilePath }}</td>
 							<td>{{ .Status }}</td>
 							<td>{{ .Station }}</td>
-							<td>{{ .UpDateTime }}</td>
 							<td><a href="/non_real/commandpage?MsgTag={{ .MsgTag }}&MsgType={{ .MsgType }}&MissionID={{ .MissionID }}&Subtype={{ .Subtype }}&MSGID={{ .MSGID }}&Sender={{ .Sender }}&SendSessionID={{ .SendSessionID }}" target="_blank" style="color:red;">发送命令</a></td>  
 							</tr>
 							{{ end }} 

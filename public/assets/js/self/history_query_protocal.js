@@ -40,7 +40,6 @@ jQuery(document).ready(function(){
             let second=date.getSeconds();
             endTime=date.getFullYear()  + (mon < 10 ? "0" + mon : mon)  + (day < 10 ? "0" + day : day)  + (hour < 10 ? "0" + hour : hour)  + (minute < 10 ? "0" + minute : minute)  + (second < 10 ? "0" + second : second) ;
         }
-        jQuery('#protocal_tb').html("");
         let param={"MID": jQuery("#MIDControl").val(), "ProcessName": jQuery("#ProcessNameControl").val(),"Report":{"Report_type":jQuery("#Report_typeControl").val()},"startTime":startTime,"endTime":endTime};    
         jQuery.ajax({
         type: 'POST',  
@@ -61,7 +60,7 @@ jQuery(document).ready(function(){
     });
 });
 function updateProtocalTable(data){
-    var table = jQuery('#protocal_table').DataTable();
+    var table = jQuery('#protocal_tb').DataTable();
     table.clear();
     var objs = eval("("+data+")"); 
     var curtime= new Date();
@@ -70,6 +69,7 @@ function updateProtocalTable(data){
         var datediffSecond=Math.round((curtime.getTime()-updatetime.getTime())/1000);
         if(datediffSecond>300){
             table.row.add([
+                '<font color="grey">'+obj.UpDateTime+'</font>',
                 '<font color="grey">'+obj.MsgType+'</font>',
                 '<font color="grey">'+obj.ID+'</font>',
                 '<font color="grey">'+obj.MID+'</font>',
@@ -86,11 +86,11 @@ function updateProtocalTable(data){
                 '<font color="grey">'+obj.Last+'</font>',
                 '<font color="grey">'+obj.RecvCount+'</font>',
                 '<font color="grey">'+obj.SendNo+'</font>',
-                '<font color="grey">'+obj.UpDateTime+'</font>',
                 '<a href="/protocal/commandpage?MsgType='+obj.MsgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' 
               ]);
         }else{
             table.row.add([
+                '<font color="black">'+obj.UpDateTime+'</font>',
                 '<font color="black">'+obj.MsgType+'</font>',
                 '<font color="black">'+obj.ID+'</font>',
                 '<font color="black">'+obj.MID+'</font>',
@@ -107,7 +107,6 @@ function updateProtocalTable(data){
                 '<font color="black">'+obj.Last+'</font>',
                 '<font color="black">'+obj.RecvCount+'</font>',
                 '<font color="black">'+obj.SendNo+'</font>',
-                '<font color="black">'+obj.UpDateTime+'</font>',
                 '<a href="/protocal/commandpage?MsgType='+obj.MsgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' 
               ]);
         }

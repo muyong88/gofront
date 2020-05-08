@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
 	{{ template "header"}}
-	<style type="text/css">
-		.table tbody tr td{
-			color:red;
-		}
-	</style>
 </head>
 
 
@@ -21,9 +16,10 @@
 		
 		<br />
 		
-		<table class="table table-bordered datatable pagetable" id="ctcc_tb">
+		<table class="table table-bordered datatable  " id="ctcc_tb">
 			<thead>
 				<tr class="replace-inputs">
+					<th style="width: 190px;"></th>
 					<th style="width: 240px;"></th>
 					<th style="width: 120px;"></th>
 					<th style="width: 110px;"></th>
@@ -53,7 +49,6 @@
 					<th style="width: 160px;"></th>
 					<th style="width: 180px;"></th>
 					<th style="width: 190px;"></th>
-					<th style="width: 190px;"></th>
 					{{if .role}}
 					<th style="width: 100px;" ></th>
 					{{else}}
@@ -61,6 +56,7 @@
 					{{end}}	
 				</tr>
 				<tr>
+					<th>更新时间</th>
 					<th >MsgType</th>
 					<th>ProcessId</th>
 					<th>SysId</th>
@@ -90,7 +86,6 @@
 					<th>SendIPinIPFrames</th>
 					<th>SendSmallCraftFrames</th>
 					<th>TimeStamp</th>
-					<th>更新时间</th>
 					{{if .role}}
 					<th>操作</th>
 					{{else}}
@@ -98,10 +93,11 @@
 					{{end}}		
 				</tr>
 			</thead>
-			<tbody id="ctcc_tbody">
+			<tbody >
 			
 				{{ range .ctcc_table_date }}
 					<tr>
+						<td>{{ .UpDateTime }}</td>
 						<td>{{ .MsgType }}</td>
 						<td>{{ .ProcessID }}</td>
 						<td>{{ .SysID }}</td>
@@ -131,7 +127,6 @@
 						<td>{{ .SendIPinIPFrames }}</td>
 						<td>{{ .SendSmallCraftFrames }}</td>
 						<td>{{ .TimeStamp }}</td>
-						<td>{{ .UpDateTime }}</td>
 						<td ><a href="/ctcc/commandpage?MsgType={{ .MsgType }}&SysId={{ .SysID }}&Pattern={{ .Pattern }}&Channel={{ .Channel }}" target="_blank" style="color:red;">发送命令</a></td> 
 					</tr>
 				{{ end }}

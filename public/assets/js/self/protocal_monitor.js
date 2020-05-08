@@ -14,6 +14,7 @@
 	  function updateProtocalTable(obj){
       var table = jQuery('#protocal_tb').DataTable();
     table.row.add([
+      obj.updateTime,
       obj.msgType,
       obj.ID,
       obj.MID,
@@ -30,7 +31,6 @@
       obj.Report.Last,
       obj.Report.Recv_count,
     obj.Report.Send_no,
-    obj.updateTime,
 	  '<a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' 
 	]);
 	var currentPage = table.page();

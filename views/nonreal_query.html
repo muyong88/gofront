@@ -49,9 +49,10 @@
 				</form>
 				<br/>
 			</div>					
-			<table class="table table-bordered datatable pagetable"  id="nonreal_table">
+			<table class="table table-bordered datatable  "  id="nonreal_tb">
 				<thead>
 					<tr class="replace-inputs">
+						<th style="width: 190px;"></th>
 						<th style="width: 140px;"></th>
 						<th style="width: 120px;"></th>
 						<th style="width: 110px;"></th>
@@ -65,7 +66,6 @@
 						<th style="width: 150px;"></th>
 						<th style="width: 180px;"></th>
 						<th style="width: 180px;"></th>	
-						<th style="width: 190px;"></th>
 						{{if .role}}	
 						<th style="width: 100px;"></th>	
 						{{else}}	
@@ -73,6 +73,7 @@
 						{{end}}			
 					</tr>
 					<tr>
+						<th>更新时间</th>
 						<th>MsgTag</th>
 						<th>MsgType</th>
 						<th>MissionID</th>
@@ -86,15 +87,14 @@
 						<th>FilePath</th>
 						<th>Status</th>
 						<th>Station</th>
-						<th>更新时间</th>
 						{{if .role}}
-						<th id="nonreal_head_op">操作</th>
+						<th>操作</th>
 						{{else}}
-						<th id="nonreal_head_op" style="display:none;">操作</th>
+						<th style="display:none;">操作</th>
 						{{end}}								
 					</tr>
 				</thead>
-				<tbody id="nonreal_tb">
+				<tbody >
 			
 				</tbody>
 			</table>			

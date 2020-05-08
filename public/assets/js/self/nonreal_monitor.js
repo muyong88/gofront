@@ -13,6 +13,7 @@
 	  function updateNonRealTable(obj){
       var table = jQuery('#nonreal_tb').DataTable();
     table.row.add([
+		obj.updateTime,
 		obj.msgTag,
 		obj.msgType,
 		obj.missionID,
@@ -26,7 +27,6 @@
 		obj.filePath,
 		obj.status,
 		obj.station,
-		obj.updateTime,
 		'<a href="/non_real/commandpage?MsgTag='+obj.msgTag+'&MsgType='+obj.msgType+'&MissionID='+obj.missionID+'&Subtype='+obj.subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.sender+'&SendSessionID='+obj.sendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
 	]);
 	var currentPage = table.page();

@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
 	{{ template "header"}}
-	<style type="text/css">
-		.table tbody tr td{
-			color:red;
-		}
-	</style>
 </head>
 
 
@@ -21,9 +16,10 @@
 		
 		<br />
 		
-		<table class="table table-bordered datatable pagetable" id="nonreal_tb">
+		<table class="table table-bordered datatable  " id="nonreal_tb">
 			<thead>
 				<tr class="replace-inputs">
+					<th style="width: 190px;"></th>
 					<th style="width: 140px;"></th>
 					<th style="width: 120px;"></th>
 					<th style="width: 110px;"></th>
@@ -37,7 +33,6 @@
 					<th style="width: 150px;"></th>
 					<th style="width: 180px;"></th>
 					<th style="width: 180px;"></th>	
-					<th style="width: 190px;"></th>
 					{{if .role}}	
 					<th style="width: 100px;"></th>	
 					{{else}}	
@@ -45,6 +40,7 @@
 					{{end}}			
 				</tr>
 				<tr>
+					<th>更新时间</th>
 					<th>MsgTag</th>
 					<th>MsgType</th>
 					<th>MissionID</th>
@@ -58,7 +54,6 @@
 					<th>FilePath</th>
 					<th>Status</th>
 					<th>Station</th>
-					<td>更新时间</td>
 					{{if .role}}
 					<th>操作</th>	
 					{{else}}
@@ -66,9 +61,10 @@
 					{{end}}	
 				</tr>
 			</thead>
-			<tbody id="nonreal_tbody">
+			<tbody>
 				{{ range .nonreal_table_date }}
 				<tr>
+					<td>{{ .UpDateTime }}</td>
 					<td>{{ .MsgTag }}</td>
 					<td>{{ .MsgType }}</td>
 					<td>{{ .MissionID }}</td>
@@ -82,7 +78,6 @@
 					<td>{{ .FilePath }}</td>
 					<td>{{ .Status }}</td>
 					<td>{{ .Station }}</td>
-					<td>{{ .UpDateTime }}</td>
 					<td><a href="/non_real/commandpage?MsgTag={{ .MsgTag }}&MsgType={{ .MsgType }}&MissionID={{ .MissionID }}&Subtype={{ .Subtype }}&MSGID={{ .MSGID }}&Sender={{ .Sender }}&SendSessionID={{ .SendSessionID }}" target="_blank" style="color:red;">发送命令</a></td>  
 				</tr>
 			{{ end }}

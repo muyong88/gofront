@@ -40,7 +40,6 @@ jQuery(document).ready(function(){
             let second=date.getSeconds();
             endTime=date.getFullYear() + "-" + (mon < 10 ? "0" + mon : mon) + "-" + (day < 10 ? "0" + day : day) + "_" + (hour < 10 ? "0" + hour : hour) + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) ;
         }
-        jQuery('#nonreal_tb').html("");
         let param={"msgType": jQuery("#msgTypeControl_NonReal").val(), "missionID": jQuery("#missionIDControl").val(),"startTime":startTime,"endTime":endTime};    
         jQuery.ajax({
         type: 'POST',  
@@ -62,7 +61,7 @@ jQuery(document).ready(function(){
 });
 function updateNonrealTable(data){
     var objs = eval("("+data+")"); 
-    var table = jQuery('#nonreal_table').DataTable();
+    var table = jQuery('#nonreal_tb').DataTable();
     table.clear();
     var curtime= new Date();
     jQuery.each(objs, function (index, obj) {
@@ -70,6 +69,7 @@ function updateNonrealTable(data){
         var datediffSecond=Math.round((curtime.getTime()-updatetime.getTime())/1000);
         if(datediffSecond>300){
             table.row.add([
+                '<font color="grey">'+obj.UpDateTime+'</font>',
                 '<font color="grey">'+obj.MsgTag+'</font>',
                 '<font color="grey">'+obj.MsgType+'</font>',
                 '<font color="grey">'+obj.MissionID+'</font>',
@@ -83,11 +83,11 @@ function updateNonrealTable(data){
                 '<font color="grey">'+obj.FilePath+'</font>',
                 '<font color="grey">'+obj.Status+'</font>',
                 '<font color="grey">'+obj.Station+'</font>',
-                '<font color="grey">'+obj.UpDateTime+'</font>',
                 '<a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
             ]); 
         }else{
             table.row.add([
+                '<font color="black">'+obj.UpDateTime+'</font>',
                 '<font color="black">'+obj.MsgTag+'</font>',
                 '<font color="black">'+obj.MsgType+'</font>',
                 '<font color="black">'+obj.MissionID+'</font>',
@@ -101,7 +101,6 @@ function updateNonrealTable(data){
                 '<font color="black">'+obj.FilePath+'</font>',
                 '<font color="black">'+obj.Status+'</font>',
                 '<font color="black">'+obj.Station+'</font>',
-                '<font color="black">'+obj.UpDateTime+'</font>',
                 '<a href="/non_real/commandpage?MsgTag='+obj.MsgTag+'&MsgType='+obj.MsgType+'&MissionID='+obj.MissionID+'&Subtype='+obj.Subtype+'&MSGID='+obj.MSGID+'&Sender='+obj.Sender+'&SendSessionID='+obj.SendSessionID+'" target="_blank" style="color:red;">发送命令</a>'
             ]); 
         }
