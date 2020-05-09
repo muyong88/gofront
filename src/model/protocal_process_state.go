@@ -11,7 +11,7 @@ import (
 
 //ProtocalProcessState 协议状态结构体
 type ProtocalProcessState struct {
-	Identify     int64          `xorm:"pk autoincr  notnull"` //自增id
+	// Identify     int64          `xorm:"pk autoincr  notnull"` //自增id
 	MsgSign      string         `xorm:"notnull"`
 	MsgType      string         `xorm:"notnull" json:"msgType"`      //消息类型
 	ID           int            `xorm:"notnull" json:"ID"`           //软件标识
@@ -28,7 +28,7 @@ type ProtocalProcessState struct {
 
 //ProtocalReport ProtocalReport
 type ProtocalReport struct {
-	Identify         int64  `xorm:"pk autoincr  notnull"`              //自增id
+	// Identify         int64  `xorm:"pk autoincr  notnull"`              //自增id
 	ReportType       string `xorm:"notnull" json:"Report_type"`        //报告类型
 	CommandType      string `xorm:"notnull" json:"Command_type"`       //命令类型
 	CommandResult    string `xorm:"notnull" json:"Command_result"`     //命令结果
@@ -42,7 +42,7 @@ type ProtocalReport struct {
 
 //ProtocalProcessStateDb 用作入库
 type ProtocalProcessStateDb struct {
-	Identify         int64  `xorm:"pk autoincr  notnull"` //自增id
+	// Identify         int64  `xorm:"pk autoincr  notnull"` //自增id
 	MsgSign          string `xorm:"notnull"`
 	MsgType          string `xorm:"notnull"`    //消息类型
 	ID               int    `xorm:"notnull"`    //软件标识

@@ -75,6 +75,8 @@ func CTCCSendCommand(ctx iris.Context) {
 		controller.SendDataToTopic(network.NetWorkTopic, ctccCommand.GetJSONCommand())
 	}
 	ctx.Text("send success!")
+	//入库
+	model.CreateCTCCCommand(&ctccCommand)
 }
 
 //CTCCQueryDb 查询CCTC数据库

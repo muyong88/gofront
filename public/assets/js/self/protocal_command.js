@@ -24,18 +24,6 @@ jQuery(document).ready(function(){
                 }
             },
 
-        },
-        OrderSeq: {
-            group: '.col-sm-3',
-            validators: {
-                notEmpty: {
-                    message: '命令序号不能为空'
-                },
-                regexp: {
-                    regexp: /^[0-9]+$/,
-                    message: '必须0开始递增整数'
-                }
-            }
         }
     }
 });
@@ -55,7 +43,7 @@ jQuery("#sendProtocalBtn").click(function(){
     if (bv.isValid()) {
     let param={'msgType':jQuery("#msgTypeControl_Protocal").val(), 'ID': Number(jQuery("#IDControl").val()),
                 "MID": jQuery("#MIDControl").val(), "BID": jQuery("#BIDControl").val(), 
-                "ProcessName": jQuery("#ProcessNameControl").val(),"OrderSeq":Number(jQuery("#OrderSeqControl").val()),
+                "ProcessName": jQuery("#ProcessNameControl").val(),
                 "OrderName":jQuery("#OrderNameControl").val(),"ParaInfo":{"MODE":jQuery("#MODEControl").val()
                 },"Protocal":jQuery("#ProtocalControl").val()};    
     jQuery.ajax({

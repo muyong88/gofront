@@ -10,7 +10,7 @@ import (
 
 //NonRealFileState 非实时文件状态结构体
 type NonRealFileState struct {
-	Identify      int64  `xorm:"pk autoincr  notnull" ` //自增id
+	// Identify      int64  `xorm:"pk autoincr  notnull" ` //自增id
 	MsgSign       string `xorm:"notnull" `
 	MsgTag        string `xorm:"notnull" json:"msgTag"`
 	MsgType       string `xorm:"notnull" json:"msgType"`

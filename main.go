@@ -36,6 +36,12 @@ func main() {
 	gofrontdb.SlaveEngine().Sync2(new(model.NonRealFileState))        // 库结构同步
 	gofrontdb.MasterEngine().Sync2(new(model.Users))                  // 库结构同步
 	gofrontdb.SlaveEngine().Sync2(new(model.Users))                   // 库结构同步
+	gofrontdb.MasterEngine().Sync2(new(model.CTCCCommand))            // 库结构同步
+	gofrontdb.SlaveEngine().Sync2(new(model.CTCCCommand))             // 库结构同步
+	gofrontdb.MasterEngine().Sync2(new(model.NonRealFileCommandDB))   // 库结构同步
+	gofrontdb.SlaveEngine().Sync2(new(model.NonRealFileCommandDB))    // 库结构同步
+	gofrontdb.MasterEngine().Sync2(new(model.ProtocalCommandDB))      // 库结构同步
+	gofrontdb.SlaveEngine().Sync2(new(model.ProtocalCommandDB))       // 库结构同步
 
 	model.MsgChan = make(chan model.Message)
 	controller.InitNetwork("config/conf/NetWork.xml") // init net

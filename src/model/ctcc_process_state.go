@@ -52,7 +52,6 @@ func CreateCTCCProcessState(process *CTCCProcessState) (int64, error) {
 	e := gofrontdb.EngineGroup()
 	process.MsgSign = "CTCCProcessState"
 	return e.Insert(process)
-	//stub:展示
 }
 
 //GetOneCTCCProcessState 查询一个

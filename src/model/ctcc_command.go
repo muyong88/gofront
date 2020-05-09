@@ -4,10 +4,12 @@ import (
 	"encoding/json"
 
 	"github.com/kataras/golog"
+	"github.com/yanzhen74/gofront/src/gofrontdb"
 )
 
 //CTCCCommand CTCC命令结构体
 type CTCCCommand struct {
+	// Identify       int64  `xorm:"pk autoincr  notnull"` //自增id
 	MsgType        string `json:"msgType"`
 	Operation      string `json:"Operation"`
 	SysID          int    `json:"SysId"`
@@ -31,4 +33,10 @@ func (command *CTCCCommand) GetJSONCommand() string {
 //InitByJSON 用JSON初始化结构体
 func (command *CTCCCommand) InitByJSON(data []byte) error {
 	return json.Unmarshal(data, command)
+}
+
+//CreateCTCCCommand 入库
+func CreateCTCCCommand(command *CTCCCommand) (int64, error) {
+	e := gofrontdb.EngineGroup()
+	return e.Insert(command)
 }

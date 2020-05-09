@@ -73,10 +73,12 @@ func ProtocalProcessSendCommand(ctx iris.Context) {
 		golog.Error(err)
 		return
 	}
+	proCommand.OrderSeq = model.GetNextOrderSeq()
 	network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("5")
 	if err == nil {
 		controller.SendDataToTopic(network.NetWorkTopic, proCommand.GetJSONCommand())
 	}
+	model.CreateProtocalCommandDB(&proCommand)
 }
 
 //ProtocalQueryDb 查询Db

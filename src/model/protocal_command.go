@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 
 	"github.com/kataras/golog"
+	"github.com/yanzhen74/gofront/src/gofrontdb"
 )
 
 //ProtocalCommand 协议命令结构体
@@ -13,7 +14,7 @@ type ProtocalCommand struct {
 	MID         string   `json:"MID"`
 	BID         string   `json:"BID"`
 	ProcessName string   `json:"ProcessName"`
-	OrderSeq    int      `json:"OrderSeq"`
+	OrderSeq    int64    `json:"OrderSeq"`
 	OrderName   string   `json:"OrderName"`
 	ParaInfo    ParaInfo `json:"ParaInfo"`
 	Protocal    string   `json:"Protocal"`
@@ -22,6 +23,20 @@ type ProtocalCommand struct {
 //ParaInfo ParaInfo
 type ParaInfo struct {
 	MODE string `json:"MODE"`
+}
+
+//ProtocalCommandDB ProtocalCommandDB
+type ProtocalCommandDB struct {
+	// Identify    int64 `xorm:"pk autoincr  notnull"` //自增id
+	MsgType     string
+	ID          int
+	MID         string
+	BID         string
+	ProcessName string
+	OrderSeq    int64
+	OrderName   string
+	MODE        string
+	Protocal    string
 }
 
 //GetJSONCommand get json
@@ -36,4 +51,27 @@ func (pro *ProtocalCommand) GetJSONCommand() string {
 //InitByJSON init
 func (pro *ProtocalCommand) InitByJSON(data []byte) error {
 	return json.Unmarshal(data, pro)
+}
+
+//CreateProtocalCommandDB CreateProtocalCommandDB
+func CreateProtocalCommandDB(command *ProtocalCommand) (int64, error) {
+	var commandDB ProtocalCommandDB
+	commandDB.MsgType = command.MsgType
+	commandDB.ID = command.ID
+	commandDB.MID = command.MID
+	commandDB.BID = command.BID
+	commandDB.ProcessName = command.ProcessName
+	commandDB.OrderSeq = command.OrderSeq
+	commandDB.OrderName = command.OrderName
+	commandDB.MODE = command.ParaInfo.MODE
+	commandDB.Protocal = command.Protocal
+	e := gofrontdb.EngineGroup()
+	return e.Insert(&commandDB)
+}
+
+//GetNextOrderSeq 获取下一个OrderSe
+func GetNextOrderSeq() int64 {
+	var commandDB ProtocalCommandDB
+	gofrontdb.EngineGroup().Where(" OrderSeq = (select max(OrderSeq) from ProtocalCommandDB) ").Get(&commandDB)
+	return (commandDB.OrderSeq + 1)
 }

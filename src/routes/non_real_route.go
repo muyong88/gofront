@@ -54,6 +54,8 @@ func NonRealSendCommand(ctx iris.Context) {
 	if err == nil {
 		controller.SendDataToTopic(network.NetWorkTopic, nonrealCommand.GetJSONCommand())
 	}
+	//入库
+	model.CreateNonRealFileCommandDB(&nonrealCommand)
 }
 
 //NonRealQueryDb 查询Db

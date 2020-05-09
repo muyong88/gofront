@@ -4,7 +4,7 @@ import "github.com/yanzhen74/gofront/src/gofrontdb"
 
 //CTCCDownlinkUpdate  下行计划更新结构体
 type CTCCDownlinkUpdate struct {
-	Identify  int64           `xorm:"pk autoincr  notnull"` //自增id
+	// Identify  int64           `xorm:"pk autoincr  notnull"` //自增id
 	MsgTag    string          `xorm:"notnull"`
 	MissionID string          `xorm:"notnull"`
 	MsgType   string          `xorm:"notnull"`
