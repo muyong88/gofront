@@ -45,7 +45,7 @@ jQuery(document).ready(function(){
             let second=date.getSeconds();
             endTime=date.getFullYear() + "-" + (mon < 10 ? "0" + mon : mon) + "-" + (day < 10 ? "0" + day : day) + "_" + (hour < 10 ? "0" + hour : hour) + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) ;
         }  
-        let param={"msgType": jQuery("#msgTypeControl_CTCC").val(),"sysId": Number(jQuery("#sysIdControl").val()),"startTime":startTime,"endTime":endTime};    
+        let param={"channel": Number(jQuery("#channelControl").val()),"sysId": Number(jQuery("#sysIdControl").val()),"startTime":startTime,"endTime":endTime};    
         jQuery.ajax({
         type: 'POST',  
         data: JSON.stringify(param),

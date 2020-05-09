@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
             let second=date.getSeconds();
             endTime=date.getFullYear()  + (mon < 10 ? "0" + mon : mon)  + (day < 10 ? "0" + day : day)  + (hour < 10 ? "0" + hour : hour)  + (minute < 10 ? "0" + minute : minute)  + (second < 10 ? "0" + second : second) ;
         }
-        let param={"MID": jQuery("#MIDControl").val(), "ProcessName": jQuery("#ProcessNameControl").val(),"Report":{"Report_type":jQuery("#Report_typeControl").val()},"startTime":startTime,"endTime":endTime};    
+        let param={"MainOrBackup": Number(jQuery("#MainOrBackupControl").val()),"MID": jQuery("#MIDControl").val(), "ProcessName": jQuery("#ProcessNameControl").val(),"Report":{"Report_type":jQuery("#Report_typeControl").val()},"startTime":startTime,"endTime":endTime};    
         jQuery.ajax({
         type: 'POST',  
         data: JSON.stringify(param),

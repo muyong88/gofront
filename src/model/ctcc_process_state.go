@@ -92,9 +92,14 @@ func GetCTCCProcessFixed() (states []CTCCProcessState) {
 }
 
 //GetCTCCProcessStateConditions 条件查询
-func GetCTCCProcessStateConditions(msgType string, sysID int, startTime string, endTime string) ([]map[string]string, error) {
-	sqlText := "select * from CTCCProcessState where MsgType = '%s' and SysId = %d "
-	sqlText = fmt.Sprintf(sqlText, msgType, sysID)
+func GetCTCCProcessStateConditions(channel int, sysID int, startTime string, endTime string) ([]map[string]string, error) {
+	sqlText := "select * from CTCCProcessState where Channel >0 "
+	if channel != 0 {
+		sqlText = sqlText + fmt.Sprintf(" and Channel = %d ", channel)
+	}
+	if sysID != 0 {
+		sqlText = sqlText + fmt.Sprintf(" and SysId = %d ", sysID)
+	}
 	if startTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and timestamp >= '%s'", startTime)
 	}

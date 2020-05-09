@@ -55,9 +55,14 @@ func GetNonRealProcessAfterUpdateTime(updateTime string) (state []NonRealFileSta
 }
 
 //GetNonRealProcessStateCondition 条件查询
-func GetNonRealProcessStateCondition(msgType string, missionID string, startTime string, endTime string) ([]map[string]string, error) {
-	sqlText := "select * from NonRealFileState where MsgType = '%s' and MissionID = '%s'"
-	sqlText = fmt.Sprintf(sqlText, msgType, missionID)
+func GetNonRealProcessStateCondition(ty string, station string, startTime string, endTime string) ([]map[string]string, error) {
+	sqlText := "select * from NonRealFileState where Type <> '' "
+	if ty != "ALL" {
+		sqlText = sqlText + fmt.Sprintf(" and Type = '%s'", ty)
+	}
+	if station != "ALL" {
+		sqlText = sqlText + fmt.Sprintf(" and Station = '%s'", station)
+	}
 	if startTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and timestamp >= '%s'", startTime)
 	}

@@ -120,9 +120,14 @@ func GetProctocalProcessFixed() (states []ProtocalProcessStateDb) {
 }
 
 //GetProctocalProcessDbStateCondition 条件查询
-func GetProctocalProcessDbStateCondition(mid string, processName string, reprotType string, startTime string, endTime string) ([]map[string]string, error) {
-	sqlText := "select * from ProtocalProcessStateDb where MID = '%s'  "
-	sqlText = fmt.Sprintf(sqlText, mid)
+func GetProctocalProcessDbStateCondition(mainOrBackup int, mid string, processName string, reprotType string, startTime string, endTime string) ([]map[string]string, error) {
+	sqlText := "select * from ProtocalProcessStateDb where MID > 0 "
+	if mid != "ALL" {
+		sqlText = sqlText + fmt.Sprintf(" and MID = '%s'", mid)
+	}
+	if mainOrBackup != 0 {
+		sqlText = sqlText + fmt.Sprintf(" and MainOrBackup =  %d", mainOrBackup)
+	}
 	if processName != "ALL" {
 		sqlText = sqlText + fmt.Sprintf(" and ProcessName = '%s'", processName)
 	}

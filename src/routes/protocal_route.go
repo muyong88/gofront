@@ -84,7 +84,7 @@ func ProtocalQueryDb(ctx iris.Context) {
 	var state model.ProtocalProcessState
 	ctx.ReadJSON(&state)
 	// results, _ := model.GetAllProctocalProcessDbState()
-	results, _ := model.GetProctocalProcessDbStateCondition(state.MID, state.ProcessName, state.Report.ReportType, state.StartTime, state.EndTime)
+	results, _ := model.GetProctocalProcessDbStateCondition(state.MainOrBackup, state.MID, state.ProcessName, state.Report.ReportType, state.StartTime, state.EndTime)
 	if results != nil {
 		bjson, _ := json.Marshal(results)
 		ctx.JSON(string(bjson))

@@ -8,7 +8,8 @@ jQuery(document).ready(function(){
     );
     //2.软件标识
     jQuery("#sysIdControl").append( 
-        "<option>1</option>\
+        "<option>ALL</option>\
+         <option>1</option>\
          <option>2</option>"
     );
     //3.命令名称
@@ -27,7 +28,8 @@ jQuery(document).ready(function(){
     );
     //5.下行通道
     jQuery("#channelControl").append( 
-        "<option>1</option>\
+        "<option>ALL</option>\
+        <option>1</option>\
          <option>2</option>"
     );
     //6.主份软件主机名称
@@ -40,13 +42,16 @@ jQuery(document).ready(function(){
     );
 
     //协议
-    //1.来源站
-    jQuery("#sourceStationControl").append( 
-        "<option>ALL</option>"
+    //1.主备类型
+    jQuery("#MainOrBackupControl").append( 
+        "<option>ALL</option>\
+        <option>1</option>\
+        <option>2</option>"
     );
     //2.任务号
     jQuery("#MIDControl").append( 
-        "<option>HXC</option>\
+        "<option>ALL</option>\
+        <option>HXC</option>\
          <option>CLOSE</option>"
     );
     //3.协议进程名称
@@ -112,5 +117,14 @@ jQuery(document).ready(function(){
         "<option>OIM</option>\
         <option>FEPRECP</option>"
     );
-
+    //6.站点
+    jQuery("#stationControl").append( 
+        "<option>ALL</option>\
+        <option>BACC/CTCC</option>"
+    );
+    //7.站点
+    jQuery("#typeControl").append( 
+        "<option>ALL</option>\
+        <option>SEND</option>"
+    );
 });
