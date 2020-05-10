@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
@@ -37,6 +38,7 @@ type ProtocalCommandDB struct {
 	OrderName   string
 	MODE        string
 	Protocal    string
+	SendTime    string //入库时间
 }
 
 //GetJSONCommand get json
@@ -65,6 +67,7 @@ func CreateProtocalCommandDB(command *ProtocalCommand) (int64, error) {
 	commandDB.OrderName = command.OrderName
 	commandDB.MODE = command.ParaInfo.MODE
 	commandDB.Protocal = command.Protocal
+	commandDB.SendTime = time.Now().Format("2006-01-02 15:04:05")
 	e := gofrontdb.EngineGroup()
 	return e.Insert(&commandDB)
 }

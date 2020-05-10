@@ -49,6 +49,7 @@ func RunProcessor() {
 			SendWebsocketMsg([]byte(processState.GetJSONString()))
 			CTCCUpdateTime = time.Now()
 		} else if msgRe.Topic == network8.NetWorkTopic {
+
 			var processState model.ProtocalProcessState
 			if err := json.Unmarshal(msgRe.Content, &processState); err != nil {
 				fmt.Println(err)
@@ -70,10 +71,16 @@ func RunProcessor() {
 				if processState.Report.RecvStatus == true {
 					msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevStart", SuccessFlag: "Success", MID: processState.MID, ProcessName: processState.ProcessName, MainOrBackup: processState.MainOrBackup}
 				} else {
-					msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevEnd", SuccessFlag: "Success", MID: processState.MID, ProcessName: processState.ProcessName, MainOrBackup: processState.MainOrBackup}
+					msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevMedium", SuccessFlag: "Success", MID: processState.MID, ProcessName: processState.ProcessName, MainOrBackup: processState.MainOrBackup}
+					time.AfterFunc(60*time.Second, func() {
+						msg = model.NewMeassage{MsgSign: "NewMessage", TimeStamp: time.Now().Format("2006-01-02 15:04:05"), MsgSummary: strSumary, MsgFlag: "ProctocalRevEnd", SuccessFlag: "Success", MID: processState.MID, ProcessName: processState.ProcessName, MainOrBackup: processState.MainOrBackup}
+						msgJSON1, _ := json.Marshal(msg)
+						SendWebsocketMsg([]byte(msgJSON1))
+					})
 				}
 				msgJSON, _ := json.Marshal(msg)
 				SendWebsocketMsg([]byte(msgJSON))
+
 			}
 		}
 

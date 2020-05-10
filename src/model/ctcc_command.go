@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
@@ -19,6 +20,7 @@ type CTCCCommand struct {
 	EndTime        string `json:"EndTime"`
 	MainHostName   string `json:"MainHostName"`
 	BackupHostName string `json:"BackupHostName"`
+	SendTime       string //入库时间
 }
 
 //GetJSONCommand GET JSON COMMAND
@@ -37,6 +39,7 @@ func (command *CTCCCommand) InitByJSON(data []byte) error {
 
 //CreateCTCCCommand 入库
 func CreateCTCCCommand(command *CTCCCommand) (int64, error) {
+	command.SendTime = time.Now().Format("2006-01-02 15:04:05")
 	e := gofrontdb.EngineGroup()
 	return e.Insert(command)
 }

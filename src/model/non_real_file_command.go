@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
@@ -41,6 +42,7 @@ type NonRealFileCommandDB struct {
 	Filename      string
 	FilePath      string
 	Destination   string
+	SendTime      string //入库时间
 }
 
 //GetJSONCommand 获取json格式Command
@@ -71,6 +73,7 @@ func CreateNonRealFileCommandDB(command *NonRealFileCommand) (int64, error) {
 	commandDB.Filename = command.Content.Filename
 	commandDB.FilePath = command.Content.FilePath
 	commandDB.Destination = command.Content.Destination
+	commandDB.SendTime = time.Now().Format("2006-01-02 15:04:05")
 	e := gofrontdb.EngineGroup()
 	return e.Insert(&commandDB)
 }

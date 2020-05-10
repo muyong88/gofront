@@ -38,6 +38,7 @@
     table.row(i).data(tempRow);
     table.row(i-1).data(insertedRow);
    }     
+   changeColor();
    //refresh the current page
     table.page(currentPage).draw(false);
 	  };

@@ -1,5 +1,4 @@
 
-
 	  function updateTable(msg){
     var obj = eval("("+msg+")");
 		switch(obj.MsgSign) {
@@ -20,7 +19,7 @@
         // alert(obj.MID+" "+obj.MainOrBackup+" "+obj.ProcessName);
         for(var i=0;i<rowCount;i++){
         if(table.cell(i,3).data()==obj.MID && table.cell(i,6).data()==obj.MainOrBackup && table.cell(i,7).data()==obj.ProcessName){
-          jQuery(table.row(i).nodes()).addClass("success");;
+          jQuery(table.row(i).nodes()).addClass("success");
           break;
         }
       }
@@ -30,11 +29,22 @@
         // alert(obj.MID+" "+obj.MainOrBackup+" "+obj.ProcessName);
         for(var i=0;i<rowCount;i++){
         if(table.cell(i,3).data()==obj.MID && table.cell(i,6).data()==obj.MainOrBackup && table.cell(i,7).data()==obj.ProcessName){
-          jQuery(table.row(i).nodes()).removeClass("success");
+          jQuery(table.row(i).nodes()).removeClass("warning");
           break;
         }
       }
+    }else if(obj.MsgFlag=="ProctocalRevMedium"){
+      var table = jQuery('#protocal_tb').DataTable();
+      rowCount = table.data().length;
+      // alert(obj.MID+" "+obj.MainOrBackup+" "+obj.ProcessName);
+      for(var i=0;i<rowCount;i++){
+      if(table.cell(i,3).data()==obj.MID && table.cell(i,6).data()==obj.MainOrBackup && table.cell(i,7).data()==obj.ProcessName){
+        jQuery(table.row(i).nodes()).removeClass("success");
+        jQuery(table.row(i).nodes()).addClass("warning");;
+        break;
+      }
     }
+  }
   }
 	  
 	  function updateProtocalTable(obj){
@@ -57,9 +67,11 @@
           table.cell(i,15).data (obj.Report.Recv_count);
           table.cell(i,16).data (obj.Report.Send_no);
           table.cell(i,17).data ('<a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' );
+          jQuery(table.row(i).nodes()).css("color","green");
           break;
         }
       }
+      changeColor();
 	var currentPage = table.page();
    //refresh the current page
     table.page(currentPage).draw(false);

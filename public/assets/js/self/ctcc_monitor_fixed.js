@@ -49,6 +49,7 @@
           break;
         }
       }
+      changeColor();
     var currentPage = table.page();
    //refresh the current page
     var rownode=table.page(currentPage).draw(false);
