@@ -31,7 +31,10 @@
         
         table.columnFilter({
             "sPlaceHolder" : "head:after"
-        });					
+        });		
+        jQuery('table tbody').on( 'click', 'tr', function () {
+        jQuery(this).toggleClass('success');
+    } );		
     });
 </script>
 {{ end }}

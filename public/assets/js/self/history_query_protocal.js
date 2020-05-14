@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){ 
+
     jQuery('#datetimepicker1').datetimepicker({
         format: 'yyyy-mm-dd hh:ii:ss',
         minuteStep: 1 ,
