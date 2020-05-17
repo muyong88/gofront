@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{ template "header"}}
+
+</head>
+
+
+<body class="page-body  page-fade" >
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+	
+	{{ template "navigator" .role}}
+	<div class="main-content" >
+		{{ template "content-header" .username}}
+		<br/>
+		<div class="panel panel-primary" >
+			<div class="panel-heading">
+				<div  class="panel-title ">批量非实时命令</div>
+			</div>
+		<br/>
+		<form role="form" id="non_realForm" class="form-horizontal ">
+			<div class="form-group">
+				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">站点</label>
+				
+				<div class="col-sm-8">
+					<select id="batch_selector" multiple="multiple"  name="my-select[]" class="form-control " disabled>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息标识</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="msgTagControl">
+					</select>
+				</div>
+				<label style="text-align:left"  class="col-sm-2 control-label">任务号</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="missionIDControl">
+					</select>									
+				</div>
+			</div>
+			<div class="form-group">
+				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="msgTypeControl_NonReal">
+					</select>
+				</div>
+				<label style="text-align:left"  class="col-sm-2 control-label">子消息类型</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="subtypeControl">
+					</select>									
+				</div>
+			</div>
+			<div class="form-group">
+				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">会话标识</label>			
+				<div class="col-sm-3">
+					<input type="text" id="MSGIDControl" name="MSGID" class="form-control"   >
+				</div>
+				<label style="text-align:left"  class="col-sm-2 control-label">消息发送者</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="senderControl">
+					</select>									
+				</div>
+			</div>
+			<div  class="form-group">
+				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">时间</label>			
+				<div class='input-group date col-sm-3'  >
+					<input type='text'   class="form-control" name="datetimepicker1" id='datetimepicker1' />
+					<!-- <span class="input-group-addon">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span> -->
+				</div>
+				<label style="text-align:left"  class="col-sm-2 control-label">发送会话标识</label>			
+				<div class="col-sm-3">
+					<input type="text"  id="sendSessionIDControl" name="sendSessionID" class="form-control"  >
+				</div>
+			</div>
+			<div class="form-group">
+				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">文件名</label>			
+				<div class="col-sm-3">
+					<input type="text" id="filenameControl" name="filename" class="form-control"   >
+				</div>
+				<label style="text-align:left"  class="col-sm-2 control-label">文件路径</label>			
+				<div class="col-sm-3">
+					<input type="text" id="filePathControl" name="filePath" class="form-control"   >
+				</div>
+			</div>
+		</form>
+		</div>
+		<br/>
+		<form role="form" class="form-horizontal form-groups-bordered">
+			<div class="col-sm-4 ">
+				<button type="button" class="btn btn-default btn-lg" id="sendNonRealBtn">发送非实时命令</button>
+			</div>
+		</form>
+	</div>
+</div>
+<script src="/public/assets/js/self/select-assignment.js"></script>
+<script src="/public/assets/js/self/nonreal_command_batch.js"></script>
+	{{ template "bottom"}}
+</body>
+</html>

@@ -194,6 +194,23 @@
                         }
                     });
                     </script>
+                    <!-- {{if .}}
+                    <li id="comand_ctcc_batch">
+                    {{else}}
+                    <li id="comand_ctcc_batch" style="display:none;">
+                    {{end}}
+                        <a href="/ctcc/batch_commandpage">
+                            <span class="title">CTCC前端(批量)</span>
+                        </a>
+                    </li>
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/ctcc/batch_commandpage')>0){
+                            jQuery("#comand_all").addClass('opened active');
+                            jQuery("#comand_ctcc_batch").addClass('active');
+                        }
+                    });
+                    </script> -->
                      {{if .}}
                     <li id="comand_protocal">
                     {{else}}
@@ -211,6 +228,23 @@
                         }
                     });
                     </script>
+                     <!-- {{if .}}
+                     <li id="comand_protocal_batch">
+                     {{else}}
+                     <li id="comand_protocal_batch"  style="display:none;"></li>
+                     {{end}}
+                         <a href="/protocal/batch_commandpage">
+                             <span class="title">协议进程(批量)</span>
+                         </a>
+                     </li>
+                     <script>
+                         jQuery(document).ready(function(){
+                         if(window.location.href.indexOf('/protocal/batch_commandpage')>0){
+                             jQuery("#comand_all").addClass('opened active');
+                             jQuery("#comand_protocal_batch").addClass('active');
+                         }
+                     });
+                     </script> -->
                      {{if .}}
                     <li id="comand_nonreal"> 
                     {{else}}
@@ -227,7 +261,24 @@
                             jQuery("#comand_nonreal").addClass('active');
                         }
                     });
-                    </script>
+                    </script>                                     
+                     <!-- {{if .}}
+                    <li id="comand_nonreal_batch"> 
+                    {{else}}
+                    <li id="comand_nonreal_batch"  style="display:none;"> 
+                    {{end}}
+                        <a href="/non_real/batch_commandpage" >
+                            <span class="title">非实时前端(批量)</span>
+                        </a>
+                    </li>
+                    <script>
+                        jQuery(document).ready(function(){
+                        if(window.location.href.indexOf('/non_real/batch_commandpage')>0){
+                            jQuery("#comand_all").addClass('opened active');
+                            jQuery("#comand_nonreal_batch").addClass('active');
+                        }
+                    });
+                    </script> -->
                 </ul>
             </li>
         </ul>

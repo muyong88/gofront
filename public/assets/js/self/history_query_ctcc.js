@@ -1,3 +1,6 @@
+  
+
+
 jQuery(document).ready(function(){           
     jQuery('#datetimepicker1').datetimepicker({
         format: 'yyyy-mm-dd hh:ii:ss',
@@ -79,8 +82,8 @@ function updateCTCCTable(data){
             table.row.add([
                 '<font color="grey">'+obj.UpDateTime+'</font>',
                 '<font color="grey">'+obj.MsgType+'</font>',
-                '<font color="grey">'+obj.ProcessId+'</font>',
-                '<font color="grey">'+obj.SysId+'</font>',
+                '<font color="grey">'+obj.ProcessID+'</font>',
+                '<font color="grey">'+obj.SysID+'</font>',
                 '<font color="grey">'+obj.Pattern+'</font>',
                 '<font color="grey">'+obj.Channel+'</font>',
                 '<font color="grey">'+obj.IsSend32KB+'</font>',
@@ -113,8 +116,8 @@ function updateCTCCTable(data){
             table.row.add([
                 '<font color="black">'+obj.UpDateTime+'</font>',
                 '<font color="black">'+obj.MsgType+'</font>',
-                '<font color="black">'+obj.ProcessId+'</font>',
-                '<font color="black">'+obj.SysId+'</font>',
+                '<font color="black">'+obj.ProcessID+'</font>',
+                '<font color="black">'+obj.SysID+'</font>',
                 '<font color="black">'+obj.Pattern+'</font>',
                 '<font color="black">'+obj.Channel+'</font>',
                 '<font color="black">'+obj.IsSend32KB+'</font>',
@@ -149,4 +152,3 @@ function updateCTCCTable(data){
     var currentPage = table.page();
     table.page(currentPage).draw(false);
 }
-

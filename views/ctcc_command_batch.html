@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{ template "header"}}
+</head>
+
+
+<body class="page-body  page-fade" >
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+	
+	{{ template "navigator" .role}}
+	<div class="main-content " >
+		{{ template "content-header" .username}}
+		<br/>
+		<div class="panel panel-primary" >
+			<div class="panel-heading">
+				<div  class="panel-title ">批量CTCC命令</div>
+			</div>
+			<br/>
+			<form role="form" id="ctccForm" class="form-horizontal">
+				<div class="form-group">
+					<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">CTCC进程</label>
+					
+					<div class="col-sm-8">
+						<select id="batch_selector" multiple="multiple"  name="my-select[]" class="form-control " disabled>
+						</select>
+					</div>
+				</div>
+			<div class="form-group">
+				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="msgTypeControl_CTCC">
+					</select>
+				</div>
+				<label style="text-align:left"  class="col-sm-2 control-label">命令名称</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="operationControl">
+					</select>									
+				</div>
+			</div>
+			<div class="form-group">
+				<label style="text-align:left"  class="col-sm-2 control-label  col-sm-offset-1">下行开始时间</label>			
+				<div class='input-group date col-sm-3'  >
+					<input type='text' class="form-control" id='datetimepicker1' name='datetimepicker1'/>
+				</div>
+								<label style="text-align:left"  class="col-sm-2 control-label">下行结束时间</label>			
+				<div class='input-group date col-sm-3' >
+					<input type='text' class="form-control" id='datetimepicker2'  name='datetimepicker2' />
+					<!-- <span class="input-group-addon">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span> -->
+				</div>
+			</div>
+			<div  class="form-group">
+
+				<label style="text-align:left"  class="col-sm-2 control-label  col-sm-offset-1">主份软件主机名称</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="mainHostNameControl">
+					</select>									
+				</div>
+								<label style="text-align:left"  class="col-sm-2 control-label ">备份软件主机名称</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="backupHostNameControl">
+					</select>
+				</div>
+
+
+			</div>
+			</form>
+		</div>
+		<br/>
+		<br/>
+		<form role="form" class="form-horizontal form-groups-bordered">
+			<div class="col-sm-4 ">
+				<button type="button" class="btn btn-default btn-lg" id="sendCTCCBtn">发送CTCC命令</button>
+			</div>
+			</form>
+	</div>
+</div>
+	{{ template "bottom"}}
+	<script src="/public/assets/js/self/select-assignment.js"></script>
+	<script src="/public/assets/js/self/ctcc_command_batch.js"></script>
+</body>
+</html>

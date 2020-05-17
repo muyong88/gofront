@@ -20,6 +20,9 @@ func CTCCHub(party iris.Party) {
 	home.Get("/commandpage", func(ctx iris.Context) {
 		getPage(ctx, "ctcc_command.html")
 	})
+	home.Get("/batch_commandpage", func(ctx iris.Context) {
+		getPage(ctx, "ctcc_command_batch.html")
+	})
 	home.Get("/monitor", func(ctx iris.Context) {
 		getPage(ctx, "ctcc_monitor.html")
 	})
@@ -64,19 +67,21 @@ func CTCCProcessstatePost(ctx iris.Context) {
 //接口类型：Kafka
 //消息方向：网站→主控
 func CTCCSendCommand(ctx iris.Context) {
-	var ctccCommand model.CTCCCommand
-	if err := ctx.ReadJSON(&ctccCommand); err != nil {
+	var ctccCommands []model.CTCCCommand
+	if err := ctx.ReadJSON(&ctccCommands); err != nil {
 		fmt.Println(err)
 		golog.Error(err)
 		return
 	}
-	network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("3")
-	if err == nil {
-		controller.SendDataToTopic(network.NetWorkTopic, ctccCommand.GetJSONCommand())
+	for _, ctccCommand := range ctccCommands {
+		network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("3")
+		if err == nil {
+			controller.SendDataToTopic(network.NetWorkTopic, ctccCommand.GetJSONCommand())
+		}
+		ctx.Text("send success!")
+		//入库
+		model.CreateCTCCCommand(&ctccCommand)
 	}
-	ctx.Text("send success!")
-	//入库
-	model.CreateCTCCCommand(&ctccCommand)
 }
 
 //CTCCQueryDb 查询CCTC数据库
@@ -92,6 +97,14 @@ func CTCCQueryDb(ctx iris.Context) {
 		ctx.JSON("{}")
 	}
 }
+
+// func discardRepeatCCTC(state []model.) (protocalState []model.CTCCProcessState) {
+// 	for _,value1 := range state{
+// 		for _,value2 := range protocalState{
+// 			if(value1.i)
+// 		}
+// 	}
+// }
 
 func getPage(ctx iris.Context, pageName string) {
 	session := sess.Start(ctx)

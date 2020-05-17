@@ -41,11 +41,11 @@ jQuery("#sendProtocalBtn").click(function(){
     var bv =jQuery('#proctocalForm').data('bootstrapValidator');
     bv.validate();
     if (bv.isValid()) {
-    let param={'msgType':jQuery("#msgTypeControl_Protocal").val(), 'ID': Number(jQuery("#IDControl").val()),
+    let param=[{'msgType':jQuery("#msgTypeControl_Protocal").val(), 'ID': Number(jQuery("#IDControl").val()),
                 "MID": jQuery("#MIDControl").val(), "BID": jQuery("#BIDControl").val(), 
                 "ProcessName": jQuery("#ProcessNameControl").val(),
                 "OrderName":jQuery("#OrderNameControl").val(),"ParaInfo":{"MODE":jQuery("#MODEControl").val()
-                },"Protocal":jQuery("#ProtocalControl").val()};    
+                },"Protocal":jQuery("#ProtocalControl").val()}];    
     jQuery.ajax({
                 type: 'POST',  
                 data: JSON.stringify(param),
@@ -86,7 +86,7 @@ jQuery("#sendProtocalBtn").click(function(){
         if(getQueryVariable("ProcessName")!=null){
             jQuery("#ProcessNameControl").val(getQueryVariable("ProcessName"));
             jQuery("#ProcessNameControl").attr("disabled",true);
-            jQuery("#ProtocalControl").val(getQueryVariable("ProcessName").split("_"[0]));
+            jQuery("#ProtocalControl").val(getQueryVariable("ProcessName").split("_")[0]);
             jQuery("#ProtocalControl").attr("disabled",true);
         }
     });

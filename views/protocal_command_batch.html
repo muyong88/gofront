@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{ template "header"}}
+
+</head>
+
+
+<body class="page-body  page-fade" >
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+	
+	{{ template "navigator" .role}}
+	<div class="main-content" >
+		{{ template "content-header" .username}}
+		<br/>
+		<div class="panel panel-primary" >
+			<div class="panel-heading">
+				<div  class="panel-title ">批量协议命令</div>
+			</div>
+		<br/>
+		
+		<form role="form"  id="proctocalForm"  class="form-horizontal ">
+			<div class="form-group">
+				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">协议进程</label>
+				
+				<div class="col-sm-8">
+					<select id="batch_selector" multiple="multiple"  name="my-select[]" class="form-control " disabled>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label style="text-align:left" class="col-sm-2 control-label col-sm-offset-1">消息类型</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="msgTypeControl_Protocal">
+					</select>
+				</div>
+				<label style="text-align:left"  class="col-sm-2 control-label">命令名称</label>			
+				<div class="col-sm-3">
+					<select class="form-control" id="OrderNameControl">
+					</select>
+				</div>
+			</div>
+			<div  class="form-group">
+
+				<label style="text-align:left"  class="col-sm-2 control-label col-sm-offset-1">命令参数(MODE)</label>			
+				<div class="col-sm-3">
+					<input type="text" id="MODEControl" class="form-control"   disabled>
+				</div>
+			</div>
+		</form>
+		<br/>
+		</div>
+		<br/>
+		<form role="form" class="form-horizontal form-groups-bordered">
+			<div class="col-sm-4 ">
+				<button type="button" class="btn btn-default btn-lg" id="sendProtocalBtn">发送协议命令</button>
+			</div>
+		</form>
+	</div>
+</div>
+<script src="/public/assets/js/self/select-assignment.js"></script>
+<script src="/public/assets/js/self/protocal_command_batch.js"></script>
+	{{ template "bottom"}}
+</body>
+</html>

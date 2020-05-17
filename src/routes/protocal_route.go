@@ -21,6 +21,9 @@ func ProtocalHub(party iris.Party) {
 	home.Get("/commandpage", func(ctx iris.Context) {
 		getPage(ctx, "protocal_command.html")
 	})
+	home.Get("/batch_commandpage", func(ctx iris.Context) {
+		getPage(ctx, "protocal_command_batch.html")
+	})
 	home.Get("/monitor", func(ctx iris.Context) {
 		getPage(ctx, "protocal_monitor.html")
 	})
@@ -67,18 +70,20 @@ func ProtocalProcessStatePost(ctx iris.Context) {
 //1.接口类型：Kafka
 //2.消息方向：网站→主控
 func ProtocalProcessSendCommand(ctx iris.Context) {
-	var proCommand model.ProtocalCommand
-	if err := ctx.ReadJSON(&proCommand); err != nil {
+	var proCommands []model.ProtocalCommand
+	if err := ctx.ReadJSON(&proCommands); err != nil {
 		fmt.Println(err)
 		golog.Error(err)
 		return
 	}
-	proCommand.OrderSeq = model.GetNextOrderSeq()
-	network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("5")
-	if err == nil {
-		controller.SendDataToTopic(network.NetWorkTopic, proCommand.GetJSONCommand())
+	for _, proCommand := range proCommands {
+		proCommand.OrderSeq = model.GetNextOrderSeq()
+		network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("5")
+		if err == nil {
+			controller.SendDataToTopic(network.NetWorkTopic, proCommand.GetJSONCommand())
+		}
+		model.CreateProtocalCommandDB(&proCommand)
 	}
-	model.CreateProtocalCommandDB(&proCommand)
 }
 
 //ProtocalQueryDb 查询Db

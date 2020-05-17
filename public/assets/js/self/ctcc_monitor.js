@@ -1,4 +1,5 @@
 
+
 	  function updateTable(msg){
     var obj = eval("("+msg+")");
 		switch(obj.MsgSign) {

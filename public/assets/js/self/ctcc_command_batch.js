@@ -39,11 +39,15 @@ jQuery(document).ready(function(){
     var bv =jQuery('#ctccForm').data('bootstrapValidator');
     bv.validate();
     if (bv.isValid()) {
-        let param=[{'msgType':jQuery("#msgTypeControl_CTCC").val(), 'Operation': jQuery("#operationControl").val(),
-            "SysId": Number(jQuery("#sysIdControl").val()), "Pattern": Number(jQuery("#patternControl").val()), 
-            "Channel": Number(jQuery("#channelControl").val()),"BeginTime":jQuery("#datetimepicker1").val(),
-            "EndTime":jQuery("#datetimepicker2").val(),"MainHostName":jQuery("#mainHostNameControl").val(),
-            "BackupHostName":jQuery("#backupHostNameControl").val()}];    
+        let param = jQuery.parseJSON( unescape(getQueryVariable("value")) ); 
+        for(var i in param){
+            param[i].msgType=jQuery("#msgTypeControl_CTCC").val();
+            param[i].Operation=jQuery("#operationControl").val();
+            param[i].BeginTime=jQuery("#datetimepicker1").val();
+            param[i].EndTime=jQuery("#datetimepicker2").val();
+            param[i].MainHostName=jQuery("#mainHostNameControl").val();
+            param[i].BackupHostName=jQuery("#backupHostNameControl").val();
+        }
         jQuery.ajax({
             type: 'POST',  
             data: JSON.stringify(param),
@@ -65,21 +69,12 @@ jQuery(document).ready(function(){
             }
         });
     }});
-    if(getQueryVariable("MsgType")!=null){
-        jQuery("#msgTypeControl_CTCC").val(getQueryVariable("MsgType"));
-        jQuery("#msgTypeControl_CTCC").attr("disabled",true);
-    }
-    if(getQueryVariable("SysId")!=null){
-        jQuery("#sysIdControl").val(getQueryVariable("SysId"));
-        jQuery("#sysIdControl").attr("disabled",true);
-    }
-    if(getQueryVariable("Pattern")!=null){
-        jQuery("#patternControl").val(getQueryVariable("Pattern"));
-        jQuery("#patternControl").attr("disabled",true);
-    }
-    if(getQueryVariable("Channel")!=null){
-        jQuery("#channelControl").val(getQueryVariable("Channel"));
-        jQuery("#channelControl").attr("disabled",true);
+    var strParms=getQueryVariable("value");
+    if(strParms!=null){     
+        var packJson= jQuery.parseJSON(unescape(strParms));
+        for(var i in packJson){//遍历packJson 数组时，i为索引
+            jQuery("#batch_selector").append( "<option>"+JSON.stringify(packJson[i])+"</option>");
+        }
     }
 
 });

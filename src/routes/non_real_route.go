@@ -20,6 +20,9 @@ func NonRealHub(party iris.Party) {
 	home.Get("/commandpage", func(ctx iris.Context) {
 		getPage(ctx, "nonreal_command.html")
 	})
+	home.Get("/batch_commandpage", func(ctx iris.Context) {
+		getPage(ctx, "nonreal_command_batch.html")
+	})
 	home.Get("/monitor", func(ctx iris.Context) {
 		getPage(ctx, "nonreal_monitor.html")
 	})
@@ -44,18 +47,20 @@ func FileStateGet(ctx iris.Context) {
 //1.接口类型：Kafka
 //消息方向：网站→主控
 func NonRealSendCommand(ctx iris.Context) {
-	var nonrealCommand model.NonRealFileCommand
-	if err := ctx.ReadJSON(&nonrealCommand); err != nil {
+	var nonrealCommands []model.NonRealFileCommand
+	if err := ctx.ReadJSON(&nonrealCommands); err != nil {
 		fmt.Println(err)
 		golog.Error(err)
 		return
 	}
-	network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("4")
-	if err == nil {
-		controller.SendDataToTopic(network.NetWorkTopic, nonrealCommand.GetJSONCommand())
+	for _, nonrealCommand := range nonrealCommands {
+		network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("4")
+		if err == nil {
+			controller.SendDataToTopic(network.NetWorkTopic, nonrealCommand.GetJSONCommand())
+		}
+		//入库
+		model.CreateNonRealFileCommandDB(&nonrealCommand)
 	}
-	//入库
-	model.CreateNonRealFileCommandDB(&nonrealCommand)
 }
 
 //NonRealQueryDb 查询Db
