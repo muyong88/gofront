@@ -140,6 +140,10 @@
 	{{ template "websocket"}}
 	<script src="/public/assets/js/self/table_color_manager.js"></script>
 	<script src="/public/assets/js/self/ctcc_monitor.js"></script>
+	{{if .role}}
 	{{ template "bottom"}}
+	{{else}}
+	{{ template "bottom2"}}
+	{{end}}	
 </body>
 </html>

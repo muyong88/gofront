@@ -121,6 +121,11 @@
 
 <script src="/public/assets/js/self/select-assignment.js"></script>
 <script src="/public/assets/js/self/history_query_protocal.js"></script>
-	{{ template "bottom"}}
+<script src="/public/assets/js/self/table_color_manager.js"></script>
+{{if .role}}
+{{ template "bottom"}}
+{{else}}
+{{ template "bottom2"}}
+{{end}}	
 </body>
 </html>
