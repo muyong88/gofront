@@ -65,10 +65,6 @@ jQuery(document).ready(function(){
             }
         });
     }});
-    if(getQueryVariable("MsgType")!=null){
-        jQuery("#msgTypeControl_CTCC").val(getQueryVariable("MsgType"));
-        jQuery("#msgTypeControl_CTCC").attr("disabled",true);
-    }
     if(getQueryVariable("SysId")!=null){
         jQuery("#sysIdControl").val(getQueryVariable("SysId"));
         jQuery("#sysIdControl").attr("disabled",true);

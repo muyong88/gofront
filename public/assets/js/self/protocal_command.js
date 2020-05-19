@@ -67,10 +67,6 @@ jQuery("#sendProtocalBtn").click(function(){
                 }
             });
         }});
-        if(getQueryVariable("MsgType")!=null){
-            jQuery("#msgTypeControl_Protocal").val(getQueryVariable("MsgType"));
-            jQuery("#msgTypeControl_Protocal").attr("disabled",true);
-        }
         if(getQueryVariable("ID")!=null){
             jQuery("#IDControl").val(getQueryVariable("ID"));
             jQuery("#IDControl").attr("disabled",true);

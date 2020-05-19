@@ -18,12 +18,26 @@ type Producer struct {
 	Topic    string
 }
 
+//PoacMsgPartitioner fulfill interface Partitioner
+type PoacMsgPartitioner struct{}
+
+//Partition takes a message and partition count and chose a partition
+func (p PoacMsgPartitioner) Partition(message *sarama.ProducerMessage, numPartitions int32) (int32, error) {
+	return 0, nil
+}
+
+//RequiresConsistency just for interface
+func (p PoacMsgPartitioner) RequiresConsistency() bool {
+	return true
+}
+
 //Init 初始化生产者
 func (pro *Producer) Init(config *model.NetWork) (int, error) {
 	fmt.Println("init kafka producer")
 	conf := sarama.NewConfig()
 	conf.Producer.Return.Successes = true
 	conf.Producer.Timeout = 5 * time.Second
+	conf.Producer.Partitioner = func(topic string) sarama.Partitioner { return *new(PoacMsgPartitioner) }
 	ips := strings.Split(config.NetWorkIP, ";")
 	p, err := sarama.NewSyncProducer(ips, conf)
 	if err != nil {

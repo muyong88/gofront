@@ -1,10 +1,9 @@
 jQuery(document).ready(function(){
     
     //CTCC前端
-    //1.消息类型
+    //1.命令消息类型
     jQuery("#msgTypeControl_CTCC").append( 
-        "<option>CTCCFRONTEND_STATE_REPORT</option>\
-         <option>CTCCFRONTEND_CONTROL</option>"
+        "<option>CTCCFRONTEND_CONTROL</option>"
     );
     //2.软件标识
     jQuery("#sysIdControl").append( 
@@ -61,7 +60,7 @@ jQuery(document).ready(function(){
     );
     //4.消息类型
     jQuery("#msgTypeControl_Protocal").append( 
-        "<option>ProtocalReport</option>"
+        "<option>ProtocalCommand</option>"
     );
     //5.软件标识
     jQuery("#IDControl").append( 

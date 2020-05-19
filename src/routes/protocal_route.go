@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/kataras/golog"
@@ -80,7 +81,11 @@ func ProtocalProcessSendCommand(ctx iris.Context) {
 		proCommand.OrderSeq = model.GetNextOrderSeq()
 		network, err := controller.NetConfig.GetNetWorkByNetWorkSeqNum("5")
 		if err == nil {
-			controller.SendDataToTopic(network.NetWorkTopic, proCommand.GetJSONCommand())
+			com := proCommand.GetJSONCommand()
+			if proCommand.ParaInfo.MODE == "" {
+				com = strings.Replace(com, "{\"MODE\":\"\"}", "\"\"", 1)
+			}
+			controller.SendDataToTopic(network.NetWorkTopic, com)
 		}
 		model.CreateProtocalCommandDB(&proCommand)
 	}
