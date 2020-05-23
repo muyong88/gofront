@@ -10,15 +10,17 @@ import (
 
 //ProtocalCommand 协议命令结构体
 type ProtocalCommand struct {
-	MsgType     string   `json:"msgType"`
-	ID          int      `json:"ID"`
-	MID         string   `json:"MID"`
-	BID         string   `json:"BID"`
-	ProcessName string   `json:"ProcessName"`
-	OrderSeq    int64    `json:"OrderSeq"`
-	OrderName   string   `json:"OrderName"`
-	ParaInfo    ParaInfo `json:"ParaInfo"`
-	Protocal    string   `json:"Protocal"`
+	MsgType      string   `json:"msgType"`
+	ID           int      `json:"ID"`
+	MID          string   `json:"MID"`
+	BID          string   `json:"BID"`
+	ProcessName  string   `json:"ProcessName"`
+	OrderSeq     int64    `json:"OrderSeq"`
+	OrderName    string   `json:"OrderName"`
+	ParaInfo     ParaInfo `json:"ParaInfo"`
+	Protocal     string   `json:"Protocal"`
+	PID          string   `json:"PID"`
+	MainOrBackup string   `json:"MainOrBackup"`
 }
 
 //ParaInfo ParaInfo
@@ -29,16 +31,18 @@ type ParaInfo struct {
 //ProtocalCommandDB ProtocalCommandDB
 type ProtocalCommandDB struct {
 	// Identify    int64 `xorm:"pk autoincr  notnull"` //自增id
-	MsgType     string
-	ID          int
-	MID         string
-	BID         string
-	ProcessName string
-	OrderSeq    int64
-	OrderName   string
-	MODE        string
-	Protocal    string
-	SendTime    string //入库时间
+	MsgType      string
+	ID           int
+	MID          string
+	BID          string
+	ProcessName  string
+	OrderSeq     int64
+	OrderName    string
+	MODE         string
+	Protocal     string
+	PID          string
+	MainOrBackup string
+	SendTime     string //入库时间
 }
 
 //GetJSONCommand get json
@@ -68,6 +72,8 @@ func CreateProtocalCommandDB(command *ProtocalCommand) (int64, error) {
 	commandDB.MODE = command.ParaInfo.MODE
 	commandDB.Protocal = command.Protocal
 	commandDB.SendTime = time.Now().Format("2006-01-02 15:04:05")
+	commandDB.PID = command.PID
+	commandDB.MainOrBackup = command.MainOrBackup
 	e := gofrontdb.EngineGroup()
 	return e.Insert(&commandDB)
 }

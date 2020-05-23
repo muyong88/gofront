@@ -114,6 +114,7 @@ func GetProctocalProcessFixed() (states []ProtocalProcessStateDb) {
 		state.MID = v.MID
 		state.ProcessName = v.PROCESSNAME
 		state.MainOrBackup = v.MainOrBackUp
+		state.BID = v.BID
 		states = append(states, state)
 	}
 	return states

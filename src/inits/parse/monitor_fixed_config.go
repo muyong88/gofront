@@ -40,6 +40,7 @@ type ProtocalFixed struct {
 	MID          string   `xml:"MID,attr"`
 	PROCESSNAME  string   `xml:"PROCESSNAME,attr"`
 	MainOrBackUp int      `xml:"MAINORBACKUP,attr"`
+	BID          string   `xml:"BID,attr"`
 }
 
 //ReadTableFixedConfig 读取filename配置

@@ -43,7 +43,7 @@ jQuery("#sendProtocalBtn").click(function(){
     if (bv.isValid()) {
     let param=[{'msgType':jQuery("#msgTypeControl_Protocal").val(), 'ID': Number(jQuery("#IDControl").val()),
                 "MID": jQuery("#MIDControl").val(), "BID": jQuery("#BIDControl").val(), 
-                "ProcessName": jQuery("#ProcessNameControl").val(),
+                "ProcessName": jQuery("#ProcessNameControl").val(),"PID":jQuery("#PIDControl").val(),"MainOrBackup":jQuery("#MAINORBACKUPControl").val(),
                 "OrderName":jQuery("#OrderNameControl").val(),"ParaInfo":{"MODE":jQuery("#MODEControl").val()
                 },"Protocal":jQuery("#ProtocalControl").val()}];    
     jQuery.ajax({
