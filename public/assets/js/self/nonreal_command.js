@@ -55,14 +55,6 @@ jQuery(document).ready(function(){
                 }
             }
         },
-        destination: {
-            group: '.col-sm-3',
-            validators: {
-                notEmpty: {
-                    message: '目的地不能为空'
-                }
-            }
-        },
         datetimepicker1: {
             group: '.col-sm-3',
             trigger: 'changeDate',

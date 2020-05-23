@@ -62,6 +62,7 @@ func SendDataToTopic(topic string, data string) {
 	for _, p := range *Producers {
 		if p.Topic == topic {
 			p.Send(data)
+			break
 		}
 	}
 }

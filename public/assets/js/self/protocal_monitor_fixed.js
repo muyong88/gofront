@@ -66,7 +66,7 @@
           table.cell(i,14).data (obj.Report.Last);
           table.cell(i,15).data (obj.Report.Recv_count);
           table.cell(i,16).data (obj.Report.Send_no);
-          table.cell(i,17).data ('<a href="/protocal/commandpage?MsgType='+obj.msgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' );
+          table.cell(i,17).data ('<a href="/protocal/commandpage?PID='+obj.PID+'&MainOrBackup='+obj.MainOrBackup+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' );
           jQuery(table.row(i).nodes()).css("color","green");
           break;
         }

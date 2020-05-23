@@ -67,16 +67,16 @@
                     for (var j=0;j<rows.length;j++){
                       var found=false;
                       for(var i in parm){
-                        if(parm[i].ID==rows[j][2]&&parm[i].BID==rows[j][4]&&parm[i].MID==rows[j][3]&&parm[i].ProcessName==rows[j][7]){
+                        if(parm[i].ID==rows[j][2]&&parm[i].BID==rows[j][4]&&parm[i].MID==rows[j][3]&&parm[i].ProcessName==rows[j][7]&&parm[i].PID==rows[j][5]&&parm[i].MainOrBackup==rows[j][6]){
                           found=true;
                         }
                       }
                       if(found==false){
-                        parm.push({'ID':Number(rows[j][2]),'MID':rows[j][3],'BID':rows[j][4],'ProcessName':rows[j][7]}) ;
+                        parm.push({'ID':Number(rows[j][2]),'MID':rows[j][3],'BID':rows[j][4],'ProcessName':rows[j][7],"MainOrBackup":rows[j][6],"PID":rows[j][5]}) ;
                       }
                     }    
                                  
-                    window.open( "/protocal/batch_commandpage?value="+ escape(JSON.stringify(parm)) );
+                    window.open( "/protocal/batch_commandpage?value="+ escape(JSON.stringify(parm)));
                   }
               }
           ]

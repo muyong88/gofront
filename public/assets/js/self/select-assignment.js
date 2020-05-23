@@ -92,6 +92,10 @@ jQuery(document).ready(function(){
         <option>CP_REPORT_ON_CMD</option>\
         <option>CP_REPORT_ON_STATUS_CHANGE</option>"
     );
+    //9.destinationControl目的地
+    jQuery("#destinationControl").append( 
+        "<option>BACC/CTCC</option>"
+    );
 
     //非实时
     //1.任务号

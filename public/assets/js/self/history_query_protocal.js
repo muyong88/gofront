@@ -85,7 +85,7 @@ function updateProtocalTable(data){
                 obj.Last,
                 obj.RecvCount,
                 obj.SendNo,
-                '<a href="/protocal/commandpage?MsgType='+obj.MsgType+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' 
+                '<a href="/protocal/commandpage?PID='+obj.PID+'&MainOrBackup='+obj.MainOrBackup+'&ID='+obj.ID+'&MID='+obj.MID+'&BID='+obj.BID+'&ProcessName='+obj.ProcessName+'" target="_blank" style="color:red;">发送命令</a>' 
               ]);
         // var updatetime=new Date(obj.UpDateTime);
         // var datediffSecond=Math.round((curtime.getTime()-updatetime.getTime())/1000);

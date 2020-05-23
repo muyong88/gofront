@@ -87,7 +87,7 @@
 					<td>{{ .Last }}</td>
 					<td>{{ .RecvCount }}</td>
 					<td>{{ .SendNo }}</td>
-					<td><a href="/protocal/commandpage?MsgType={{ .MsgType }}&ID={{ .ID }}&MID={{ .MID }}&BID={{ .BID }}&ProcessName={{ .ProcessName }}" target="_blank" style="color:red;">发送命令</a></td>  
+					<td><a href="/protocal/commandpage?PID={{ .PID }}&MainOrBackup={{ .MainOrBackup }}&ID={{ .ID }}&MID={{ .MID }}&BID={{ .BID }}&ProcessName={{ .ProcessName }}" target="_blank" style="color:red;">发送命令</a></td>  
 				</tr>
 			{{ end }}
 			</tbody>

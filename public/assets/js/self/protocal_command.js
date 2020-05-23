@@ -85,6 +85,14 @@ jQuery("#sendProtocalBtn").click(function(){
             jQuery("#ProtocalControl").val(getQueryVariable("ProcessName").split("_")[0]);
             jQuery("#ProtocalControl").attr("disabled",true);
         }
+        if(getQueryVariable("PID")!=null){
+            jQuery("#PIDControl").val(getQueryVariable("PID"));
+            jQuery("#PIDControl").attr("disabled",true);
+        }
+        if(getQueryVariable("MainOrBackup")!=null){
+            jQuery("#MAINORBACKUPControl").val(getQueryVariable("MainOrBackup"));
+            jQuery("#MAINORBACKUPControl").attr("disabled",true);
+        }
     });
 
     function getQueryVariable(variable)

@@ -17,8 +17,6 @@ jQuery("#sendProtocalBtn").click(function(){
         param[i].OrderName=jQuery("#OrderNameControl").val();
         param[i].ParaInfo={"MODE":jQuery("#MODEControl").val()};
         param[i].Protocal=param[i].ProcessName.split("_")[0];
-        param[i].PID=jQuery("#PIDControl").val();
-        param[i].MainOrBackup=jQuery("#MAINORBACKUPControl").val();
     }
     jQuery.ajax({
                 type: 'POST',  
@@ -48,7 +46,6 @@ jQuery("#sendProtocalBtn").click(function(){
                 jQuery("#batch_selector").append( "<option>"+JSON.stringify(packJson[i])+"</option>");
             }
         }
-        
     });
 
     function getQueryVariable(variable)
