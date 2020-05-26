@@ -1,3 +1,11 @@
+
+    // jQuery("#batch_selector").dblclick(function(){
+    //     jQuery("#batch_selector option").each(function(){
+    //         if(this.selected==true){
+    //             this.remove();
+    //         }
+    //     });
+    // });
 jQuery('#datetimepicker1').datetimepicker({
     format: 'yyyy-mm-dd hh:ii:ss',
     minuteStep: 1 ,
@@ -70,7 +78,17 @@ jQuery(document).ready(function(){
         var bv =jQuery('#non_realForm').data('bootstrapValidator');
         bv.validate();
         if (bv.isValid()) {
-            let param = jQuery.parseJSON( unescape(getQueryVariable("value")) ); 
+            let str="[";
+            jQuery("#batch_selector option:selected").each(function(){
+                if(str=="["){
+                    str = str + this.value;
+                }else{
+                    str = str +","+ this.value;
+                }
+            });
+            str = str + "]";
+            let param = jQuery.parseJSON(str); 
+            // let param = jQuery.parseJSON( unescape(getQueryVariable("value")) ); 
             for(var i in param){
                 param[i].msgTag=jQuery("#msgTagControl").val();
                 param[i].missionID=jQuery("#missionIDControl").val();
@@ -104,11 +122,12 @@ jQuery(document).ready(function(){
                 }
             });
     }});
+    
     var strParms=getQueryVariable("value");
         if(strParms!=null){     
             var packJson= jQuery.parseJSON(unescape(strParms));
             for(var i in packJson){//遍历packJson 数组时，i为索引
-                jQuery("#batch_selector").append( "<option>"+JSON.stringify(packJson[i])+"</option>");
+                jQuery("#batch_selector").append( "<option selected>"+JSON.stringify(packJson[i])+"</option>");
             }
         }
 

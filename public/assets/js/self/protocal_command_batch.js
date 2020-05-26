@@ -1,5 +1,13 @@
 jQuery(document).ready(function(){
     
+    // jQuery("#batch_selector").dblclick(function(){
+    //     jQuery("#batch_selector option").each(function(){
+    //         if(this.selected==true){
+    //             this.remove();
+    //         }
+    //     });
+    // });
+
 jQuery("#OrderNameControl").change(function(){
     var opt=jQuery("#OrderNameControl").val();
     if(opt=="MODE"){
@@ -11,7 +19,17 @@ jQuery("#OrderNameControl").change(function(){
     }
 });
 jQuery("#sendProtocalBtn").click(function(){
-    let param = jQuery.parseJSON( unescape(getQueryVariable("value")) ); 
+    let str="[";
+    jQuery("#batch_selector option:selected").each(function(){
+        if(str=="["){
+            str = str + this.value;
+        }else{
+            str = str +","+ this.value;
+        }
+    });
+    str = str + "]";
+    let param = jQuery.parseJSON(str); 
+    // let param = jQuery.parseJSON( unescape(getQueryVariable("value")) ); 
     for(var i in param){
         param[i].msgType=jQuery("#msgTypeControl_Protocal").val();
         param[i].OrderName=jQuery("#OrderNameControl").val();
@@ -43,7 +61,7 @@ jQuery("#sendProtocalBtn").click(function(){
         if(strParms!=null){     
             var packJson= jQuery.parseJSON(unescape(strParms));
             for(var i in packJson){//遍历packJson 数组时，i为索引
-                jQuery("#batch_selector").append( "<option>"+JSON.stringify(packJson[i])+"</option>");
+                jQuery("#batch_selector").append( "<option selected>"+JSON.stringify(packJson[i])+"</option>");
             }
         }
     });
