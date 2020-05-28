@@ -34,6 +34,33 @@
                                    
                       window.open( "/ctcc/batch_commandpage?value="+ escape(JSON.stringify(parm)) );
                     }
+                },
+                {
+                    text: '全选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).addClass("selectRow");
+                      }     
+                    }
+                },
+                {
+                    text: '全不选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).removeClass("selectRow");
+                      }     
+                    }
+                },
+                {
+                    text: '反选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).toggleClass("selectRow");
+                      }     
+                    }
                 }
             ]
           });
@@ -78,7 +105,34 @@
                                  
                     window.open( "/protocal/batch_commandpage?value="+ escape(JSON.stringify(parm)));
                   }
-              }
+              },
+                {
+                    text: '全选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).addClass("selectRow");
+                      }     
+                    }
+                },
+                {
+                    text: '全不选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).removeClass("selectRow");
+                      }     
+                    }
+                },
+                {
+                    text: '反选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).toggleClass("selectRow");
+                      }     
+                    }
+                }
           ]
         });
         table.columnFilter({
@@ -123,7 +177,34 @@
                                  
                     window.open( "/non_real/batch_commandpage?value="+ escape(JSON.stringify(parm)) );
                       }
-                  }
+                  },
+                {
+                    text: '全选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).addClass("selectRow");
+                      }     
+                    }
+                },
+                {
+                    text: '全不选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).removeClass("selectRow");
+                      }     
+                    }
+                },
+                {
+                    text: '反选',
+                    action: function ( e, dt, node, config ) {
+                      rowCount = dt.data().length;
+                      for (var i=0;i<rowCount;i++) {
+                        jQuery(dt.row(i).nodes()).toggleClass("selectRow");
+                      }     
+                    }
+                }
               ]
             });
             table.columnFilter({
