@@ -8,6 +8,11 @@ function changeColor(){
   changeColorSingle('#ctcc_tb');
   changeColorSingle('#protocal_tb');
   changeColorSingle('#nonreal_tb');
+  changeColorSingle('#ctcc_tb_fixed');
+  changeColorSingle('#protocal_tb_fixed');
+  changeColorSingle('#ctcc_tb_query');
+  changeColorSingle('#protocal_tb_query');
+  changeColorSingle('#nonreal_tb_query');
 };
 
 function changeColorSingle(id){

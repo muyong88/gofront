@@ -16,32 +16,8 @@
 		
 		<br />
 		
-		<table class="table table-bordered datatable  " id="protocal_tb">
+		<table class="table table-bordered datatable  " id="protocal_tb_fixed">
 			<thead>
-				<tr class="replace-inputs">
-					<th style="width: 190px;"></th>
-					<th style="width: 190px;"></th>
-					<th style="width: 110px;"></th>
-					<th style="width: 110px;"></th>
-					<th style="width: 120px;"></th>
-					<th style="width: 120px;"></th>
-					<th style="width: 140px;"></th>
-					<th style="width: 200px;"></th>
-					<th style="width: 180px;"></th>
-					<th style="width: 140px;"></th>
-					<th style="width: 150px;"></th>
-					<th style="width: 170px;"></th>
-					<th style="width: 180px;"></th>
-					<th style="width: 180px;"></th>
-					<th style="width: 180px;"></th>
-					<th style="width: 180px;"></th>
-					<th style="width: 140px;"></th>	
-					{{if .role}}		
-					<th style="width: 100px;"></th>		
-					{{else}}	
-					<th style="width: 100px;display:none;"></th>	
-					{{end}}				
-				</tr>
 				<tr>
 					<th style="width: 190px;">更新时间</th>
 					<th>MsgType</th>
@@ -103,11 +79,11 @@
 	</div>
 	{{ template "websocket"}}
 	<script src="/public/assets/js/self/table_color_manager.js"></script>
-	<script src="/public/assets/js/self/protocal_monitor_fixed.js"></script>
 	{{if .role}}
-	{{ template "bottom"}}
+	<script src="/public/assets/js/self/protocal_monitor_fixed.js"></script>
 	{{else}}
-	{{ template "bottom2"}}
+	<script src="/public/assets/js/self/protocal_monitor_fixed2.js"></script>
 	{{end}}	
+	{{ template "bottom"}}
 </body>
 </html>

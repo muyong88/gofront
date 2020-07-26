@@ -3,6 +3,7 @@ package model
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
@@ -24,6 +25,8 @@ type ProtocalProcessState struct {
 	StartTime    string         `json:"startTime"`
 	EndTime      string         `json:"endTime"`
 	UpDateTime   string         `json:"updateTime"` //入库时间
+	Limit        int            `json:"limit"`
+	Start        int            `json:"start"`
 }
 
 //ProtocalReport ProtocalReport
@@ -97,13 +100,33 @@ func GetOneProctocalProcessState(process *ProtocalProcessStateDb) (bool, error) 
 
 //GetAllProctocalProcessDbState 查询所有
 func GetAllProctocalProcessDbState() ([]map[string]string, error) {
-	return gofrontdb.EngineGroup().QueryString("select * from ProtocalProcessStateDb")
+	return gofrontdb.EngineGroup().QueryString("select * from ProtocalProcessStateDb ")
 }
 
+//GetProctocalProcessDbStateDbCount 查询总数
+func GetProctocalProcessDbStateDbCount() int64 {
+	member := new(ProtocalProcessStateDb)
+	number, _ := gofrontdb.EngineGroup().Count(member)
+	return number
+}
+
+// //GetProctocalProcessAfterUpdateTime  查询更新时间之后的数据
+// func GetProctocalProcessAfterUpdateTime(updateTime string) (state []ProtocalProcessStateDb) {
+// 	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
+// 	return state
+// }
+
 //GetProctocalProcessAfterUpdateTime  查询更新时间之后的数据
-func GetProctocalProcessAfterUpdateTime(updateTime string) (state []ProtocalProcessStateDb) {
-	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
-	return state
+func GetProctocalProcessAfterUpdateTime(updateTime string, limit int, start int) ([]map[string]string, int) {
+	sqlText := "select * from ProtocalProcessStateDb where " + fmt.Sprintf(" UpDateTime >=   '%s' ", updateTime)
+	data, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	count := 0
+	if data != nil {
+		count = len(data)
+	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC limit " + strconv.Itoa(limit) + " offset " + strconv.Itoa(start)
+	retRes, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	return retRes, count
 }
 
 //GetProctocalProcessFixed 获取最新fixed数据
@@ -121,8 +144,8 @@ func GetProctocalProcessFixed() (states []ProtocalProcessStateDb) {
 }
 
 //GetProctocalProcessDbStateCondition 条件查询
-func GetProctocalProcessDbStateCondition(mainOrBackup int, mid string, processName string, reprotType string, startTime string, endTime string) ([]map[string]string, error) {
-	sqlText := "select * from ProtocalProcessStateDb where MID > 0 "
+func GetProctocalProcessDbStateCondition(mainOrBackup int, mid string, processName string, reprotType string, startTime string, endTime string, limit int, start int) ([]map[string]string, int) {
+	sqlText := "select * from ProtocalProcessStateDb where 1 = 1 "
 	if mid != "ALL" {
 		sqlText = sqlText + fmt.Sprintf(" and MID = '%s'", mid)
 	}
@@ -141,8 +164,14 @@ func GetProctocalProcessDbStateCondition(mainOrBackup int, mid string, processNa
 	if endTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and Last <= '%s'", endTime)
 	}
-	sqlText = sqlText + " ORDER BY UpDateTime DESC"
-	return gofrontdb.EngineGroup().QueryString(sqlText)
+	data, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	count := 0
+	if data != nil {
+		count = len(data)
+	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC limit " + strconv.Itoa(limit) + " offset " + strconv.Itoa(start)
+	retRes, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	return retRes, count
 }
 
 //GetJSONString GET JSON STRING

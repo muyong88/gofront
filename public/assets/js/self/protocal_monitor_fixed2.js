@@ -6,60 +6,60 @@
             // "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             // "bStateSave": true,
             "order": [[ 0, "desc" ]],
-            dom: 'Bfrtip',
-            buttons: [
-              {
-                  text: '批量发送命令',
-                  action: function ( e, dt, node, config ) {
-                    var rows = dt.rows('.selectRow').data()
-                    if(rows.length==0){
-                        alert("至少选择一行！");
-                        return;
-                    }
-                    let parm=[];
-                    for (var j=0;j<rows.length;j++){
-                      var found=false;
-                      for(var i in parm){
-                        if(parm[i].ID==rows[j][2]&&parm[i].BID==rows[j][4]&&parm[i].MID==rows[j][3]&&parm[i].ProcessName==rows[j][7]&&parm[i].PID==rows[j][5]&&parm[i].MainOrBackup==rows[j][6]){
-                          found=true;
-                        }
-                      }
-                      if(found==false){
-                        parm.push({'ID':Number(rows[j][2]),'MID':rows[j][3],'BID':rows[j][4],'ProcessName':rows[j][7],"MainOrBackup":rows[j][6],"PID":rows[j][5]}) ;
-                      }
-                    }    
+          //   dom: 'Bfrtip',
+          //   buttons: [
+          //     {
+          //         text: '批量发送命令',
+          //         action: function ( e, dt, node, config ) {
+          //           var rows = dt.rows('.selectRow').data()
+          //           if(rows.length==0){
+          //               alert("至少选择一行！");
+          //               return;
+          //           }
+          //           let parm=[];
+          //           for (var j=0;j<rows.length;j++){
+          //             var found=false;
+          //             for(var i in parm){
+          //               if(parm[i].ID==rows[j][2]&&parm[i].BID==rows[j][4]&&parm[i].MID==rows[j][3]&&parm[i].ProcessName==rows[j][7]&&parm[i].PID==rows[j][5]&&parm[i].MainOrBackup==rows[j][6]){
+          //                 found=true;
+          //               }
+          //             }
+          //             if(found==false){
+          //               parm.push({'ID':Number(rows[j][2]),'MID':rows[j][3],'BID':rows[j][4],'ProcessName':rows[j][7],"MainOrBackup":rows[j][6],"PID":rows[j][5]}) ;
+          //             }
+          //           }    
                                  
-                    window.open( "/protocal/batch_commandpage?value="+ escape(JSON.stringify(parm)));
-                  }
-              },
-                {
-                    text: '全选',
-                    action: function ( e, dt, node, config ) {
-                      rowCount = dt.data().length;
-                      for (var i=0;i<rowCount;i++) {
-                        jQuery(dt.row(i).nodes()).addClass("selectRow");
-                      }     
-                    }
-                },
-                {
-                    text: '全不选',
-                    action: function ( e, dt, node, config ) {
-                      rowCount = dt.data().length;
-                      for (var i=0;i<rowCount;i++) {
-                        jQuery(dt.row(i).nodes()).removeClass("selectRow");
-                      }     
-                    }
-                },
-                {
-                    text: '反选',
-                    action: function ( e, dt, node, config ) {
-                      rowCount = dt.data().length;
-                      for (var i=0;i<rowCount;i++) {
-                        jQuery(dt.row(i).nodes()).toggleClass("selectRow");
-                      }     
-                    }
-                }
-          ]
+          //           window.open( "/protocal/batch_commandpage?value="+ escape(JSON.stringify(parm)));
+          //         }
+          //     },
+          //       {
+          //           text: '全选',
+          //           action: function ( e, dt, node, config ) {
+          //             rowCount = dt.data().length;
+          //             for (var i=0;i<rowCount;i++) {
+          //               jQuery(dt.row(i).nodes()).addClass("selectRow");
+          //             }     
+          //           }
+          //       },
+          //       {
+          //           text: '全不选',
+          //           action: function ( e, dt, node, config ) {
+          //             rowCount = dt.data().length;
+          //             for (var i=0;i<rowCount;i++) {
+          //               jQuery(dt.row(i).nodes()).removeClass("selectRow");
+          //             }     
+          //           }
+          //       },
+          //       {
+          //           text: '反选',
+          //           action: function ( e, dt, node, config ) {
+          //             rowCount = dt.data().length;
+          //             for (var i=0;i<rowCount;i++) {
+          //               jQuery(dt.row(i).nodes()).toggleClass("selectRow");
+          //             }     
+          //           }
+          //       }
+          // ]
         });
         // table.columnFilter({
         //     "sPlaceHolder" : "head:after"

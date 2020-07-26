@@ -18,27 +18,6 @@
 		
 		<table class="table table-bordered datatable  " id="nonreal_tb">
 			<thead>
-				<tr class="replace-inputs">
-					<th style="width: 190px;"></th>
-					<th style="width: 140px;"></th>
-					<th style="width: 120px;"></th>
-					<th style="width: 110px;"></th>
-					<th style="width: 120px;"></th>
-					<th style="width: 120px;"></th>
-					<th style="width: 120px;"></th>
-					<th style="width: 200px;"></th>
-					<th style="width: 120px;"></th>
-					<th style="width: 140px;"></th>
-					<th style="width: 150px;"></th>
-					<th style="width: 150px;"></th>
-					<th style="width: 180px;"></th>
-					<th style="width: 180px;"></th>	
-					{{if .role}}	
-					<th style="width: 100px;"></th>	
-					{{else}}	
-					<th style="width: 100px;display:none;"></th>		
-					{{end}}			
-				</tr>
 				<tr>
 					<th>更新时间</th>
 					<th>MsgTag</th>
@@ -94,11 +73,11 @@
 	</div>
 	{{ template "websocket"}}
 	<script src="/public/assets/js/self/table_color_manager.js"></script>
-	<script src="/public/assets/js/self/nonreal_monitor.js"></script>
 	{{if .role}}
-	{{ template "bottom"}}
+	<script src="/public/assets/js/self/monitor_updatetable.js"></script>
 	{{else}}
-	{{ template "bottom2"}}
+	<script src="/public/assets/js/self/monitor_updatetable2.js"></script>
 	{{end}}	
+	{{ template "bottom"}}
 </body>
 </html>

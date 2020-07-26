@@ -3,6 +3,7 @@ package routes
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"time"
 
 	"github.com/kataras/golog"
@@ -31,6 +32,7 @@ func CTCCHub(party iris.Party) {
 	})
 	home.Get("/downlink", CTCCDownLinkGet)
 	home.Post("/query_db", CTCCQueryDb)
+	home.Post("/query_db_init", CTCCQueryDbInit)
 	home.Post("/process_state", CTCCProcessstatePost)
 	home.Post("/send_command", CTCCSendCommand)
 }
@@ -89,12 +91,27 @@ func CTCCQueryDb(ctx iris.Context) {
 	var state model.CTCCProcessState
 	ctx.ReadJSON(&state)
 	// results, _ := model.GetAllCTCCProcessState()
-	results, _ := model.GetCTCCProcessStateConditions(state.Channel, state.SysID, state.StartTime, state.EndTime)
+	results, count := model.GetCTCCProcessStateConditions(state.Channel, state.SysID, state.StartTime, state.EndTime, state.Limit, state.Start)
 	if results != nil {
 		bjson, _ := json.Marshal(results)
-		ctx.JSON(string(bjson))
+		ctx.JSON(`{"count":` + strconv.Itoa(count) + ` ,"data":` + string(bjson) + "}")
 	} else {
-		ctx.JSON("{}")
+		ctx.JSON(`{"count":0 ,"data": {}}`)
+	}
+}
+
+//CTCCQueryDbInit 查询CCTC数据库
+func CTCCQueryDbInit(ctx iris.Context) {
+	session := sess.Start(ctx)
+	var state model.CTCCProcessState
+	ctx.ReadJSON(&state)
+	// results, _ := model.GetAllCTCCProcessState()
+	results, count := model.GetCCTCProcessStateAfterUpdateTime(session.GetString("loginTime"), state.Limit, state.Start)
+	if results != nil {
+		bjson, _ := json.Marshal(results)
+		ctx.JSON(`{"count":` + strconv.Itoa(count) + ` ,"data":` + string(bjson) + "}")
+	} else {
+		ctx.JSON(`{"count":0 ,"data": {}}`)
 	}
 }
 
@@ -119,18 +136,6 @@ func getPage(ctx iris.Context, pageName string) {
 		} else {
 			ctx.ViewData("role", false)
 			ctx.ViewData("username", username)
-		}
-		if pageName == "ctcc_monitor.html" || pageName == "index.html" {
-			results := model.GetCCTCProcessStateAfterUpdateTime(session.GetString("loginTime"))
-			ctx.ViewData("ctcc_table_date", results)
-		}
-		if pageName == "nonreal_monitor.html" || pageName == "index.html" {
-			results := model.GetNonRealProcessAfterUpdateTime(session.GetString("loginTime"))
-			ctx.ViewData("nonreal_table_date", results)
-		}
-		if pageName == "protocal_monitor.html" || pageName == "index.html" {
-			results := model.GetProctocalProcessAfterUpdateTime(session.GetString("loginTime"))
-			ctx.ViewData("protocal_table_date", results)
 		}
 		if pageName == "ctcc_monitor_fixed.html" {
 			ctx.ViewData("ctcc_table_date", model.GetCTCCProcessFixed())

@@ -114,43 +114,6 @@
 					</div>
 					<table id="ctcc_tb" class="table table-bordered table-responsive  " >
 						<thead>
-							<tr class="replace-inputs" style="display:none;">
-								<th style="width: 190px;"></th>
-								<th style="width: 240px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 110px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 150px;"></th>
-								<th style="width: 150px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 140px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 170px;"></th>
-								<th style="width: 170px;"></th>
-								<th style="width: 170px;"></th>
-								<th style="width: 170px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 150px;"></th>
-								<th style="width: 150px;"></th>
-								<th style="width: 160px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 190px;"></th>								
-								{{if .role}}
-								<th style="width: 100px;" ></th>
-								{{else}}
-								<th style="width: 100px;display:none;" ></th>
-								{{end}}	
-							</tr>
 							<tr>
 								<th style="width: 190px;">更新时间</th>
 								<th style="width: 240px;">MsgType</th>
@@ -189,43 +152,6 @@
 								{{end}}
 							</tr>
 						</thead>		
-						<tbody id="ctcc_tbody">
-						{{ range .ctcc_table_date }}
-						<tr>
-						<td>{{ .UpDateTime }}</td>
-						<td>{{ .MsgType }}</td>
-						<td>{{ .ProcessID }}</td>
-						<td>{{ .SysID }}</td>
-						<td>{{ .Pattern }}</td>
-						<td>{{ .Channel }}</td>
-						<td>{{ .IsSend32KB }}</td>
-						<td>{{ .IsSendIPinIP }}</td>
-						<td>{{ .IsSaveFile }}</td>
-						<td>{{ .IsArchive }}</td>
-						<td>{{ .ResendShmHead }}</td>
-						<td>{{ .ResendShmTear }}</td>
-						<td>{{ .ResendWriteShmLoop }}</td>
-						<td>{{ .ResendReadShmLoop }}</td>
-						<td>{{ .ResendWriteShmSpeed }}</td>
-						<td>{{ .ResendReadShmSpeed }}</td>
-						<td>{{ .SaveShmHead }}</td>
-						<td>{{ .SaveShmTear }}</td>
-						<td>{{ .SaveWriteShmLoop }}</td>
-						<td>{{ .SaveReadShmLoop }}</td>
-						<td>{{ .SaveWriteShmSpeed }}</td>
-						<td>{{ .SaveReadShmSpeed }}</td>
-						<td>{{ .RecvBeats }}</td>
-						<td>{{ .ResendBeats }}</td>
-						<td>{{ .SaveBeats }}</td>
-						<td>{{ .RecvBytes }}</td>
-						<td>{{ .Send32KFrames }}</td>
-						<td>{{ .SendIPinIPFrames }}</td>
-						<td>{{ .SendSmallCraftFrames }}</td>
-						<td>{{ .TimeStamp }}</td>
-						<td ><a href="/ctcc/commandpage?MsgType={{ .MsgType }}&SysId={{ .SysID }}&Pattern={{ .Pattern }}&Channel={{ .Channel }}" target="_blank" style="color:red;">发送命令</a></td> 
-						</tr>
-						{{ end }}
-						</tbody>
 					</table>
 				</div>
 		
@@ -244,30 +170,6 @@
 					</div>
 					<table id="protocal_tb" class="table table-bordered table-responsive  " >
 						<thead>
-							<tr class="replace-inputs" style="display:none;">
-								<th style="width: 190px;"></th>
-								<th style="width: 190px;"></th>
-								<th style="width: 110px;"></th>
-								<th style="width: 110px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 140px;"></th>
-								<th style="width: 200px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 140px;"></th>
-								<th style="width: 150px;"></th>
-								<th style="width: 170px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 140px;"></th>	
-								{{if .role}}		
-								<th style="width: 100px;"></th>		
-								{{else}}	
-								<th style="width: 100px;display:none;"></th>	
-								{{end}}				
-							</tr>
 							<tr>
 								<th  style="width: 190px;">更新时间</td>
 								<th style="width: 190px;">MsgType</th>
@@ -293,30 +195,6 @@
 								{{end}}												
 							</tr>
 						</thead>		
-						<tbody id="protocal_tbody">
-							{{ range .protocal_table_date }}
-				<tr>
-					<td>{{ .UpDateTime }}</td>
-					<td>{{ .MsgType }}</td>
-					<td>{{ .ID }}</td>
-					<td>{{ .MID }}</td>
-					<td>{{ .BID }}</td>
-					<td>{{ .PID }}</td>
-					<td>{{ .MainOrBackup }}</td>
-					<td>{{ .ProcessName }}</td>
-					<td>{{ .ReportType }}</td>
-					<td>{{ .CommandType }}</td>
-					<td>{{ .CommandResult }}</td>
-					<td>{{ .RecvStatusRevert }}</td>
-					<td>{{ .RecvStatus }}</td>
-					<td>{{ .First }}</td>
-					<td>{{ .Last }}</td>
-					<td>{{ .RecvCount }}</td>
-					<td>{{ .SendNo }}</td>
-					<td><a href="/protocal/commandpage?PID={{ .PID }}&MainOrBackup={{ .MainOrBackup }}&ID={{ .ID }}&MID={{ .MID }}&BID={{ .BID }}&ProcessName={{ .ProcessName }}" target="_blank" style="color:red;">发送命令</a></td>  
-				</tr>
-			{{ end }}
-						</tbody>
 					</table>
 				</div>
 		
@@ -335,27 +213,6 @@
 					</div>
 					<table id="nonreal_tb" class="table table-bordered table-responsive  " >
 						<thead>
-							<tr class="replace-inputs"  style="display:none;">
-								<th style="width: 190px;"></th>
-								<th style="width: 140px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 110px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 200px;"></th>
-								<th style="width: 120px;"></th>
-								<th style="width: 140px;"></th>
-								<th style="width: 150px;"></th>
-								<th style="width: 150px;"></th>
-								<th style="width: 180px;"></th>
-								<th style="width: 180px;"></th>	
-								{{if .role}}	
-								<th style="width: 100px;"></th>	
-								{{else}}	
-								<th style="width: 100px;display:none;"></th>		
-								{{end}}			
-							</tr>
 							<tr>
 								<th  style="width: 190px;">更新时间</td>
 								<th style="width: 140px;">MsgTag</th>
@@ -378,27 +235,6 @@
 								{{end}}	
 							</tr>
 						</thead>		
-						<tbody id="nonreal_tbody">
-							{{ range .nonreal_table_date }}
-							<tr>
-							<td>{{ .UpDateTime }}</td>
-							<td>{{ .MsgTag }}</td>
-							<td>{{ .MsgType }}</td>
-							<td>{{ .MissionID }}</td>
-							<td>{{ .Subtype }}</td>
-							<td>{{ .MSGID }}</td>
-							<td>{{ .Sender }}</td>
-							<td>{{ .Timestamp }}</td>
-							<td>{{ .Type }}</td>
-							<td>{{ .SendSessionID }}</td>
-							<td>{{ .FileName }}</td>
-							<td>{{ .FilePath }}</td>
-							<td>{{ .Status }}</td>
-							<td>{{ .Station }}</td>
-							<td><a href="/non_real/commandpage?MsgTag={{ .MsgTag }}&MsgType={{ .MsgType }}&MissionID={{ .MissionID }}&Subtype={{ .Subtype }}&MSGID={{ .MSGID }}&Sender={{ .Sender }}&SendSessionID={{ .SendSessionID }}" target="_blank" style="color:red;">发送命令</a></td>  
-							</tr>
-							{{ end }} 
-						</tbody>
 					</table>
 				</div>
 		
@@ -409,11 +245,11 @@
 	</div>
 	{{ template "websocket"}}
 	<script src="/public/assets/js/self/table_color_manager.js"></script>
-	<script src="/public/assets/js/self/monitor_updatetable.js"></script>
 	{{if .role}}
-	{{ template "bottom"}}
+	<script src="/public/assets/js/self/monitor_updatetable.js"></script>
 	{{else}}
-	{{ template "bottom2"}}
+	<script src="/public/assets/js/self/monitor_updatetable2.js"></script>
 	{{end}}	
+	{{ template "bottom"}}
 </body>
 </html>

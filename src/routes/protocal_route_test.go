@@ -1,10 +1,12 @@
 package routes
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"testing"
 
 	"github.com/kirinlabs/HttpRequest"
+	"github.com/yanzhen74/gofront/src/model"
 	"gopkg.in/yaml.v2"
 )
 
@@ -44,4 +46,33 @@ func Test_Protocal_Send_Command(t *testing.T) {
 	"ParaInfo":{"MODE":"MAIN/BACKUP"},"Protocal":"LINK"}`
 	HttpRequest.JSON().Post("http://"+AppConfig.IP+":"+AppConfig.Port+"/protocal/send_command", comStr)
 
+}
+
+func Test_InsertDb(t *testing.T) {
+
+	var jsonStr = `
+	{
+		"msgType": "ProtocalReport",
+		"PID": 1234,
+		"MID": "CLOSE",
+		"BID": "00112233",
+		"ID": 2,
+		"MainOrBackup": 2,
+		"ProcessName": "LINK_CTCC-TL1A1_POAC",
+		"Report": {
+			"Report_type": "CP_REPORT_ON_TIMER",
+			"Command_type": "bb",
+			"Command_result": "bb",
+			"Recv_status_revert": true,
+			"Recv_status": false,
+			"First": "20200723101020",
+			"Last": "20200723102020",
+			"Recv_count": 100,
+			"Send_no": 100
+		}
+	}
+	`
+	var proCommand model.ProtocalCommand
+	json.Unmarshal([]byte(jsonStr), &proCommand)
+	model.CreateProtocalCommandDB(&proCommand)
 }

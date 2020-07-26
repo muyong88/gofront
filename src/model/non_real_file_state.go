@@ -3,6 +3,7 @@ package model
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
@@ -28,6 +29,8 @@ type NonRealFileState struct {
 	StartTime     string `json:"startTime"`
 	EndTime       string `json:"endTime"`
 	UpDateTime    string `json:"updateTime"` //入库时间
+	Limit         int    `json:"limit"`
+	Start         int    `json:"start"`
 }
 
 //CreateNonRealFileState 入库
@@ -49,14 +52,27 @@ func GetAllNonRealProcessState() ([]map[string]string, error) {
 }
 
 //GetNonRealProcessAfterUpdateTime  查询更新时间之后的数据
-func GetNonRealProcessAfterUpdateTime(updateTime string) (state []NonRealFileState) {
-	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
-	return state
+// func GetNonRealProcessAfterUpdateTime(updateTime string) (state []NonRealFileState) {
+// 	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
+// 	return state
+// }
+
+//GetNonRealProcessAfterUpdateTime  查询更新时间之后的数据
+func GetNonRealProcessAfterUpdateTime(updateTime string, limit int, start int) ([]map[string]string, int) {
+	sqlText := "select * from NonRealFileState where " + fmt.Sprintf(" UpDateTime >=   '%s' ", updateTime)
+	data, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	count := 0
+	if data != nil {
+		count = len(data)
+	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC limit " + strconv.Itoa(limit) + " offset " + strconv.Itoa(start)
+	retRes, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	return retRes, count
 }
 
 //GetNonRealProcessStateCondition 条件查询
-func GetNonRealProcessStateCondition(ty string, station string, startTime string, endTime string) ([]map[string]string, error) {
-	sqlText := "select * from NonRealFileState where Type <> '' "
+func GetNonRealProcessStateCondition(ty string, station string, startTime string, endTime string, limit int, start int) ([]map[string]string, int) {
+	sqlText := "select * from NonRealFileState where 1 = 1 "
 	if ty != "ALL" {
 		sqlText = sqlText + fmt.Sprintf(" and Type = '%s'", ty)
 	}
@@ -69,8 +85,14 @@ func GetNonRealProcessStateCondition(ty string, station string, startTime string
 	if endTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and timestamp <= '%s'", endTime)
 	}
-	sqlText = sqlText + " ORDER BY UpDateTime DESC"
-	return gofrontdb.EngineGroup().QueryString(sqlText)
+	data, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	count := 0
+	if data != nil {
+		count = len(data)
+	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC limit " + strconv.Itoa(limit) + " offset " + strconv.Itoa(start)
+	retRes, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	return retRes, count
 }
 
 //GetJSONString 获取json

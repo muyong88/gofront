@@ -34,6 +34,7 @@ func ProtocalHub(party iris.Party) {
 	home.Post("/process_state", ProtocalProcessStatePost)
 	home.Post("/send_command", ProtocalProcessSendCommand)
 	home.Post("/query_db", ProtocalQueryDb)
+	home.Post("/query_db_init", ProtocalQueryDbInit)
 }
 
 //ProtocalProcessStatePost 协议进程状态更新接口
@@ -96,11 +97,26 @@ func ProtocalQueryDb(ctx iris.Context) {
 	var state model.ProtocalProcessState
 	ctx.ReadJSON(&state)
 	// results, _ := model.GetAllProctocalProcessDbState()
-	results, _ := model.GetProctocalProcessDbStateCondition(state.MainOrBackup, state.MID, state.ProcessName, state.Report.ReportType, state.StartTime, state.EndTime)
+	results, count := model.GetProctocalProcessDbStateCondition(state.MainOrBackup, state.MID, state.ProcessName, state.Report.ReportType, state.StartTime, state.EndTime, state.Limit, state.Start)
 	if results != nil {
 		bjson, _ := json.Marshal(results)
-		ctx.JSON(string(bjson))
+		ctx.JSON(`{"count":` + strconv.Itoa(count) + ` ,"data":` + string(bjson) + "}")
 	} else {
-		ctx.JSON("{}")
+		ctx.JSON(`{"count":0 ,"data": {}}`)
+	}
+}
+
+//ProtocalQueryDbInit 查询Db
+func ProtocalQueryDbInit(ctx iris.Context) {
+	session := sess.Start(ctx)
+	var state model.ProtocalProcessState
+	ctx.ReadJSON(&state)
+	// results, _ := model.GetAllProctocalProcessDbState()
+	results, count := model.GetProctocalProcessAfterUpdateTime(session.GetString("loginTime"), state.Limit, state.Start)
+	if results != nil {
+		bjson, _ := json.Marshal(results)
+		ctx.JSON(`{"count":` + strconv.Itoa(count) + ` ,"data":` + string(bjson) + "}")
+	} else {
+		ctx.JSON(`{"count":0 ,"data": {}}`)
 	}
 }

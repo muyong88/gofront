@@ -3,6 +3,7 @@ package routes
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	"github.com/kataras/golog"
 	"github.com/kataras/iris"
@@ -29,6 +30,7 @@ func NonRealHub(party iris.Party) {
 	home.Get("/filestate", FileStateGet)
 	home.Post("/send_command", NonRealSendCommand)
 	home.Post("/query_db", NonRealQueryDb)
+	home.Post("/query_db_init", NonRealQueryDbInit)
 }
 
 //FileStateGet 查询发送文件状态接口
@@ -68,11 +70,26 @@ func NonRealQueryDb(ctx iris.Context) {
 	var state model.NonRealFileState
 	ctx.ReadJSON(&state)
 	// results, _ := model.GetAllNonRealProcessState()
-	results, _ := model.GetNonRealProcessStateCondition(state.Type, state.Station, state.StartTime, state.EndTime)
+	results, count := model.GetNonRealProcessStateCondition(state.Type, state.Station, state.StartTime, state.EndTime, state.Limit, state.Start)
 	if results != nil {
 		bjson, _ := json.Marshal(results)
-		ctx.JSON(string(bjson))
+		ctx.JSON(`{"count":` + strconv.Itoa(count) + ` ,"data":` + string(bjson) + "}")
 	} else {
-		ctx.JSON("{}")
+		ctx.JSON(`{"count":0 ,"data": {}}`)
+	}
+}
+
+//NonRealQueryDbInit 查询Db
+func NonRealQueryDbInit(ctx iris.Context) {
+	session := sess.Start(ctx)
+	var state model.NonRealFileState
+	ctx.ReadJSON(&state)
+	// results, _ := model.GetAllNonRealProcessState()
+	results, count := model.GetNonRealProcessAfterUpdateTime(session.GetString("loginTime"), state.Limit, state.Start)
+	if results != nil {
+		bjson, _ := json.Marshal(results)
+		ctx.JSON(`{"count":` + strconv.Itoa(count) + ` ,"data":` + string(bjson) + "}")
+	} else {
+		ctx.JSON(`{"count":0 ,"data": {}}`)
 	}
 }

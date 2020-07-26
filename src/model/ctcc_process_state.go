@@ -3,6 +3,7 @@ package model
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	"github.com/kataras/golog"
 	"github.com/yanzhen74/gofront/src/gofrontdb"
@@ -11,7 +12,7 @@ import (
 
 //CTCCProcessState CTCC进程状态结构体
 type CTCCProcessState struct {
-	Identify             int64   `xorm:"pk autoincr  notnull"` //自增id
+	// Identify             int64   `xorm:"pk autoincr  notnull"` //自增id
 	MsgSign              string  `xorm:"notnull"`
 	MsgType              string  `xorm:"notnull" json:"msgType"`              //消息类型
 	ProcessID            int     `xorm:"notnull" json:"processId"`            //进程标识
@@ -45,6 +46,8 @@ type CTCCProcessState struct {
 	StartTime            string  `json:"startTime"`
 	EndTime              string  `json:"endTime"`
 	UpDateTime           string  `json:"updateTime"` //入库时间
+	Limit                int     `json:"limit"`
+	Start                int     `json:"start"`
 }
 
 //CreateCTCCProcessState 入库
@@ -72,10 +75,23 @@ func GetAllCTCCProcessState() ([]map[string]string, error) {
 // 	return gofrontdb.EngineGroup().QueryString(sqlText)
 // }
 
+// //GetCCTCProcessStateAfterUpdateTime  查询更新时间之后的数据
+// func GetCCTCProcessStateAfterUpdateTime(updateTime string) (state []CTCCProcessState) {
+// 	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
+// 	return state
+// }
+
 //GetCCTCProcessStateAfterUpdateTime  查询更新时间之后的数据
-func GetCCTCProcessStateAfterUpdateTime(updateTime string) (state []CTCCProcessState) {
-	gofrontdb.EngineGroup().Where("UpDateTime >=  ?", updateTime).Find(&state)
-	return state
+func GetCCTCProcessStateAfterUpdateTime(updateTime string, limit int, start int) ([]map[string]string, int) {
+	sqlText := "select * from CTCCProcessState where " + fmt.Sprintf(" UpDateTime >=   '%s' ", updateTime)
+	data, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	count := 0
+	if data != nil {
+		count = len(data)
+	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC limit " + strconv.Itoa(limit) + " offset " + strconv.Itoa(start)
+	retRes, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	return retRes, count
 }
 
 //GetCTCCProcessFixed 获取最新fixed数据
@@ -91,8 +107,8 @@ func GetCTCCProcessFixed() (states []CTCCProcessState) {
 }
 
 //GetCTCCProcessStateConditions 条件查询
-func GetCTCCProcessStateConditions(channel int, sysID int, startTime string, endTime string) ([]map[string]string, error) {
-	sqlText := "select * from CTCCProcessState where Channel >0 "
+func GetCTCCProcessStateConditions(channel int, sysID int, startTime string, endTime string, limit int, start int) ([]map[string]string, int) {
+	sqlText := "select * from CTCCProcessState where 1 = 1 "
 	if channel != 0 {
 		sqlText = sqlText + fmt.Sprintf(" and Channel = %d ", channel)
 	}
@@ -105,8 +121,14 @@ func GetCTCCProcessStateConditions(channel int, sysID int, startTime string, end
 	if endTime != "" {
 		sqlText = sqlText + fmt.Sprintf(" and timestamp <= '%s'", endTime)
 	}
-	sqlText = sqlText + " ORDER BY UpDateTime DESC"
-	return gofrontdb.EngineGroup().QueryString(sqlText)
+	data, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	count := 0
+	if data != nil {
+		count = len(data)
+	}
+	sqlText = sqlText + " ORDER BY UpDateTime DESC limit " + strconv.Itoa(limit) + " offset " + strconv.Itoa(start)
+	retRes, _ := gofrontdb.EngineGroup().QueryString(sqlText)
+	return retRes, count
 }
 
 //GetJSONString 获取json字符串

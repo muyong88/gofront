@@ -8,60 +8,60 @@
               // "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
               // "bStateSave": true,
               "order": [[ 0, "desc" ]],
-              dom: 'Bfrtip',
-              buttons: [
-                {
-                    text: '批量发送命令',
-                    action: function ( e, dt, node, config ) {
-                      var rows = dt.rows('.selectRow').data()
-                      if(rows.length==0){
-                          alert("至少选择一行！");
-                          return;
-                      }
-                      let parm=[];
-                      for (var j=0;j<rows.length;j++){
-                        var found=false;
-                        for(var i in parm){
-                          if(parm[i].sysId==rows[j][3]&&parm[i].pattern==rows[j][4]&&parm[i].channel==rows[j][5]){
-                            found=true;
-                          }
-                        }
-                        if(found==false){
-                          parm.push({'sysId':Number(rows[j][3]),'pattern':Number(rows[j][4]),'channel':Number(rows[j][5])}) ;
-                        }
-                      }    
+            //   dom: 'Bfrtip',
+            //   buttons: [
+            //     {
+            //         text: '批量发送命令',
+            //         action: function ( e, dt, node, config ) {
+            //           var rows = dt.rows('.selectRow').data()
+            //           if(rows.length==0){
+            //               alert("至少选择一行！");
+            //               return;
+            //           }
+            //           let parm=[];
+            //           for (var j=0;j<rows.length;j++){
+            //             var found=false;
+            //             for(var i in parm){
+            //               if(parm[i].sysId==rows[j][3]&&parm[i].pattern==rows[j][4]&&parm[i].channel==rows[j][5]){
+            //                 found=true;
+            //               }
+            //             }
+            //             if(found==false){
+            //               parm.push({'sysId':Number(rows[j][3]),'pattern':Number(rows[j][4]),'channel':Number(rows[j][5])}) ;
+            //             }
+            //           }    
                                    
-                      window.open( "/ctcc/batch_commandpage?value="+ escape(JSON.stringify(parm)) );
-                    }
-                },
-                {
-                    text: '全选',
-                    action: function ( e, dt, node, config ) {
-                      rowCount = dt.data().length;
-                      for (var i=0;i<rowCount;i++) {
-                        jQuery(dt.row(i).nodes()).addClass("selectRow");
-                      }     
-                    }
-                },
-                {
-                    text: '全不选',
-                    action: function ( e, dt, node, config ) {
-                      rowCount = dt.data().length;
-                      for (var i=0;i<rowCount;i++) {
-                        jQuery(dt.row(i).nodes()).removeClass("selectRow");
-                      }     
-                    }
-                },
-                {
-                    text: '反选',
-                    action: function ( e, dt, node, config ) {
-                      rowCount = dt.data().length;
-                      for (var i=0;i<rowCount;i++) {
-                        jQuery(dt.row(i).nodes()).toggleClass("selectRow");
-                      }     
-                    }
-                }
-            ]
+            //           window.open( "/ctcc/batch_commandpage?value="+ escape(JSON.stringify(parm)) );
+            //         }
+            //     },
+            //     {
+            //         text: '全选',
+            //         action: function ( e, dt, node, config ) {
+            //           rowCount = dt.data().length;
+            //           for (var i=0;i<rowCount;i++) {
+            //             jQuery(dt.row(i).nodes()).addClass("selectRow");
+            //           }     
+            //         }
+            //     },
+            //     {
+            //         text: '全不选',
+            //         action: function ( e, dt, node, config ) {
+            //           rowCount = dt.data().length;
+            //           for (var i=0;i<rowCount;i++) {
+            //             jQuery(dt.row(i).nodes()).removeClass("selectRow");
+            //           }     
+            //         }
+            //     },
+            //     {
+            //         text: '反选',
+            //         action: function ( e, dt, node, config ) {
+            //           rowCount = dt.data().length;
+            //           for (var i=0;i<rowCount;i++) {
+            //             jQuery(dt.row(i).nodes()).toggleClass("selectRow");
+            //           }     
+            //         }
+            //     }
+            // ]
           });
           // table.columnFilter({
           //     "sPlaceHolder" : "head:after"
