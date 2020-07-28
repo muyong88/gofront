@@ -1,5 +1,5 @@
 jQuery('#datetimepicker1').datetimepicker({
-    format: 'yyyy-mm-dd hh:ii:ss',
+    format: 'yyyy-mm-dd_hh:ii:ss',
     minuteStep: 1 ,
     autoclose: true,
     language: 'zh-CN'
