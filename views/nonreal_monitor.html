@@ -41,25 +41,6 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{ range .nonreal_table_date }}
-				<tr>
-					<td>{{ .UpDateTime }}</td>
-					<td>{{ .MsgTag }}</td>
-					<td>{{ .MsgType }}</td>
-					<td>{{ .MissionID }}</td>
-					<td>{{ .Subtype }}</td>
-					<td>{{ .MSGID }}</td>
-					<td>{{ .Sender }}</td>
-					<td>{{ .Timestamp }}</td>
-					<td>{{ .Type }}</td>
-					<td>{{ .SendSessionID }}</td>
-					<td>{{ .FileName }}</td>
-					<td>{{ .FilePath }}</td>
-					<td>{{ .Status }}</td>
-					<td>{{ .Station }}</td>
-					<td><a href="/non_real/commandpage?MsgTag={{ .MsgTag }}&MsgType={{ .MsgType }}&MissionID={{ .MissionID }}&Subtype={{ .Subtype }}&MSGID={{ .MSGID }}&Sender={{ .Sender }}&SendSessionID={{ .SendSessionID }}" target="_blank" style="color:red;">发送命令</a></td>  
-				</tr>
-			{{ end }}
 			</tbody>
 		</table>
 		
