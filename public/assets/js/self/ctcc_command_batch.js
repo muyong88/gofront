@@ -103,24 +103,24 @@ feedbackIcons: {
     validating: 'glyphicon glyphicon-refresh'
 },
 fields: {            
-    datetimepicker1: {
-        group: '.col-sm-3',
-        trigger: 'changeDate',
-        validators: {
-            notEmpty: {
-                message: '日期不能为空'
-            }
-        }
-    },
-    datetimepicker2: {
-        group: '.col-sm-3',
-        trigger: 'changeDate',
-        validators: {
-            notEmpty: {
-                message: '日期不能为空'
-            }
-        }
-    }
+    // datetimepicker1: {
+    //     group: '.col-sm-3',
+    //     trigger: 'changeDate',
+    //     validators: {
+    //         notEmpty: {
+    //             message: '日期不能为空'
+    //         }
+    //     }
+    // },
+    // datetimepicker2: {
+    //     group: '.col-sm-3',
+    //     trigger: 'changeDate',
+    //     validators: {
+    //         notEmpty: {
+    //             message: '日期不能为空'
+    //         }
+    //     }
+    // }
 }
 });
 
