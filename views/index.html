@@ -245,11 +245,12 @@
 	</div>
 	{{ template "websocket"}}
 	<script src="/public/assets/js/self/table_color_manager.js"></script>
-	{{if .role}}
 	<script src="/public/assets/js/self/monitor_updatetable.js"></script>
-	{{else}}
-	<script src="/public/assets/js/self/monitor_updatetable2.js"></script>
-	{{end}}	
+	{{if .role}}
 	{{ template "bottom"}}
+	{{else}}
+	{{ template "bottom2"}}
+	{{end}}	
+	
 </body>
 </html>
