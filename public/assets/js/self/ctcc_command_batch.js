@@ -7,7 +7,7 @@ jQuery(document).ready(function(){
     //     });
     // });
     jQuery('#datetimepicker1').datetimepicker({
-        format: 'yyyy-mm-dd hh:ii:ss',
+        format: 'yyyymmddhhiiss',
         minuteStep: 1 ,
         autoclose: true,
         language: 'zh-CN'
@@ -25,7 +25,7 @@ jQuery(document).ready(function(){
     .validateField('datetimepicker1'); 
     });
     jQuery('#datetimepicker2').datetimepicker({
-        format: 'yyyy-mm-dd hh:ii:ss',
+        format: 'yyyymmddhhiiss',
         minuteStep: 1 ,
         autoclose: true,
         language: 'zh-CN'
